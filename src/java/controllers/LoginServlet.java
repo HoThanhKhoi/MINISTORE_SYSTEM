@@ -67,6 +67,25 @@ public class LoginServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String remember = request.getParameter("remember");
+        
+        //create cookie
+        Cookie ce = new Cookie("cemail", email);
+        Cookie cp = new Cookie("cpass", password);
+        Cookie cr = new Cookie("crem", remember);
+        if (remember != null) {
+            ce.setMaxAge(60*60*24*180);
+            cp.setMaxAge(60*60*24*180);
+            cr.setMaxAge(60*60*24*180);
+        } else {
+            ce.setMaxAge(0);
+            cp.setMaxAge(0);
+            cr.setMaxAge(0);
+        }
+        //save cookie to browser
+        response.addCookie(ce);
+        response.addCookie(cp);
+        response.addCookie(cr);
+        
         try {
             User user = UserDAO.getUser(email, UserDAO.md5(password));
             if (user == null) {
@@ -76,17 +95,6 @@ public class LoginServlet extends HttpServlet {
                 if (user.getStatus() == 1) {
                     HttpSession session = request.getSession();
 
-                    //luu account tren Cookie
-                    if (remember != null) {
-                        Cookie e = new Cookie("emailC", email);
-                        Cookie p = new Cookie("passC", password);
-                        e.setMaxAge(60*60*24*365);
-                        p.setMaxAge(60*60*24*365);
-
-                        //luu e va p tren browser
-                        response.addCookie(e);
-                        response.addCookie(p);
-                    }
                     switch (user.getRole()) {
                         case 0:
                             session.setAttribute("manager", user);
@@ -99,13 +107,14 @@ public class LoginServlet extends HttpServlet {
                             break;
                         default:
                             session.setAttribute("customer", user);
-
+                            session.setAttribute("email", user.getEmail());
                             response.sendRedirect("homePage.jsp");
                             break;
                     }
 
                 } else {
                     request.setAttribute("error", "This account has been blocked.");
+                    request.getRequestDispatcher("login.jsp").forward(request, response);
                 }
             }
         } catch (Exception ex) {

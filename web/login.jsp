@@ -10,36 +10,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login Page</title>
+        <!-- boostrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     </head>
     <body>
-        <%
-            Cookie arr[] = request.getCookies();
-            for (Cookie c : arr) {
-                if (c.getName().equals("emailC")) {
-                    request.setAttribute("email", c.getValue());
-                }
-
-                if (c.getName().equals("passC")) {
-                    request.setAttribute("password", c.getValue());
-                }
-            }
-        %>
-<!--
-        <form action="MainController" method="post">
-            <table>
-                <tr>
-                    <td>Email</td>
-                    <td><input type="email" value="${email}" required="" name="email"></td>
-                </tr>
-                <tr>
-                    <td>Password</td>
-                    <td><input type="password" value="${password}" required="" name="password"></td>
-                </tr>
-            </table>
-            <input type="checkbox" name="remember" value="1"> Remember me
-            <button type="submit" value="login" name="action">Login</button>
-        </form>
--->
+        <c:set var="cookie" value="${pageContext.request.cookies}"/>
         <div class="container-fluid">
             <div class="row">
 
@@ -63,14 +39,14 @@
                         </div>
                         <form action="MainController" method="post">
                             <div class="mb-5 mt-3">
-                                <input type="email" id="email" placeholder="Enter email" name="email" value="${email}">
+                                <input type="email" id="email" placeholder="Enter email" name="email" value="${cookie.cemail.value}">
                             </div>
                             <div class="mb-5">
-                                <input type="password"  id="pwd" placeholder="Enter password" name="password" value="${password}">
+                                <input type="password"  id="pwd" placeholder="Enter password" name="password" value="${cookie.cpass.value}">
                             </div>
                             <div class="form-check mb-3">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" name="remember" value="1"> Remember me
+                                    <input class="form-check-input" type="checkbox" ${(cookie.crem != null?'checked':'')} name="remember" value="1"> Remember me
                                 </label>
                             </div>
                             <div class="button">
@@ -82,7 +58,9 @@
                         </div>
                     </div>
                 </div>
-
+                <c:if test="${requestScope.error != null}">
+                    <h2>${requestScope.error}</h2>
+                </c:if>
             </div>
         </div>        
     </body>

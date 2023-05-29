@@ -5,19 +5,24 @@
  */
 package controllers;
 
+import dao.UserDAO;
+import dto.User;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author ACER
  */
-public class MainController extends HttpServlet {
-    private String url;
+public class EditProfileServlet extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -28,39 +33,30 @@ public class MainController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String action = request.getParameter("action");
-            if (action == null || action.equals("") || action.equalsIgnoreCase("search")){
-                url = "index.jsp";
-            } else if (action.equalsIgnoreCase("login")) {
-                url = "LoginServlet";
-            } else if (action.equalsIgnoreCase("logout")) {
-                url = "LogoutServlet";
-            } else if (action.equalsIgnoreCase("editProfile")) {
-                url = "EditProfileServlet";
-            } else if (action.equalsIgnoreCase("changePassword")) {
-                url = "ChangePasswordServlet";
+            int userID = Integer.parseInt(request.getParameter("userID"));
+            String newName = request.getParameter("name");
+            String newPhone = request.getParameter("phone");
+            String newAdd = request.getParameter("address");
+            HttpSession session = request.getSession();
+            if (!newPhone.matches("^[0-9]{10}$")) {
+                request.setAttribute("error", "Invalid phone number.");
+                request.getRequestDispatcher("editProfile.jsp").forward(request, response);
+            } else {
+                int tmp = UserDAO.updateAccount(userID, newName, newPhone, newAdd);
+                if (tmp == 1) {
+                    User user = UserDAO.getUser(userID);
+                    session.setAttribute("customer", user);
+                    request.setAttribute("noti", "Save successfully.");
+                    request.getRequestDispatcher("customerProfile.jsp").forward(request, response);
+                } else {
+                    request.setAttribute("error", "Edit profile failed.");
+                    request.getRequestDispatcher("editProfile.jsp").forward(request, response);
+                }
             }
-//            switch(action) {
-//                case "login":
-//                    url = "LoginServlet";
-//                    break;
-//                case "logout":
-//                    url = "LogoutServlet";
-//                    break;
-//                case "editProfilePage":
-//                    url = "editProfile.jsp";
-//                    break;
-//                case "editProfile":
-//                    url = "EditProfileServlet";
-//                    break;
-//                case "loadProfile":
-//                    url = "LoadProfileServlet";
-//                    break;
-//            }
-            request.getRequestDispatcher(url).forward(request, response);
+            
         }
     }
 
@@ -76,7 +72,11 @@ public class MainController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(EditProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -90,7 +90,11 @@ public class MainController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(EditProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

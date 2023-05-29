@@ -13,8 +13,13 @@
     </head>
     <body>
         <h1>Hello ${customer.getName()}</h1>
+        <a href="customerProfile.jsp?&id=${customer.getUserID()}">Profile</a>
         <form action="MainController" method="post">
             <button type="submit" name="action" value="logout">Logout</button>
+        </form>
+        <form action="MainController" method="get">
+            <input type="text" name="keyword" value="${param.keyword}">
+            <button type="submit" name="action" value="searchProduct">Search</button>
         </form>
     </body>
 </html>
