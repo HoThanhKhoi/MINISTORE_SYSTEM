@@ -1,3 +1,5 @@
 /Linh/MINISTORE/nbproject/private/
 /Linh/MINISTORE/build/
 /build/
+src/java/Utils/DBUtils.java
+src/java/DTO/User.java

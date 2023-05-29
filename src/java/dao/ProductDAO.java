@@ -6,53 +6,87 @@
 package dao;
 
 import dto.Product;
+import Utils.DBUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
-import utils.DBUtils;
 
 /**
  *
- * @author ACER
+ * @author Admin
  */
 public class ProductDAO {
 
-    public static ArrayList<Product> getProducts(String keyword) throws Exception {
+    public static ArrayList<Product> getProducts() throws Exception {
         ArrayList<Product> list = new ArrayList<>();
-        Connection cn = null;
-        try {
-            cn = DBUtils.makeConnection();
-            if (cn != null && keyword != null) {
-                String sql = "select ProductID,ProductName,Price,Description,StockQuantity,PRODUCTS.ImgPath,PRODUCTS.CateID\n"
-                        + "from PRODUCTS where PRODUCTS.ProductName like ?";
-                PreparedStatement pst = cn.prepareStatement(sql);
-                pst.setString(1, "%" + keyword + "%");
-                ResultSet rs = pst.executeQuery();
-                if (rs != null) {
-                    while (rs.next()) {
-                        int id = rs.getInt("ProductID");
-                        String name = rs.getString("ProductName");
-                        float price = rs.getFloat("Price");
-                        String description = rs.getString("Description");
-                        int stockQuantity = rs.getInt("StockQuantity");
-                        String imgpath = rs.getString("imgPath");
-                        int cateid = rs.getInt("CateID");
-                        Product product = new Product(id, name, price, description, stockQuantity, imgpath, cateid);
-                        list.add(product);
-                    }
-                }
+        Connection cn = DBUtils.makeConnection();
+        if (cn != null) {
+            String sql = "Select ProductID,ProductName,Price,Description,StockQuantity,ImgPath,CateID \n"
+                    + "from PRODUCTS";
+            Statement st = cn.createStatement();
+            ResultSet table = st.executeQuery(sql);
+            while (table.next()) {
+                int productID = table.getInt("ProductID");
+                String productName = table.getString("ProductName");
+                float price = table.getFloat("Price");
+                String description = table.getString("Description");
+                int quantity = table.getInt("StockQuantity");
+                String imgPath = table.getString("ImgPath");
+                int cateID = table.getInt("CateID");
+                Product product = new Product(productID, productName, price, description, quantity, imgPath, cateID);
+                list.add(product);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (cn != null) {
-                try {
-                    cn.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        }
+        cn.close();
+        return list;
+    }
+
+    public static Product getProductInfo(int pid) throws Exception {
+        Product product = null;
+        Connection cn = DBUtils.makeConnection();
+        if (cn != null) {
+            String sql = "Select * from PRODUCTS where ProductID = ?";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setInt(1, pid);
+            ResultSet table = pst.executeQuery();
+            if (table != null && table.next()) {
+                String productName = table.getString("ProductName");
+                float price = table.getFloat("Price");
+                String description = table.getString("Description");
+                int quantity = table.getInt("StockQuantity");
+                String imgPath = table.getString("ImgPath");
+                int cateID = table.getInt("CateID");
+                product = new Product(pid, productName, price, description, quantity, imgPath, cateID);
             }
+        }
+        return product;
+    }
+
+    public static int getTotalProduct() throws Exception{
+        int total = 0;
+        Connection cn = DBUtils.makeConnection();
+        if(cn != null){
+            String sql = "Select COUNT(*) FROM PRODUCTS";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            ResultSet table = pst.executeQuery();
+            if(table.next()){
+                total= table.getInt(1);
+            }
+            cn.close();
+        }
+        return total;
+    }
+    
+    public static ArrayList<Product> getPaginatedProduct(int pageNumber,int productPerPage) throws Exception{
+        ArrayList <Product> list = new ArrayList<>();
+        ArrayList <Product> productList = ProductDAO.getProducts();
+        Connection cn = DBUtils.makeConnection();
+        int start = (pageNumber - 1) * productPerPage;
+        int end = start + productPerPage - 1;
+        for(int i = start;i<=end;i++){
+            list.add(productList.get(i));
         }
         return list;
     }

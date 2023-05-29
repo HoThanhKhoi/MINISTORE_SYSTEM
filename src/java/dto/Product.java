@@ -7,20 +7,16 @@ package dto;
 
 /**
  *
- * @author ACER
+ * @author Admin
  */
 public class Product {
-    private int productID;
-    private String productName;
-    private float price;
-    private String description;
-    private int stockQuantity;
-    private String imgPath;
-    private int cateID;
-//    private String cateName;
-
-    public Product() {
-    }
+    int productID;
+    String productName;
+    float price;
+    String description;
+    int stockQuantity;
+    String imgPath;
+    int cateID;
 
     public Product(int productID, String productName, float price, String description, int stockQuantity, String imgPath, int cateID) {
         this.productID = productID;
@@ -31,19 +27,7 @@ public class Product {
         this.imgPath = imgPath;
         this.cateID = cateID;
     }
-    
 
-//    public Product(int productID, String productName, float price, String description, int stockQuantity, String imgPath, int cateID, String cateName) {
-//        this.productID = productID;
-//        this.productName = productName;
-//        this.price = price;
-//        this.description = description;
-//        this.stockQuantity = stockQuantity;
-//        this.imgPath = imgPath;
-//        this.cateID = cateID;
-//        this.cateName = cateName;
-//    }
-    
     public int getProductID() {
         return productID;
     }
@@ -99,13 +83,5 @@ public class Product {
     public void setCateID(int cateID) {
         this.cateID = cateID;
     }
-
-//    public String getCateName() {
-//        return cateName;
-//    }
-//
-//    public void setCateName(String cateName) {
-//        this.cateName = cateName;
-//    }
     
 }

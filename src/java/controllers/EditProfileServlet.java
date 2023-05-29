@@ -21,7 +21,11 @@ import javax.servlet.http.HttpSession;
  *
  * @author ACER
  */
+<<<<<<<< HEAD:src/java/controllers/EditProfileServlet.java
 public class EditProfileServlet extends HttpServlet {
+========
+public class ChangeNewPasswordServlet extends HttpServlet {
+>>>>>>>> origin/Bao:src/java/controllers/ChangeNewPasswordServlet.java
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -75,7 +79,11 @@ public class EditProfileServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
+<<<<<<<< HEAD:src/java/controllers/EditProfileServlet.java
             Logger.getLogger(EditProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
+========
+            Logger.getLogger(ChangeNewPasswordServlet.class.getName()).log(Level.SEVERE, null, ex);
+>>>>>>>> origin/Bao:src/java/controllers/ChangeNewPasswordServlet.java
         }
     }
 
@@ -93,7 +101,11 @@ public class EditProfileServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
+<<<<<<<< HEAD:src/java/controllers/EditProfileServlet.java
             Logger.getLogger(EditProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
+========
+            Logger.getLogger(ChangeNewPasswordServlet.class.getName()).log(Level.SEVERE, null, ex);
+>>>>>>>> origin/Bao:src/java/controllers/ChangeNewPasswordServlet.java
         }
     }
 

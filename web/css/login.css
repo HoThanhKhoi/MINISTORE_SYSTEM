@@ -160,3 +160,9 @@ form .btn:hover {
     font-weight: bold;
     cursor: pointer;
 }
+/*error*/
+
+
+.error{
+    font-size:14px;
+}

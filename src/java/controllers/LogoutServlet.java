@@ -32,6 +32,23 @@ public class LogoutServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+<<<<<<<< HEAD:src/java/controllers/LogoutServlet.java
+========
+            /* TODO output your page here. You may use following sample code. */
+            String o1 = request.getParameter("o1");
+            String o2 = request.getParameter("o2");
+            String o3 = request.getParameter("o3");
+            String o4 = request.getParameter("o4");
+            String o5 = request.getParameter("o5");
+            String o6 = request.getParameter("o6");
+
+            int expOtp = Integer.parseInt(o1+o2+o3+o4+o5+o6);
+            HttpSession session=request.getSession();
+            int otp=(int)session.getAttribute("otp");
+            if(otp == expOtp){
+                request.getRequestDispatcher("EnterNewPass.jsp").forward(request,response);
+            }
+>>>>>>>> origin/Bao:src/java/controllers/ValidateOtp.java
         }
     }
 
