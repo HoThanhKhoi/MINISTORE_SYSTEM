@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Enter new Pass</h1>
-        <form action="ChangePasswordServlet" method="post">
+        <form action="ChangeNewPasswordServlet" method="post">
             <input name="newPass" type="text"/>
             <input name="changePass" type="submit"/>
         </form>

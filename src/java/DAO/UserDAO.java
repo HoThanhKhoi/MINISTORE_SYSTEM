@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAO;
+package dao;
 
-import DTO.User;
+import dto.User;
 import Utils.DBUtils;
 import java.math.BigInteger;
 import java.security.MessageDigest;

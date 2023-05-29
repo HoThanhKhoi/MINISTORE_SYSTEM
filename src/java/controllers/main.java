@@ -1,11 +1,11 @@
 package controllers;
 
 
-import DAO.CategoryDAO;
-import DAO.ProductDAO;
-import DAO.UserDAO;
-import DTO.Category;
-import DTO.Product;
+import dao.CategoryDAO;
+import dao.ProductDAO;
+import dao.UserDAO;
+import dto.Category;
+import dto.Product;
 import Utils.DBUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

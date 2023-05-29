@@ -5,8 +5,8 @@
  */
 package controllers;
 
-import DAO.ProductDAO;
-import DTO.Product;
+import dao.ProductDAO;
+import dto.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;

@@ -6,9 +6,8 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.ArrayList"%>
-<%@page import="DTO.Product"%>
-<%@page import="DTO.Product"%>
-<%@page import="DAO.ProductDAO"%>
+<%@page import="dto.Product"%>
+<%@page import="dao.ProductDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="javax.servlet.http.HttpServletRequest"%>
 <%@page import="javax.servlet.http.HttpSession"%>
@@ -62,7 +61,7 @@
                             <a href="#category">Category</a>
                         </li>
                         <li>
-                            <a href="">Register</a>
+                            <a href="MainController?action=register">Register</a>
                         </li>
                         <li>
                             <a href="">Login</a>

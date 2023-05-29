@@ -9,8 +9,8 @@
         <servlet-class>controllers.ValidateOtp</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ChangePasswordServlet</servlet-name>
-        <servlet-class>controllers.ChangePasswordServlet</servlet-class>
+        <servlet-name>ChangeNewPasswordServlet</servlet-name>
+        <servlet-class>controllers.ChangeNewPasswordServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>RegisterServlet</servlet-name>
@@ -49,8 +49,8 @@
         <url-pattern>/ValidateOtp</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ChangePasswordServlet</servlet-name>
-        <url-pattern>/ChangePasswordServlet</url-pattern>
+        <servlet-name>ChangeNewPasswordServlet</servlet-name>
+        <url-pattern>/ChangeNewPasswordServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>

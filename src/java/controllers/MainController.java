@@ -35,7 +35,7 @@ private String url="";
             /* TODO output your page here. You may use following sample code. */
              String action=request.getParameter("action"); 
              if(action.equals("viewProduct")) url="ViewProductServlet";
-             else if(action.equals("register")) url="RegisterServlet";
+             else if(action.equals("register")) url="register.jsp";
              else if(action.equals("login")) url="LoginServlet";
              else if(action.equals("backToHome")) url="homePage.jsp";
              else if(action.equals(null)|| action.equals("")) url="homePage.jsp";

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAO;
+package dao;
 
-import DTO.Product;
+import dto.Product;
 import Utils.DBUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

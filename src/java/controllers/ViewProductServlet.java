@@ -5,10 +5,10 @@
  */
 package controllers;
 
-import DAO.CategoryDAO;
-import DAO.ProductDAO;
-import DTO.Category;
-import DTO.Product;
+import dao.CategoryDAO;
+import dao.ProductDAO;
+import dto.Category;
+import dto.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
