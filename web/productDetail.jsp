@@ -56,7 +56,7 @@
   <div class="container product-detail">
     <div class="row">
       <div class="col-5 product-detail-img">
-        <img src="./image/Item.png" alt="">
+        <img src="images/Item.png" alt="">
       </div>
 
       <div class="col-6">
@@ -106,7 +106,7 @@
           <!-- begin item -->
           <div class="item item-card mb-4 text-center">
               <div class="card border-0 shadow">
-                  <img src="./image/Item.png" class="card-img-top" alt="">
+                  <img src="images/Item.png" class="card-img-top" alt="">
                   <div class="card-body">
                       <h5 class="card-title mb-3 fw-bold">Chicken Egg</h5>
                       <span class="bricked-price mx-2">$1.36</span>
@@ -122,7 +122,7 @@
           <!-- begin item -->
           <div class="item item-card mb-4 text-center">
               <div class="card border-0 shadow">
-                <img src="./image/Item.png" class="card-img-top" alt="">
+                <img src="images/Item.png" class="card-img-top" alt="">
                 <div class="card-body">
                       <h5 class="card-title mb-3 fw-bold">Chicken Egg</h5>
                       <span class="bricked-price mx-2">$1.36</span>
@@ -138,7 +138,7 @@
           <!-- begin item -->
           <div class="item item-card mb-4 text-center">
               <div class="card border-0 shadow">
-                <img src="./image/Item.png" class="card-img-top" alt="">
+                <img src="images/Item.png" class="card-img-top" alt="">
                 <div class="card-body">
                       <h5 class="card-title mb-3 fw-bold">Chicken Egg</h5>
                       <span class="bricked-price mx-2">$1.36</span>
@@ -154,7 +154,7 @@
           <!-- begin item -->
           <div class="item item-card mb-4 text-center">
               <div class="card border-0 shadow">
-                <img src="./image/Item.png" class="card-img-top" alt="">
+                <img src="images/Item.png" class="card-img-top" alt="">
                 <div class="card-body">
                       <h5 class="card-title mb-3 fw-bold">Chicken Egg</h5>
                       <span class="bricked-price mx-2">$1.36</span>
@@ -170,7 +170,7 @@
           <!-- begin item -->
           <div class="item item-card mb-4 text-center">
               <div class="card border-0 shadow">
-                <img src="./image/Item.png" class="card-img-top" alt="">
+                <img src="images/Item.png" class="card-img-top" alt="">
                 <div class="card-body">
                       <h5 class="card-title mb-3 fw-bold">Chicken Egg</h5>
                       <span class="bricked-price mx-2">$1.36</span>

@@ -7,6 +7,7 @@ package controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,10 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author ACER
+ * @author Admin
  */
 public class MainController extends HttpServlet {
-    private String url;
+private String url="";
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -31,42 +32,24 @@ public class MainController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String action = request.getParameter("action");
-            if (action == null || action.equals("") || action.equalsIgnoreCase("search")){
-                url = "homePage.jsp";
-            } else if (action.equalsIgnoreCase("login")) {
-                url = "LoginServlet";
-            } else if (action.equalsIgnoreCase("logout")) {
-                url = "LogoutServlet";
-            } else if (action.equalsIgnoreCase("editProfile")) {
+            /* TODO output your page here. You may use following sample code. */
+             String action=request.getParameter("action"); 
+             if(action.equals("viewProduct")) url="ViewProductServlet";
+             else if(action.equals("register")) url="register.jsp";
+             else if(action.equalsIgnoreCase("login")) url="LoginServlet";
+             else if(action.equalsIgnoreCase("logout")) url="LogoutServlet";
+             else if(action.equals("backToHome")) url="homePage.jsp";
+             else if(action.equals(null)|| action.equals("")) url="homePage.jsp";
+             else if(action.equals("showPage")) url="ShowPaginateServlet";
+             else if (action.equalsIgnoreCase("editProfile")) {
                 url = "EditProfileServlet";
             } else if (action.equalsIgnoreCase("changePassword")) {
                 url = "ChangePasswordServlet";
-            } else if(action.equals("viewProduct")) {
-                url="ViewProductServlet";
-            } else if(action.equals("register")) {
-                url="register.jsp";
-            } else if(action.equals("showPage")) {
-                url="ShowPaginateServlet";
             }
-//            switch(action) {
-//                case "login":
-//                    url = "LoginServlet";
-//                    break;
-//                case "logout":
-//                    url = "LogoutServlet";
-//                    break;
-//                case "editProfilePage":
-//                    url = "editProfile.jsp";
-//                    break;
-//                case "editProfile":
-//                    url = "EditProfileServlet";
-//                    break;
-//                case "loadProfile":
-//                    url = "LoadProfileServlet";
-//                    break;
-//            }
-            request.getRequestDispatcher(url).forward(request, response);
+             
+             RequestDispatcher rd = request.getRequestDispatcher(url);
+             rd.forward(request, response);    
+             
         }
     }
 

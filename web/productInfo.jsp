@@ -27,15 +27,18 @@
               integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
               crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-        <link rel="stylesheet" href="./js/index.js">
     </head>
 
     <body>
-
-
+        <!--HEADER-->
+        <header>
+            <c:import url="header.jsp" />
+        </header>
+        
+        
         <!-- HEADER PATH -->
-        <nav class="navbar navbar-expand-lg header-path mb-4">
-            <div class="container">
+        <nav class="navbar navbar_path navbar-expand-lg header-path mb-4">
+            <div class="container-fluid">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
@@ -94,12 +97,12 @@
         </div>
 
         <!-- RELATED PRODUCT -->
-        <div class="container-fluid related-product my-5">
+<!--        <div class="container-fluid related-product my-5">
             <div class="title text-center mb-5">Related Products</div>
             <div class="item-list mx-5">
                 <div class="row ">
                     <div class="col">
-                        <!-- begin item -->
+                         begin item 
                         <div class="item mb-4 text-center">
                             <div class="card border-0 shadow">
                                 <img src="./image/Item.png" class="card-img-top" alt="">
@@ -111,18 +114,21 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- end item -->
+                         end item 
                     </div>
 
                     
                 </div>
             </div>
-        </div>
+        </div>-->
 
         <!-- back to top -->
         <button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top">
             <i class="fas fa-arrow-up"></i>
         </button>
+        
+        
+        <script src="./js/backToTop.js"></script>
 
     </body>
 

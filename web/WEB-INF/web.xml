@@ -33,6 +33,10 @@
         <servlet-class>controllers.ShowPaginatedServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ShowPaginateServlet</servlet-name>
+        <servlet-class>controllers.ShowPaginateServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>showCategoriesServlet</servlet-name>
         <servlet-class>controllers.showCategoriesServlet</servlet-class>
     </servlet>
@@ -41,16 +45,16 @@
         <servlet-class>controllers.LoginServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>LogoutServlet</servlet-name>
-        <servlet-class>controllers.LogoutServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>EditProfileServlet</servlet-name>
         <servlet-class>controllers.EditProfileServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ChangePasswordServlet</servlet-name>
         <servlet-class>controllers.ChangePasswordServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>controllers.LogoutServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ResetPassServlet</servlet-name>
@@ -89,16 +93,16 @@
         <url-pattern>/LoginServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>LogoutServlet</servlet-name>
-        <url-pattern>/LogoutServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>EditProfileServlet</servlet-name>
         <url-pattern>/EditProfileServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ChangePasswordServlet</servlet-name>
         <url-pattern>/ChangePasswordServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/LogoutServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

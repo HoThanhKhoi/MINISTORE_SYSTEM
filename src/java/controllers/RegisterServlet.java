@@ -52,7 +52,7 @@ public class RegisterServlet extends HttpServlet {
                 request.getRequestDispatcher("register.jsp").forward(request, response);
             }
             else if(!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")){
-                request.setAttribute("error","Email was wrong(example:huaduybao@gmail.com)");
+                request.setAttribute("error","Email was wrong(example@gmail.com)");
                 request.getRequestDispatcher("register.jsp").forward(request, response);
             }
             else if (!phone.matches("^[0-9]{10}$")) {

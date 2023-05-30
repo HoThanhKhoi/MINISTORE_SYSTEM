@@ -13,8 +13,13 @@
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- font Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet" />
 
-    <!-- boostrap -->
+     <!-- boostrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -23,48 +28,39 @@
 <body>
 
     <!-- HEADER -->
-    <nav class="navbar fixed-top">
-        <div class="container-fluid header">
-            <ul class="nav navbar-nav">
-                <li class="nav-item">
-                    <a href="#">
-                        <i class="fa-solid fa-house"></i>
-                    </a>
-                </li>
-            </ul>
+     <nav class="navbar fixed-top">
+            <div class="container-fluid header">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item">
+                        <a href="homePage.jsp">
+                            <i class="fa-solid fa-house"></i>
+                        </a>
+                    </li>
+                </ul>
 
-            <ul class="nav navbar-nav navbar-right">
-                <li class="nav-item">
-                    <a href="customerProfile.jsp?id=${customer.getUserID()}">
-                        <span><i class="fa-solid fa-user"></i></span>
-                    </a>
-                </li>
+                <ul class="nav nav-2 navbar-nav navbar-right">
+                    <li class="nav-item">
+                        <a href="customerProfile.jsp">
+                            <span><i class="fa-solid fa-user"></i></span>
+                        </a>
+                    </li>
 
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <span class="cart"><i class="fa-solid fa-cart-shopping"></i></span>
-                        <span class="badge rounded-pill badge-notification bg-danger">1</span>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="cart"><i class="fa-solid fa-cart-shopping"></i></span>
+                            <!--<span class="badge rounded-pill badge-notification bg-danger">1</span>-->
+                        </a>
+                    </li>
 
-                <li class="nav-item">
-                    <a href="#">
-                        <span><i class="fa-solid fa-right-from-bracket"></i></span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-        <!-- sub menu -->
-        <div class="sub-menu">
-            <div class="circle">
-                <div class="half-circle">
-                    <span class="angle"><i class="fa-solid fa-angle-down angle"></i></span>
-                </div>
+                    <li class="nav-item">
+                        <a href="MainController?action=logout">
+                            <span><i class="fa-solid fa-right-from-bracket"></i></span>
+                        </a>
+                    </li>
+                </ul>
             </div>
-        </div>
+        </nav>  
 
-    </nav>
 
 
 

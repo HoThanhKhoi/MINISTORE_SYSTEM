@@ -26,7 +26,7 @@
 <body>
     <div class="container-fluid height-100 d-flex justify-content-center align-items-center">
         <!-- <div class="position-relative"> -->
-        <<form action="ResetPassServlet" method="post">
+        <form action="ResetPassServlet" method="post">
             <div class="card p-2 text-center">
                 <h6>Reset Password</h6>
                 <div class="mt-2 mb-4"> <span>Please enter the email address that you provided when you signed up.</span> </div>
