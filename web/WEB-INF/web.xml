@@ -33,10 +33,6 @@
         <servlet-class>controllers.ShowPaginatedServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ShowPaginateServlet</servlet-name>
-        <servlet-class>controllers.ShowPaginateServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>showCategoriesServlet</servlet-name>
         <servlet-class>controllers.showCategoriesServlet</servlet-class>
     </servlet>

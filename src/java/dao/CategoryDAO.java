@@ -6,7 +6,7 @@
 package dao;
 
 import dto.Category;
-import Utils.DBUtils;
+import utils.DBUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

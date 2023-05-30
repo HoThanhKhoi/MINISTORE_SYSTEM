@@ -1,23 +1,29 @@
+package controllers;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers;
 
+import dao.UserDAO;
+import dto.User;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author ACER
+ * @author Admin
  */
-public class MainController extends HttpServlet {
-    private String url;
+public class ResetPassword extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -28,45 +34,17 @@ public class MainController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String action = request.getParameter("action");
-            if (action == null || action.equals("") || action.equalsIgnoreCase("search")){
-                url = "homePage.jsp";
-            } else if (action.equalsIgnoreCase("login")) {
-                url = "LoginServlet";
-            } else if (action.equalsIgnoreCase("logout")) {
-                url = "LogoutServlet";
-            } else if (action.equalsIgnoreCase("editProfile")) {
-                url = "EditProfileServlet";
-            } else if (action.equalsIgnoreCase("changePassword")) {
-                url = "ChangePasswordServlet";
-            } else if(action.equals("viewProduct")) {
-                url="ViewProductServlet";
-            } else if(action.equals("register")) {
-                url="register.jsp";
-            } else if(action.equals("showPage")) {
-                url="ShowPaginateServlet";
+            /* TODO output your page here. You may use following sample code. */
+            String newPass = request.getParameter("newPass");
+            HttpSession session=request.getSession();
+            String email = (String) session.getAttribute("email");
+            boolean changeNewPass = UserDAO.updatePassword(email, newPass);
+            if(changeNewPass){
+                request.getRequestDispatcher("login.jsp").forward(request, response);
             }
-//            switch(action) {
-//                case "login":
-//                    url = "LoginServlet";
-//                    break;
-//                case "logout":
-//                    url = "LogoutServlet";
-//                    break;
-//                case "editProfilePage":
-//                    url = "editProfile.jsp";
-//                    break;
-//                case "editProfile":
-//                    url = "EditProfileServlet";
-//                    break;
-//                case "loadProfile":
-//                    url = "LoadProfileServlet";
-//                    break;
-//            }
-            request.getRequestDispatcher(url).forward(request, response);
         }
     }
 
@@ -82,7 +60,11 @@ public class MainController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(ResetPassword.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -96,7 +78,11 @@ public class MainController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(ResetPassword.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

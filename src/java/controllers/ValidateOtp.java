@@ -1,9 +1,10 @@
+package controllers;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,9 +16,9 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author ACER
+ * @author Admin
  */
-public class LogoutServlet extends HttpServlet {
+public class ValidateOtp extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,8 +33,6 @@ public class LogoutServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-<<<<<<<< HEAD:src/java/controllers/LogoutServlet.java
-========
             /* TODO output your page here. You may use following sample code. */
             String o1 = request.getParameter("o1");
             String o2 = request.getParameter("o2");
@@ -48,7 +47,6 @@ public class LogoutServlet extends HttpServlet {
             if(otp == expOtp){
                 request.getRequestDispatcher("EnterNewPass.jsp").forward(request,response);
             }
->>>>>>>> origin/Bao:src/java/controllers/ValidateOtp.java
         }
     }
 
@@ -78,9 +76,7 @@ public class LogoutServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        session.invalidate();
-        response.sendRedirect("login.jsp");
+        processRequest(request, response);
     }
 
     /**
