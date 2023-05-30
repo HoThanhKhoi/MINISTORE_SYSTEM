@@ -8,9 +8,14 @@ body {
     font-size: 18px !important;
 }
 
+.row {
+    background-color: #FEFBF6;
+}
+
 .menu {
     height: 100vh;
-    background: rgba(246, 245, 219, 0.5);}
+    background: rgba(246, 245, 219, 0.5);
+ }
 
 .title {
     font-size: 35px;
@@ -35,6 +40,8 @@ body {
 
 .form-container {
     padding: 50px 150px !important;
+    background-color: #FEFBF6;
+    height: 100vh;
 }
 
 form input {
@@ -95,4 +102,55 @@ label {
 
 
 
+.header {
+    background-color: #F6F5DB;
+    padding: 0 30px !important;
+}
+
+.nav ul:first-child {
+    margin-left: -15px;
+}
+
+.nav {
+    width: 15%;
+    display: flex;
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.nav li a {
+    font-size: 25px;
+    color: #07484A;
+}
+
+.nav li .btn-item {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.nav li a:hover {
+    background-color: transparent !important;
+    color: #1B9C85;
+}
+
+.nav .cart {
+    position: relative;
+}
+
+.nav .badge { 
+    position: absolute;
+    top: 10%;
+    right: 0;
+    background-color: #FF0000;
+}
+
+.navbar-nav .nav-item {
+    margin: 0 10px;
+}
+
+.navbar {
+    padding: 0 !important;
+}
 

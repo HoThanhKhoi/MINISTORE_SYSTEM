@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author ACER
+ * @author Admin
  */
 public class EditProfileServlet extends HttpServlet {
 
@@ -36,6 +36,7 @@ public class EditProfileServlet extends HttpServlet {
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
             int userID = Integer.parseInt(request.getParameter("userID"));
             String newName = request.getParameter("name");
             String newPhone = request.getParameter("phone");
@@ -56,7 +57,6 @@ public class EditProfileServlet extends HttpServlet {
                     request.getRequestDispatcher("editProfile.jsp").forward(request, response);
                 }
             }
-            
         }
     }
 

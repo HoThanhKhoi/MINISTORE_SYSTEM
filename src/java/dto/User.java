@@ -5,13 +5,12 @@
  */
 package dto;
 
-import java.io.Serializable;
-
 /**
  *
- * @author ACER
+ * @author Admin
  */
-public class User implements Serializable {
+public class User {
+
     private int userID;
     private String name;
     private String phone;
@@ -21,9 +20,6 @@ public class User implements Serializable {
     private int status;
     private int role;
     private int worksheetID;
-
-    public User() {
-    }
 
     public User(int userID, String name, String phone, String address, String email, String password, int status, int role, int worksheetID) {
         this.userID = userID;
@@ -37,7 +33,7 @@ public class User implements Serializable {
         this.worksheetID = worksheetID;
     }
 
-    public int getUserID() {
+   public int getUserID() {
         return userID;
     }
 
@@ -108,5 +104,5 @@ public class User implements Serializable {
     public void setWorksheetID(int worksheetID) {
         this.worksheetID = worksheetID;
     }
-    
+
 }

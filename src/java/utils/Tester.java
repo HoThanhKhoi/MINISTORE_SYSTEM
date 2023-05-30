@@ -18,9 +18,9 @@ import java.util.ArrayList;
 public class Tester {
 
     public static void main(String[] args) throws Exception {
-//        User user = UserDAO.getUser("customer18@gmail.com", "12345");
+        User user = UserDAO.getUser("customer18@gmail.com", "12345");
 //        User user = UserDAO.getUser(30);
-//        System.out.println(user.getName() + "," + user.getEmail() + "," + user.getPassword());
+        System.out.println(user.getName() + "," + user.getEmail() + "," + user.getPassword());
 
 //        int result = UserDAO.updateAccount(37, "customer26@gmail.com", "Customer26", "0123123123", "Address 26");
 //        System.out.println(result);

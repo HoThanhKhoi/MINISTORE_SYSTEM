@@ -232,7 +232,7 @@ em:hover::before, em:focus::before {
     color: rgba(51, 51, 51, 0.8);
 }
 
-.price, .hot-deal-footer, u, .best-selling-title {
+.price, .hot-deal-footer h2, .hot-deal-footer ul, u, .best-selling-title {
     color: #FF0000;
 }
 
@@ -285,7 +285,7 @@ em:hover::before, em:focus::before {
 .hot-deal-banner img {
     width: 100%;
 }
-    
+
 
 
 /* CATEGORY */
@@ -344,3 +344,44 @@ em:hover::before, em:focus::before {
 .best-selling-title h1 {
     text-transform: uppercase;
 }
+
+
+
+
+/* COUNT DOWN styling */
+
+
+.container {
+    color: #333;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1 {
+    font-weight: normal;
+    letter-spacing: .125rem;
+    text-transform: uppercase;
+}
+
+li {
+    display: inline-block;
+    font-size: 1.5em;
+    list-style-type: none;
+    padding: 20px;
+    text-transform: uppercase;
+}
+
+li span {
+    display: block;
+    font-size: 35px;
+    margin: 0 40px;
+}
+
+#btn-back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+
+

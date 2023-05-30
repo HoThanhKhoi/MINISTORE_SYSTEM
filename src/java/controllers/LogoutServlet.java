@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author ACER
+ * @author Admin
  */
 public class LogoutServlet extends HttpServlet {
 
@@ -32,6 +32,9 @@ public class LogoutServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            HttpSession session = request.getSession();
+            session.invalidate();
+            response.sendRedirect("homePage.jsp");
         }
     }
 
@@ -61,9 +64,7 @@ public class LogoutServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        session.invalidate();
-        response.sendRedirect("login.jsp");
+        processRequest(request, response);
     }
 
     /**

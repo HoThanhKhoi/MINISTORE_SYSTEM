@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author ACER
+ * @author Admin
  */
 public class ChangePasswordServlet extends HttpServlet {
 
@@ -36,13 +36,14 @@ public class ChangePasswordServlet extends HttpServlet {
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            int userid = Integer.parseInt(request.getParameter(("userid")));
+            /* TODO output your page here. You may use following sample code. */
+int userid = Integer.parseInt(request.getParameter(("userid")));
             String currentpw = request.getParameter("currentpw");
             String newpw = request.getParameter("newpw");
             String confirmpw = request.getParameter("confirmpw");
             HttpSession session = request.getSession();
             User user = (User) session.getAttribute("customer");
-            if (!UserDAO.md5(currentpw).equals(user.getPassword())) {
+            if (!currentpw.equals(user.getPassword())) {
                 request.setAttribute("error", "Wrong password.");
                 request.getRequestDispatcher("changePassword.jsp").forward(request, response);
             } else if (!newpw.matches("^(?=.*?[A-Z])(?=.*?[a-z]).{8,}$")) {

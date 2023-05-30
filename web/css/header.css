@@ -6,8 +6,23 @@
 
 .header {
     background-color: #F6F5DB;
-    padding: 10px 30px !important;
-    position: fixed;
+}
+
+.navbar {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.header {
+    display: inline-block !important;
+}
+
+.nav-2 {
+    width: 20%;
+    display: flex;
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .nav ul:first-child {
@@ -42,43 +57,5 @@
 
 .navbar-nav .nav-item {
     margin: 0 10px;
-}
-
-/* sub menu */
-.sub-menu {
-    position: relative;
-    background: #0F142D;
-    height: 8px;
-}
-
-.circle {
-    position: absolute;
-    top: -100%;
-    bottom: 0;
-    left: 50%;
-    height: 30px;
-    width: 30px;
-    background: #0F142D;
-    border-radius: 50%;
-}
-
-.half-circle {
-    position: absolute;
-    top: 0;
-    bottom: 72%;
-    left: 0;
-    right: 0;
-    background-color: #F6F5DB;
-}
-
-.angle i {
-    color: #fff;
-    margin-top: 40%;
-    margin-left: 30%;
-    cursor: pointer;
-}
-
-.angle i:hover {
-    color: #1B9C85;
 }
 
