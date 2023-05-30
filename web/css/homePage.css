@@ -20,7 +20,7 @@
 .header {
     position: absolute;
     width: 100%;
-    padding: 0 200px !important;
+    padding: 0 150px !important;
     background-color: transparent;
     z-index: 999;
 }
@@ -34,7 +34,7 @@
 .header nav ul {
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     list-style: none;
 }
@@ -42,7 +42,7 @@
 nav a {
     color: #fff;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 17px;
     position: relative;
 }
 
@@ -64,12 +64,13 @@ nav a::before {
 nav a:hover::before, nav a:focus::before {
     transform-origin: left top;
     transform: scale(1, 1);
+    background-color: #45ccb3;
 }
 
 
 nav a:hover {
     color: #45ccb3;
-    /* font-weight: bold; */
+    font-weight: bold;
 }
 
 /* BANNER */
@@ -104,6 +105,37 @@ nav a:hover {
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+
+.banner-search input {
+    position: absolute;
+    top: 70%;
+    bottom: 22%;
+    left: 30%;
+    right: 30%;
+    border-radius: 30px;
+    border: none;
+    padding: 0 30px !important;
+}
+
+.banner-search button {
+    position: absolute;
+    top: 70%;
+    bottom: 22%;
+    left: 60%;
+    right: 25%;    
+}
+
+.banner-search button i {
+    color: #000;
+}
+
+.banner-search button i:hover {
+    color: #45ccb3;
+}
+
+.banner-search input::placeholder {
+    font-style: oblique;
+}
 
 .banner-title em {
     color: #45ccb3;
@@ -146,12 +178,12 @@ em:hover::before, em:focus::before {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-bottom: 30px;
+    padding-top: 8px;
 }
 
 .hot-deal-title h1 {
     text-transform: uppercase;
-    font-size: 50px;
+    font-size: 70px;
 }
 
 .hot-deal-title img {
@@ -183,7 +215,16 @@ em:hover::before, em:focus::before {
 }
 
 .card-body {
-    margin: 20px 0;
+    margin-bottom: 15px;
+}
+
+.card-body a {
+    text-decoration: none;
+    color: #000;
+}
+
+.card-body a:hover {
+    color: #1B9C85;
 }
 
 .bricked-price {
@@ -251,6 +292,7 @@ em:hover::before, em:focus::before {
 .category {
     background-color: #fff6a9;
     height: 100%;
+    padding: 0 100px !important;
 }
 
 .category .ad-banner img {
@@ -291,6 +333,8 @@ em:hover::before, em:focus::before {
     background-color: #fff;
     opacity: 0.7;
 }
+
+
 
 /* BEST SELLING */
 .best-selling {
