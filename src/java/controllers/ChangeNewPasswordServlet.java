@@ -1,17 +1,26 @@
+package controllers;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers;
 
-import dao.UserDAO;
-import dto.User;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Properties;
+import java.util.Random;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,13 +28,9 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author ACER
+ * @author Admin
  */
-<<<<<<<< HEAD:src/java/controllers/EditProfileServlet.java
-public class EditProfileServlet extends HttpServlet {
-========
 public class ChangeNewPasswordServlet extends HttpServlet {
->>>>>>>> origin/Bao:src/java/controllers/ChangeNewPasswordServlet.java
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,30 +42,64 @@ public class ChangeNewPasswordServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, Exception {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            int userID = Integer.parseInt(request.getParameter("userID"));
-            String newName = request.getParameter("name");
-            String newPhone = request.getParameter("phone");
-            String newAdd = request.getParameter("address");
-            HttpSession session = request.getSession();
-            if (!newPhone.matches("^[0-9]{10}$")) {
-                request.setAttribute("error", "Invalid phone number.");
-                request.getRequestDispatcher("editProfile.jsp").forward(request, response);
-            } else {
-                int tmp = UserDAO.updateAccount(userID, newName, newPhone, newAdd);
-                if (tmp == 1) {
-                    User user = UserDAO.getUser(userID);
-                    session.setAttribute("customer", user);
-                    request.setAttribute("noti", "Save successfully.");
-                    request.getRequestDispatcher("customerProfile.jsp").forward(request, response);
-                } else {
-                    request.setAttribute("error", "Edit profile failed.");
-                    request.getRequestDispatcher("editProfile.jsp").forward(request, response);
+            /* TODO output your page here. You may use following sample code. */
+            String email = request.getParameter("email");
+            RequestDispatcher dispatcher = null;
+            int otpvalue = 0;
+            HttpSession mySession = request.getSession();
+
+            if (email != null || !email.equals("")) {
+                // sending otp
+                Random rand = new Random();
+                int max = 1000000;
+                int min = 100000;
+                otpvalue = rand.nextInt(max - min + 1) + min;
+
+                String to = email;// change accordingly
+                // Get the session object
+                Properties props = new Properties();
+                props.put("mail.smtp.host", "smtp.gmail.com");
+                props.put("mail.smtp.socketFactory.port", "465");
+                props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+                props.put("mail.smtp.auth", "true");
+                props.put("mail.smtp.port", "465");
+                Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+                    @Override
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication("MinistoreManager@gmail.com", "wwkrqptqdstiylwa");// Put your email																									// id and
+//						crelfxbvaajskrvi																			// password here
+                    }
+                });
+                // compose message
+                try {
+                    MimeMessage message = new MimeMessage(session);
+                    message.setFrom(new InternetAddress(email));// change accordingly
+                    message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+                    message.setSubject("Hello");
+                    message.setText("your OTP is: " + otpvalue);
+                    // send message
+                    Transport.send(message);
+                    System.out.println("<h3>message sent successfully<h3/>");
+                } catch (MessagingException e) {
+                    throw new RuntimeException(e);
                 }
+                dispatcher = request.getRequestDispatcher("EnterOtp.jsp");
+                request.setAttribute("message", "OTP is sent to your email id");
+                //request.setAttribute("connection", con);
+                mySession.setAttribute("otp", otpvalue);
+                mySession.setAttribute("email", email);
+                dispatcher.forward(request, response);
+                //request.setAttribute("status", "success");
+                request.getRequestDispatcher("EnterOtp.jsp").forward(request, response);
+            } else {
+                response.sendRedirect("index.html");
             }
-            
+//                if(email!=null){
+//                    response.sendRedirect("index.html");
+//                }
         }
     }
 
@@ -76,15 +115,7 @@ public class ChangeNewPasswordServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (Exception ex) {
-<<<<<<<< HEAD:src/java/controllers/EditProfileServlet.java
-            Logger.getLogger(EditProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
-========
-            Logger.getLogger(ChangeNewPasswordServlet.class.getName()).log(Level.SEVERE, null, ex);
->>>>>>>> origin/Bao:src/java/controllers/ChangeNewPasswordServlet.java
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -98,15 +129,7 @@ public class ChangeNewPasswordServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (Exception ex) {
-<<<<<<<< HEAD:src/java/controllers/EditProfileServlet.java
-            Logger.getLogger(EditProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
-========
-            Logger.getLogger(ChangeNewPasswordServlet.class.getName()).log(Level.SEVERE, null, ex);
->>>>>>>> origin/Bao:src/java/controllers/ChangeNewPasswordServlet.java
-        }
+        processRequest(request, response);
     }
 
     /**
