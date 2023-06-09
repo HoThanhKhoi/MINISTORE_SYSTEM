@@ -5,24 +5,20 @@
  */
 package controllers;
 
-import dao.CategoryDAO;
-import dao.ProductDAO;
-import dto.Category;
-import dto.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Admin
+ * @author ACER
  */
-public class ViewProductServlet extends HttpServlet {
+public class AddToCartServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,22 +30,31 @@ public class ViewProductServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, Exception {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            int pid = Integer.parseInt(request.getParameter("pid"));
-            int cateID = Integer.parseInt(request.getParameter("cateID"));
-            Category cate = CategoryDAO.getCategory(cateID);
-            String cateName = cate.getCateName();
-            Product product = ProductDAO.getProductInfo(pid);
-            if(product != null){
-                request.setAttribute("product", product);
-                request.setAttribute("cate", cate);
-                request.setAttribute("cateName", cateName);
-                request.getRequestDispatcher("productInfo.jsp").forward(request, response);               
-            }else{
-                
+            int pid = Integer.parseInt(request.getParameter("pid")); //get the selected ID
+            int cid = Integer.parseInt(request.getParameter("cid"));
+            int quantity = Integer.parseInt(request.getParameter("quantity"));
+            HttpSession session = request.getSession(true); //get session storing shopping cart
+            if (session != null) {
+                HashMap<Integer, Integer> cart = (HashMap<Integer, Integer>) session.getAttribute("cart");
+                if (cart == null) { //if cart is empty then create a new cart
+                    cart = new HashMap<>();
+                    cart.put(pid, quantity);
+                } else {
+                    Integer tmp = cart.get(pid); //check if the product exists in the cart
+                    if (tmp == null) {
+                        cart.put(pid, quantity);
+                    } else {
+                        tmp += quantity;
+                        cart.put(pid, tmp);
+                    }
+                }
+                session.setAttribute("cart", cart);
+                request.setAttribute("noti", "success");
+                String url ="MainController?action=viewProduct&pid=" + pid + "&cateID=" + cid;
+                request.getRequestDispatcher(url).forward(request, response);
             }
         }
     }
@@ -66,11 +71,7 @@ public class ViewProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (Exception ex) {
-            Logger.getLogger(ViewProductServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -84,11 +85,7 @@ public class ViewProductServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (Exception ex) {
-            Logger.getLogger(ViewProductServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

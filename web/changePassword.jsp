@@ -97,17 +97,17 @@
                                 </div>
                             </form>
                             <c:if test="${requestScope.error != null}">
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                    ${requestScope.error}
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <div class="alert alert-danger alert-dismissible fade show notification" role="alert" style="padding: 15px 45px;text-align: center;width:430px;opacity: 100%;margin: 30px auto">
+                                    <strong class="error">${requestScope.error}</strong> 
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="width:20px"></button>
                                 </div>
-                            </c:if>
+                            </c:if> 
                             <c:if test="${requestScope.noti != null}">
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    ${requestScope.noti}
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <div class="alert alert-success alert-dismissible fade show notification" role="alert" style="padding: 15px 45px;text-align: center;width:430px;opacity: 100%;margin: 30px auto">
+                                    <strong class="error">${requestScope.noti}</strong> 
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="width:20px"></button>
                                 </div>
-                            </c:if>   
+                            </c:if>    
                         </div>
                     </div>
 

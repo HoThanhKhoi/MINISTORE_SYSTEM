@@ -7,22 +7,27 @@ package controllers;
 
 import dao.CategoryDAO;
 import dao.ProductDAO;
-import dto.Category;
+import dao.VoucherDAO;
 import dto.Product;
+import dto.Voucher;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Admin
+ * @author ACER
  */
-public class ViewProductServlet extends HttpServlet {
+public class ViewCartServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,20 +42,30 @@ public class ViewProductServlet extends HttpServlet {
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            int pid = Integer.parseInt(request.getParameter("pid"));
-            int cateID = Integer.parseInt(request.getParameter("cateID"));
-            Category cate = CategoryDAO.getCategory(cateID);
-            String cateName = cate.getCateName();
-            Product product = ProductDAO.getProductInfo(pid);
-            if(product != null){
-                request.setAttribute("product", product);
-                request.setAttribute("cate", cate);
-                request.setAttribute("cateName", cateName);
-                request.getRequestDispatcher("productInfo.jsp").forward(request, response);               
-            }else{
-                
+            HttpSession session = request.getSession();
+            ArrayList<Voucher> voucherList = VoucherDAO.getVouchers();
+            HashMap<Integer, Integer> cart = (HashMap<Integer, Integer>) session.getAttribute("cart");
+            if (cart != null && !cart.isEmpty()) {
+                float money = 0;
+                Set<Integer> pidList = cart.keySet();
+                HashMap<Integer, Float> priceList = new HashMap<>();
+                HashMap<Integer, String> nameList = new HashMap<>();
+                HashMap<Integer, String> imgList = new HashMap<>();
+                for (int pid : pidList) {
+                    int quantity = cart.get(pid);
+                    Product p = ProductDAO.getProductInfo(pid);
+                    money = money + p.getPrice() * quantity;
+                    priceList.put(pid, p.getPrice());
+                    nameList.put(pid, p.getProductName());
+                    imgList.put(pid, p.getImgPath());
+                }
+                session.setAttribute("subTotalMoney", money);
+                session.setAttribute("priceList", priceList);
+                session.setAttribute("nameList", nameList);
+                session.setAttribute("imgList", imgList);
+                session.setAttribute("voucherList", voucherList);
             }
+            request.getRequestDispatcher("viewCart.jsp").forward(request, response);
         }
     }
 
@@ -69,7 +84,7 @@ public class ViewProductServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ViewProductServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewCartServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -87,7 +102,7 @@ public class ViewProductServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ViewProductServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewCartServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

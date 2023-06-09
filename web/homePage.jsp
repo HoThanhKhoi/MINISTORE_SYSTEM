@@ -13,7 +13,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Ministore</title>
-        <link rel="stylesheet" href="./css/homepage.css">
+        <link rel="stylesheet" href="./css/homePage.css">
         <link rel="stylesheet" href="./js/backToTop.js">
         <link rel="stylesheet" href="./js/countDown.js">
 
@@ -131,7 +131,7 @@
                                         </h5>
                                         <span class="bricked-price mx-2"><%= list.get(i).getPrice()%></span>
                                         <span class="price fw-bold mx-2">$1.19</span></br>
-                                        <a href="#" class="btn btn-primary mt-3 px-3 py-2 fw-bold" name="action">Add To Cart</a>
+                                        <a href="MainController?action=addToCart&pid=<%= list.get(i).getProductID()%>&cid=<%= list.get(i).getCateID()%>&quantity=1" class="btn btn-primary mt-3 px-3 py-2 fw-bold" name="action">Add To Cart</a>
                                     </div>
                                 </div>
                             </div>                        
@@ -339,7 +339,7 @@
             <div class="container">
 
                 <div class="best-selling-title ">
-                    <h1 class="pt-5 pb-5 text-center fw-bold"><em>Best selling</em></h1>
+                    <h1 class="pt-5 pb-5 text-center fw-bold"><em>Best Sellers</em></h1>
                 </div>
 
                 <div class="item-list mx-5">
@@ -356,7 +356,7 @@
                                                     <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProduct&pid=${product.productID}&cateID=${product.cateID}">${product.productName}</a></h5>
                                                     <span class="bricked-price mx-2">${product.price}</span>
                                                     <span class="price fw-bold mx-2">$1.19</span></br>
-                                                    <a href="#" class="btn btn-primary mt-3 px-3 py-2 fw-bold">Add To Cart</a>
+                                                    <a href="MainController?action=addToCart&pid=${product.productID}&cid=${product.cateID}&quantity=1" class="btn btn-primary mt-3 px-3 py-2 fw-bold">Add To Cart</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -376,7 +376,7 @@
                                                     <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProduct&pid=${product.productID}&cateID=${product.cateID}">${product.productName}</a></h5>
                                                     <span class="bricked-price mx-2">${product.price}</span>
                                                     <span class="price fw-bold mx-2">$1.19</span></br>
-                                                    <a href="#" class="btn btn-primary mt-3 px-3 py-2 fw-bold">Add To Cart</a>
+                                                    <a href="MainController?action=addToCart&pid=${product.productID}&cid=${product.cateID}&quantity=1" class="btn btn-primary mt-3 px-3 py-2 fw-bold">Add To Cart</a>
                                                 </div>
                                             </div>
                                         </div>

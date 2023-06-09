@@ -44,7 +44,7 @@ public class EditProfileServlet extends HttpServlet {
             HttpSession session = request.getSession();
             if (!newPhone.matches("^[0-9]{10}$")) {
                 request.setAttribute("error", "Invalid phone number.");
-                request.getRequestDispatcher("editProfile.jsp").forward(request, response);
+                request.getRequestDispatcher("editCustomerProfile.jsp").forward(request, response);
             } else {
                 int tmp = UserDAO.updateAccount(userID, newName, newPhone, newAdd);
                 if (tmp == 1) {
@@ -54,7 +54,7 @@ public class EditProfileServlet extends HttpServlet {
                     request.getRequestDispatcher("customerProfile.jsp").forward(request, response);
                 } else {
                     request.setAttribute("error", "Edit profile failed.");
-                    request.getRequestDispatcher("editProfile.jsp").forward(request, response);
+                    request.getRequestDispatcher("editCustomerProfile.jsp").forward(request, response);
                 }
             }
         }

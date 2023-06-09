@@ -5,10 +5,7 @@
  */
 package controllers;
 
-import dao.CategoryDAO;
-import dao.ProductDAO;
-import dto.Category;
-import dto.Product;
+import dao.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
@@ -20,9 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Admin
+ * @author ACER
  */
-public class ViewProductServlet extends HttpServlet {
+public class UpdateUserServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,19 +34,24 @@ public class ViewProductServlet extends HttpServlet {
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            int pid = Integer.parseInt(request.getParameter("pid"));
-            int cateID = Integer.parseInt(request.getParameter("cateID"));
-            Category cate = CategoryDAO.getCategory(cateID);
-            String cateName = cate.getCateName();
-            Product product = ProductDAO.getProductInfo(pid);
-            if(product != null){
-                request.setAttribute("product", product);
-                request.setAttribute("cate", cate);
-                request.setAttribute("cateName", cateName);
-                request.getRequestDispatcher("productInfo.jsp").forward(request, response);               
-            }else{
-                
+            int customerID = Integer.parseInt(request.getParameter("userid"));
+            int roleID = Integer.parseInt(request.getParameter("roleid"));
+
+            String guardName = request.getParameter("username");
+            String phone = request.getParameter("phone");
+            int status = Integer.parseInt(request.getParameter("status"));
+            int check = 0;
+            check = UserDAO.updateUser(customerID, guardName, phone, status);
+            if (check == 1) {
+                if (roleID == 2) {
+                    request.getRequestDispatcher("ViewGuardServlet").forward(request, response);
+                } else if (roleID == 1) {
+                    request.getRequestDispatcher("ViewSalesServlet").forward(request, response);
+                } else {
+                    request.getRequestDispatcher("ViewCustomersServlet").forward(request, response);
+                }
+            } else {
+                request.getRequestDispatcher("updateCustomer.jsp").forward(request, response);
             }
         }
     }
@@ -69,7 +71,7 @@ public class ViewProductServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ViewProductServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateUserServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -87,7 +89,7 @@ public class ViewProductServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ViewProductServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateUserServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

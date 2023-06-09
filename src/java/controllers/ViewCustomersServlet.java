@@ -5,12 +5,11 @@
  */
 package controllers;
 
-import dao.CategoryDAO;
-import dao.ProductDAO;
-import dto.Category;
-import dto.Product;
+import dao.UserDAO;
+import dto.User;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -20,9 +19,9 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Admin
+ * @author ACER
  */
-public class ViewProductServlet extends HttpServlet {
+public class ViewCustomersServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,19 +36,11 @@ public class ViewProductServlet extends HttpServlet {
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            int pid = Integer.parseInt(request.getParameter("pid"));
-            int cateID = Integer.parseInt(request.getParameter("cateID"));
-            Category cate = CategoryDAO.getCategory(cateID);
-            String cateName = cate.getCateName();
-            Product product = ProductDAO.getProductInfo(pid);
-            if(product != null){
-                request.setAttribute("product", product);
-                request.setAttribute("cate", cate);
-                request.setAttribute("cateName", cateName);
-                request.getRequestDispatcher("productInfo.jsp").forward(request, response);               
-            }else{
-                
+            int role = 3;
+            ArrayList<User> customersList = UserDAO.getUsersByRole(role);
+            if (customersList != null) {
+                request.setAttribute("customersList", customersList);
+                request.getRequestDispatcher("viewCustomers.jsp").forward(request, response);
             }
         }
     }
@@ -69,7 +60,7 @@ public class ViewProductServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ViewProductServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewCustomersServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -87,7 +78,7 @@ public class ViewProductServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ViewProductServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewCustomersServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

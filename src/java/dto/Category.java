@@ -10,9 +10,9 @@ package dto;
  * @author Admin
  */
 public class Category {
-    int CateID;
-    String CateName;
-    String imgPath;
+    private int CateID;
+    private String CateName;
+    private String imgPath;
 
     public Category(int CateID, String CateName, String imgPath) {
         this.CateID = CateID;

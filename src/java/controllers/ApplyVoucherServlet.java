@@ -5,24 +5,21 @@
  */
 package controllers;
 
-import dao.CategoryDAO;
-import dao.ProductDAO;
-import dto.Category;
-import dto.Product;
+import dao.VoucherDAO;
+import dto.Voucher;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Admin
+ * @author ACER
  */
-public class ViewProductServlet extends HttpServlet {
+public class ApplyVoucherServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,22 +31,18 @@ public class ViewProductServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, Exception {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            int pid = Integer.parseInt(request.getParameter("pid"));
-            int cateID = Integer.parseInt(request.getParameter("cateID"));
-            Category cate = CategoryDAO.getCategory(cateID);
-            String cateName = cate.getCateName();
-            Product product = ProductDAO.getProductInfo(pid);
-            if(product != null){
-                request.setAttribute("product", product);
-                request.setAttribute("cate", cate);
-                request.setAttribute("cateName", cateName);
-                request.getRequestDispatcher("productInfo.jsp").forward(request, response);               
-            }else{
-                
+            int vid = Integer.parseInt(request.getParameter("vid"));
+            Voucher voucher = VoucherDAO.getVoucher(vid);
+            if (voucher == null) {
+                request.setAttribute("error", "Apply voucher failed.");
+                request.getRequestDispatcher("ViewCartServlet").forward(request, response);
+            } else {
+                HttpSession session = request.getSession();
+                session.setAttribute("voucher", voucher);
+                request.getRequestDispatcher("ViewCartServlet").forward(request, response);
             }
         }
     }
@@ -66,11 +59,7 @@ public class ViewProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (Exception ex) {
-            Logger.getLogger(ViewProductServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -84,11 +73,7 @@ public class ViewProductServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (Exception ex) {
-            Logger.getLogger(ViewProductServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

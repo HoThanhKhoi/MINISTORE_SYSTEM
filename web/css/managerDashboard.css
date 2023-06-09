@@ -1,0 +1,148 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 22px !important;
+}
+
+.dashboard {
+    padding: 5vh 5vw 0 5vw;
+}
+
+.row {
+    margin: 0 !important;
+}
+
+.col {
+    background-color: #F6F5DB;
+    border-radius: 30px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 0 40px 30px!important;
+}
+
+.col-lg, .col-lg-5 {
+    padding: 0 !important;
+}
+
+.mb {
+    margin-bottom: 35px;
+}
+
+.mb_5 {
+    margin-bottom: 50px !important;
+}
+
+.management {
+    margin-right: 200px;
+}
+
+.stats {
+    margin-left: 200px;
+}
+
+.title  {
+    margin: 50px 0 !important;    
+    color: #07484A;
+}
+
+.title h4 {
+    font-weight: 800;
+    font-size: 30px;
+}
+
+.management .title h4 {
+    text-transform: uppercase;
+}
+
+.row .content {
+    width: 100%;
+    font-weight: 500;
+}
+
+
+.item {
+    width: 100%;
+    border-radius: 30px;
+    border: 3px solid #07484A;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 20px;
+    color: #07484A;
+}
+
+.item:hover {
+    background-color: #07484A;
+    color: #fff;
+}
+
+
+
+/* Stats */
+.stats .title  {
+    position: relative;
+    margin: 50px 0 !important;    
+}
+
+.stats .title h4 {
+    margin-bottom: 0 !important;
+}
+
+.stats .title .border-bt {
+    position: absolute;
+    left: 20%;
+    right: 20%;
+    border-bottom: 2px solid #07484A;
+}
+
+.product-stats {
+    background-color: #07484A;
+    color: #fff;
+    height: 35%;
+    border-radius: 15px;
+}
+
+.product-stats-background {
+    padding: 10px 20px !important;
+}
+
+ul {
+    padding: 0 !important;
+}
+
+ul li {
+    line-height: 2.5;
+}
+
+.product-stats-title {
+    font-weight: 600;
+}
+
+
+.product-stats-info-item {
+    position: relative;
+}
+
+.product-stats-info li {
+    /* position: absolute; */
+    list-style-type: none;    
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+}
+
+.div {
+    position: absolute;
+    width: 100%;
+    z-index: 9;
+    margin: -15px 0;
+    border-bottom: 1px solid #fff;
+}
+
+.col-lg-6 {
+    padding-right: 0 !important;
+}
