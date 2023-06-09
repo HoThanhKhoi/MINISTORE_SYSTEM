@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-         String email = request.getParameter("email");
+        String email = request.getParameter("email");
         String password = request.getParameter("password");
         String remember = request.getParameter("remember");
         
@@ -62,7 +62,7 @@ public class LoginServlet extends HttpServlet {
         response.addCookie(cr);
         
         try {
-            User user = UserDAO.getUser(email, password);
+            User user = UserDAO.getUser(email, UserDAO.md5(password));
             if (user == null) {
                 request.setAttribute("error", "Wrong email or password.");
                 request.getRequestDispatcher("login.jsp").forward(request, response);
@@ -73,6 +73,8 @@ public class LoginServlet extends HttpServlet {
                     switch (user.getRole()) {
                         case 0:
                             session.setAttribute("manager", user);
+                            response.sendRedirect("managerDashboard.jsp");
+                            
                             break;
                         case 1:
                             session.setAttribute("sales", user);

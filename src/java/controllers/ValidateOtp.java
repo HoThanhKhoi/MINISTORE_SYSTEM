@@ -40,7 +40,6 @@ public class ValidateOtp extends HttpServlet {
             String o4 = request.getParameter("o4");
             String o5 = request.getParameter("o5");
             String o6 = request.getParameter("o6");
-
             int expOtp = Integer.parseInt(o1+o2+o3+o4+o5+o6);
             HttpSession session=request.getSession();
             int otp=(int)session.getAttribute("otp");

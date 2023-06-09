@@ -6,15 +6,18 @@
 
 .header {
     background-color: #F6F5DB;
+    padding: 10px 30px !important;
 }
 
 .navbar {
-    margin: 0 !important;
     padding: 0 !important;
+    margin: 0 !important;
+    
 }
 
 .header {
-    display: inline-block !important;
+    display: inline-block !important;    
+    /*position: fixed !important;*/
 }
 
 .nav-2 {
@@ -59,3 +62,7 @@
     margin: 0 10px;
 }
 
+.nav-item-txt span{
+    font-size: 18px;
+    font-weight: bold;
+}

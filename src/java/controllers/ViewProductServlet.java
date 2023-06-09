@@ -11,6 +11,7 @@ import dto.Category;
 import dto.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -43,12 +44,15 @@ public class ViewProductServlet extends HttpServlet {
             Category cate = CategoryDAO.getCategory(cateID);
             String cateName = cate.getCateName();
             Product product = ProductDAO.getProductInfo(pid);
-            if(product != null){
+            ArrayList<Product> proCateList = ProductDAO.getCategorizedProducts(cateID);
+            if (product != null) {
                 request.setAttribute("product", product);
+                request.setAttribute("cateID", cateID);
                 request.setAttribute("cateName", cateName);
-                request.getRequestDispatcher("productInfo.jsp").forward(request, response);               
-            }else{
-                
+                request.setAttribute("list", proCateList);
+                request.getRequestDispatcher("productInfo.jsp").forward(request, response);
+            } else {
+
             }
         }
     }

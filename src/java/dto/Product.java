@@ -10,13 +10,13 @@ package dto;
  * @author Admin
  */
 public class Product {
-    int productID;
-    String productName;
-    float price;
-    String description;
-    int stockQuantity;
-    String imgPath;
-    int cateID;
+    private int productID;
+    private String productName;
+    private float price;
+    private String description;
+    private int stockQuantity;
+    private String imgPath;
+    private int cateID;
 
     public Product(int productID, String productName, float price, String description, int stockQuantity, String imgPath, int cateID) {
         this.productID = productID;

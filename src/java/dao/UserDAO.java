@@ -14,12 +14,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Types;
+import java.util.ArrayList;
 
 /**
  *
  * @author Admin
  */
 public class UserDAO {
+
     public static User getUser(String email, String password) throws Exception {
         Connection cn = null;
         User user = null;
@@ -58,7 +60,7 @@ public class UserDAO {
         }
         return user;
     }
-    
+
     public static User getUser(int id) throws Exception {
         Connection cn = null;
         User user = null;
@@ -80,7 +82,7 @@ public class UserDAO {
                     int userStatus = rs.getInt("Status");
                     int userRole = rs.getInt("RoleID");
                     int userWorksheet = rs.getInt("WorksheetID");
-                    user = new User(userID, userName, userPassword, userPhone, userAddress, userEmail,  userStatus, userRole, userWorksheet);
+                    user = new User(userID, userName, userPhone, userAddress, userEmail, userPassword, userStatus, userRole, userWorksheet);
                 }
             }
         } catch (Exception e) {
@@ -124,7 +126,7 @@ public class UserDAO {
         }
         return result;
     }
-    
+
     public static int updatePassword(int userID, String newPass) {
         int result = 0;
         Connection cn = null;
@@ -150,6 +152,7 @@ public class UserDAO {
         }
         return result;
     }
+
     public static User getUser(String email) throws Exception {
         Connection cn = DBUtils.makeConnection();
         User us = null;
@@ -168,7 +171,7 @@ public class UserDAO {
                     int status = rs.getInt("status");
                     int roleID = rs.getInt("RoleID");
                     int worksheetID = rs.getInt("WorksheetID");
-                    us = new User(userID, userName, password, phone, address, email,status, roleID, worksheetID);
+                    us = new User(userID, userName, password, phone, address, email, status, roleID, worksheetID);
                 }
             }
         }
@@ -190,7 +193,7 @@ public class UserDAO {
         return flag;
 
     }
-    
+
     public static String md5(String str) {
         MessageDigest md;
         String result = "";
@@ -231,6 +234,7 @@ public class UserDAO {
         return table;
 
     }
+
     public static boolean isEmailDuplicate(String email) {
         boolean flag = false;
         Connection cn = null;
@@ -260,5 +264,61 @@ public class UserDAO {
             }
         }
         return flag;
+    }
+
+    public static ArrayList<User> getUsersByRole(int roleID) throws Exception {
+        Connection cn = DBUtils.makeConnection();
+        User us;
+        ArrayList<User> list = new ArrayList<>();
+        if (cn != null) {
+            String sql = "Select * from USERS where RoleID = ?";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setInt(1, roleID);
+            ResultSet rs = pst.executeQuery();
+            while (rs != null && rs.next()) {
+                int userID = rs.getInt("UserID");
+                String userName = rs.getString("UserName");
+                String password = rs.getString("Password");
+                String phone = rs.getString("Phone");
+                String address = rs.getString("UserAddress");
+                String email = rs.getString("Email");
+                int status = rs.getInt("status");
+                int worksheetID = rs.getInt("WorksheetID");
+                us = new User(userID, userName, phone, address, email, password, status, roleID, worksheetID);
+                list.add(us);
+            }
+        }
+        return list;
+    }
+
+    public static ArrayList<User> getPaginatedEmployees(int pageNumber, int productPerPage, int roleID) throws Exception {
+        ArrayList<User> list = new ArrayList<>();
+        ArrayList<User> employeeList = UserDAO.getUsersByRole(roleID);
+        Connection cn = DBUtils.makeConnection();
+        int start = (pageNumber - 1) * productPerPage;
+        int end = start + productPerPage - 1;
+        if (end > employeeList.size()) {
+            end = employeeList.size() - 1;
+        }
+        for (int i = start; i <= end; i++) {
+            list.add(employeeList.get(i));
+        }
+        cn.close();
+        return list;
+    }
+
+    public static int updateUser(int userID, String newName, String newPhone, int status) throws Exception {
+        Connection cn = DBUtils.makeConnection();
+        int check = 0;
+        if (cn != null) {
+            String sql = "UPDATE USERS SET UserName = ?,Phone= ?,Status= ? where UserID = ?";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setString(1, newName);
+            pst.setString(2, newPhone);                                    
+            pst.setInt(3, status);
+            pst.setInt(4, userID);
+            check = pst.executeUpdate();
+        }
+        return check;
     }
 }

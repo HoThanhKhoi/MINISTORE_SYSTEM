@@ -64,28 +64,93 @@ public class ProductDAO {
         return product;
     }
 
-    public static int getTotalProduct() throws Exception{
+    public static int getTotalProduct() throws Exception {
         int total = 0;
         Connection cn = DBUtils.makeConnection();
-        if(cn != null){
+        if (cn != null) {
             String sql = "Select COUNT(*) FROM PRODUCTS";
             PreparedStatement pst = cn.prepareStatement(sql);
             ResultSet table = pst.executeQuery();
-            if(table.next()){
-                total= table.getInt(1);
+            if (table.next()) {
+                total = table.getInt(1);
             }
             cn.close();
         }
         return total;
     }
-    
-    public static ArrayList<Product> getPaginatedProduct(int pageNumber,int productPerPage) throws Exception{
-        ArrayList <Product> list = new ArrayList<>();
-        ArrayList <Product> productList = ProductDAO.getProducts();
+
+    public static ArrayList<Product> getPaginatedProduct(int pageNumber, int productPerPage) throws Exception {
+        ArrayList<Product> list = new ArrayList<>();
+        ArrayList<Product> productList = ProductDAO.getProducts();
         Connection cn = DBUtils.makeConnection();
         int start = (pageNumber - 1) * productPerPage;
         int end = start + productPerPage - 1;
-        for(int i = start;i<=end;i++){
+        if (end > productList.size()) {
+            end = productList.size() - 1;
+        }
+        for (int i = start; i <= end; i++) {
+            list.add(productList.get(i));
+        }
+        return list;
+    }
+
+    public static ArrayList<Product> getCategorizedProducts(int cateID) throws Exception {
+        ArrayList<Product> list = new ArrayList<>();
+        Connection cn = DBUtils.makeConnection();
+        Product product;
+        if (cn != null) {
+            String sql = "Select * from PRODUCTS where CateID = ?";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setInt(1, cateID);
+            ResultSet table = pst.executeQuery();
+            while (table.next() && table != null) {
+                int pid = table.getInt("ProductID");
+                String productName = table.getString("ProductName");
+                float price = table.getFloat("Price");
+                String description = table.getString("Description");
+                int quantity = table.getInt("StockQuantity");
+                String imgPath = table.getString("ImgPath");
+                product = new Product(pid, productName, price, description, quantity, imgPath, cateID);
+                list.add(product);
+            }
+        }
+        return list;
+    }
+    
+    public static ArrayList<Product> getSearchedProducts(String keyword) throws Exception{
+        ArrayList<Product> list = new ArrayList<>();
+        Product product;
+        Connection cn = DBUtils.makeConnection();
+        if(cn != null){
+            String sql = "Select * from PRODUCTS JOIN CATEGORIES ON PRODUCTS.CateID = CATEGORIES.CateID WHERE ProductName like ? or CateName like ?";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setString(1, '%' + keyword + '%');
+            pst.setString(2, '%' + keyword + '%');
+            ResultSet table = pst.executeQuery();
+            while (table.next() && table != null) {
+                int pid = table.getInt("ProductID");
+                String productName = table.getString("ProductName");
+                float price = table.getFloat("Price");
+                String description = table.getString("Description");
+                int quantity = table.getInt("StockQuantity");
+                String imgPath = table.getString("ImgPath");
+                int cateID = table.getInt("CateID");
+                product = new Product(pid, productName, price, description, quantity, imgPath, cateID);
+                list.add(product);
+            }
+        }
+        return list;
+    }
+    public static ArrayList<Product> getPaginatedSearchedProduct(int pageNumber, int productPerPage,String keyword) throws Exception {
+        ArrayList<Product> list = new ArrayList<>();
+        ArrayList<Product> productList = ProductDAO.getSearchedProducts(keyword);
+        Connection cn = DBUtils.makeConnection();
+        int start = (pageNumber - 1) * productPerPage;
+        int end = start + productPerPage - 1;
+        if (end > productList.size()) {
+            end = productList.size() - 1;
+        }
+        for (int i = start; i <= end; i++) {
             list.add(productList.get(i));
         }
         return list;

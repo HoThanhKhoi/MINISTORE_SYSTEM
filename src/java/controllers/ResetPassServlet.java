@@ -6,6 +6,7 @@ package controllers;
  * and open the template in the editor.
  */
 
+import dao.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Properties;
@@ -52,7 +53,10 @@ public class ResetPassServlet extends HttpServlet {
             HttpSession mySession = request.getSession();
 
             if (email != null || !email.equals("")) {
-                // sending otp
+                if(!UserDAO.isEmailDuplicate(email)){
+                    request.setAttribute("error", "Account is not existed");
+                    request.getRequestDispatcher("EnterEmail.jsp").forward(request, response);
+                } else {
                 Random rand = new Random();
                 int max = 1000000;
                 int min = 100000;
@@ -87,19 +91,18 @@ public class ResetPassServlet extends HttpServlet {
                     throw new RuntimeException(e);
                 }
                 dispatcher = request.getRequestDispatcher("EnterOtp.jsp");
+                mySession.setAttribute("otp", otpvalue);
                 request.setAttribute("message", "OTP is sent to your email id");
                 //request.setAttribute("connection", con);
-                mySession.setAttribute("otp", otpvalue);
                 mySession.setAttribute("email", email);
                 dispatcher.forward(request, response);
                 //request.setAttribute("status", "success");
                 request.getRequestDispatcher("EnterOtp.jsp").forward(request, response);
-            } else {
-                response.sendRedirect("index.html");
+            } 
+            }else{
+                request.setAttribute("error", "Account is not existed");
+                request.getRequestDispatcher("EnterEmail.jsp").forward(request, response);
             }
-//                if(email!=null){
-//                    response.sendRedirect("index.html");
-//                }
         }
     }
 
