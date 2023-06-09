@@ -95,15 +95,16 @@
                                     <a role="button" href="customerProfile.jsp?&id=${sessionScope.customer.userID}" class="btn btn-primary mt-3 px-3 py-2  fw-bold">Cancel</a>
                                 </div>
                             </form>
+                            <c:if test="${requestScope.error != null}">
+                                <div class="alert alert-danger alert-dismissible fade show notification" role="alert" style="padding: 15px 45px;text-align: center;width:430px;opacity: 100%;margin: 30px auto">
+                                    <strong class="error">${requestScope.error}</strong> 
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="width:20px"></button>
+                                </div>
+                            </c:if> 
                         </div>
+
                     </div>
                 </div>
-                <c:if test="${requestScope.error != null}">
-                    <div class="alert alert-warning alert-dismissible fade show" role="alert" style="padding-bottom:10px; padding-top:15px;width:430px;padding-right:45px;">
-                        <strong class="error">${error} !</strong> 
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="width:20px"></button>
-                    </div>
-                </c:if> 
             </c:otherwise>
         </c:choose>
     </body>

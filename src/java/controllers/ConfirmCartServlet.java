@@ -5,12 +5,13 @@
  */
 package controllers;
 
-import dao.UserDAO;
+import dao.OrderDAO;
 import dto.User;
+import dto.Voucher;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.sql.Timestamp;
+import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,9 +20,9 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Admin
+ * @author ACER
  */
-public class EditProfileServlet extends HttpServlet {
+public class ConfirmCartServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,30 +34,40 @@ public class EditProfileServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, Exception {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            int userID = Integer.parseInt(request.getParameter("userID"));
-            String newName = request.getParameter("name");
-            String newPhone = request.getParameter("phone");
-            String newAdd = request.getParameter("address");
-            HttpSession session = request.getSession();
-            if (!newPhone.matches("^[0-9]{10}$")) {
-                request.setAttribute("error", "Invalid phone number.");
-                request.getRequestDispatcher("editCustomerProfile.jsp").forward(request, response);
+            HttpSession session = request.getSession(false);
+            int customerID = Integer.parseInt(request.getParameter("cusID"));
+            String phone = request.getParameter("phone");
+            String address = request.getParameter("address");
+            Timestamp time = new Timestamp(System.currentTimeMillis());
+            HashMap<Integer, Integer> cart = (HashMap<Integer, Integer>) session.getAttribute("cart");
+            int voucherID;
+            if (session.getAttribute("voucher") == null) {
+                voucherID = 0;
             } else {
-                int tmp = UserDAO.updateAccount(userID, newName, newPhone, newAdd);
-                if (tmp == 1) {
-                    User user = UserDAO.getUser(userID);
-                    session.setAttribute("customer", user);
-                    request.setAttribute("noti", "Save successfully.");
-                    request.getRequestDispatcher("customerProfile.jsp").forward(request, response);
+                Voucher voucher = (Voucher) session.getAttribute("voucher");
+                voucherID = voucher.getVoucherID();
+            }
+            float totalMoney = Float.parseFloat(request.getParameter("cartTotal"));
+            if (cart != null && !cart.isEmpty()) {
+                if (session.getAttribute("customer") == null) { //not login
+                    request.setAttribute("error", "You must login to checkout.");
                 } else {
-                    request.setAttribute("error", "Edit profile failed.");
-                    request.getRequestDispatcher("editCustomerProfile.jsp").forward(request, response);
+                    boolean result = OrderDAO.insertOrder(customerID, phone, address, cart, totalMoney, voucherID);
+                    if (result) {
+                        session.setAttribute("cart", null);
+                        session.setAttribute("voucher", null);
+                        session.setAttribute("subTotal", null);
+                        session.setAttribute("cartTotal", null);
+                        request.setAttribute("noti", "Save sucessfully.");
+                    } else {
+                        request.setAttribute("error", "Save fail.");
+                    }
                 }
             }
+            request.getRequestDispatcher("cartConfirmation.jsp").forward(request, response);
         }
     }
 
@@ -72,11 +83,7 @@ public class EditProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (Exception ex) {
-            Logger.getLogger(EditProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -90,11 +97,7 @@ public class EditProfileServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (Exception ex) {
-            Logger.getLogger(EditProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

@@ -12,6 +12,7 @@ import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -37,6 +38,7 @@ public class ChangePasswordServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            Cookie[] arr = request.getCookies();
             int userid = Integer.parseInt(request.getParameter(("userid")));
             String currentpw = request.getParameter("currentpw");
             String newpw = request.getParameter("newpw");
@@ -57,6 +59,10 @@ public class ChangePasswordServlet extends HttpServlet {
                 if (tmp == 1) {
                     user = UserDAO.getUser(userid);
                     session.setAttribute("customer", user);
+                    for (Cookie cookie : arr) {
+                        cookie.setMaxAge(0);
+                        response.addCookie(cookie);
+                    }
                     request.setAttribute("noti", "Change password successfully.");
                     request.getRequestDispatcher("changePassword.jsp").forward(request, response);
                 } else {

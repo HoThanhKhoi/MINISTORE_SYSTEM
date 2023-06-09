@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-        String email = request.getParameter("email");
+         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String remember = request.getParameter("remember");
         
@@ -74,13 +74,14 @@ public class LoginServlet extends HttpServlet {
                         case 0:
                             session.setAttribute("manager", user);
                             response.sendRedirect("managerDashboard.jsp");
-                            
                             break;
                         case 1:
                             session.setAttribute("sales", user);
+                            response.sendRedirect("salesDashboard.jsp");
                             break;
                         case 2:
                             session.setAttribute("guard", user);
+                            response.sendRedirect("guardDashboard.jsp");
                             break;
                         default:
                             session.setAttribute("customer", user);

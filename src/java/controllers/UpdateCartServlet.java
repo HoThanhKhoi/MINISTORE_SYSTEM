@@ -35,19 +35,14 @@ public class UpdateCartServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             int pid = Integer.parseInt(request.getParameter("pid"));
-            int quantity = Integer.parseInt(request.getParameter("newquantity"));
-            ArrayList<Integer> pidList = new ArrayList<>();
-            pidList.add(pid);
-            ArrayList<Integer> quantityList = new ArrayList<>();
-            pidList.add(quantity);
+            int newquantity = Integer.parseInt(request.getParameter("newquantity"));
             HttpSession session = request.getSession(true);
             if (session != null) {
                 HashMap<Integer, Integer> cart = (HashMap) session.getAttribute("cart");
                 if (cart != null) {
-                    
                     boolean found = cart.containsKey(pid);
                     if (found) {
-                        cart.put(pid, quantity);
+                        cart.put(pid, newquantity);
                         session.setAttribute("cart", cart);
                         request.getRequestDispatcher("ViewCartServlet").forward(request, response);
                     }
@@ -79,7 +74,7 @@ public class UpdateCartServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
+@Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);

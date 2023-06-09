@@ -18,7 +18,9 @@ import javax.servlet.http.HttpServletResponse;
  * @author Admin
  */
 public class MainController extends HttpServlet {
-private String url="";
+
+    private String url = "";
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -33,30 +35,49 @@ private String url="";
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-             String action=request.getParameter("action"); 
-             if(action.equals("viewProduct")) url="ViewProductServlet";
-             else if(action.equals("register")) url="register.jsp";
-             else if(action.equalsIgnoreCase("login")) url="LoginServlet";
-             else if(action.equalsIgnoreCase("logout")) url="LogoutServlet";
-             else if(action.equals("backToHome")) url="homePage.jsp";
-             else if(action.equals(null)|| action.equals("")) url="homePage.jsp";
-             else if(action.equals("showPage")) url="ShowPaginateServlet";
-             else if (action.equalsIgnoreCase("editProfile")) {
+            String action = request.getParameter("action");
+            if (action == null || action.equalsIgnoreCase("")) {
+                url = "homePage.jsp";
+            } else if (action.equalsIgnoreCase("register")) {
+                url = "register.jsp";
+            } else if (action.equalsIgnoreCase("login")) {
+                url = "LoginServlet";
+            } else if (action.equalsIgnoreCase("logout")) {
+                url = "LogoutServlet";
+            } else if (action.equalsIgnoreCase("backToHome")) {
+                url = "homePage.jsp";
+            } else if (action.equalsIgnoreCase("viewProduct")) {
+                url = "ViewProductServlet";
+            } else if (action.equalsIgnoreCase("showPage")) {
+                url = "ShowPaginateServlet";
+            } else if (action.equalsIgnoreCase("editProfile")) {
                 url = "EditProfileServlet";
             } else if (action.equalsIgnoreCase("changePassword")) {
                 url = "ChangePasswordServlet";
+            } else if (action.equalsIgnoreCase("addToCart")) {
+                url = "AddToCartServlet";
+            } else if (action.equalsIgnoreCase("viewCart")) {
+                url = "ViewCartServlet";
+            } else if (action.equalsIgnoreCase("deleteCart")) {
+                url = "DeleteCartServlet";
+            } else if (action.equalsIgnoreCase("updateCart")) {
+                url = "UpdateCartServlet";
+            } else if (action.equalsIgnoreCase("applyVoucher")) {
+                url = "ApplyVoucherServlet";
+            } else if (action.equalsIgnoreCase("viewCustomers")) {
+                url = "ViewCustomersServlet";
+            } else if (action.equalsIgnoreCase("viewCustomerDetailsPage")) {
+                url = "ViewCustomerDetailsServlet";
+            } else if (action.equalsIgnoreCase("updateCustomer")) {
+                url = "UpdateUserServlet";
+            } else if (action.equalsIgnoreCase("cartConfirmationPage")) {
+                url = "CartConfirmationPageServlet";
+            } else if (action.equalsIgnoreCase("confirmCart")) {
+                url = "ConfirmCartServlet";
             } else if(action.equalsIgnoreCase("viewProductByCategory")){
                 url = "ViewProductByCateGoryServlet";
-            } else if(action.equalsIgnoreCase("viewCart")){
-                url = "ViewCartServlet";
-            } else if(action.equalsIgnoreCase("addToCart")){
-                url = "AddToCartServlet";
             } else if(action.equalsIgnoreCase("searchProduct")){
                 url = "GetSearchedProductsServlet";
-            } else if(action.equalsIgnoreCase("updateCart")){
-                url = "UpdateCartServlet";
-            } else if(action.equalsIgnoreCase("deleteCart")){
-                url = "DeleteCartServlet";
             }else if(action.equalsIgnoreCase("showSearchedPage")){
                 url = "ShowPaginatedSearchedServlet";
             } else if(action.equalsIgnoreCase("viewGuards")){
@@ -70,13 +91,7 @@ private String url="";
             } else if(action.equalsIgnoreCase("viewSaleDetailsPage")){
                 url = "ViewSaleDetailServlet";
             } else if(action.equalsIgnoreCase("viewCustomers")){
-                url = "ViewCustomersServlet";
-            } else if(action.equalsIgnoreCase("viewCustomerDetailsPage")){
-                url = "ViewCustomerDetailsServlet";
-            } else if(action.equalsIgnoreCase("applyVoucher")){
-                url = "ApplyVoucherServlet";
-            } else if(action.equalsIgnoreCase("cartConfirmationPage")){
-                url = "CartConfirmationPageServlet";
+                url = "ViewCustomersServlet";       		
             } else if(action.equalsIgnoreCase("showUserPage")){
                 url = "ShowPaginatedUsersServlet";
             } else if(action.equalsIgnoreCase("confirmEmail")){

@@ -153,6 +153,21 @@ public class UserDAO {
         return result;
     }
 
+    public static int updateUser(int userID, String newName, String newPhone, int status) throws Exception {
+        Connection cn = DBUtils.makeConnection();
+        int check = 0;
+        if (cn != null) {
+            String sql = "UPDATE USERS SET UserName = ?,Phone= ?,Status= ? where UserID = ?";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setString(1, newName);
+            pst.setString(2, newPhone);
+            pst.setInt(3, status);
+            pst.setInt(4, userID);
+            check = pst.executeUpdate();
+        }
+        return check;
+    }
+
     public static User getUser(String email) throws Exception {
         Connection cn = DBUtils.makeConnection();
         User us = null;
@@ -176,6 +191,31 @@ public class UserDAO {
             }
         }
         return us;
+    }
+
+    public static ArrayList<User> getUsersByRole(int roleID) throws Exception {
+        Connection cn = DBUtils.makeConnection();
+        User us;
+        ArrayList<User> list = new ArrayList<>();
+        if (cn != null) {
+            String sql = "Select * from USERS where RoleID = ?";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setInt(1, roleID);
+            ResultSet rs = pst.executeQuery();
+            while (rs != null && rs.next()) {
+                int userID = rs.getInt("UserID");
+                String userName = rs.getString("UserName");
+                String password = rs.getString("Password");
+                String phone = rs.getString("Phone");
+                String address = rs.getString("UserAddress");
+                String email = rs.getString("Email");
+                int status = rs.getInt("status");
+                int worksheetID = rs.getInt("WorksheetID");
+                us = new User(userID, userName, phone, address, email, password, status, roleID, worksheetID);
+                list.add(us);
+            }
+        }
+        return list;
     }
 
     public static boolean updatePassword(String email, String newPass) throws Exception {
@@ -226,6 +266,8 @@ public class UserDAO {
             pst.setInt(7, roleID);
             if (worksheetID == 0) {
                 pst.setNull(8, Types.NULL);
+            } else {
+                pst.setNull(8, worksheetID);
             }
             table = pst.executeUpdate();
 

@@ -8,6 +8,8 @@ function changeQuantity() {
         console.log(quantity[i].value);
         console.log(pid[i].value);
     }
+
+
     newA = quantity.value;
     console.log("MainController?action=updateCart&pid=" + pid.value + "&newquantity=" + newA);
 
