@@ -11,6 +11,8 @@ body {
 
 .dashboard {
     padding: 5vh 5vw 0 5vw;
+    height: 80vh;
+
 }
 
 .row {
@@ -75,12 +77,15 @@ body {
     color: #07484A;
 }
 
-.item:hover {
+.item:hover, .item a:hover {
     background-color: #07484A;
-    color: #fff;
+    color: #fff !important;
 }
 
-
+.item a {
+    text-decoration: none !important;
+    color: #07484A !important;
+}
 
 /* Stats */
 .stats .title  {

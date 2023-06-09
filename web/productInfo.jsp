@@ -1,9 +1,3 @@
-<%-- 
-    Document   : productInfo1
-    Created on : May 28, 2023, 2:06:28 PM
-    Author     : Admin
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -15,7 +9,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
-        <link rel="stylesheet" href="./css/productDetail.css">
+        <link rel="stylesheet" href="./css/productInfo.css">
+
+        <!-- font Inter -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap"
+              rel="stylesheet">
 
         <!-- boostrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -48,18 +48,18 @@
 
 
         <!-- HEADER PATH -->
-        <nav class="navbar navbar_path navbar-expand-lg header-path mb-4">
-            <div class="container-fluid">
+        <nav class="navbar navbar_path navbar-expand-lg header-path">
+            <div class="container justify-content-start">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
                             <a href="MainController?action=backToHome">Home</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="#">Category</a>
+                            <a href="#">${requestScope.cateName}</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">
-                            <a href="#">${requestScope.cateName}</a>
+                            <a href="#">${requestScope.product.productName}</a>
                         </li>
                     </ol>
                 </nav>
@@ -69,9 +69,20 @@
         <!-- PRODUCT DETAIL -->
         <div class="container product-detail">
             <div class="row">
-                <div class="col-5 product-detail-img">
-                    <img src="./image/Item.png" alt="">
+
+                <!-- left -->
+                <div class="col-lg-4 col-md-6 product-detail-img">
+                    <div class="product-detail-img-item">
+                        <img src="./image/Item.png" alt="">
+                    </div>
+                    <div class="owl-carousel owl-theme mt-4">
+                        <img src="./image/Item.png" alt="">
+                        <img src="./image/Item.png" alt="">
+                        <img src="./image/Item.png" alt="">
+                    </div>
                 </div>
+
+                <!-- right -->
                 <c:if test="${requestScope.product != null}">
                     <div class="col-6">
                         <div class="title mb-4">${product.productName}</div>

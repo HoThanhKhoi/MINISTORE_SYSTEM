@@ -29,7 +29,7 @@
     <body>
 
         <!-- HEADER -->
-        <nav class="navbar">
+        <nav class="navbar header-navbar ">
             <div class="container-fluid header">
                 <ul class="nav nav-2 navbar-nav justify-content-start">
                     <li class="nav-item">

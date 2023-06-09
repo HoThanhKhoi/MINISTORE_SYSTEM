@@ -27,7 +27,7 @@
     <body>
 
         <!-- HEADER -->
-        <nav class="navbar">
+        <nav class="navbar header-navbar ">
             <div class="container-fluid header">
                 <ul class="nav nav-2 navbar-nav align-items-center">
                     <li class="nav-item">

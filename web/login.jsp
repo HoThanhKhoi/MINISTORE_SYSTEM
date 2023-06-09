@@ -5,6 +5,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login Page</title>
+
+        <!-- font Inter -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap"
+              rel="stylesheet">
+
         <!-- boostrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="./css/login.css" />
@@ -57,7 +64,7 @@
                             <div class="button">
                                 <button type="submit" class="btn" value="login" name="action">Login</button>
                             </div>
-                                
+
                         </form>
                         <div class="login-footer">
                             Don't have an account? <a href="MainController?action=register">Register</a>

@@ -96,6 +96,8 @@
                                     <a role="button" value="Reset" href="customerProfile.jsp?&id=${sessionScope.customer.userID}" class="btn btn-primary mt-3 px-3 py-2  fw-bold">Cancel</a>
                                 </div>
                             </form>
+                                
+                                
                             <c:if test="${requestScope.error != null}">
                                 <div class="alert alert-danger alert-dismissible fade show notification" role="alert" style="padding: 15px 45px;text-align: center;width:430px;opacity: 100%;margin: 30px auto">
                                     <strong class="error">${requestScope.error}</strong> 
