@@ -5,6 +5,11 @@
     box-sizing: border-box !important;
 }
 
+body {
+    font-family: 'Inter', sans-serif !important;
+}
+
+
 .container-fluid {
     position: relative;
     height: 80vh;
@@ -87,7 +92,7 @@ nav a:hover {
     bottom: 0;
     left: 0;
     right: 0;
-    opacity: 0.35;    
+    opacity: 0.2;    
 }
 
 .banner-title h1 {
@@ -236,7 +241,6 @@ em:hover::before, em:focus::before {
     color: #FF0000;
 }
 
-
 .item .btn {
     background-color: #fff;
     color: #1B9C85;
@@ -280,6 +284,26 @@ em:hover::before, em:focus::before {
     background-color: #1B9C85 !important;
 }
 /* end carousel */
+
+
+/* COUNT DOWN styling */
+.container {
+    margin: 0 auto;
+    text-align: center;
+}
+
+li {
+    display: inline-block;
+    font-size: 1.5em;
+    list-style-type: none;
+    padding: 20px;
+}
+
+li span {
+    display: block;
+    font-size: 35px;
+    margin: 0 20px;
+}
 
 
 .hot-deal-banner img {
@@ -348,39 +372,19 @@ em:hover::before, em:focus::before {
 
 
 
-/* COUNT DOWN styling */
 
 
-.container {
-    color: #333;
-    margin: 0 auto;
-    text-align: center;
-}
-
-h1 {
-    font-weight: normal;
-    letter-spacing: .125rem;
-    text-transform: uppercase;
-}
-
-li {
-    display: inline-block;
-    font-size: 1.5em;
-    list-style-type: none;
-    padding: 20px;
-    text-transform: uppercase;
-}
-
-li span {
-    display: block;
-    font-size: 35px;
-    margin: 0 40px;
-}
-
+/* Back To Top */
 #btn-back-to-top {
     position: fixed;
     bottom: 20px;
     right: 20px;
+    border-radius: 30px;
+    background-color: #1B9C85;
+    color: #fff;
+    border: none;
+    width: 40px;
+    height: 40px;
 }
 
 

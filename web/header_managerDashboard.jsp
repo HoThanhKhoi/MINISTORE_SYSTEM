@@ -19,10 +19,9 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap"
               rel="stylesheet">
 
-        <!-- boostrap -->
+         <!-- boostrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-
     </head>
 
     <body>
@@ -30,43 +29,30 @@
         <!-- HEADER -->
         <nav class="navbar header-navbar ">
             <div class="container-fluid header">
-                <ul class="nav navbar-nav">
+                <ul class="nav nav-2 navbar-nav align-items-center">
                     <li class="nav-item">
                         <a href="homePage.jsp">
                             <i class="fa-solid fa-house"></i>
                         </a>
                     </li>
+                    <li class="nav-item header-title">
+                        <a href="#" class="nav-link">
+                            <h3>Dashboard</h3> 
+                        </a>
+                    </li>
                 </ul>
 
-                <ul class="nav nav-2 navbar-nav navbar-right">
-                    <li class="nav-item">
-                        <a href="customerProfile.jsp">
-                            <span><i class="fa-solid fa-user"></i></span>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <span class="cart">
-                                <i class="fa-solid fa-cart-shopping ">
-                                    <span class="badge rounded-pill badge-notification bg-danger">1</span>
-                                </i>
-                            </span>
-                        </a>
-                    </li>
-
+                <ul class="nav nav-2 navbar-nav justify-content-end">
                     <li class="nav-item">
                         <a href="MainController?action=logout">
                             <span><i class="fa-solid fa-right-from-bracket"></i></span>
                         </a>
                     </li>
                 </ul>
-                
-                
             </div>
         </nav>  
 
-        
+
 
 
 

@@ -107,8 +107,10 @@
                 </form>
             </div>
         </div>
+
+
+        <!-- Hot Deal -->
         <c:if test="${requestScope.page == 1 || requestScope.list == null}">
-            <!-- Hot Deal -->
             <div class="container-fluid hot-deal" id="hot-deal">
                 <div class="hot-deal-title ">
                     <h1 class="pt-5 pb-5 text-center">Hot <u class="fw-bold"><em>deal</em></u> right now!</h1>
@@ -129,7 +131,7 @@
                                             <a href="MainController?action=viewProduct&pid=<%= list.get(i).getProductID()%>&cateID=<%= list.get(i).getCateID()%>">
                                                 <%= list.get(i).getProductName()%></a>
                                         </h5>
-                                        <span class="bricked-price mx-2"><%= list.get(i).getPrice()%></span>
+                                        <span class="bricked-price mx-2">$<%= list.get(i).getPrice()%></span>
                                         <span class="price fw-bold mx-2">$1.19</span></br>
                                         <a href="#" class="btn btn-primary mt-3 px-3 py-2 fw-bold" name="action">Add To Cart</a>
                                     </div>
@@ -146,9 +148,12 @@
                         <div id="countdown">
                             <h2 class="py-4 text-center"><em>Deals end in</em></h2>
                             <ul>
-                                <li><span id="days"></span>days</li>
+                                <li><span id="days"></span>Days</li>
+                                <li><span>:</span>&nbsp;</li>
                                 <li><span id="hours"></span>Hours</li>
+                                <li><span>:</span>&nbsp;</li>
                                 <li><span id="minutes"></span>Minutes</li>
+                                <li><span>:</span>&nbsp;</li>
                                 <li><span id="seconds"></span>Seconds</li>
                             </ul>
                         </div>
@@ -334,12 +339,13 @@
             </div>
         </div>
 
+
         <!-- BEST SELLING -->
         <div class="best-selling" id="best-selling">
             <div class="container">
 
                 <div class="best-selling-title ">
-                    <h1 class="pt-5 pb-5 text-center fw-bold"><em>Best selling</em></h1>
+                    <h1 class="pt-5 pb-5 text-center fw-bold"><em>Best sellers</em></h1>
                 </div>
 
                 <div class="item-list mx-5">
@@ -351,7 +357,7 @@
                                         <!-- begin item -->
                                         <div class="item mb-4 text-center">
                                             <div class="card border-0 shadow">
-                                                <img src="./image/Item.png" class="card-img-top" alt="">
+                                                <a href="MainController?action=viewProduct&pid=${product.productID}&cateID=${product.cateID}"><img src="./image/Item.png" class="card-img-top" alt=""></a>
                                                 <div class="card-body">
                                                     <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProduct&pid=${product.productID}&cateID=${product.cateID}">${product.productName}</a></h5>
                                                     <span class="bricked-price mx-2">${product.price}</span>
@@ -362,9 +368,9 @@
                                         </div>
                                         <!-- end item -->
                                     </div>
-
                                 </c:forEach>
                             </c:if>
+
                             <c:if test="${requestScope.list != null}">
                                 <c:forEach var="product" items="${requestScope.list}">
                                     <div class="col">
@@ -389,8 +395,8 @@
                         </c:if>
                     </div>
                 </div>
-                
-                <nav aria-label="Page navigation example">
+
+                <nav aria-label="Page navigation">
                     <ul class="pagination justify-content-center">
                         <li class="page-item">
                             <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showPage&page=${requestScope.page-1}"><</a>
@@ -410,10 +416,10 @@
 
         </div>
 
-<!--         back to top 
+        <!--back to top--> 
         <button type="button" class="btn btn-floating btn-lg" id="btn-back-to-top">
             <i class="fas fa-arrow-up"></i>
-        </button>-->
+        </button>
 
 
 
@@ -433,6 +439,8 @@
                 loop: true, //loop the carousel from the last item -> first item 
                 margin: 10,
                 nav: true, //make reference to the nav controls button (prev and next button)
+                autoplay: true,
+                autoplayTimeout: 2000,
                 responsive: {
                     0: {
                         items: 1
@@ -444,9 +452,7 @@
                         items: 5
                     }
                 }
-            })
-
-
+            });
         </script>
 
         <script src="./js/backToTop.js"></script>

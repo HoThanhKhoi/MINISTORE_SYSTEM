@@ -96,14 +96,16 @@
                                     <a role="button" value="Reset" href="customerProfile.jsp?&id=${sessionScope.customer.userID}" class="btn btn-primary mt-3 px-3 py-2  fw-bold">Cancel</a>
                                 </div>
                             </form>
+                                
+                                
                             <c:if test="${requestScope.error != null}">
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert" style="opacity: 100%">
                                     ${requestScope.error}
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
                             </c:if>
                             <c:if test="${requestScope.noti != null}">
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <div class="alert alert-success alert-dismissible fade show" role="alert" style="opacity: 100%">
                                     ${requestScope.noti}
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>

@@ -1,0 +1,270 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 16px !important;
+    background-color: #FEFBF6 !important;   
+
+    /*overflow: hidden;*/
+}
+
+.row {
+    align-items: center;
+}
+
+
+.menu {
+    height: 90vh;
+    background-color: #000;
+    color: #fff;
+    padding: 30px 0;
+}
+
+.menu ul {
+    padding-left: 20px !important;
+}
+
+.menu ul li {
+    list-style: none;
+    padding: 20px 0;
+    text-align: left;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.active {
+    background-color: #FEFBF6;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+}
+
+.active a {
+    z-index: 999;
+    color: #000 !important;
+    font-weight: 500;
+}
+.active i {
+    z-index: 999;
+    color: #000 !important;
+}
+
+/* table */
+.dashboard {
+    height: 90vh;
+    padding: 90px 40px !important;
+}
+
+.search input {
+    width: 40%;
+    position: relative;
+    border-radius: 30px;
+    border: 0.5px solid rgba(0, 0, 0, 0.2);
+    padding: 10px 60px !important;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.search button {
+    position: absolute;
+}
+
+.search button i {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.search button i:hover {
+    color: #45ccb3;
+}
+
+.search input::placeholder {
+    font-style: oblique;
+}
+
+table thead {
+    background-color: #07484A;
+    color: #fff; 
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+}
+
+table tr td {
+    padding: 15px 0 !important;
+}
+
+table i {
+    cursor: pointer;
+}
+
+table td .update {
+    color: green;
+}
+
+table td .delete {
+    color: red;
+}
+
+table td .delete:hover,
+table td .update:hover {
+    opacity: 0.75;
+}
+
+
+table td button {
+    border: none !important;
+    background-color: transparent;
+}
+
+.table-order a {
+    color: #1B9C85;
+}
+
+.table-order a:hover {
+    color: #07484A;
+}
+
+
+
+/* UPDATE CUSTOMER */
+/* info */
+.cus-info {
+    height: 70vh;
+    margin: 0 100px !important;
+    background-color: #F6F5DB;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    padding: 30px 40px !important;
+}
+
+.info-title h3 {
+    color: #07484A;
+    font-weight: 600;
+}
+
+form input {
+    width: 100%;
+    padding: 5px 0;
+    border: none;
+    background-color: transparent !important;
+    border-bottom: 1px solid rgba(7, 72, 74, 0.4);;
+}
+
+form input::placeholder {
+    font-weight: 300;
+    font-style: oblique;
+}
+
+form label {
+    font-weight: 600;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+}
+
+
+/* UPDATE CUSTOMER */
+/* update-cus */
+.update-cus form {   
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between !important;
+    margin-right: 100px;
+}
+
+.update-cus input::placeholder {
+    text-align: center;
+    font-style: normal;
+    color: #000;
+}
+
+.update-cus .order .col-9 {
+    padding: 15px 20px;
+    background-color: #F6F5DB;
+    border-radius: 30px;    
+    text-align: center;
+    font-weight: 600;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.update-cus .order .col-9:hover {
+    cursor: pointer;
+    color: #fff;
+    font-weight: 700;
+    background-color: rgba(7, 72, 74, 0.9);
+}
+
+
+.update-cus .status-btn {
+    display: flex;
+    justify-content: center;
+}
+
+.update-cus .status a {
+    padding: 15px 30px;
+    font-weight: 600;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.update-cus .status a:first-child {
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.update-cus .status a:nth-child(2) {
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.dashboard-footer  a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.dashboard-footer .button {
+    font-size: 16px !important;
+    font-weight: 700;
+    background-color: #1B9C85;
+    color: #fff;
+    border: 1px solid #1B9C85;
+    border-radius: 10px !important;
+    padding: 5px 15px; 
+}
+
+.dashboard-footer .button:hover {
+    color: #1B9C85;
+    background-color: #fff;
+    border: 1px solid #1B9C85;
+}
+
+.dashboard-footer i {
+    margin-left: 10px !important;
+}
+
+
+.myOrder-menu {
+    margin: 20px 40px !important;
+    border-radius: 20px;
+    height: 65vh;
+    background-color: #07484A;
+}
+
+.myOrder-menu .title h3 {
+    font-weight: 700;
+}
+
+.myOrder-menu ul {
+    padding: 0 !important;
+    font-weight: 600;
+}
+
+.myOrder-menu .active {
+    border-radius: 0;
+    background-color: #fff;
+}
