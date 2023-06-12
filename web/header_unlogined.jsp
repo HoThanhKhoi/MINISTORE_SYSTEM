@@ -28,7 +28,7 @@
     <body>
 
         <!-- HEADER UNLOGINED -->
-        <nav class="navbar header-navbar">
+        <nav class="navbar">
             <div class="container-fluid header">
                 <ul class="nav nav-2 ">
                     <li class="nav-item">

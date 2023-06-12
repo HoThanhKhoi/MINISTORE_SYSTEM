@@ -15,6 +15,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.apache.tomcat.jni.SSLContext;
 
 /**
  *
@@ -36,6 +38,7 @@ public class RegisterServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            HttpSession session = request.getSession();
             String userName = request.getParameter("userName");
             String email = request.getParameter("userEmail");
             String phone = request.getParameter("phone");
@@ -46,7 +49,6 @@ public class RegisterServlet extends HttpServlet {
             int worksheetID = 0;
             int result = 0;
             
-
             if (UserDAO.isEmailDuplicate(email)) {
                 request.setAttribute("error","Email has already been existed");
                 request.getRequestDispatcher("register.jsp").forward(request, response);
@@ -69,11 +71,12 @@ public class RegisterServlet extends HttpServlet {
 //        
             }
             else {
-                result = UserDAO.insertAccount(userName, phone, null, email, password, status, roleID, worksheetID);
-            }
-
-            if (result == 1) {
-                request.getRequestDispatcher("login.jsp").forward(request, response);
+                session.setAttribute("email", email);
+                session.setAttribute("name", userName);
+                session.setAttribute("phone", phone);
+                session.setAttribute("password", password);
+                request.getRequestDispatcher("VerifyEmailServlet").forward(request, response);
+                
             }
         }
 

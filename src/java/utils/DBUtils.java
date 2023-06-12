@@ -16,13 +16,12 @@ public class DBUtils {
     public static Connection makeConnection()throws Exception{
         Connection cn=null;
         String IP="localhost";
-        String instanceName="DESKTOP-E45RA8D\\SQLEXPRESS02";
         String port="1433";
         String uid="sa";
         String pwd="12345";
         String db="MINISTORE";
         String driver="com.microsoft.sqlserver.jdbc.SQLServerDriver";
-        String url="jdbc:sqlserver://" +IP+"\\"+ instanceName+":"+port
+        String url="jdbc:sqlserver://" +IP+"\\"+":"+port
                   +";databasename="+db+";user="+uid+";password="+pwd;
         Class.forName(driver);
         cn=DriverManager.getConnection(url);

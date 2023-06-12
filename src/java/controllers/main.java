@@ -11,7 +11,9 @@ import dto.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -49,8 +51,20 @@ public class main {
 //            System.out.println(list.get(i).getCateID());
 //        }
 
-User us = UserDAO.getUser("customer1@gmail.com", "123");
-System.out.println(us.getAddress());
-   }
+//User us = UserDAO.getUser("customer1@gmail.com", "123");
+//System.out.println(us.getAddress());
+//float num = (float) 198/20;
+//        System.out.println(num);
+//   }
+//    ArrayList<Product>list = ProductDAO.getPaginatedSearchedProduct(2, 20, "a");
+//    for(int i = 0 ;i < list.size() ;i++){
+//            System.out.println(list.get(i).getProductName());       }
+    
+   
+//    ArrayList<User> list = UserDAO.getEmployees(2);
+//    for(int i = 0;i<list.size();i++){
+//        System.out.println(list.get(i).getName());
+//    }
+//System.out.println(FormatDouble.formatNumber(134.56789));
 }
-
+}

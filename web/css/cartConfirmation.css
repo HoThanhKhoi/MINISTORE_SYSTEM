@@ -96,7 +96,7 @@ p {
 
 /* SCROLL BAR */
 /* width */
-::-webkit-scrollbar {
+ ::-webkit-scrollbar {
     width: 7px;
 }
 
@@ -197,26 +197,6 @@ form .btn:hover {
 }
 
 .status {
-    background-color: #1B9C85;
-    color: #fff;
-    border: 1px solid #1B9C85;
-    padding: 0  !important;
     width: 100%;
-    border-radius: 40px !important;
-}
-
-.status .active {
-    background-color: #FF6C3D;
-    padding: 10px 30px;
-    border-radius: 30px;
-}
-
-.status-orderDetail {
-    padding: 10px 30px !important;
-    background-color: #1B9C85;
-    color: #fff;
-    border: 1px solid #1B9C85;
-    width: 100%;
-    border-radius: 40px !important;
-    z-index: 999;
+    border-radius: 30px !important;
 }

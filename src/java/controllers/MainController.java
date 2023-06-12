@@ -45,8 +45,48 @@ private String url="";
                 url = "EditProfileServlet";
             } else if (action.equalsIgnoreCase("changePassword")) {
                 url = "ChangePasswordServlet";
+            } else if(action.equalsIgnoreCase("viewProductByCategory")){
+                url = "ViewProductByCateGoryServlet";
+            } else if(action.equalsIgnoreCase("viewCart")){
+                url = "ViewCartServlet";
+            } else if(action.equalsIgnoreCase("addToCart")){
+                url = "AddToCartServlet";
+            } else if(action.equalsIgnoreCase("searchProduct")){
+                url = "GetSearchedProductsServlet";
+            } else if(action.equalsIgnoreCase("updateCart")){
+                url = "UpdateCartServlet";
+            } else if(action.equalsIgnoreCase("deleteCart")){
+                url = "DeleteCartServlet";
+            }else if(action.equalsIgnoreCase("showSearchedPage")){
+                url = "ShowPaginatedSearchedServlet";
+            } else if(action.equalsIgnoreCase("viewGuards")){
+                url = "ViewGuardServlet";
+            } else if(action.equalsIgnoreCase("viewGuardDetailsPage")){
+                url = "ViewGuardDetailServlet";
+            } else if(action.equalsIgnoreCase("updateEmployee")){
+                url = "UpdateUserServlet";
+            } else if(action.equalsIgnoreCase("viewSales")){
+                url = "ViewSalesServlet";
+            } else if(action.equalsIgnoreCase("viewSaleDetailsPage")){
+                url = "ViewSaleDetailServlet";
+            } else if(action.equalsIgnoreCase("viewCustomers")){
+                url = "ViewCustomersServlet";
+            } else if(action.equalsIgnoreCase("viewCustomerDetailsPage")){
+                url = "ViewCustomerDetailsServlet";
+            } else if(action.equalsIgnoreCase("applyVoucher")){
+                url = "ApplyVoucherServlet";
+            } else if(action.equalsIgnoreCase("cartConfirmationPage")){
+                url = "CartConfirmationPageServlet";
+            } else if(action.equalsIgnoreCase("showUserPage")){
+                url = "ShowPaginatedUsersServlet";
+            } else if(action.equalsIgnoreCase("confirmEmail")){
+                url = "ConfirmEmailServlet";
+            } else if (action.equalsIgnoreCase("cartConfirmationPage")) {
+                url = "CartConfirmationPageServlet";
+            } else if (action.equalsIgnoreCase("confirmCart")) {
+                url = "ConfirmCartServlet";
             }
-             
+
              RequestDispatcher rd = request.getRequestDispatcher(url);
              rd.forward(request, response);    
              

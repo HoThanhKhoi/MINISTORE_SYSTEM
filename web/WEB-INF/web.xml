@@ -56,6 +56,86 @@
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>controllers.LogoutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewProductByCateGoryServlet</servlet-name>
+        <servlet-class>controllers.ViewProductByCateGoryServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddToCartServlet</servlet-name>
+        <servlet-class>controllers.AddToCartServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewCartServlet</servlet-name>
+        <servlet-class>controllers.ViewCartServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetSearchedProductsServlet</servlet-name>
+        <servlet-class>controllers.GetSearchedProductsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateCartServlet</servlet-name>
+        <servlet-class>controllers.UpdateCartServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteCartServlet</servlet-name>
+        <servlet-class>controllers.DeleteCartServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowPaginatedSearchedServlet</servlet-name>
+        <servlet-class>controllers.ShowPaginatedSearchedServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewGuardServlet</servlet-name>
+        <servlet-class>controllers.ViewGuardServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewGuardDetailServlet</servlet-name>
+        <servlet-class>controllers.ViewGuardDetailServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateUserServlet</servlet-name>
+        <servlet-class>controllers.UpdateUserServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewSalesServlet</servlet-name>
+        <servlet-class>controllers.ViewSalesServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewSaleDetailServlet</servlet-name>
+        <servlet-class>controllers.ViewSaleDetailServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VerifyEmailServlet</servlet-name>
+        <servlet-class>controllers.VerifyEmailServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewCustomersServlet</servlet-name>
+        <servlet-class>controllers.ViewCustomersServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewCustomerDetailsServlet</servlet-name>
+        <servlet-class>controllers.ViewCustomerDetailsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ApplyVoucherServlet</servlet-name>
+        <servlet-class>controllers.ApplyVoucherServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CartConfirmationPageServlet</servlet-name>
+        <servlet-class>controllers.CartConfirmationPageServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowPaginatedUsersServlet</servlet-name>
+        <servlet-class>controllers.ShowPaginatedUsersServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConfirmEmailServlet</servlet-name>
+        <servlet-class>controllers.ConfirmEmailServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConfirmCartServlet</servlet-name>
+        <servlet-class>controllers.ConfirmCartServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ResetPassServlet</servlet-name>
         <url-pattern>/ResetPassServlet</url-pattern>
@@ -85,10 +165,6 @@
         <url-pattern>/ShowPaginateServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>showCategoriesServlet</servlet-name>
-        <url-pattern>/showCategoriesServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
     </servlet-mapping>
@@ -103,6 +179,86 @@
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/LogoutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewProductByCateGoryServlet</servlet-name>
+        <url-pattern>/ViewProductByCateGoryServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddToCartServlet</servlet-name>
+        <url-pattern>/AddToCartServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewCartServlet</servlet-name>
+        <url-pattern>/ViewCartServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetSearchedProductsServlet</servlet-name>
+        <url-pattern>/GetSearchedProductsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateCartServlet</servlet-name>
+        <url-pattern>/UpdateCartServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteCartServlet</servlet-name>
+        <url-pattern>/DeleteCartServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowPaginatedSearchedServlet</servlet-name>
+        <url-pattern>/ShowPaginatedSearchedServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewGuardServlet</servlet-name>
+        <url-pattern>/ViewGuardServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewGuardDetailServlet</servlet-name>
+        <url-pattern>/ViewGuardDetailServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateUserServlet</servlet-name>
+        <url-pattern>/UpdateUserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewSalesServlet</servlet-name>
+        <url-pattern>/ViewSalesServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewSaleDetailServlet</servlet-name>
+        <url-pattern>/ViewSaleDetailServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VerifyEmailServlet</servlet-name>
+        <url-pattern>/VerifyEmailServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewCustomersServlet</servlet-name>
+        <url-pattern>/ViewCustomersServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewCustomerDetailsServlet</servlet-name>
+        <url-pattern>/ViewCustomerDetailsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ApplyVoucherServlet</servlet-name>
+        <url-pattern>/ApplyVoucherServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CartConfirmationPageServlet</servlet-name>
+        <url-pattern>/CartConfirmationPageServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowPaginatedUsersServlet</servlet-name>
+        <url-pattern>/ShowPaginatedUsersServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConfirmEmailServlet</servlet-name>
+        <url-pattern>/ConfirmEmailServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConfirmCartServlet</servlet-name>
+        <url-pattern>/ConfirmCartServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

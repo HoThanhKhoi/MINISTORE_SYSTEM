@@ -47,7 +47,6 @@ public class ChangeNewPasswordServlet extends HttpServlet {
                 request.setAttribute("error", "Password must be at least 8 characters long with 1 uppercase and 1 lowercase.");
                 request.getRequestDispatcher("EnterNewPass.jsp").forward(request, response);
             }
-
             if (changeNewPass) {
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             }
