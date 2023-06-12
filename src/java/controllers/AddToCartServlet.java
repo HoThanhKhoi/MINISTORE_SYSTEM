@@ -33,12 +33,13 @@ public class AddToCartServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            int pid = Integer.parseInt(request.getParameter("pid")); //get the selected ID
-            int cid = Integer.parseInt(request.getParameter("cid"));
+            int cartid = 0;
+            String pid = request.getParameter("pid"); //get the selected ID
+            String cid = request.getParameter("cid");
             int quantity = Integer.parseInt(request.getParameter("quantity"));
             HttpSession session = request.getSession(true); //get session storing shopping cart
             if (session != null) {
-                HashMap<Integer, Integer> cart = (HashMap<Integer, Integer>) session.getAttribute("cart");
+                HashMap<String, Integer> cart = (HashMap<String, Integer>) session.getAttribute("cart");
                 if (cart == null) { //if cart is empty then create a new cart
                     cart = new HashMap<>();
                     cart.put(pid, quantity);
@@ -47,10 +48,11 @@ public class AddToCartServlet extends HttpServlet {
                     if (tmp == null) {
                         cart.put(pid, quantity);
                     } else {
-                        tmp += quantity;
+                        tmp+=quantity;
                         cart.put(pid, tmp);
                     }
                 }
+                cartid++;
                 session.setAttribute("cart", cart);
                 request.setAttribute("noti", "success");
                 String url ="MainController?action=viewProduct&pid=" + pid + "&cateID=" + cid;

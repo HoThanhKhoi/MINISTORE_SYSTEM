@@ -1,47 +1,188 @@
-<%-- 
-    Document   : viewSales
-    Created on : Jun 6, 2023, 2:02:16 PM
-    Author     : Admin
---%>
+
+<%@page import="dao.UserDAO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ministore</title>
+        <link rel="stylesheet" href="./css/managerScreen.css" />
+
+        <!-- Icon CDN -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+              integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+              crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+        <!-- boostrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+        <!-- font Inter -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap"
+              rel="stylesheet">
     </head>
+
     <body>
-        <table>
-            <thead>
-                <tr>
-                    <td>ID</td>
-                    <td>Name</td>
-                    <td>Email</td>
-                    <td>Phone</td>
-                    <td>Status</td>
-                    <td>Action</td>
-                </tr>
-            </thead>
-            <tbody>
 
-                <c:forEach var="sale" items="${requestScope.salesList}">
-                <form action="MainController" action="post">
-                    <tr>
-                        <td>${sale.userID}</td>
-                        <td>${sale.name}</td>
-                        <td>${sale.email}</td>
-                        <td>${sale.phone}</td>
-                        <td>${sale.status}</td>
-                    <input type="hidden" name="userid" value="${sale.userID}"/>
-                    <td>
-                        <button type="submit" name="action" value="viewSaleDetailsPage">Update</button>
-                    </td>
-                    </tr>
-                </form>
-            </c:forEach>
+        <!--HEADER-->
+        <header>
+            <c:import url="header_managerDashboard.jsp" />
+        </header>
 
-        </tbody>
-    </table>
-</body>
+        <div class="container-fluid">
+            <div class="row">
+
+                <!-- menu -->
+                <div class="col-2 menu">
+                    <ul>
+                        <li class="row">
+                            <i class="fa-solid fa-user mx-3 col-2"></i>
+                            <a class="col" data-bs-toggle="collapse" href="#collapseExample" role="button"
+                               aria-expanded="false" aria-controls="collapseExample">User
+                                <i class="fa-solid fa-caret-down mx-2 "></i>
+                            </a>
+
+                            <!-- class="collapse"-->
+
+                        <li class="row" id="collapseExample">
+                            <i class="col-2 mx-3"></i>
+                            <a href="MainController?action=viewCustomers" class="col-2">Customer</a>
+                        </li>
+
+                        <li class="row active" id="collapseExample">
+                            <i class="col-2 mx-3"></i>
+                            <a href="MainController?action=viewSales" class="col-2">Sale</a>
+                        </li>
+
+                        <li class="row" id="collapseExample">
+                            <i class="col-2 mx-3"></i>
+                            <a href="MainController?action=viewGuards" class="col-2">Guard</a>
+                        </li>
+                        </li>
+
+                        <li class="row">
+                            <i class="fa-solid fa-bars-staggered mx-3 col-2"></i>
+                            <a href="" class="col-2 ms-1 d-none d-sm-inline">Category</a>
+                        </li>
+
+                        <li class="row">
+                            <i class="fa-solid fa-box mx-3 col-2"></i>
+                            <a href="" class="col-2">Product</a>
+                        </li>
+
+                        <li class="row">
+                            <i class="fa-solid fa-tag mx-3 col-2"></i>
+                            <a href="" class="col-2">Voucher</a>
+                        </li>
+
+                        <li class="row">
+                            <i class="fa-solid fa-clipboard-user mx-3 col-2"></i>
+                            <a href="" class="col-2">Attendance</a>
+                        </li>
+
+                        <li class="row">
+                            <i class="fa-solid fa-cart-shopping mx-3 col-2"></i>
+                            <a href="" class="col-2">Order</a>
+                        </li>
+
+                    </ul>
+                </div>
+
+
+                <!-- table -->
+                <div class="col dashboard">
+                    <form class="search text-center d-flex align-items-center">
+                        <input type="text" placeholder="Search...">
+                        <button id="search-button" type="button" class="btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+
+
+                    <table class="table mt-5 text-center">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:if test="${requestScope.slist == null}">
+                                <c:forEach var="sale" items="${requestScope.salesList}" begin="0" end="6">
+                                <form action="MainController" action="post">
+                                    <tr>
+                                        <td scope="row">${sale.userID}</td>
+                                        <td>${sale.name}</td>
+                                        <td>${sale.email}</td>
+                                        <td>${sale.phone}</td>
+                                        <td>${sale.address}</td>
+                                        <c:choose>
+                                            <c:when test="${sale.status == 0}"><td>Inactive</td></c:when>
+                                            <c:otherwise><td>Active</td></c:otherwise>
+                                        </c:choose>
+                                    <input type="hidden" name="userid" value="${sale.userID}"/>
+                                    <td>
+                                        <button type="submit" name="action" value="viewSaleDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
+                                    </td>
+                                    </tr>
+                                </form>
+                            </c:forEach>
+                        </c:if>
+                        <c:if test="${requestScope.slist !=null}">
+                            <c:forEach var="sale" items="${requestScope.slist}">
+                                <form action="MainController" action="post">
+                                    <tr>
+                                        <td scope="row">${sale.userID}</td>
+                                        <td>${sale.name}</td>
+                                        <td>${sale.email}</td>
+                                        <td>${sale.phone}</td>
+                                        <td>${sale.address}</td>
+                                        <c:choose>
+                                            <c:when test="${sale.status == 0}"><td>Inactive</td></c:when>
+                                            <c:otherwise><td>Active</td></c:otherwise>
+                                        </c:choose>
+                                    <input type="hidden" name="userid" value="${sale.userID}"/>
+                                    <td>
+                                        <button type="submit" name="action" value="viewSaleDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
+                                    </td>
+                                    </tr>
+                                </form>
+                            </c:forEach>
+                        </c:if>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <nav aria-label="Page navigation example" style="margin-top:50px;">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                        <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=1"><</a>
+                    </li>
+                    <% int totalProduct = UserDAO.getUsersByRole(1).size();
+                        int element = 7;
+                        float numOfPages = (float) totalProduct / element;
+                    %>
+                    <%for (int i = 1; i <= (int) Math.ceil(numOfPages); i++) {%>
+                    <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=<%=i%>&roleid=1"><%=i%></a></li>
+                        <% }%>
+                    <li class="page-item">
+                        <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page+1}&roleid=1">></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </body>
 </html>

@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author ACER
+ * @author Admin
  */
 public class ApplyVoucherServlet extends HttpServlet {
 
@@ -34,7 +34,8 @@ public class ApplyVoucherServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            int vid = Integer.parseInt(request.getParameter("vid"));
+            /* TODO output your page here. You may use following sample code. */
+            String vid = request.getParameter("vid");
             Voucher voucher = VoucherDAO.getVoucher(vid);
             if (voucher == null) {
                 request.setAttribute("error", "Apply voucher failed.");

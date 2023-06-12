@@ -44,25 +44,31 @@ public class ViewCartServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession();
             ArrayList<Voucher> voucherList = VoucherDAO.getVouchers();
-            HashMap<Integer, Integer> cart = (HashMap<Integer, Integer>) session.getAttribute("cart");
+            HashMap<String, Integer> cart = (HashMap<String, Integer>) session.getAttribute("cart");
             if (cart != null && !cart.isEmpty()) {
                 float money = 0;
-                Set<Integer> pidList = cart.keySet();
-                HashMap<Integer, Float> priceList = new HashMap<>();
-                HashMap<Integer, String> nameList = new HashMap<>();
-                HashMap<Integer, String> imgList = new HashMap<>();
-                for (int pid : pidList) {
+                Set<String> pidList = cart.keySet();
+                HashMap<String, Float> priceList = new HashMap<>();
+                HashMap<String, String> nameList = new HashMap<>();
+                HashMap<String, String> imgList = new HashMap<>();
+//                HashMap<Integer, Integer> cateIDList = new HashMap<>();
+//                HashMap<Integer, String> cateList = new HashMap<>();
+                for (String pid : pidList) {
                     int quantity = cart.get(pid);
                     Product p = ProductDAO.getProductInfo(pid);
                     money = money + p.getPrice() * quantity;
                     priceList.put(pid, p.getPrice());
                     nameList.put(pid, p.getProductName());
                     imgList.put(pid, p.getImgPath());
+//                    cateIDList.put(p.getCateID(), pid);
+//                    cateList.put(p.getCateID(), CategoryDAO.getCategory(p.getCateID()).getCateName());//get category name
                 }
                 session.setAttribute("subTotalMoney", money);
                 session.setAttribute("priceList", priceList);
                 session.setAttribute("nameList", nameList);
                 session.setAttribute("imgList", imgList);
+//                request.setAttribute("cateList", cateList);
+//                request.setAttribute("cateIDList", cateIDList);
                 session.setAttribute("voucherList", voucherList);
             }
             request.getRequestDispatcher("viewCart.jsp").forward(request, response);

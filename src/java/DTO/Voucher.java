@@ -13,7 +13,7 @@ import java.sql.Timestamp;
  * @author ACER
  */
 public class Voucher implements Serializable {
-    private int voucherID;
+    private String voucherID;
     private String voucherCode;
     private float discount;
     private Timestamp expiredDate;
@@ -21,18 +21,18 @@ public class Voucher implements Serializable {
     public Voucher() {
     }
 
-    public Voucher(int voucherID, String voucherCode, float discount, Timestamp expiredDate) {
+    public Voucher(String voucherID, String voucherCode, float discount, Timestamp expiredDate) {
         this.voucherID = voucherID;
         this.voucherCode = voucherCode;
         this.discount = discount;
         this.expiredDate = expiredDate;
     }
 
-    public int getVoucherID() {
+    public String getVoucherID() {
         return voucherID;
     }
 
-    public void setVoucherID(int voucherID) {
+    public void setVoucherID(String voucherID) {
         this.voucherID = voucherID;
     }
 

@@ -42,7 +42,7 @@ public class ChangeNewPasswordServlet extends HttpServlet {
             String email = (String) session.getAttribute("email");
             boolean changeNewPass = false;
             if (newPass.matches("^(?=.*?[A-Z])(?=.*?[a-z]).{8,}$")) {
-                changeNewPass = UserDAO.updatePassword(email, newPass);
+                changeNewPass = UserDAO.updateNewPassword(email, newPass);
             } else {
                 request.setAttribute("error", "Password must be at least 8 characters long with 1 uppercase and 1 lowercase.");
                 request.getRequestDispatcher("EnterNewPass.jsp").forward(request, response);

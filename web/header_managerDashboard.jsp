@@ -36,7 +36,7 @@
                         </a>
                     </li>
                     <li class="nav-item header-title">
-                        <a href="#" class="nav-link">
+                        <a href="managerDashboard.jsp" class="nav-link">
                             <h3>Dashboard</h3> 
                         </a>
                     </li>

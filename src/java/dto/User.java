@@ -11,7 +11,7 @@ package dto;
  */
 public class User {
 
-    private int userID;
+    private String userID;
     private String name;
     private String phone;
     private String address;
@@ -19,9 +19,9 @@ public class User {
     private String password;
     private int status;
     private int role;
-    private int worksheetID;
+    private String worksheetID;
 
-    public User(int userID, String name, String phone, String address, String email, String password, int status, int role, int worksheetID) {
+    public User(String userID, String name, String phone, String address, String email, String password, int status, int role, String worksheetID) {
         this.userID = userID;
         this.name = name;
         this.phone = phone;
@@ -33,11 +33,11 @@ public class User {
         this.worksheetID = worksheetID;
     }
 
-   public int getUserID() {
+   public String getUserID() {
         return userID;
     }
 
-    public void setUserID(int userID) {
+    public void setUserID(String userID) {
         this.userID = userID;
     }
 
@@ -97,11 +97,11 @@ public class User {
         this.role = role;
     }
 
-    public int getWorksheetID() {
+    public String getWorksheetID() {
         return worksheetID;
     }
 
-    public void setWorksheetID(int worksheetID) {
+    public void setWorksheetID(String worksheetID) {
         this.worksheetID = worksheetID;
     }
 

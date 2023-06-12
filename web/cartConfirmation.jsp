@@ -1,4 +1,8 @@
-
+<%-- 
+    Document   : cartConfirmation
+    Created on : Jun 6, 2023, 11:32:58 PM
+    Author     : ACER
+--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -33,9 +37,6 @@
             </c:when>
             <c:otherwise>
                 <!--HEADER-->
-                <header>
-                    <c:import url="header_cart.jsp" />
-                </header>
 
                 <div class="container mt-5">
                     <div class="row justify-content-between align-items-center">

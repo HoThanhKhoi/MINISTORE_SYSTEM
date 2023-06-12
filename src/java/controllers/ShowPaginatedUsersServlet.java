@@ -41,11 +41,23 @@ public class ShowPaginatedUsersServlet extends HttpServlet {
             int roleID = Integer.parseInt(request.getParameter("roleid"));
             int userPerPage = 7;
             ArrayList<User> list = UserDAO.getPaginatedEmployees(pageNumber, userPerPage, roleID);
-            if(list!=null){
-                request.setAttribute("clist", list);
-                request.setAttribute("page", pageNumber);
-                request.getRequestDispatcher("viewCustomers.jsp").forward(request, response);
+            if (list != null) {
+                if (roleID == 3) {
+                    request.setAttribute("clist", list);
+                    request.setAttribute("page", pageNumber);
+                    request.getRequestDispatcher("viewCustomers.jsp").forward(request, response);
+                } else if (roleID == 2) {
+                    request.setAttribute("glist", list);
+                    request.setAttribute("page", pageNumber);
+                    request.getRequestDispatcher("viewGuards.jsp").forward(request, response);
+                } else {
+                    request.setAttribute("slist", list);
+                    request.setAttribute("page", pageNumber);
+                    request.getRequestDispatcher("viewSales.jsp").forward(request, response);
+                }
+
             }
+
         }
     }
 

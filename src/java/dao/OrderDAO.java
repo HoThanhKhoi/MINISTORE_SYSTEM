@@ -22,7 +22,7 @@ import java.util.Set;
  */
 public class OrderDAO {
 
-    public static boolean insertOrder(int customerID, String phone, String address, HashMap<Integer, Integer> cart, float totalMoney, int voucherID) {
+    public static boolean insertOrder(String customerID, String phone, String address, HashMap<Integer, Integer> cart, float totalMoney, String voucherID) {
         Connection cn = null;
         boolean result = false;
         try {
@@ -46,7 +46,7 @@ public class OrderDAO {
                 pst.setString(2, address);
                 pst.setInt(3, 1);
                 pst.setString(4, String.valueOf(t));
-                pst.setInt(5, customerID);
+                pst.setString(5, customerID);
                 pst.setInt(6, salesID);
                 pst.executeUpdate();
 
@@ -67,10 +67,10 @@ public class OrderDAO {
                     pst.setFloat(2, totalMoney);
                     pst.setInt(3, orderid);
                     pst.setInt(4, pid);
-                    if (voucherID == 0) {
+                    if (voucherID == null) {
                         pst.setNull(5, Types.NULL);
                     } else {
-                        pst.setInt(5, voucherID);
+                        pst.setString(5, voucherID);
                     }
                     pst.executeUpdate();
                     cn.commit();

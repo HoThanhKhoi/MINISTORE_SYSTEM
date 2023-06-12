@@ -37,7 +37,7 @@ public class EditProfileServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            int userID = Integer.parseInt(request.getParameter("userID"));
+            String userID = request.getParameter("userID");
             String newName = request.getParameter("name");
             String newPhone = request.getParameter("phone");
             String newAdd = request.getParameter("address");

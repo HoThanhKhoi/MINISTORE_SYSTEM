@@ -38,14 +38,14 @@ public class ConfirmCartServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession(false);
-            int customerID = Integer.parseInt(request.getParameter("cusID"));
+            String customerID = request.getParameter("cusID");
             String phone = request.getParameter("phone");
             String address = request.getParameter("address");
             Timestamp time = new Timestamp(System.currentTimeMillis());
             HashMap<Integer, Integer> cart = (HashMap<Integer, Integer>) session.getAttribute("cart");
-            int voucherID;
+            String voucherID;
             if (session.getAttribute("voucher") == null) {
-                voucherID = 0;
+                voucherID = null;
             } else {
                 Voucher voucher = (Voucher) session.getAttribute("voucher");
                 voucherID = voucher.getVoucherID();
