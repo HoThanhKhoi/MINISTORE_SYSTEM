@@ -68,7 +68,7 @@
 
                             <div class="total mt-4">
                                 <p>Total</p>
-                                <p>$${sessionScope.cartTotal}</p>
+                                <p>$${sessionScope.totalMoney}</p>
                             </div>
                         </div>
 
@@ -82,9 +82,9 @@
 
                             <form action="MainController" method="post" class="needs-validation" novalidate>
                                 <input type="hidden" name="cusID" value="${sessionScope.customer.userID}">
-                                <input type="hidden" name="cartTotal" value="${sessionScope.cartTotal}">
+                                <input type="hidden" name="totalMoney" value="${sessionScope.totalMoney}">
                                 <div class="mb-5 mt-2">
-                                    <input type="text" id="validationCustom03" placeholder="Name" required name="name" value="${sessionScope.customer.name}">
+                                    <input type="text" id="validationCustom03" placeholder="Name" required name="cusName" value="${sessionScope.customer.name}">
                                     <div class="invalid-feedback">
                                         Please provide a valid name.
                                     </div>
@@ -102,10 +102,10 @@
                                     </div>
                                 </div>
                                 <div class="mb-5 mt-2">
-                                    <input type="text" id="" placeholder="Postal Code">
-<!--                                    <div class="invalid-feedback">
+                                    <input type="text" id="" placeholder="Postal Code" required name="postalCode">
+                                    <div class="invalid-feedback">
                                         Please provide a valid postal code.
-                                    </div>-->
+                                    </div>
                                 </div>
                                 <div class="button">
                                     <button type="submit" class="btn" name="action" value="confirmCart">Checkout</button>

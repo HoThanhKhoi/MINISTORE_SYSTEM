@@ -44,6 +44,10 @@ public class DeleteCartServlet extends HttpServlet {
                     session.setAttribute("cart", cart);
                 }
             }
+            if (cart.isEmpty()) {
+                session.setAttribute("voucher", null);
+                session.setAttribute("totalMoney", 0);
+            }
             String url = "MainController?action=viewCart";
             response.sendRedirect(url);
         }

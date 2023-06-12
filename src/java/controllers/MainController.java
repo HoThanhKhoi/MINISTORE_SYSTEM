@@ -68,7 +68,7 @@ public class MainController extends HttpServlet {
                 url = "ViewCustomersServlet";
             } else if (action.equalsIgnoreCase("viewCustomerDetailsPage")) {
                 url = "ViewCustomerDetailsServlet";
-            } else if (action.equalsIgnoreCase("updateCustomer")) {
+            } else if (action.equalsIgnoreCase("updateUser")) {
                 url = "UpdateUserServlet";
             } else if (action.equalsIgnoreCase("cartConfirmationPage")) {
                 url = "CartConfirmationPageServlet";

@@ -34,11 +34,11 @@ public class UpdateCartServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            int pid = Integer.parseInt(request.getParameter("pid"));
+            String pid = request.getParameter("pid");
             int newquantity = Integer.parseInt(request.getParameter("newquantity"));
             HttpSession session = request.getSession(true);
             if (session != null) {
-                HashMap<Integer, Integer> cart = (HashMap) session.getAttribute("cart");
+                HashMap<String, Integer> cart = (HashMap) session.getAttribute("cart");
                 if (cart != null) {
                     boolean found = cart.containsKey(pid);
                     if (found) {

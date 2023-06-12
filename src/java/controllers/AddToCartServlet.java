@@ -33,7 +33,6 @@ public class AddToCartServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            int cartid = 0;
             String pid = request.getParameter("pid"); //get the selected ID
             String cid = request.getParameter("cid");
             int quantity = Integer.parseInt(request.getParameter("quantity"));
@@ -48,11 +47,10 @@ public class AddToCartServlet extends HttpServlet {
                     if (tmp == null) {
                         cart.put(pid, quantity);
                     } else {
-                        tmp+=quantity;
+                        tmp += quantity;
                         cart.put(pid, tmp);
                     }
                 }
-                cartid++;
                 session.setAttribute("cart", cart);
                 request.setAttribute("noti", "success");
                 String url ="MainController?action=viewProduct&pid=" + pid + "&cateID=" + cid;
