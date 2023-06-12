@@ -18,13 +18,13 @@ import java.util.ArrayList;
  */
 public class CategoryDAO {
 
-    public static Category getCategory(int CateID) throws Exception {
+    public static Category getCategory(String CateID) throws Exception {
         Category cate = null;
         Connection cn = DBUtils.makeConnection();
         if (cn != null) {
             String sql = "Select CateName,ImgPath from CATEGORIES where CateID = ?";
             PreparedStatement pst = cn.prepareStatement(sql);
-            pst.setInt(1, CateID);
+            pst.setString(1, CateID);
             ResultSet rs = pst.executeQuery();
             if (rs != null && rs.next()) {
                 String CateName = rs.getString("CateName");
@@ -40,12 +40,12 @@ public class CategoryDAO {
         Connection cn = DBUtils.makeConnection();
         ArrayList<Category> cateList = new ArrayList<>();
         if (cn != null) {
-            String sql = "Select * from CATEGORIES";
+            String sql = "Select CateID,CateName,ImgPath from CATEGORIES";
             PreparedStatement pst = cn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
             if (rs != null) {
                 while (rs.next()) {
-                    int CateID = rs.getInt("CateID");
+                    String CateID = rs.getString("CateID");
                     String CateName = rs.getString("CateName");
                     String imgPath = rs.getString("ImgPath");
                     Category cate = new Category(CateID, CateName, imgPath);

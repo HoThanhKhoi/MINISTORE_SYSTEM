@@ -10,21 +10,21 @@ package dto;
  * @author Admin
  */
 public class Category {
-    int CateID;
+    String CateID;
     String CateName;
     String imgPath;
 
-    public Category(int CateID, String CateName, String imgPath) {
+    public Category(String CateID, String CateName, String imgPath) {
         this.CateID = CateID;
         this.CateName = CateName;
         this.imgPath = imgPath;
     }
 
-    public int getCateID() {
+    public String getCateID() {
         return CateID;
     }
 
-    public void setCateID(int CateID) {
+    public void setCateID(String CateID) {
         this.CateID = CateID;
     }
 

@@ -125,7 +125,7 @@
                                 for (int i = 0; i <= 6; i++) {%>
 
                             <div class="item mb-4 text-center">
-                                <div class="card border-0 shadow">
+                                <div class="card border-0 shadow align-items-center">
                                     <img src="./image/Item.png" class="card-img-top" alt="">
                                     <div class="card-body">
                                         <h5 class="card-title fw-bold">
@@ -133,7 +133,7 @@
                                                 <%= list.get(i).getProductName()%></a>
                                         </h5>
                                         <span class="bricked-price mx-2"><%= list.get(i).getPrice()%></span>
-                                        <fmt:formatNumber value="<%=list.get(i).getPrice()-0.5%>" pattern="#,##0.00" var="formattedNumber" />
+                                        <fmt:formatNumber value="<%=list.get(i).getPrice() - 0.5%>" pattern="#,##0.00" var="formattedNumber" />
                                         <span class="price fw-bold mx-2">${formattedNumber}</span></br>
                                         <a href="MainController?action=addToCart&quantity=1&pid=<%=list.get(i).getProductID()%>&cid=<%=list.get(i).getCateID()%>" class="btn btn-primary mt-3 px-3 py-2 fw-bold" name="action">Add To Cart</a>
                                     </div>
@@ -150,14 +150,18 @@
                         <div id="countdown">
                             <h2 class="py-4 text-center"><em>Deals end in</em></h2>
                             <ul>
-                                <li><span id="days"></span>days</li>
+                                <li><span id="days"></span>Days</li>
+                                <li><span>:</span>&nbsp;</li>
                                 <li><span id="hours"></span>Hours</li>
+                                <li><span>:</span>&nbsp;</li>
                                 <li><span id="minutes"></span>Minutes</li>
+                                <li><span>:</span>&nbsp;</li>
                                 <li><span id="seconds"></span>Seconds</li>
                             </ul>
                         </div>
                     </div>
                 </div>
+
 
                 <div class="hot-deal-banner">
                     <img src="./image/image 21.png" alt="">
@@ -176,54 +180,50 @@
                 <div class="col row category-list mx-3 d-flex flex-wrap justify-content-between">
                     <div class="col-4 col-sm-4 " style="width: 30%">
                         <c:forEach var="cate" items="${CategoryDAO.getCategories()}" begin="0" end="1">                                
-                        <div class="item mb-4 text-center">
-                            <div class="card border-0 shadow">
-                                <img src="./image/category-1.png" class="card-img-top" alt="">
-                                <div class="overlay"></div>
-                                <div class="card-content">
-                                    <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
+                            <div class="item mb-4 text-center">
+                                <div class="card border-0 shadow align-items-center ">
+                                    <img src="./image/category-1.png" class="card-img-top" alt="">
+                                    <div class="overlay"></div>
+                                    <div class="card-content">
+                                        <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                       </c:forEach>
+                        </c:forEach>
 
                     </div>
 
                     <div class="col-4 col-sm-4 " style="width: 30%">
                         <!-- begin item -->
                         <c:forEach var="cate" items="${CategoryDAO.getCategories()}" begin="1" end="2">                                
-                        <div class="item mb-4 text-center">
-                            <div class="card border-0 shadow">
-                                <img src="./image/category-1.png" class="card-img-top" alt="">
-                                <div class="overlay"></div>
-                                <div class="card-content">
-                                    <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
+                            <div class="item mb-4 text-center">
+                                <div class="card border-0 shadow align-items-center ">
+                                    <img src="./image/category-1.png" class="card-img-top" alt="">
+                                    <div class="overlay"></div>
+                                    <div class="card-content">
+                                        <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                       </c:forEach>
+                        </c:forEach>
                         <!-- begin item -->
 
                     </div>
 
                     <div class="col-4 col-sm-4 " style="width: 30%">
                         <!-- begin item -->
-                       <c:forEach var="cate" items="${CategoryDAO.getCategories()}" begin="2" end="3">                                
-                        <div class="item mb-4 text-center">
-                            <div class="card border-0 shadow">
-                                <img src="./image/category-1.png" class="card-img-top" alt="">
-                                <div class="overlay"></div>
-                                <div class="card-content">
-                                    <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
+                        <c:forEach var="cate" items="${CategoryDAO.getCategories()}" begin="2" end="3">                                
+                            <div class="item mb-4 text-center">
+                                <div class="card border-0 shadow align-items-center ">
+                                    <img src="./image/category-1.png" class="card-img-top" alt="">
+                                    <div class="overlay"></div>
+                                    <div class="card-content">
+                                        <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                       </c:forEach>
-                        <!-- begin item -->
+                        </c:forEach>
 
-                        <!-- begin item -->
-                        
-                        <!-- begin item -->
                     </div>
                 </div>
             </div>
@@ -233,61 +233,46 @@
                     <div class="col-4 col-sm-4" style="width: 30%">
                         <!-- begin item -->
                         <c:forEach var="cate" items="${CategoryDAO.getCategories()}" begin="3" end="4">                                
-                        <div class="item mb-4 text-center">
-                            <div class="card border-0 shadow">
-                                <img src="./image/category-1.png" class="card-img-top" alt="">
-                                <div class="overlay"></div>
-                                <div class="card-content">
-                                    <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
+                            <div class="item mb-4 text-center">
+                                <div class="card border-0 shadow align-items-center ">
+                                    <img src="./image/category-1.png" class="card-img-top" alt="">
+                                    <div class="overlay"></div>
+                                    <div class="card-content">
+                                        <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                       </c:forEach>
-                        <!-- end item -->
-
-                        <!-- begin item -->
-                        
-                        <!-- end item -->
+                        </c:forEach>
                     </div>
 
                     <div class="col-4 col-sm-4 " style="width: 30%">
                         <!-- begin item -->
                         <c:forEach var="cate" items="${CategoryDAO.getCategories()}" begin="4" end="5">                                
-                        <div class="item mb-4 text-center">
-                            <div class="card border-0 shadow">
-                                <img src="./image/category-1.png" class="card-img-top" alt="">
-                                <div class="overlay"></div>
-                                <div class="card-content">
-                                    <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
+                            <div class="item mb-4 text-center">
+                                <div class="card border-0 shadow align-items-center ">
+                                    <img src="./image/category-1.png" class="card-img-top" alt="">
+                                    <div class="overlay"></div>
+                                    <div class="card-content">
+                                        <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                       </c:forEach>
-                        <!-- end item -->
-
-                        <!-- begin item -->
-                        
-                        <!-- end item -->
+                        </c:forEach>
                     </div>
 
                     <div class="col-4 col-sm-4 " style="width: 30%">
                         <!-- begin item -->
                         <c:forEach var="cate" items="${CategoryDAO.getCategories()}" begin="5" end="6">                                
-                        <div class="item mb-4 text-center">
-                            <div class="card border-0 shadow">
-                                <img src="./image/category-1.png" class="card-img-top" alt="">
-                                <div class="overlay"></div>
-                                <div class="card-content">
-                                    <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
+                            <div class="item mb-4 text-center">
+                                <div class="card border-0 shadow align-items-center ">
+                                    <img src="./image/category-1.png" class="card-img-top" alt="">
+                                    <div class="overlay"></div>
+                                    <div class="card-content">
+                                        <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                       </c:forEach>
-                        <!-- end item -->
-
-                        <!-- begin item -->
-                        
-                        <!-- end item -->
+                        </c:forEach>
                     </div>
                 </div>
 
@@ -297,6 +282,8 @@
             </div>
         </div>
 
+        
+        
         <!-- BEST SELLING -->
         <div class="best-selling" id="best-selling">
             <div class="container">
@@ -319,7 +306,7 @@
                                                     <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProduct&pid=${product.productID}&cateID=${product.cateID}">${product.productName}</a></h5>
                                                     <span class="bricked-price mx-2">${product.price}</span>
                                                     <fmt:formatNumber value="${product.price-0.5}" pattern="#,##0.00" var="formattedNumber" />
-                                                         <span class="price fw-bold mx-2">${formattedNumber}</span></br>                                                  
+                                                    <span class="price fw-bold mx-2">${formattedNumber}</span></br>                                                  
                                                     <a href="MainController?action=addToCart&pid=${product.productID}&cid=${product.productID}&quantity=1" class="btn btn-primary mt-3 px-3 py-2 fw-bold">Add To Cart</a>
                                                 </div>
                                             </div>
@@ -339,7 +326,7 @@
                                                     <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProduct&pid=${product.productID}&cateID=${product.cateID}">${product.productName}</a></h5>
                                                     <span class="bricked-price mx-2">${product.price}</span>
                                                     <fmt:formatNumber value="${formattedNumber}" pattern="#,##0.00" var="formattedNumber" />
-                                                         <span class="price fw-bold mx-2">${Math.round(product.price)-0.45}</span></br>
+                                                    <span class="price fw-bold mx-2">${Math.round(product.price)-0.45}</span></br>
                                                     <a href="MainController?action=addToCart&pid=${product.productID}&cid=${product.productID}&quantity=1" class="btn btn-primary mt-3 px-3 py-2 fw-bold">Add To Cart</a>
                                                 </div>
                                             </div>
@@ -353,7 +340,7 @@
                         </c:if>
                     </div>
                 </div>
-                
+
                 <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center">
                         <li class="page-item">

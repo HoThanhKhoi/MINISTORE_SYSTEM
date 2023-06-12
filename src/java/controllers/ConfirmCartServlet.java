@@ -5,21 +5,24 @@
  */
 package controllers;
 
-import dao.UserDAO;
+import dao.OrderDAO;
+import dto.User;
+import dto.Voucher;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.sql.Timestamp;
+import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Admin
+ * @author ACER
  */
-public class UpdateUserServlet extends HttpServlet {
+public class ConfirmCartServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,28 +34,40 @@ public class UpdateUserServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, Exception {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            String userID = request.getParameter("userid");
-            int roleID = Integer.parseInt(request.getParameter("roleid"));
-            String userName = request.getParameter("username");
+            HttpSession session = request.getSession(false);
+            String customerID = request.getParameter("cusID");
             String phone = request.getParameter("phone");
-            int status = Integer.parseInt(request.getParameter("status"));
-            int check = 0;
-            check = UserDAO.updateUser(userID, userName, phone, status);
-            if (check == 1) {
-                if (roleID == 2) {
-                    request.getRequestDispatcher("ViewGuardServlet").forward(request, response);
-                } else if (roleID == 1) {
-                    request.getRequestDispatcher("ViewSalesServlet").forward(request, response);
-                } else {
-                    request.getRequestDispatcher("ViewCustomersServlet").forward(request, response);
-                }
+            String address = request.getParameter("address");
+            Timestamp time = new Timestamp(System.currentTimeMillis());
+            HashMap<Integer, Integer> cart = (HashMap<Integer, Integer>) session.getAttribute("cart");
+            String voucherID;
+            if (session.getAttribute("voucher") == null) {
+                voucherID = null;
             } else {
-                request.getRequestDispatcher("index.jsp").forward(request, response);
+                Voucher voucher = (Voucher) session.getAttribute("voucher");
+                voucherID = voucher.getVoucherID();
             }
+            float totalMoney = Float.parseFloat(request.getParameter("cartTotal"));
+            if (cart != null && !cart.isEmpty()) {
+                if (session.getAttribute("customer") == null) { //not login
+                    request.setAttribute("error", "You must login to checkout.");
+                } else {
+                    boolean result = OrderDAO.insertOrder(customerID, phone, address, cart, totalMoney, voucherID);
+                    if (result) {
+                        session.setAttribute("cart", null);
+                        session.setAttribute("voucher", null);
+                        session.setAttribute("subTotal", null);
+                        session.setAttribute("cartTotal", null);
+                        request.setAttribute("noti", "Save sucessfully.");
+                    } else {
+                        request.setAttribute("error", "Save fail.");
+                    }
+                }
+            }
+            request.getRequestDispatcher("cartConfirmation.jsp").forward(request, response);
         }
     }
 
@@ -68,11 +83,7 @@ public class UpdateUserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (Exception ex) {
-            Logger.getLogger(UpdateUserServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -86,11 +97,7 @@ public class UpdateUserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (Exception ex) {
-            Logger.getLogger(UpdateUserServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

@@ -36,7 +36,7 @@ public class ViewSaleDetailServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            int userID = Integer.parseInt(request.getParameter("userid"));
+           String userID = request.getParameter("userid");
            User sale = UserDAO.getUser(userID);
            if(sale != null){
                request.setAttribute("sale", sale);

@@ -63,7 +63,7 @@ private String url="";
                 url = "ViewGuardServlet";
             } else if(action.equalsIgnoreCase("viewGuardDetailsPage")){
                 url = "ViewGuardDetailServlet";
-            } else if(action.equalsIgnoreCase("updateEmployee")){
+            } else if(action.equalsIgnoreCase("updateUser")){
                 url = "UpdateUserServlet";
             } else if(action.equalsIgnoreCase("viewSales")){
                 url = "ViewSalesServlet";
@@ -81,6 +81,12 @@ private String url="";
                 url = "ShowPaginatedUsersServlet";
             } else if(action.equalsIgnoreCase("confirmEmail")){
                 url = "ConfirmEmailServlet";
+            } else if (action.equalsIgnoreCase("cartConfirmationPage")) {
+                url = "CartConfirmationPageServlet";
+            } else if (action.equalsIgnoreCase("confirmCart")) {
+                url = "ConfirmCartServlet";
+            } else if (action.equalsIgnoreCase("searchUsers")) {
+                url = "SearchUsersServlet";
             }
 
              RequestDispatcher rd = request.getRequestDispatcher(url);

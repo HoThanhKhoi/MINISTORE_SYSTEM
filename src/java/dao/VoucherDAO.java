@@ -29,7 +29,7 @@ public class VoucherDAO {
             ResultSet table = st.executeQuery(sql);
             if (table != null) {
                 while (table.next()) {
-                    int voucherID = table.getInt("VoucherID");
+                    String voucherID = table.getString("VoucherID");
                     String voucherCode = table.getString("VoucherCode");
                     float discount = table.getFloat("VoucherDiscount");
                     Timestamp expiredDate = table.getTimestamp("VoucherExpiredDate");
@@ -42,7 +42,7 @@ public class VoucherDAO {
         return list;
     }
 
-    public static Voucher getVoucher(int vid) {
+    public static Voucher getVoucher(String vid) {
         Connection cn = null;
         Voucher voucher = null;
         try {
@@ -50,10 +50,10 @@ public class VoucherDAO {
             if (cn != null) {
                 String s = "select VoucherID,VoucherCode,VoucherDiscount,VoucherExpiredDate from VOUCHERS where VoucherID=?";
                 PreparedStatement pst = cn.prepareStatement(s);
-                pst.setInt(1, vid);
+                pst.setString(1, vid);
                 ResultSet rs = pst.executeQuery();
                 if (rs != null && rs.next()) {
-                    int voucherID = rs.getInt("VoucherID");
+                    String voucherID = rs.getString("VoucherID");
                     String voucherCode = rs.getString("VoucherCode");
                     float discount = rs.getFloat("VoucherDiscount");
                     Timestamp expiredDate = rs.getTimestamp("VoucherExpiredDate");

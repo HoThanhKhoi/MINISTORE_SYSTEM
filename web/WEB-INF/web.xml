@@ -132,6 +132,14 @@
         <servlet-name>ConfirmEmailServlet</servlet-name>
         <servlet-class>controllers.ConfirmEmailServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ConfirmCartServlet</servlet-name>
+        <servlet-class>controllers.ConfirmCartServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchUsersServlet</servlet-name>
+        <servlet-class>controllers.SearchUsersServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ResetPassServlet</servlet-name>
         <url-pattern>/ResetPassServlet</url-pattern>
@@ -159,10 +167,6 @@
     <servlet-mapping>
         <servlet-name>ShowPaginateServlet</servlet-name>
         <url-pattern>/ShowPaginateServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>showCategoriesServlet</servlet-name>
-        <url-pattern>/showCategoriesServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -255,6 +259,14 @@
     <servlet-mapping>
         <servlet-name>ConfirmEmailServlet</servlet-name>
         <url-pattern>/ConfirmEmailServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConfirmCartServlet</servlet-name>
+        <url-pattern>/ConfirmCartServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchUsersServlet</servlet-name>
+        <url-pattern>/SearchUsersServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -34,12 +34,12 @@ public class DeleteCartServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession();
-            HashMap<Integer, Integer> cart = (HashMap<Integer, Integer>) session.getAttribute("cart");
+            HashMap<String, Integer> cart = (HashMap<String, Integer>) session.getAttribute("cart");
             if (cart != null) {
                 String[] cartitem = request.getParameterValues("cartitem");
                 if (cartitem != null) {
                     for (String item : cartitem) {
-                        cart.remove(Integer.parseInt(item));
+                        cart.remove(item);
                     }
                     session.setAttribute("cart", cart);
                 }

@@ -35,7 +35,7 @@ public class ApplyVoucherServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-              int vid = Integer.parseInt(request.getParameter("vid"));
+            String vid = request.getParameter("vid");
             Voucher voucher = VoucherDAO.getVoucher(vid);
             if (voucher == null) {
                 request.setAttribute("error", "Apply voucher failed.");

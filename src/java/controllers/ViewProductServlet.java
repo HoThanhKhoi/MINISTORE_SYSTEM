@@ -39,8 +39,8 @@ public class ViewProductServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            int pid = Integer.parseInt(request.getParameter("pid"));
-            int cateID = Integer.parseInt(request.getParameter("cateID"));
+            String pid = request.getParameter("pid");
+            String cateID = request.getParameter("cateID");
             Category cate = CategoryDAO.getCategory(cateID);
             String cateName = cate.getCateName();
             Product product = ProductDAO.getProductInfo(pid);

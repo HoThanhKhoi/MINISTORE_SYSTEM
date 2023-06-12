@@ -8,8 +8,27 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ministore</title>
+        <link rel="stylesheet" href="./css/cartConfirmation.css">
+
+        <!-- Icon CDN -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+              integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+              crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+        <!-- boostrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+        <!-- font Inter -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap"
+              rel="stylesheet">
     </head>
     <body>
         <c:choose>
@@ -18,41 +37,100 @@
             </c:when>
             <c:otherwise>
                 <!--HEADER-->
-                <header>
-                    <c:import url="header.jsp" />
-                </header>
 
-                <table>
-                    <thead>
-                        <tr>
-                            <td>Products</td>
-                            <td>Quantity</td>
-                            <td>Price</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <c:forEach varStatus="counter" var="cartitem" items="${sessionScope.cart}">
-                            <c:set scope="page" var="cartKey" value="${cartitem.key}"/>
-                            <tr>
-                                <td>${sessionScope.nameList.get(cartKey)}</td>
-                                <td>${cartitem.value}</td>
-                                <td>${sessionScope.priceList.get(cartKey) * cartitem.value}</td>
-                            </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
+                <div class="container mt-5">
+                    <div class="row justify-content-between align-items-center">
 
-                <h1>Total: ${sessionScope.cartTotal} $</h1>
-                <h1>Delivery Information</h1>
-                <form>
-                    Name: <input type="text" name="name" value="${sessionScope.customer.name}" required="">
-                    Phone: <input type="tel" name="phone" value="${sessionScope.customer.phone}" required="">
-                    Address: <input type="text" name="address" value="${sessionScope.customer.address}" required="">
-                    <input type="hidden" name="customerID" />
-                    <c:if test="${sessionScope.customer.address == null}">Address must be filled in. <a href="customerProfile.jsp">Update now.</a></c:if>
-                    <button>Checkout</button>
-                </form>
+                        <!-- check out -->
+                        <div class="col-lg-6 checkout">
+                            <div class="row">
+                                <table class="table-fixed text-center">
+                                    <thead>
+                                        <tr>
+                                            <th>Product</th>
+                                            <th>Quantity</th>
+                                            <th>Price</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <c:forEach varStatus="counter" var="cartitem" items="${sessionScope.cart}">
+                                            <c:set scope="page" var="cartKey" value="${cartitem.key}"/>
+                                            <tr>
+                                                <td>${sessionScope.nameList.get(cartKey)}</td>
+                                                <td>${cartitem.value}</td>
+                                                <td>${sessionScope.priceList.get(cartKey) * cartitem.value}</td>
+                                            </tr>
+                                        </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="total mt-4">
+                                <p>Total</p>
+                                <p>$${sessionScope.cartTotal}</p>
+                            </div>
+                        </div>
+
+
+
+                        <!-- info -->
+                        <div class="col-lg-5 info justify-content-end ">
+                            <div class="info-title">
+                                <h3 class="text-center">Delivery Information</h3>
+                            </div>
+
+                            <form action="MainController" method="post" class="needs-validation" novalidate>
+                                <input type="hidden" name="cusID" value="${sessionScope.customer.userID}">
+                                <input type="hidden" name="cartTotal" value="${sessionScope.cartTotal}">
+                                <div class="mb-5 mt-2">
+                                    <input type="text" id="validationCustom03" placeholder="Name" required name="name" value="${sessionScope.customer.name}">
+                                    <div class="invalid-feedback">
+                                        Please provide a valid name.
+                                    </div>
+                                </div>
+                                <div class="mb-5 mt-3">
+                                    <input type="tel" id="validationCustom03" placeholder="Phone" required name="phone" value="${sessionScope.customer.phone}">
+                                    <div class="invalid-feedback">
+                                        Please provide a valid phone.
+                                    </div>
+                                </div>
+                                <div class="mb-5 mt-3">
+                                    <input type="text" id="address" placeholder="Address" required name="address" value="${sessionScope.customer.address}">
+                                    <div class="invalid-feedback">
+                                        Please provide a valid address.
+                                    </div>
+                                </div>
+                                <div class="mb-5 mt-2">
+                                    <input type="text" id="" placeholder="Postal Code">
+<!--                                    <div class="invalid-feedback">
+                                        Please provide a valid postal code.
+                                    </div>-->
+                                </div>
+                                <div class="button">
+                                    <button type="submit" class="btn" name="action" value="confirmCart">Checkout</button>
+                                </div>
+                            </form>
+
+                            <c:if test="${requestScope.error != null}">
+                                <div class="alert alert-danger alert-dismissible fade show notification" role="alert" style="padding: 15px 45px;text-align: center;width:430px;opacity: 100%;margin: 30px auto">
+                                    <strong class="error">${requestScope.error}</strong> 
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="width:20px"></button>
+                                </div>
+                            </c:if>
+
+                            <c:if test="${requestScope.noti != null}">
+                                <div class="alert alert-success alert-dismissible fade show notification" role="alert" style="padding: 15px 45px;text-align: center;width:430px;opacity: 100%;margin: 30px auto">
+                                    <strong class="success">${requestScope.noti}</strong> 
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="width:20px"></button>
+                                </div>
+                            </c:if>
+                        </div>
+                    </div>
+                </div>        
             </c:otherwise>
         </c:choose>
+
+        <script src="./js/validation_input.js"></script>
     </body>
 </html>

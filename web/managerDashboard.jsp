@@ -45,8 +45,8 @@
                         <div class="row content text-center">
                             <div class="col-lg-5">
                                 <div class="item mb_5"><a href="MainController?action=viewCustomers">Customers</a></div>
-                                <div class="item mb_5"><a href="MainController?action=viewGuards">Sales</a></div>
-                                <div class="item mb_5"><a href="MainController?action=viewSales">Guards</a></div>
+                                <div class="item mb_5"><a href="MainController?action=viewSales">Sales</a></div>
+                                <div class="item mb_5"><a href="MainController?action=viewGuards">Guards</a></div>
                                 <div class="item mb_5">Attendance</div>
                             </div>
                             <div class="col-lg"></div>

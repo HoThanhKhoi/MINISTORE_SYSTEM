@@ -38,7 +38,7 @@ public class ViewProductByCateGoryServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            int cateID = Integer.parseInt(request.getParameter("cateID"));
+            String cateID = request.getParameter("cateID");
             ArrayList<Product> list = ProductDAO.getCategorizedProducts(cateID);
             String cateName = CategoryDAO.getCategory(cateID).getCateName();
             if(list != null){

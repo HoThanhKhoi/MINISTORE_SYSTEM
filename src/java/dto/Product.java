@@ -10,15 +10,15 @@ package dto;
  * @author Admin
  */
 public class Product {
-    private int productID;
+    private String productID;
     private String productName;
     private float price;
     private String description;
     private int stockQuantity;
     private String imgPath;
-    private int cateID;
+    private String cateID;
 
-    public Product(int productID, String productName, float price, String description, int stockQuantity, String imgPath, int cateID) {
+    public Product(String productID, String productName, float price, String description, int stockQuantity, String imgPath, String cateID) {
         this.productID = productID;
         this.productName = productName;
         this.price = price;
@@ -28,11 +28,11 @@ public class Product {
         this.cateID = cateID;
     }
 
-    public int getProductID() {
+    public String getProductID() {
         return productID;
     }
 
-    public void setProductID(int productID) {
+    public void setProductID(String productID) {
         this.productID = productID;
     }
 
@@ -76,11 +76,11 @@ public class Product {
         this.imgPath = imgPath;
     }
 
-    public int getCateID() {
+    public String getCateID() {
         return cateID;
     }
 
-    public void setCateID(int cateID) {
+    public void setCateID(String cateID) {
         this.cateID = cateID;
     }
     

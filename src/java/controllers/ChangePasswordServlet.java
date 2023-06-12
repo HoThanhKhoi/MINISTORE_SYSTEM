@@ -37,7 +37,7 @@ public class ChangePasswordServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            int userid = Integer.parseInt(request.getParameter(("userid")));
+            String userid = request.getParameter(("userid"));
             String currentpw = request.getParameter("currentpw");
             String newpw = request.getParameter("newpw");
             String confirmpw = request.getParameter("confirmpw");

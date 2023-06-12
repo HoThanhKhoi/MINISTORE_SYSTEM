@@ -13,7 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import utils.FormatDouble;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -65,6 +65,10 @@ public class main {
 //    for(int i = 0;i<list.size();i++){
 //        System.out.println(list.get(i).getName());
 //    }
-System.out.println(FormatDouble.formatNumber(134.56789));
+//System.out.println(FormatDouble.formatNumber(134.56789));
+ArrayList<User> list = UserDAO.searchUsers(3, "h");
+    for(int i = 0; i< list.size();i++){
+        System.out.println(list.get(i).getName());
+    }
 }
 }
