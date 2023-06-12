@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-         String email = request.getParameter("email");
+        String email = request.getParameter("email");
         String password = request.getParameter("password");
         String remember = request.getParameter("remember");
         

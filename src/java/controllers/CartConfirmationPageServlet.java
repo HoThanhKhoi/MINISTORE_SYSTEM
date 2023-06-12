@@ -33,10 +33,12 @@ public class CartConfirmationPageServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession();
+//            String voucherID = request.getParameter("voucherID");
             if (session.getAttribute("customer") == null) {
-                request.setAttribute("error", "You must login to proceed.");
+                request.setAttribute("error", "You must <a href=\"login.jsp\">login</a> to proceed.");
                 request.getRequestDispatcher("viewCart.jsp").forward(request, response);
             } else {
+//                request.setAttribute("voucherID", voucherID);
                 response.sendRedirect("cartConfirmation.jsp");
             }
         }

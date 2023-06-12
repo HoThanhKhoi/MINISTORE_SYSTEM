@@ -351,7 +351,7 @@
                                         <!-- begin item -->
                                         <div class="item mb-4 text-center">
                                             <div class="card border-0 shadow">
-                                                <img src="./image/Item.png" class="card-img-top" alt="">
+                                                <img src="${product.imgPath}" class="card-img-top" alt="">
                                                 <div class="card-body">
                                                     <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProduct&pid=${product.productID}&cateID=${product.cateID}">${product.productName}</a></h5>
                                                     <span class="bricked-price mx-2">${product.price}</span>
@@ -389,20 +389,23 @@
                         </c:if>
                     </div>
                 </div>
-                
+
                 <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center">
                         <li class="page-item">
-                            <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showPage&page=${requestScope.page-1}"><</a>
+                            <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" 
+                               href="MainController?action=showPage&page=${requestScope.page-1}"><</a>
                         </li>
                         <% int totalProduct = ProductDAO.getTotalProduct();
                             int element = 20;
                         %>
                         <%for (int i = 1; i <= (int) Math.ceil(totalProduct / element); i++) {%>
-                        <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showPage&page=<%=i%>"><%=i%></a></li>
+                        <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" 
+                                                  href="MainController?action=showPage&page=<%=i%>"><%=i%></a></li>
                             <% }%>
                         <li class="page-item">
-                            <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showPage&page=${requestScope.page+1}">></a>
+                            <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" 
+                               href="MainController?action=showPage&page=${requestScope.page+1}">></a>
                         </li>
                     </ul>
                 </nav>
@@ -410,10 +413,10 @@
 
         </div>
 
-<!--         back to top 
-        <button type="button" class="btn btn-floating btn-lg" id="btn-back-to-top">
-            <i class="fas fa-arrow-up"></i>
-        </button>-->
+        <!--         back to top 
+                <button type="button" class="btn btn-floating btn-lg" id="btn-back-to-top">
+                    <i class="fas fa-arrow-up"></i>
+                </button>-->
 
 
 

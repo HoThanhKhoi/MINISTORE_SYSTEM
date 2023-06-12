@@ -34,14 +34,14 @@ public class ApplyVoucherServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            int vid = Integer.parseInt(request.getParameter("vid"));
+            String vid = request.getParameter("vid");
             Voucher voucher = VoucherDAO.getVoucher(vid);
             if (voucher == null) {
                 request.setAttribute("error", "Apply voucher failed.");
                 request.getRequestDispatcher("ViewCartServlet").forward(request, response);
             } else {
-                HttpSession session = request.getSession();
-                session.setAttribute("voucher", voucher);
+//                HttpSession session = request.getSession();
+                request.setAttribute("voucher", voucher);
                 request.getRequestDispatcher("ViewCartServlet").forward(request, response);
             }
         }

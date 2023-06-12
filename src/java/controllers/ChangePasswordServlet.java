@@ -39,7 +39,7 @@ public class ChangePasswordServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             Cookie[] arr = request.getCookies();
-            int userid = Integer.parseInt(request.getParameter(("userid")));
+            String userid = request.getParameter("userid");
             String currentpw = request.getParameter("currentpw");
             String newpw = request.getParameter("newpw");
             String confirmpw = request.getParameter("confirmpw");

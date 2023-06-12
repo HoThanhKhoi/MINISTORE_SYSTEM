@@ -41,7 +41,7 @@ public class ResetPassword extends HttpServlet {
             String newPass = request.getParameter("newPass");
             HttpSession session=request.getSession();
             String email = (String) session.getAttribute("email");
-            boolean changeNewPass = UserDAO.updatePassword(email, newPass);
+            boolean changeNewPass = UserDAO.updateNewPassword(email, newPass);
             if(changeNewPass){
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             }

@@ -38,29 +38,31 @@ public class ConfirmCartServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession(false);
-            int customerID = Integer.parseInt(request.getParameter("cusID"));
+            String customerID = request.getParameter("cusID");
+            String customerName = request.getParameter("cusName");
             String phone = request.getParameter("phone");
             String address = request.getParameter("address");
+            String postalCode = request.getParameter("postalCode");
             Timestamp time = new Timestamp(System.currentTimeMillis());
-            HashMap<Integer, Integer> cart = (HashMap<Integer, Integer>) session.getAttribute("cart");
-            int voucherID;
+            HashMap<String, Integer> cart = (HashMap<String, Integer>) session.getAttribute("cart");
+            String voucherID;
             if (session.getAttribute("voucher") == null) {
-                voucherID = 0;
+                voucherID = null;
             } else {
                 Voucher voucher = (Voucher) session.getAttribute("voucher");
                 voucherID = voucher.getVoucherID();
             }
-            float totalMoney = Float.parseFloat(request.getParameter("cartTotal"));
+            String totalMoney = request.getParameter("totalMoney");
             if (cart != null && !cart.isEmpty()) {
                 if (session.getAttribute("customer") == null) { //not login
                     request.setAttribute("error", "You must login to checkout.");
                 } else {
-                    boolean result = OrderDAO.insertOrder(customerID, phone, address, cart, totalMoney, voucherID);
+                    boolean result = OrderDAO.insertOrder(customerID, customerName, 
+                            phone, address, postalCode, cart, Float.parseFloat(totalMoney), voucherID);
                     if (result) {
                         session.setAttribute("cart", null);
                         session.setAttribute("voucher", null);
-                        session.setAttribute("subTotal", null);
-                        session.setAttribute("cartTotal", null);
+                        session.setAttribute("totalMoney", null);
                         request.setAttribute("noti", "Save sucessfully.");
                     } else {
                         request.setAttribute("error", "Save fail.");

@@ -28,13 +28,13 @@ public class ProductDAO {
             Statement st = cn.createStatement();
             ResultSet table = st.executeQuery(sql);
             while (table.next()) {
-                int productID = table.getInt("ProductID");
+                String productID = table.getString("ProductID");
                 String productName = table.getString("ProductName");
                 float price = table.getFloat("Price");
                 String description = table.getString("Description");
                 int quantity = table.getInt("StockQuantity");
                 String imgPath = table.getString("ImgPath");
-                int cateID = table.getInt("CateID");
+                String cateID = table.getString("CateID");
                 Product product = new Product(productID, productName, price, description, quantity, imgPath, cateID);
                 list.add(product);
             }
@@ -43,13 +43,13 @@ public class ProductDAO {
         return list;
     }
 
-    public static Product getProductInfo(int pid) throws Exception {
+    public static Product getProductInfo(String pid) throws Exception {
         Product product = null;
         Connection cn = DBUtils.makeConnection();
         if (cn != null) {
-            String sql = "Select * from PRODUCTS where ProductID = ?";
+            String sql = "Select ProductID,ProductName,Price,Description,StockQuantity,ImgPath,CateID from PRODUCTS where ProductID = ?";
             PreparedStatement pst = cn.prepareStatement(sql);
-            pst.setInt(1, pid);
+            pst.setString(1, pid);
             ResultSet table = pst.executeQuery();
             if (table != null && table.next()) {
                 String productName = table.getString("ProductName");
@@ -57,7 +57,7 @@ public class ProductDAO {
                 String description = table.getString("Description");
                 int quantity = table.getInt("StockQuantity");
                 String imgPath = table.getString("ImgPath");
-                int cateID = table.getInt("CateID");
+                String cateID = table.getString("CateID");
                 product = new Product(pid, productName, price, description, quantity, imgPath, cateID);
             }
         }

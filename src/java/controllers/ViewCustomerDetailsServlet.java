@@ -35,7 +35,7 @@ public class ViewCustomerDetailsServlet extends HttpServlet {
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            int userID = Integer.parseInt(request.getParameter("userid"));
+            String userID = request.getParameter("userid");
             User cus = UserDAO.getUser(userID);
             if (cus != null) {
                 request.setAttribute("cus", cus);

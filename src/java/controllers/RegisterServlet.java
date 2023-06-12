@@ -43,7 +43,7 @@ public class RegisterServlet extends HttpServlet {
             String cfpassword = request.getParameter("cfpassword");
             int status = 1;
             int roleID = 3;
-            int worksheetID = 0;
+            String worksheetID = null;
             int result = 0;
             
 

@@ -28,7 +28,7 @@
             <a role="button" id="active" style="background-color: #1B9C85">Active</a>
             <a role="button" id="inactive" style="background-color: #F6F5DB">Inactive</a>
             <input type="hidden" id="s" name="status" value="1"/>
-            <button name="action" type="submit" value="updateCustomer">Update</button>
+            <button name="action" type="submit" value="updateUser">Update</button>
         </form>
     </body>
 </html>

@@ -18,6 +18,9 @@ body {
 .navbar {
     padding: 0 !important;
     margin: 0 !important;
+}
+
+.header-navbar {
     border-bottom: 5px solid #07484A;
 }
 

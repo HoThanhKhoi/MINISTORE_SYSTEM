@@ -35,7 +35,7 @@ public class UserDAO {
                 pst.setString(2, password);
                 ResultSet rs = pst.executeQuery();
                 if (rs != null && rs.next()) {
-                    int userID = rs.getInt("UserID");
+                    String userID = rs.getString("UserID");
                     String userName = rs.getString("UserName");
                     String userPhone = rs.getString("Phone");
                     String userAddress = rs.getString("UserAddress");
@@ -43,7 +43,7 @@ public class UserDAO {
                     String userPassword = rs.getString("Password");
                     int userStatus = rs.getInt("Status");
                     int userRole = rs.getInt("RoleID");
-                    int userWorksheet = rs.getInt("WorksheetID");
+                    String userWorksheet = rs.getString("WorksheetID");
                     user = new User(userID, userName, userPhone, userAddress, email, password, userStatus, userRole, userWorksheet);
                 }
             }
@@ -61,7 +61,7 @@ public class UserDAO {
         return user;
     }
 
-    public static User getUser(int id) throws Exception {
+    public static User getUser(String id) throws Exception {
         Connection cn = null;
         User user = null;
         try {
@@ -70,10 +70,10 @@ public class UserDAO {
                 String s = "select UserID,UserName,Phone,UserAddress,Email,Password,Status,RoleID,WorksheetID\n"
                         + "from USERS where UserID=?";
                 PreparedStatement pst = cn.prepareStatement(s);
-                pst.setInt(1, id);
+                pst.setString(1, id);
                 ResultSet rs = pst.executeQuery();
                 if (rs != null && rs.next()) {
-                    int userID = rs.getInt("UserID");
+                    String userID = rs.getString("UserID");
                     String userName = rs.getString("UserName");
                     String userPhone = rs.getString("Phone");
                     String userAddress = rs.getString("UserAddress");
@@ -81,7 +81,7 @@ public class UserDAO {
                     String userPassword = rs.getString("Password");
                     int userStatus = rs.getInt("Status");
                     int userRole = rs.getInt("RoleID");
-                    int userWorksheet = rs.getInt("WorksheetID");
+                    String userWorksheet = rs.getString("WorksheetID");
                     user = new User(userID, userName, userPhone, userAddress, userEmail, userPassword, userStatus, userRole, userWorksheet);
                 }
             }
@@ -99,7 +99,7 @@ public class UserDAO {
         return user;
     }
 
-    public static int updateAccount(int userID, String newName, String newPhone, String newAdd) {
+    public static int updateAccount(String userID, String newName, String newPhone, String newAdd) {
         int result = 0;
         Connection cn = null;
         try {
@@ -110,7 +110,7 @@ public class UserDAO {
                 pst.setString(1, newName);
                 pst.setString(2, newPhone);
                 pst.setString(3, newAdd);
-                pst.setInt(4, userID);
+                pst.setString(4, userID);
                 result = pst.executeUpdate();
             }
         } catch (Exception e) {
@@ -127,7 +127,7 @@ public class UserDAO {
         return result;
     }
 
-    public static int updatePassword(int userID, String newPass) {
+    public static int updatePassword(String userID, String newPass) {
         int result = 0;
         Connection cn = null;
         try {
@@ -136,7 +136,7 @@ public class UserDAO {
                 String sql = "update USERS set Password=? where UserID=?";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setString(1, md5(newPass));
-                pst.setInt(2, userID);
+                pst.setString(2, userID);
                 result = pst.executeUpdate();
             }
         } catch (Exception e) {
@@ -153,7 +153,7 @@ public class UserDAO {
         return result;
     }
 
-    public static int updateUser(int userID, String newName, String newPhone, int status) throws Exception {
+    public static int updateUser(String userID, String newName, String newPhone, int status) throws Exception {
         Connection cn = DBUtils.makeConnection();
         int check = 0;
         if (cn != null) {
@@ -162,30 +162,30 @@ public class UserDAO {
             pst.setString(1, newName);
             pst.setString(2, newPhone);
             pst.setInt(3, status);
-            pst.setInt(4, userID);
+            pst.setString(4, userID);
             check = pst.executeUpdate();
         }
         return check;
     }
 
-    public static User getUser(String email) throws Exception {
+    public static User getUserByEmail(String email) throws Exception {
         Connection cn = DBUtils.makeConnection();
         User us = null;
         if (cn != null) {
-            String sql = "Select * from USERS where Email = ?";
+            String sql = "Select UserID,UserName,Phone,UserAddress,Email,Password,Status,RoleID,WorksheetID from USERS where Email = ?";
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setString(1, email);
             ResultSet rs = pst.executeQuery();
             if (rs != null) {
                 while (rs.next()) {
-                    int userID = rs.getInt("UserID");
+                    String userID = rs.getString("UserID");
                     String userName = rs.getString("UserName");
                     String password = rs.getString("Password");
                     String phone = rs.getString("Phone");
                     String address = rs.getString("UserAddress");
                     int status = rs.getInt("status");
                     int roleID = rs.getInt("RoleID");
-                    int worksheetID = rs.getInt("WorksheetID");
+                    String worksheetID = rs.getString("WorksheetID");
                     us = new User(userID, userName, password, phone, address, email, status, roleID, worksheetID);
                 }
             }
@@ -198,19 +198,19 @@ public class UserDAO {
         User us;
         ArrayList<User> list = new ArrayList<>();
         if (cn != null) {
-            String sql = "Select * from USERS where RoleID = ?";
+            String sql = "Select UserID,UserName,Phone,UserAddress,Email,Password,Status,RoleID,WorksheetID from USERS where RoleID = ?";
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setInt(1, roleID);
             ResultSet rs = pst.executeQuery();
             while (rs != null && rs.next()) {
-                int userID = rs.getInt("UserID");
+                String userID = rs.getString("UserID");
                 String userName = rs.getString("UserName");
                 String password = rs.getString("Password");
                 String phone = rs.getString("Phone");
                 String address = rs.getString("UserAddress");
                 String email = rs.getString("Email");
                 int status = rs.getInt("status");
-                int worksheetID = rs.getInt("WorksheetID");
+                String worksheetID = rs.getString("WorksheetID");
                 us = new User(userID, userName, phone, address, email, password, status, roleID, worksheetID);
                 list.add(us);
             }
@@ -218,7 +218,7 @@ public class UserDAO {
         return list;
     }
 
-    public static boolean updatePassword(String email, String newPass) throws Exception {
+    public static boolean updateNewPassword(String email, String newPass) throws Exception {
         boolean flag = false;
         Connection cn = DBUtils.makeConnection();
         if (cn != null) {
@@ -250,7 +250,7 @@ public class UserDAO {
     }
 
     public static int insertAccount(String userName, String phone, String userAddress,
-            String Email, String password, int status, int roleID, int worksheetID) throws Exception {
+            String Email, String password, int status, int roleID, String worksheetID) throws Exception {
         Connection cn = DBUtils.makeConnection();
         int table = 0;
         if (cn != null) {
@@ -259,15 +259,19 @@ public class UserDAO {
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setString(1, userName);
             pst.setString(2, phone);
-            pst.setNull(3, Types.NULL);
+            if (userAddress == null) {
+                pst.setNull(3, Types.NULL);
+            } else {
+                pst.setString(3, userAddress);
+            }
             pst.setString(4, Email);
             pst.setString(5, md5(password));
             pst.setInt(6, status);
             pst.setInt(7, roleID);
-            if (worksheetID == 0) {
+            if (worksheetID == null) {
                 pst.setNull(8, Types.NULL);
             } else {
-                pst.setNull(8, worksheetID);
+                pst.setString(8, worksheetID);
             }
             table = pst.executeUpdate();
 

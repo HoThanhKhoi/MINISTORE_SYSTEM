@@ -62,15 +62,15 @@ public class main {
 //        Category cate = CategoryDAO.getCategory(1);
 //        System.out.println(cate.getCateName());
         
-//        Voucher voucher = VoucherDAO.getVoucher(1);
-//        System.out.println(voucher.getVoucherID() + "," + voucher.getVoucherCode() 
-//                + "," + voucher.getDiscount() + "," + voucher.getExpiredDate().toString());
-        HashMap<Integer,Integer> cart = new HashMap<>();
-        cart.put(1, 2);
-        float money = (float) 3.98;
-        boolean flag = OrderDAO.insertOrder(37, "0123123123", "Address 37", cart, money, 0);
-        if (flag) {
-            System.out.println("yay");
-        } else System.out.println("boo");
+        Voucher voucher = VoucherDAO.getVoucher("V-0001");
+        System.out.println(voucher.getVoucherID() + "," + voucher.getVoucherCode() 
+                + "," + voucher.getDiscount() + "," + voucher.getExpiredDate().toString());
+//        HashMap<String,Integer> cart = new HashMap<>();
+//        cart.put("P-0001", 2);
+//        float money = (float) 3.98;
+//        boolean flag = OrderDAO.insertOrder("US-0035", "Customer 25", "2525252525", "Address 34", "70000", cart, money, "V-0001");
+//        if (flag) {
+//            System.out.println("yay");
+//        } else System.out.println("boo");
     }
 }

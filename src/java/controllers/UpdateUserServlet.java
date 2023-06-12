@@ -34,7 +34,7 @@ public class UpdateUserServlet extends HttpServlet {
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            int customerID = Integer.parseInt(request.getParameter("userid"));
+            String customerID = request.getParameter("userid");
             int roleID = Integer.parseInt(request.getParameter("roleid"));
 
             String guardName = request.getParameter("username");

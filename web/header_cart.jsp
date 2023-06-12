@@ -57,7 +57,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="MainController?action=viewCart" class="nav-link">
                             <span class="cart">
                                 <i class="fa-solid fa-cart-shopping ">
                                     <span class="badge rounded-pill badge-notification bg-danger">1</span>
