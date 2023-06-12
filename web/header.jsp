@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link rel="stylesheet" href="./css/header.css">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/header.css">
 
-        <!-- Icon CDN -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-              integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-              crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Icon CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-        <!-- font Inter -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap"
-              rel="stylesheet">
+    <!-- font Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet" />
 
-        <!-- boostrap -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+     <!-- boostrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
 
-    </head>
+<body>
 
-    <body>
-
-        <!-- HEADER -->
-        <nav class="navbar header-navbar ">
+    <!-- HEADER -->
+     <nav class="navbar fixed-top">
             <div class="container-fluid header">
                 <ul class="nav navbar-nav">
                     <li class="nav-item">
@@ -46,12 +46,9 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <span class="cart">
-                                <i class="fa-solid fa-cart-shopping ">
-                                    <span class="badge rounded-pill badge-notification bg-danger">1</span>
-                                </i>
-                            </span>
+                        <a href="MainController?action=viewCart" class="nav-link">
+                            <span class="cart"><i class="fa-solid fa-cart-shopping"></i></span>
+                            <!--<span class="badge rounded-pill badge-notification bg-danger">1</span>-->
                         </a>
                     </li>
 
@@ -61,15 +58,13 @@
                         </a>
                     </li>
                 </ul>
-                
-                
             </div>
         </nav>  
 
-        
 
 
 
-    </body>
+
+</body>
 
 </html>

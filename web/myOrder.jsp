@@ -32,7 +32,7 @@
 
         <!--HEADER-->
         <header>
-            <c:import url="header.jsp" />
+            <c:import url="header_managerDashboard.jsp" />
         </header>
 
 

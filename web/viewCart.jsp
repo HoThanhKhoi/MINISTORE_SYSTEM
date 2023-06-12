@@ -34,9 +34,23 @@
               rel="stylesheet">
     </head>
     <body>
+
+        <!-- HEADER -->
+        <header>
+            <c:choose>
+                <c:when test="${sessionScope.customer == null}">
+                    <c:import url="header_unlogined.jsp" />
+                </c:when>
+                <c:otherwise>
+                    <c:import url="header_cart.jsp" />
+                </c:otherwise>
+            </c:choose>
+        </header>
+
+
         <!-- HEADER PATH -->
-        <nav class="navbar navbar-expand-lg header-path mb-4">
-            <div class="container justify-content-start">
+        <nav class="navbar navbar-expand-lg header-path my-3 align-items-center">
+            <div class="container justify-content-start ">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
@@ -49,8 +63,11 @@
                 </nav>
             </div>
         </nav>
+
+
         <c:choose>
             <c:when test="${sessionScope.cart == null}">
+                <!-- Cart null -->
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 empty-content">
@@ -72,11 +89,13 @@
                     </div>
                 </div>
             </c:when>
+
             <c:otherwise>
+                <!-- Cart not null -->
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="cart-table text-center">
+                            <div class="cart-table">
                                 <table class="table-fixed">
                                     <thead>
                                         <tr>
@@ -89,6 +108,7 @@
                                             <th>Action</th>
                                         </tr>
                                     </thead>
+
                                     <tbody>
                                     <form action="MainController" method="get"> 
                                         <c:forEach varStatus="counter" var="cartitem" items="${sessionScope.cart}">
@@ -97,6 +117,7 @@
                                                 <td>
                                                     <input type="checkbox" class="pid text-center" name="cartitem" value="${cartitem.key}">
                                                 </td>
+
                                                 <td class="cart-item-img">
                                                     <img src="./image/Item.png" alt="">
                                                 </td>
@@ -104,38 +125,45 @@
                                                 <td class="cart-item-title">
                                                     <h5>${sessionScope.nameList.get(cartKey)}</h5>
                                                 </td>
+
                                                 <td class="cart-price">${sessionScope.priceList.get(cartKey)}</td>
 
                                                 <td class="cart-quantity">
-                                                    <div class="group-quantity">
-                                                        <a role="button" class=""
+                                                    <div class="group-quantity d-flex justify-content-center align-items-center">
+                                                        <a role="button" class="quantity-button"
                                                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                                                             <i class="fas fa-minus"></i>
                                                         </a>
+
                                                         <input onchange="changeQuantity()"  class="quantity fw-bold text-black" min="1" name="quantity" max="${ProductDAO.getProductInfo(cartKey).stockQuantity}"  value="${cartitem.value}" 
                                                                type="number">
-                                                        <a role="button" class=""
+
+                                                        <a role="button" class="quantity-button"
                                                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                                                             <i class="fas fa-plus"></i>
-                                                        </a>
+                                                        </a>                                                        
                                                     </div>
                                                 </td>
+
                                                 <c:set var="number" value="${sessionScope.priceList.get(cartKey) * cartitem.value}"/>
                                                 <fmt:formatNumber value="${sessionScope.priceList.get(cartKey) * cartitem.value}" pattern="#,##0.00" var="formattedNumber" />
                                                 <td class="cart-total">${formattedNumber}</td>
-                                                <td class="cart-item-title"><a class="change" href="">Update</a></td>
+
+                                                <td class="cart-item-btn"><a class="change button" href="">Update</a></td>
                                             </tr>
                                         </c:forEach>
-                                        <div class="col-lg-2">
-                                            <button class="button del" type="submit" name="action" value="deleteCart">Delete</button>
-                                        </div>
+
+                                        <button class="button del" type="submit" name="action" value="deleteCart">Delete</button>
+
                                     </form>
                                     </tbody>
                                 </table>
-                                <div class="table-footer">
+
+
+                                <div class="table-footer mt-4">
                                     <div class="row mt-4 justify-content-end">
-                                        <div class="voucher col-1">
-                                            <form action="MainController" method="get">
+                                        <div class="voucher col-3">
+                                            <form action="MainController" method="get" class="d-flex">
                                                 <select class="form-select" aria-label="Default select example" name="vid">
                                                     <option selected>Voucher</option>
                                                     <c:forEach var="voucher" items="${sessionScope.voucherList}">
@@ -260,11 +288,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row justify-content-between mt-4">
-                        <div class="col-lg-2 d-flex justify-content-end">
-                            <button class="button check"><a href="MainController?action=cartConfirmationPage">Next</a></button>
+
+                    <div class="row mt-5">
+                        <div class="col-lg-12 d-flex justify-content-end">
+                            <a href="MainController?action=cartConfirmationPage" class="button check">Next</a>
                         </div>
                     </div>
+                                        
                     <c:if test="${requestScope.error != null}">
                         <div class="alert alert-danger alert-dismissible fade show notification" role="alert" style="padding: 15px 45px;text-align: center;width:430px;opacity: 100%;margin: 30px auto">
                             <strong class="error">${requestScope.error}</strong> 

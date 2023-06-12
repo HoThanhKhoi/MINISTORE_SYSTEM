@@ -31,10 +31,11 @@
 
     <body>
 
-        <!--HEADER-->
+        <!-- HEADER -->
         <header>
             <c:import url="header_managerDashboard.jsp" />
         </header>
+
 
         <div class="container-fluid">
             <div class="row">
@@ -186,25 +187,27 @@
 
                         </tbody>
                     </table>
+
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item">
+                                <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=3"><</a>
+                            </li>
+                            <% int totalProduct = UserDAO.getUsersByRole(3).size();
+                                int element = 7;
+                                float numOfPages = (float) totalProduct / element;
+                            %>
+                            <%for (int i = 1; i <= (int) Math.ceil(numOfPages); i++) {%>
+                            <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=<%=i%>&roleid=3"><%=i%></a></li>
+                                <% }%>
+                            <li class="page-item">
+                                <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page+1}&roleid=3">></a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
-            <nav aria-label="Page navigation example" style="margin-top:50px;">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item">
-                        <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=3"><</a>
-                    </li>
-                    <% int totalProduct = UserDAO.getUsersByRole(3).size();
-                        int element = 7;
-                        float numOfPages = (float) totalProduct / element;
-                    %>
-                    <%for (int i = 1; i <= (int) Math.ceil(numOfPages); i++) {%>
-                    <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=<%=i%>&roleid=3"><%=i%></a></li>
-                        <% }%>
-                    <li class="page-item">
-                        <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page+1}&roleid=3">></a>
-                    </li>
-                </ul>
-            </nav>
+
         </div>
     </body>
 </html>
