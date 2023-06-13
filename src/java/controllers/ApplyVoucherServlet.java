@@ -38,11 +38,11 @@ public class ApplyVoucherServlet extends HttpServlet {
             Voucher voucher = VoucherDAO.getVoucher(vid);
             if (voucher == null) {
                 request.setAttribute("error", "Apply voucher failed.");
-                request.getRequestDispatcher("ViewCartServlet").forward(request, response);
+                request.getRequestDispatcher("MainController?action=viewCart").forward(request, response);
             } else {
 //                HttpSession session = request.getSession();
                 request.setAttribute("voucher", voucher);
-                request.getRequestDispatcher("ViewCartServlet").forward(request, response);
+                request.getRequestDispatcher("MainController?action=viewCart").forward(request, response);
             }
         }
     }

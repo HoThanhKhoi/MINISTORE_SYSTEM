@@ -186,7 +186,7 @@ public class UserDAO {
                     int status = rs.getInt("status");
                     int roleID = rs.getInt("RoleID");
                     String worksheetID = rs.getString("WorksheetID");
-                    us = new User(userID, userName, password, phone, address, email, status, roleID, worksheetID);
+                    us = new User(userID, userName, phone, address, email, password, status, roleID, worksheetID);
                 }
             }
         }

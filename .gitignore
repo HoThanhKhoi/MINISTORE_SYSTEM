@@ -3,3 +3,4 @@
 /build/
 /dist/
 src/java/DTO/Category.java
+src/java/DTO/Order.java
