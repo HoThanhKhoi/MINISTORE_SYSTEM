@@ -2,6 +2,6 @@
 /Linh/MINISTORE/build/
 /build/
 /dist/
-src/java/DTO/Category.java
+
 src/java/DTO/Order.java
 src/java/DTO/Voucher.java
