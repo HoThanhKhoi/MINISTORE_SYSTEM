@@ -8,6 +8,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.text.DecimalFormat"%>
 <%@page import="dao.ProductDAO"%>
+<%@page import="dao.VoucherDAO"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -165,7 +166,7 @@
                                         <div class="voucher col-3">
                                             <form action="MainController" method="get" class="d-flex">
                                                 <select class="form-select" aria-label="Default select example" name="vid">
-                                                    <option selected>Voucher</option>
+                                                    <option selected>${VoucherDAO.getVoucher(param.vid).voucherCode}</option>
                                                     <c:forEach var="voucher" items="${sessionScope.voucherList}">
                                                         <c:if test="${voucher.discount == 2.5}">
                                                             <c:choose>

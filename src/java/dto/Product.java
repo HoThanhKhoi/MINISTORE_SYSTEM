@@ -5,11 +5,13 @@
  */
 package dto;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Admin
  */
-public class Product {
+public class Product implements Serializable {
     private String productID;
     private String productName;
     private float price;
