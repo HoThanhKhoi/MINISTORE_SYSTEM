@@ -70,5 +70,7 @@ ArrayList<User> list = UserDAO.searchUsers(3, "h");
     for(int i = 0; i< list.size();i++){
         System.out.println(list.get(i).getName());
     }
+    
+    
 }
 }

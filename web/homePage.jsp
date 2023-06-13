@@ -52,7 +52,7 @@
                 <nav>
                     <ul>
                         <li>
-                            <a href="">Home</a>
+                            <a href="MainController?action=viewCart">Cart</a>
                         </li>
                         <li>
                             <a href="#hot-deal">Hot Deals</a>

@@ -122,7 +122,7 @@ public class ProductDAO {
         Product product;
         Connection cn = DBUtils.makeConnection();
         if(cn != null){
-            String sql = "Select ProductID,ProductName,Price,Description,StockQuantity,ImgPath,CateID  from PRODUCTS JOIN CATEGORIES ON PRODUCTS.CateID = CATEGORIES.CateID WHERE ProductName like ? or CateName like ?";
+            String sql = "Select ProductID,ProductName,Price,Description,StockQuantity,PRODUCTS.ImgPath,PRODUCTS.CateID  from PRODUCTS JOIN CATEGORIES ON PRODUCTS.CateID = CATEGORIES.CateID WHERE ProductName like ? or CateName like ?";
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setString(1, '%' + keyword + '%');
             pst.setString(2, '%' + keyword + '%');
@@ -141,6 +141,7 @@ public class ProductDAO {
         }
         return list;
     }
+    
     public static ArrayList<Product> getPaginatedSearchedProduct(int pageNumber, int productPerPage,String keyword) throws Exception {
         ArrayList<Product> list = new ArrayList<>();
         ArrayList<Product> productList = ProductDAO.getSearchedProducts(keyword);

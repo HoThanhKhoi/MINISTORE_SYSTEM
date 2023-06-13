@@ -37,6 +37,10 @@
         <servlet-class>controllers.ShowPaginateServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>showCategoriesServlet</servlet-name>
+        <servlet-class>controllers.showCategoriesServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>controllers.LoginServlet</servlet-class>
     </servlet>
@@ -65,12 +69,7 @@
         <servlet-class>controllers.ViewCartServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>DeleteCartServlet</servlet-name>
-        <servlet-class>controllers.DeleteCartServlet</servlet-class>
-
-    </servlet>
-    <servlet>
-            <servlet-name>GetSearchedProductsServlet</servlet-name>
+        <servlet-name>GetSearchedProductsServlet</servlet-name>
         <servlet-class>controllers.GetSearchedProductsServlet</servlet-class>
     </servlet>
     <servlet>
@@ -78,10 +77,6 @@
         <servlet-class>controllers.UpdateCartServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ApplyVoucherServlet</servlet-name>
-        <servlet-class>controllers.ApplyVoucherServlet</servlet-class>
-        </servlet>
-        <servlet>
         <servlet-name>DeleteCartServlet</servlet-name>
         <servlet-class>controllers.DeleteCartServlet</servlet-class>
     </servlet>
@@ -122,10 +117,6 @@
         <servlet-class>controllers.ViewCustomerDetailsServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>UpdateUserServlet</servlet-name>
-        <servlet-class>controllers.UpdateUserServlet</servlet-class>
-        </servlet>
-        <servlet>
         <servlet-name>ApplyVoucherServlet</servlet-name>
         <servlet-class>controllers.ApplyVoucherServlet</servlet-class>
     </servlet>
@@ -134,10 +125,6 @@
         <servlet-class>controllers.CartConfirmationPageServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ConfirmCartServlet</servlet-name>
-        <servlet-class>controllers.ConfirmCartServlet</servlet-class>
-        </servlet>
-        <servlet>
         <servlet-name>ShowPaginatedUsersServlet</servlet-name>
         <servlet-class>controllers.ShowPaginatedUsersServlet</servlet-class>
     </servlet>
@@ -210,10 +197,6 @@
         <url-pattern>/ViewCartServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>DeleteCartServlet</servlet-name>
-        <url-pattern>/DeleteCartServlet</url-pattern>
-        </servlet-mapping>
-        <servlet-mapping>
         <servlet-name>GetSearchedProductsServlet</servlet-name>
         <url-pattern>/GetSearchedProductsServlet</url-pattern>
     </servlet-mapping>
@@ -222,10 +205,6 @@
         <url-pattern>/UpdateCartServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ApplyVoucherServlet</servlet-name>
-        <url-pattern>/ApplyVoucherServlet</url-pattern>
-        </servlet-mapping>
-        <servlet-mapping>
         <servlet-name>DeleteCartServlet</servlet-name>
         <url-pattern>/DeleteCartServlet</url-pattern>
     </servlet-mapping>
@@ -266,10 +245,6 @@
         <url-pattern>/ViewCustomerDetailsServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>UpdateUserServlet</servlet-name>
-        <url-pattern>/UpdateUserServlet</url-pattern>
-        </servlet-mapping>
-        <servlet-mapping>
         <servlet-name>ApplyVoucherServlet</servlet-name>
         <url-pattern>/ApplyVoucherServlet</url-pattern>
     </servlet-mapping>
@@ -278,10 +253,6 @@
         <url-pattern>/CartConfirmationPageServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ConfirmCartServlet</servlet-name>
-        <url-pattern>/ConfirmCartServlet</url-pattern>
-        </servlet-mapping>
-        <servlet-mapping>
         <servlet-name>ShowPaginatedUsersServlet</servlet-name>
         <url-pattern>/ShowPaginatedUsersServlet</url-pattern>
     </servlet-mapping>
