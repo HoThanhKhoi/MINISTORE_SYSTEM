@@ -188,10 +188,30 @@ tbody tr td {
     padding: 5px 15px; 
 }
 
-.del {
-    position: absolute;
-    bottom: 18%;
+.mainBodyCart{
+    position: relative;
 }
+.deldiv {
+    position: absolute;
+    top: 107%;
+}
+.del {
+    font-size: 16px !important;
+    font-weight: 700;
+    background-color: #b7b7b7;
+    color: #2E2E2E;
+    border: none;
+    border-radius: 10px !important;
+    padding: 5px 15px; 
+}
+
+.delbtn:hover {
+    color: lightgray;
+    background-color: dimgray;
+    border: none;
+
+}
+
 
 .button:hover {
     color: #1B9C85;
@@ -254,7 +274,7 @@ tbody tr:last-child {
 
 /*empty cart*/
 .empty-content {
-    height: 90vh;
+    height: 70vh !important;
     display: flex;
     flex-direction: column;
     justify-content: center;

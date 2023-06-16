@@ -47,7 +47,7 @@
                         <c:forEach var="searchItem" items="${requestScope.list}" begin="0" end="19">
                             <div class="col">
                                 <div class="item mb-4 text-center">
-                                    <div class="card border-0 shadow">
+                                    <div class="card border-0 shadow align-items-center">
                                         <img src="./image/Item.png" class="card-img-top" alt="">
                                         <div class="card-body">
                                             <h5 class="card-title mb-3 fw-bold">${searchItem.productName}</h5>
@@ -64,7 +64,7 @@
                         <c:forEach var="searchItem" items="${requestScope.slist}">
                             <div class="col">
                                 <div class="item mb-4 text-center">
-                                    <div class="card border-0 shadow">
+                                    <div class="card border-0 shadow align-items-center">
                                         <img src="./image/Item.png" class="card-img-top" alt="">
                                         <div class="card-body">
                                             <h5 class="card-title mb-3 fw-bold">${searchItem.productName}</h5>
@@ -79,7 +79,8 @@
                     </c:if>
                 </div>
             </div>
-            <nav aria-label="Page navigation example">
+            
+            <nav aria-label="Page navigation example" class="mt-4">
                 <ul class="pagination justify-content-center">
                     <li class="page-item">
                         <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showSearchedPage&page=${requestScope.page-1}&keyword=${requestScope.keyword}"><</a>

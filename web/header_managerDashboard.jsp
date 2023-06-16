@@ -27,8 +27,8 @@
     <body>
 
         <!-- HEADER -->
-        <nav class="navbar">
-            <div class="container-fluid header">
+        <nav class="header navbar">
+            <div class="container-fluid">
                 <ul class="nav nav-2 navbar-nav align-items-center">
                     <li class="nav-item">
                         <a href="homePage.jsp">

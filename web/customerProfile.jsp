@@ -58,8 +58,11 @@
                                     <a class="item" href="changePassword.jsp?id=${sessionScope.customer.userID}">Change
                                         Password</a>
                                 </div>
+                                <div class="item">
+                                    <a class="item" href="MainController?action=viewMyOrders">My Orders</a>
+                                </div>
                             </div>
-                        </div>
+                        </div> 
 
                         <!-- right side: User information -->
                         <div class="col-8 form-container">
@@ -115,8 +118,16 @@
                     </div>
                 </div>
 
+
+
+                <!-- FOOTER -->
+                <footer>
+                    <c:import url="footer.jsp" />
+                </footer>
+
             </c:otherwise>
         </c:choose>
+
     </body>
 
 </html>

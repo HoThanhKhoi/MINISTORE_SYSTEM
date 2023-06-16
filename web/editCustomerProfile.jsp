@@ -105,6 +105,11 @@
 
                     </div>
                 </div>
+
+                <!-- FOOTER -->
+                <footer>
+                    <c:import url="footer.jsp" />
+                </footer>
             </c:otherwise>
         </c:choose>
     </body>
