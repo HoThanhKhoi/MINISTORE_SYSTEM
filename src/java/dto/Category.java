@@ -7,11 +7,13 @@
  */
 package dto;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Admin
  */
-public class Category {
+public class Category implements Serializable {
     String CateID;
     String CateName;
     String imgPath;

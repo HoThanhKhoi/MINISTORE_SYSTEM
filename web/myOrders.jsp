@@ -29,127 +29,111 @@
     </head>
 
     <body>
-
-        <!--HEADER-->
-        <header>
-            <c:import url="header.jsp" />
-        </header>
-
-
-
-        <div class="container-fluid">
-            <div class="row">
-
-                <!-- menu -->
-                <div class="col-2 menu myOrder-menu">
-                    <ul class="">
-                        <li class="title text-center mb-4">
-                            <h3>My Order</h3>
-                        </li>
-
-                        <li class="row text-center my-3 active">
-                            <a href="" class="">Processing</a>
-                        </li>
-
-
-                        <li class="row text-center my-3">
-                            <a href="" class="">Delivering</a>
-                        </li>
-
-                        <li class="row text-center my-3">
-                            <a href="" class="">Completed</a>
-                        </li>
-
-                        <li class="row text-center my-3">
-                            <a href="" class="col">Canceled</a>
-                        </li>
-
-                    </ul>
-                </div>
+        <c:choose>
+            <c:when test="${sessionScope.customer == null}">
+                <jsp:forward page="login.jsp" />
+            </c:when>
+            <c:otherwise>
+                <!--HEADER-->
+                <header>
+                    <c:import url="header.jsp" />
+                </header>
 
 
 
-                <!-- table -->
-                <div class="col dashboard">
-                    <form class="search text-center d-flex align-items-center">
-                        <input type="text" placeholder="Search...">
-                        <button id="search-button" type="button" class="btn">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </form>
+                <div class="container-fluid">
+                    <div class="row">
+                        
+                        <c:if test="${requestScope.noti != null}">
+                            <h1>${requestScope.noti}</h1>
+                        </c:if>
+                            
+                        <!-- menu -->
+                        <div class="col-2 menu myOrder-menu">
+                            <ul class="">
+                                <li class="title text-center mb-4">
+                                    <h3>My Order</h3>
+                                </li>
+
+                                <li class="row text-center my-3 active">
+                                    <a href="MainController?action=viewMyOrders" class="">All</a>
+                                </li>
+
+                                <li class="row text-center my-3">
+                                    <a href="MainController?action=viewMyOrdersByStatus&status=1" class="">Processing</a>
+                                </li>
 
 
-                    <table class="table table-order mt-5 text-center">
-                        <thead>
-                            <tr>
-                                <th class="text-center" scope="col">ID</th>
-                                <th class="text-center" scope="col">Address</th>
-                                <th class="text-center" scope="col">Phone</th>
-                                <th class="text-center" scope="col">Status</th>
-                                <th class="text-center" scope="col">Total</th>
-                                <th class="text-center" scope="col">Details</th>
-                            </tr>
-                        </thead>
+                                <li class="row text-center my-3">
+                                    <a href="MainController?action=viewMyOrdersByStatus&status=2" class="">Delivering</a>
+                                </li>
 
-                        <tbody>
-                        <form>
-                            <tr>
-                                <td scope="row" class="fw-bold">1</td>
-                                <td>Address</td>
-                                <td>00000</td>
-                                <td>Processing</td>
-                                <td>$5</td>
-                                <td><a href="" >Order Details</a></td>
-                            </tr>
-                            <tr>
-                                <td scope="row" class="fw-bold">1</td>
-                                <td>Address</td>
-                                <td>00000</td>
-                                <td>Processing</td>
-                                <td>$5</td>
-                                <td><a href="" >Order Details</a></td>
-                            </tr>
-                            <tr>
-                                <td scope="row" class="fw-bold">1</td>
-                                <td>Address</td>
-                                <td>00000</td>
-                                <td>Processing</td>
-                                <td>$5</td>
-                                <td><a href="" >Order Details</a></td>
-                            </tr>
-                            <tr>
-                                <td scope="row" class="fw-bold">1</td>
-                                <td>Address</td>
-                                <td>00000</td>
-                                <td>Processing</td>
-                                <td>$5</td>
-                                <td><a href="" >Order Details</a></td>
-                            </tr>
-                            <tr>
-                                <td scope="row" class="fw-bold">1</td>
-                                <td>Address</td>
-                                <td>00000</td>
-                                <td>Processing</td>
-                                <td>$5</td>
-                                <td><a href="" >Order Details</a></td>
-                            </tr>
-                        </form>
-                        </tbody>
-                    </table>
+                                <li class="row text-center my-3">
+                                    <a href="MainController?action=viewMyOrdersByStatus&status=3" class="">Completed</a>
+                                </li>
 
-                    <div class="container mt-5 dashboard-footer">
-                        <div class="col-lg-12 d-flex justify-content-center">
-                            <a href="homePage.jsp" class="button check align-items-center">Explore more products
-                                <i class="fa-solid fa-angles-right "></i>   
-                            </a>
+                                <li class="row text-center my-3">
+                                    <a href="MainController?action=viewMyOrdersByStatus&status=4" class="col">Canceled</a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+
+
+                        <!-- table -->
+                        <div class="col dashboard">
+                            <form class="search text-center d-flex align-items-center">
+                                <input type="text" placeholder="Search...">
+                                <button id="search-button" type="button" class="btn">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </form>
+
+
+                            <table class="table table-order mt-5 text-center">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" scope="col">ID</th>
+                                        <th class="text-center" scope="col">Recipient</th>
+                                        <th class="text-center" scope="col">Phone</th>
+                                        <th class="text-center" scope="col">Address</th>
+                                        <th class="text-center" scope="col">Status</th>
+                                        <th class="text-center" scope="col">Total</th>
+                                        <th class="text-center" scope="col">Details</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <c:forEach var="order" items="${requestScope.ordersList}">
+                                        <tr>
+                                            <td scope="row" class="fw-bold">${order.orderID}</td>
+                                            <!--<td></td>-->
+                                            <td>${order.customerName}</td>
+                                            <td>${order.phone}</td>
+                                            <td>${order.address}</td>
+                                            <td>${order.status}</td>
+                                            <td>${order.totalMoney}</td>
+                                            <td><a href="MainController?action=viewOrderDetails&orderID=${order.orderID}" >Order Details</a></td>
+                                        </tr>
+                                    </c:forEach>
+                                </tbody>
+                            </table>
+
+                            <div class="container mt-5 dashboard-footer">
+                                <div class="col-lg-12 d-flex justify-content-center">
+                                    <a href="homePage.jsp" class="button check align-items-center">Explore more products
+                                        <i class="fa-solid fa-angles-right "></i>   
+                                    </a>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-
                 </div>
-            </div>
-        </div>
 
-        <footer><c:import url="footer.jsp"/></footer>
-
+                <footer><c:import url="footer.jsp"/></footer>
+                </c:otherwise>
+            </c:choose>
     </body>
 </html>

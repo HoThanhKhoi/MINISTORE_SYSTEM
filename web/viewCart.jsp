@@ -164,110 +164,22 @@
                                 <div class="table-footer mt-4">
                                     <div class="row mt-4 justify-content-end">
                                         <div class="voucher col-3">
-                                            <form action="MainController" method="get" class="d-flex">
+                                            <form action="MainController" method="post" class="d-flex">
                                                 <select class="form-select" aria-label="Default select example" name="vid">
                                                     <option selected>${VoucherDAO.getVoucher(param.vid).voucherCode}</option>
                                                     <c:forEach var="voucher" items="${sessionScope.voucherList}">
-                                                        <c:if test="${voucher.discount == 2.5}">
-                                                            <c:choose>
-                                                                <c:when test="${sessionScope.totalMoney >= 25}">
-                                                                    <option value="${voucher.voucherID}">${voucher.voucherCode} (Buy $25 to use)</option>
-                                                                </c:when>
-                                                                <c:otherwise>
-                                                                    <option disabled="" value="${voucher.voucherID}">${voucher.voucherCode} (Buy $25 to use)</option>
-                                                                </c:otherwise>
-                                                            </c:choose>
-                                                        </c:if>
-                                                        <c:if test="${voucher.discount == 5}">
-                                                            <c:choose>
-                                                                <c:when test="${sessionScope.totalMoney >= 35}">
-                                                                    <option value="${voucher.voucherID}">${voucher.voucherCode} (Buy $35 to use)</option>
-                                                                </c:when>
-                                                                <c:otherwise>
-                                                                    <option disabled="" value="${voucher.voucherID}">${voucher.voucherCode} (Buy $35 to use)</option>
-                                                                </c:otherwise>
-                                                            </c:choose>
-                                                        </c:if>
-                                                        <c:if test="${voucher.discount == 7.5}">
-                                                            <c:choose>
-                                                                <c:when test="${sessionScope.totalMoney >= 45}">
-                                                                    <option value="${voucher.voucherID}">${voucher.voucherCode} (Buy $45 to use)</option>
-                                                                </c:when>
-                                                                <c:otherwise>
-                                                                    <option disabled="" value="${voucher.voucherID}">${voucher.voucherCode} (Buy $45 to use)</option>
-                                                                </c:otherwise>
-                                                            </c:choose>
-                                                        </c:if>
-                                                        <c:if test="${voucher.discount == 10}">
-                                                            <c:choose>
-                                                                <c:when test="${sessionScope.totalMoney >= 55}">
-                                                                    <option value="${voucher.voucherID}">${voucher.voucherCode} (Buy $55 to use)</option>
-                                                                </c:when>
-                                                                <c:otherwise>
-                                                                    <option disabled="" value="${voucher.voucherID}">${voucher.voucherCode} (Buy $55 to use)</option>
-                                                                </c:otherwise>
-                                                            </c:choose>
-                                                        </c:if>
-                                                        <c:if test="${voucher.discount == 15}">
-                                                            <c:choose>
-                                                                <c:when test="${sessionScope.totalMoney >= 115}">
-                                                                    <option value="${voucher.voucherID}">${voucher.voucherCode} (Buy $115 to use)</option>
-                                                                </c:when>
-                                                                <c:otherwise>
-                                                                    <option disabled="" value="${voucher.voucherID}">${voucher.voucherCode} (Buy $115 to use)</option>
-                                                                </c:otherwise>
-                                                            </c:choose>
-                                                        </c:if>
-                                                        <c:if test="${voucher.discount == 20}">
-                                                            <c:choose>
-                                                                <c:when test="${sessionScope.totalMoney >= 145}">
-                                                                    <option value="${voucher.voucherID}">${voucher.voucherCode} (Buy $145 to use)</option>
-                                                                </c:when>
-                                                                <c:otherwise>
-                                                                    <option disabled="" value="${voucher.voucherID}">${voucher.voucherCode} (Buy $145 to use)</option>
-                                                                </c:otherwise>
-                                                            </c:choose>
-                                                        </c:if>
-                                                        <c:if test="${voucher.discount == 25}">
-                                                            <c:choose>
-                                                                <c:when test="${sessionScope.totalMoney >= 185}">
-                                                                    <option value="${voucher.voucherID}">${voucher.voucherCode} (Buy $185 to use)</option>
-                                                                </c:when>
-                                                                <c:otherwise>
-                                                                    <option disabled="" value="${voucher.voucherID}">${voucher.voucherCode} (Buy $185 to use)</option>
-                                                                </c:otherwise>
-                                                            </c:choose>
-                                                        </c:if>
-                                                        <c:if test="${voucher.discount == 30}">
-                                                            <c:choose>
-                                                                <c:when test="${sessionScope.totalMoney >= 245}">
-                                                                    <option value="${voucher.voucherID}">${voucher.voucherCode} (Buy $245 to use)</option>
-                                                                </c:when>
-                                                                <c:otherwise>
-                                                                    <option disabled="" value="${voucher.voucherID}">${voucher.voucherCode} (Buy $245 to use)</option>
-                                                                </c:otherwise>
-                                                            </c:choose>
-                                                        </c:if>
-                                                        <c:if test="${voucher.discount == 35}">
-                                                            <c:choose>
-                                                                <c:when test="${sessionScope.totalMoney >= 375}">
-                                                                    <option value="${voucher.voucherID}">${voucher.voucherCode} (Buy $375 to use)</option>
-                                                                </c:when>
-                                                                <c:otherwise>
-                                                                    <option disabled="" value="${voucher.voucherID}">${voucher.voucherCode} (Buy $375 to use)</option>
-                                                                </c:otherwise>
-                                                            </c:choose>
-                                                        </c:if>
-                                                        <c:if test="${voucher.discount == 40}">
-                                                            <c:choose>
-                                                                <c:when test="${sessionScope.totalMoney >= 575}">
-                                                                    <option value="${voucher.voucherID}">${voucher.voucherCode} (Buy $575 to use)</option>
-                                                                </c:when>
-                                                                <c:otherwise>
-                                                                    <option disabled="" value="${voucher.voucherID}">${voucher.voucherCode} (Buy $575 to use)</option>
-                                                                </c:otherwise>
-                                                            </c:choose>
-                                                        </c:if>
+                                                        <c:choose>
+                                                            <c:when test="${sessionScope.totalMoney >= voucher.limitPrice}">
+                                                                <option value="${voucher.voucherID}">
+                                                                    ${voucher.voucherCode} (Buy $${voucher.limitPrice} to use)
+                                                                </option>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <option disabled="" value="${voucher.voucherID}">
+                                                                    ${voucher.voucherCode} (Buy $${voucher.limitPrice} to use)
+                                                                </option>
+                                                            </c:otherwise>
+                                                        </c:choose>
                                                     </c:forEach>
                                                 </select>
                                                 <button class="button apply mx-2" type="submit" type="submit" name="action" value="applyVoucher">Apply</button>

@@ -37,10 +37,6 @@
         <servlet-class>controllers.ShowPaginateServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>showCategoriesServlet</servlet-name>
-        <servlet-class>controllers.showCategoriesServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>controllers.LoginServlet</servlet-class>
     </servlet>
@@ -139,6 +135,18 @@
     <servlet>
         <servlet-name>SearchUsersServlet</servlet-name>
         <servlet-class>controllers.SearchUsersServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewMyOrdersServlet</servlet-name>
+        <servlet-class>controllers.ViewMyOrdersServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewMyOrdersByStatusServlet</servlet-name>
+        <servlet-class>controllers.ViewMyOrdersByStatusServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewOrderDetailsServlet</servlet-name>
+        <servlet-class>controllers.ViewOrderDetailsServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ResetPassServlet</servlet-name>
@@ -267,6 +275,18 @@
     <servlet-mapping>
         <servlet-name>SearchUsersServlet</servlet-name>
         <url-pattern>/SearchUsersServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewMyOrdersServlet</servlet-name>
+        <url-pattern>/ViewMyOrdersServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewMyOrdersByStatusServlet</servlet-name>
+        <url-pattern>/ViewMyOrdersByStatusServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewOrderDetailsServlet</servlet-name>
+        <url-pattern>/ViewOrderDetailsServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

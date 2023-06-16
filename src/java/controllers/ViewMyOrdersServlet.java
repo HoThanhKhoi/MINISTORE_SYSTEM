@@ -6,12 +6,11 @@
 package controllers;
 
 import dao.OrderDAO;
+import dto.Order;
 import dto.User;
-import dto.Voucher;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Timestamp;
-import java.util.HashMap;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +21,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author ACER
  */
-public class ConfirmCartServlet extends HttpServlet {
+public class ViewMyOrdersServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,39 +36,16 @@ public class ConfirmCartServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            HttpSession session = request.getSession(false);
-            String customerID = request.getParameter("cusID");
-            String customerName = request.getParameter("cusName");
-            String phone = request.getParameter("phone");
-            String address = request.getParameter("address");
-            String postalCode = request.getParameter("postalCode");
-            Timestamp time = new Timestamp(System.currentTimeMillis());
-            HashMap<String, Integer> cart = (HashMap<String, Integer>) session.getAttribute("cart");
-            String voucherID;
-            if (session.getAttribute("voucher") == null) {
-                voucherID = null;
+            HttpSession session = request.getSession();
+            User customer = (User) session.getAttribute("customer");
+            ArrayList<Order> ordersList = OrderDAO.getMyOrders(customer.getUserID());
+            if (ordersList == null || ordersList.isEmpty()) {
+                request.setAttribute("noti", "You don't have any orders.");
+                request.getRequestDispatcher("myOrders.jsp").forward(request, response);
             } else {
-                Voucher voucher = (Voucher) session.getAttribute("voucher");
-                voucherID = voucher.getVoucherID();
+                request.setAttribute("ordersList", ordersList);
+                request.getRequestDispatcher("myOrders.jsp").forward(request, response);
             }
-            String totalMoney = request.getParameter("totalMoney");
-            if (cart != null && !cart.isEmpty()) {
-                if (session.getAttribute("customer") == null) { //not login
-                    request.setAttribute("error", "You must login to checkout.");
-                } else {
-                    boolean result = OrderDAO.insertOrder(customerID, customerName, 
-                            phone, address, postalCode, cart, Float.parseFloat(totalMoney), voucherID);
-                    if (result) {
-                        session.setAttribute("cart", null);
-                        session.setAttribute("voucher", null);
-                        session.setAttribute("totalMoney", null);
-                        request.setAttribute("noti", "Save sucessfully.");
-                    } else {
-                        request.setAttribute("error", "Save fail.");
-                    }
-                }
-            }
-            request.getRequestDispatcher("orderSuccessful.jsp").forward(request, response);
         }
     }
 

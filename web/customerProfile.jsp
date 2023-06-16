@@ -58,6 +58,9 @@
                                     <a class="item" href="changePassword.jsp?id=${sessionScope.customer.userID}">Change
                                         Password</a>
                                 </div>
+                                <div class="item">
+                                    <a class="item" href="MainController?action=viewMyOrders">My Orders</a>
+                                </div>
                             </div>
                         </div>
 

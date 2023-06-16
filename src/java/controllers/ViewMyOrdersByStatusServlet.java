@@ -5,18 +5,23 @@
  */
 package controllers;
 
+import dao.OrderDAO;
+import dto.Order;
+import dto.User;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Admin
+ * @author ACER
  */
-public class showCategoriesServlet extends HttpServlet {
+public class ViewMyOrdersByStatusServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,8 +36,17 @@ public class showCategoriesServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            
+            HttpSession session = request.getSession();
+            User customer = (User) session.getAttribute("customer");
+            int status = Integer.parseInt(request.getParameter("status"));
+            ArrayList<Order> ordersList = OrderDAO.getMyOrdersByStatus(customer.getUserID(), status);
+            if (ordersList == null || ordersList.isEmpty()) {
+                request.setAttribute("noti", "You don't have any orders.");
+                request.getRequestDispatcher("myOrders.jsp").forward(request, response);
+            } else {
+                request.setAttribute("ordersList", ordersList);
+                request.getRequestDispatcher("myOrders.jsp").forward(request, response);
+            }
         }
     }
 
