@@ -11,12 +11,16 @@ body {
     background-color: #FEFBF6 !important;
 }
 
-.navbar_path  {
+.path {
+    padding: 0 8px !important;
+}
+
+.navbar_path  nav {
     display: inline-block !important;
-    margin-left: 100px !important; 
 }
 
 .breadcrumb {
+    padding: 0 !important;
     background-color: transparent !important;
 }
 
@@ -63,19 +67,64 @@ body {
 
 .group-quantity input {
     width: 50px;
-    height: 30px;
+    padding: 10px;
     text-align: center;
     color: #1B9C85 !important;
     background-color: #E4E3E0;
     border: none;
+    margin: 0 -3px;
 }
 
 .group-quantity i {
-    color: #1B9C85;
+    font-size: 14px;
+    text-align: center;
+    border: none;
+    color: #1B9C85 !important;
 }
+
+.quantity-button {
+    color: #1B9C85;
+    padding: 10px;
+    margin: 0 5px;
+    text-align: center;
+    background-color: #E4E3E0;
+    border: none;
+}
+
+.quantity-button:first-child {
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.quantity-button:last-child {
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.button {
+    font-size: 16px !important;
+    font-weight: 700;
+    background-color: #1B9C85;
+    color: #fff;
+    border: 1px solid #1B9C85;
+    border-radius: 10px !important;
+    padding: 5px 15px; 
+}
+
+
+.button:hover {
+    color: #1B9C85;
+    background-color: #fff;
+    border: 1px solid #1B9C85;
+}
+
 
 .notification {
     margin-left: 40px;
+}
+
+.notification p {
+    margin: 0 !important;
 }
 
 .notification span {
@@ -87,7 +136,7 @@ body {
     color: #1B9C85;
     border: 1px solid #1B9C85;
     border-radius: 40px;
-    margin-top: 30px !important;
+    margin-top: 20px !important;
     padding: 10px 20px !important;
 }
 
@@ -114,6 +163,7 @@ input::-webkit-inner-spin-button {
     margin: 0 15px;
 }
 
+
 .card img {
     width: 200px !important;
     height: 180px;
@@ -124,9 +174,6 @@ input::-webkit-inner-spin-button {
     transition: 0.5s;
 }
 
-.card-body {
-    margin: 20px 0;
-}
 
 .bricked-price {
     text-decoration: line-through;
@@ -184,6 +231,7 @@ input::-webkit-inner-spin-button {
     font-size: 16px;
 }
 
+
 /* Back To Top */
 #btn-back-to-top {
     position: fixed;
@@ -197,3 +245,6 @@ input::-webkit-inner-spin-button {
     height: 40px;
 }
 
+.product-detail {
+    margin-bottom: 100px;
+}

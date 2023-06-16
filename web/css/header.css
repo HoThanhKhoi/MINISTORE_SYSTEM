@@ -15,7 +15,8 @@ body {
 
 .header {
     background-color: #F6F5DB;
-    padding: 10px 50px !important;
+    padding: 10px 50px !important; 
+    height: 100%;
 }
 
 
@@ -24,12 +25,10 @@ body {
     height: 10vh;
     padding: 0 !important;
     margin: 0 !important;
-    border-bottom: 5px solid #07484A;
+    border-bottom: 5px solid #07484A; 
+
 }
 
-.header {
-    height: 100%;
-}
 
 .nav-2 {
     width: 20%;

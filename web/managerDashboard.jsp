@@ -113,6 +113,12 @@
                 </div>
             </div>
         </div>
+
+
+        <!-- FOOTER -->
+        <footer>
+            <c:import url="footer.jsp" />
+        </footer>
     </body>
 
 </html>

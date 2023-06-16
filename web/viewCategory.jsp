@@ -39,61 +39,74 @@
             <div class="row">
 
                 <!-- menu -->
-                <div class="col-2 menu">
-                    <ul>
-                        <li class="row">
-                            <i class="fa-solid fa-user mx-3 col-2"></i>
-                            <a href="" class="col-2">User</a>
-                        </li>
+                <div class="menu-btn">
+                    <input type="checkbox" id="nav-toggle">
+                </div>
 
-                        <!-- class="collapse"-->
 
-                        <li class="row ">
-                            <i class="col-2 mx-3"></i>
-                            <a href="viewCustomers.jsp" class="col-2">Customer</a>
-                        </li>
+                <div class="col-2 side-bar">
+                    <!--                    <header>
+                                            <div class="close-btn">
+                                                <i class="fa-sharp fa-solid fa-circle-xmark"></i>
+                                            </div>
+                                        </header>-->
 
-                        <li class="row">
-                            <i class="col-2 mx-3"></i>
-                            <a href="" class="col-2">Sale</a>
-                        </li>
 
-                        <li class="row">
-                            <i class="col-2 mx-3"></i>
-                            <a href="" class="col-2">Guard</a>
-                        </li>
+                    <div class="menu">
+                        <div class="item">
+                            <a class="sub-btn">
+                                <i class="fa-solid fa-user mx-3"></i>
+                                User
+                                <i class="fa-solid fa-angle-right dropdown"></i>
+                            </a>
+                            <div class="sub-menu">
+                                <a href="#" class="sub-item active">Customers</a>
+                                <a href="#" class="sub-item">Sales</a>
+                                <a href="#" class="sub-item">Guards</a>
+                            </div>
+                        </div>
 
-                        <li class="row active">
-                            <i class="fa-solid fa-bars-staggered mx-3 col-2"></i>
-                            <a href="" class="col-2">Category</a>
-                        </li>
+                        <div class="item">
+                            <a class="sub-btn">
+                                <span><i class="fa-solid fa-bars-staggered mx-3"></i></span>
+                                <span>Category</span>
+                            </a>
+                        </div>
 
-                        <li class="row">
-                            <i class="fa-solid fa-box mx-3 col-2"></i>
-                            <a href="" class="col-2">Product</a>
-                        </li>
+                        <div class="item">
+                            <a class="sub-btn">
+                                <span><i class="fa-solid fa-box mx-3"></i></span>
+                                <span>Product</span>
+                            </a>
+                        </div>
 
-                        <li class="row">
-                            <i class="fa-solid fa-tag mx-3 col-2"></i>
-                            <a href="" class="col-2">Voucher</a>
-                        </li>
+                        <div class="item">
+                            <a class="sub-btn">
+                                <span><i class="fa-solid fa-tag mx-3"></i></span>
+                                <span>Voucher</span>
+                            </a>
+                        </div>
 
-                        <li class="row">
-                            <i class="fa-solid fa-clipboard-user mx-3 col-2"></i>
-                            <a href="" class="col-2">Attendance</a>
-                        </li>
+                        <div class="item">
+                            <a class="sub-btn">
+                                <span><i class="fa-solid fa-clipboard-user mx-3"></i></span>
+                                <span>Attendance</span>
+                            </a>
+                        </div>
 
-                        <li class="row">
-                            <i class="fa-solid fa-cart-shopping mx-3 col-2"></i>
-                            <a href="" class="col-2">Order</a>
-                        </li>
+                        <div class="item">
+                            <a class="sub-btn">
+                                <span><i class="fa-solid fa-cart-shopping mx-3"></i></span>
+                                <span>Order</span>
+                            </a>
+                        </div>
 
-                    </ul>
+                    </div>
                 </div>
 
 
                 <!-- table -->
-                <div class="col dashboard">
+                <div class="col dashboard ">
                     <form class="search text-center d-flex align-items-center">
                         <input type="text" placeholder="Search...">
                         <button id="search-button" type="button" class="btn">
@@ -125,5 +138,32 @@
 
             </div>
         </div>
+        
+         <!-- FOOTER -->
+        <footer>
+            <c:import url="footer.jsp" />
+        </footer>
+        
+        <script type="text/javascript">
+            $(document).ready(function () {
+//jquery for toggle sub menus
+                $('.sub-btn').click(function () {
+                    $(this).next('.sub-menu').slideToggle();
+                    $(this).find('.dropdown').toggleClass('rotate');
+                });
+
+//jquery for expand and collapse the sidebar
+                $('.menu-btn').click(function () {
+                    $('.side-bar').addClass('active');
+                    $('.menu-btn').css("visibility", "hidden");
+                });
+
+                $('.close-btn').click(function () {
+                    $('.side-bar').removeClass('active');
+                    $('.menu-btn').css("visibility", "visible");
+                });
+            });
+        </script>
+
     </body>
 </html>

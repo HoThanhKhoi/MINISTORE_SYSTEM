@@ -1,8 +1,4 @@
-<%-- 
-    Document   : changePassword
-    Created on : May 30, 2023, 7:38:24 AM
-    Author     : Admin
---%>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -38,6 +34,7 @@
                 <jsp:forward page="login.jsp"/>
             </c:when>
             <c:otherwise>
+                <c:set var="customer" value="${sessionScope.customer}" />
 
                 <!--HEADER-->
                 <header>
@@ -96,8 +93,8 @@
                                     <a role="button" value="Reset" href="customerProfile.jsp?&id=${sessionScope.customer.userID}" class="btn btn-primary mt-3 px-3 py-2  fw-bold">Cancel</a>
                                 </div>
                             </form>
-                                
-                                
+
+
                             <c:if test="${requestScope.error != null}">
                                 <div class="alert alert-danger alert-dismissible fade show notification" role="alert" style="padding: 15px 45px;text-align: center;width:430px;opacity: 100%;margin: 30px auto">
                                     <strong class="error">${requestScope.error}</strong> 
@@ -114,6 +111,11 @@
                     </div>
 
                 </div>
+
+                <!-- FOOTER -->
+                <footer>
+                    <c:import url="footer.jsp" />
+                </footer>
             </c:otherwise>
         </c:choose>
     </body>

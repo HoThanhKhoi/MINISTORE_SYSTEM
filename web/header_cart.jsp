@@ -29,8 +29,8 @@
     <body>
 
         <!-- HEADER -->
-        <nav class="navbar">
-            <div class="container-fluid header">
+        <nav class="header navbar">
+            <div class="container-fluid">
                 <ul class="nav nav-2 navbar-nav justify-content-start">
                     <li class="nav-item">
                         <a href="homePage.jsp">
@@ -60,7 +60,7 @@
                         <a href="MainController?action=viewCart" class="nav-link">
                             <span class="cart">
                                 <i class="fa-solid fa-cart-shopping ">
-                                    <span class="badge rounded-pill badge-notification bg-danger">1</span>
+                                    <!--<span class="badge rounded-pill badge-notification bg-danger">1</span>-->
                                 </i>
                             </span>
                         </a>
