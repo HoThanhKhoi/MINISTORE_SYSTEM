@@ -197,3 +197,12 @@ input::-webkit-inner-spin-button {
     height: 40px;
 }
 
+.card-body a{
+    text-decoration: none;
+    color: #000;
+}
+.card-body a:hover {
+    color: #1B9C85;
+    text-decoration: none;
+}
+

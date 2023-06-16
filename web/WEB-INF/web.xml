@@ -140,6 +140,34 @@
         <servlet-name>SearchUsersServlet</servlet-name>
         <servlet-class>controllers.SearchUsersServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewSaleDashboardServlet</servlet-name>
+        <servlet-class>controllers.ViewSaleDashboardServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManageSaleOrdersServlet</servlet-name>
+        <servlet-class>controllers.ManageSaleOrdersServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChangeToAddPageServlet</servlet-name>
+        <servlet-class>controllers.ChangeToAddPageServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddEmployeeServlet</servlet-name>
+        <servlet-class>controllers.AddEmployeeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewAllProductsServlet</servlet-name>
+        <servlet-class>controllers.ViewAllProductsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewAllCategoriesServlet</servlet-name>
+        <servlet-class>controllers.ViewAllCategoriesServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowPaginatedItemsServlet</servlet-name>
+        <servlet-class>controllers.ShowPaginatedItemsServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ResetPassServlet</servlet-name>
         <url-pattern>/ResetPassServlet</url-pattern>
@@ -267,6 +295,34 @@
     <servlet-mapping>
         <servlet-name>SearchUsersServlet</servlet-name>
         <url-pattern>/SearchUsersServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewSaleDashboardServlet</servlet-name>
+        <url-pattern>/ViewSaleDashboardServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageSaleOrdersServlet</servlet-name>
+        <url-pattern>/ManageSaleOrdersServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangeToAddPageServlet</servlet-name>
+        <url-pattern>/ChangeToAddPageServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddEmployeeServlet</servlet-name>
+        <url-pattern>/AddEmployeeServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewAllProductsServlet</servlet-name>
+        <url-pattern>/ViewAllProductsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewAllCategoriesServlet</servlet-name>
+        <url-pattern>/ViewAllCategoriesServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowPaginatedItemsServlet</servlet-name>
+        <url-pattern>/ShowPaginatedItemsServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

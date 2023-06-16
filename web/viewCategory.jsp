@@ -1,4 +1,5 @@
 
+<%@page import="dao.CategoryDAO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -112,18 +113,44 @@
 
                         <tbody>
                         <form action="MainController" action="post">
-                            <tr>
-                                <td>1</td>
-                                <td>Fruits</td>
-                            </tr>
+                            <c:if test="${requestScope.cplist == null}">
+                                <c:forEach var="cate" items="${requestScope.cateList}" begin="0" end="6">
+                                    <tr>
+                                        <td>${cate.cateID}</td>
+                                        <td>${cate.cateName}</td>
+                                    </tr>
+                                </c:forEach>
+                            </c:if>
+                            <c:if test="${requestScope.cplist != null}">
+                                <c:forEach var="cate" items="${requestScope.cplist}" begin="0" end="6">
+                                    <tr>
+                                        <td>${cate.cateID}</td>
+                                        <td>${cate.cateName}</td>
+                                    </tr>
+                                </c:forEach>
+                            </c:if>  
                         </form>
                         </tbody>
                     </table>
                 </div>
-
-
-
             </div>
+            <nav aria-label="Page navigation example" style="margin-top: 50px ">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                        <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=${requestScope.page-1}&items=category"><</a>
+                    </li>
+                    <% int totalCategories = CategoryDAO.getCategories().size();
+                        int element = 7;
+                        float numOfPages = (float) totalCategories / element;
+                    %>
+                    <%for (int i = 1; i <= (int) Math.ceil(numOfPages); i++) {%>
+                    <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=<%=i%>&items=category"><%=i%></a></li>
+                        <% }%>
+                    <li class="page-item">
+                        <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=${requestScope.page+1}&items=category">></a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </body>
 </html>

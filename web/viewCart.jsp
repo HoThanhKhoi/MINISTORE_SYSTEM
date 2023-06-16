@@ -58,7 +58,7 @@
                             <a href="MainController?action=backToHome">Home</a>
                         </li>
                         <li class="breadcrumb-item active">
-                            <a href="MainController>action=ViewCartServlet">Your Cart</a>
+                            <a href="MainController?action=ViewCartServlet">Your Cart</a>
                         </li>
                     </ol>
                 </nav>
@@ -126,7 +126,6 @@
                                                 <td class="cart-item-title">
                                                     <h5>${sessionScope.nameList.get(cartKey)}</h5>
                                                 </td>
-
                                                 <td class="cart-price">${sessionScope.priceList.get(cartKey)}</td>
 
                                                 <td class="cart-quantity">
@@ -298,7 +297,7 @@
 
                     <c:if test="${requestScope.error != null}">
                         <div class="alert alert-danger alert-dismissible fade show notification" role="alert" style="padding: 15px 45px;text-align: center;width:430px;opacity: 100%;margin: 30px auto">
-                            <strong class="error">${requestScope.error}</strong> 
+                            <strong class="error">${requestScope.error}</strong>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="width:20px"></button>
                         </div>
                     </c:if>            

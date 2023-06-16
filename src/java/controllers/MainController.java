@@ -102,8 +102,21 @@ public class MainController extends HttpServlet {
                 url = "ConfirmCartServlet";
             } else if (action.equalsIgnoreCase("searchUsers")) {
                 url = "SearchUsersServlet";
+            } else if (action.equalsIgnoreCase("manageSaleOrders")) {
+                url = "ManageSaleOrdersServlet";
+            } else if (action.equalsIgnoreCase("addEmployeePage")) {
+                url = "ChangeToAddPageServlet";
+            } else if (action.equalsIgnoreCase("addEmployee")) {
+                url = "AddEmployeeServlet";
+            } else if (action.equalsIgnoreCase("viewAllProducts")) {
+                url = "ViewAllProductsServlet";
+            } else if (action.equalsIgnoreCase("viewAllCategories")) {
+                url = "ViewAllCategoriesServlet";
+            } else if (action.equalsIgnoreCase("showItemsPage")) {
+                url = "ShowPaginatedItemsServlet";
             }
 
+ 
              RequestDispatcher rd = request.getRequestDispatcher(url);
              rd.forward(request, response);    
              

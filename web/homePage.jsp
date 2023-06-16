@@ -301,13 +301,13 @@
                                         <!-- begin item -->
                                         <div class="item mb-4 text-center">
                                             <div class="card border-0 shadow">
-                                                <img src="./image/Item.png" class="card-img-top" alt="">
+                                                <img src="${product.imgPath}" class="card-img-top" alt="">
                                                 <div class="card-body">
                                                     <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProduct&pid=${product.productID}&cateID=${product.cateID}">${product.productName}</a></h5>
                                                     <span class="bricked-price mx-2">${product.price}</span>
                                                     <fmt:formatNumber value="${product.price-0.5}" pattern="#,##0.00" var="formattedNumber" />
                                                     <span class="price fw-bold mx-2">${formattedNumber}</span></br>                                                  
-                                                    <a href="MainController?action=addToCart&pid=${product.productID}&cid=${product.productID}&quantity=1" class="btn btn-primary mt-3 px-3 py-2 fw-bold">Add To Cart</a>
+                                                    <a href="MainController?action=addToCart&pid=${product.productID}&cid=${product.cateID}&quantity=1" class="btn btn-primary mt-3 px-3 py-2 fw-bold">Add To Cart</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -321,13 +321,13 @@
                                         <!-- begin item -->
                                         <div class="item mb-4 text-center">
                                             <div class="card border-0 shadow">
-                                                <img src="./image/Item.png" class="card-img-top" alt="">
+                                                <img src="${product.imgPath}" class="card-img-top" alt="">
                                                 <div class="card-body">
                                                     <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProduct&pid=${product.productID}&cateID=${product.cateID}">${product.productName}</a></h5>
                                                     <span class="bricked-price mx-2">${product.price}</span>
                                                     <fmt:formatNumber value="${formattedNumber}" pattern="#,##0.00" var="formattedNumber" />
                                                     <span class="price fw-bold mx-2">${Math.round(product.price)-0.45}</span></br>
-                                                    <a href="MainController?action=addToCart&pid=${product.productID}&cid=${product.productID}&quantity=1" class="btn btn-primary mt-3 px-3 py-2 fw-bold">Add To Cart</a>
+                                                    <a href="MainController?action=addToCart&pid=${product.productID}&cid=${product.cateID}&quantity=1" class="btn btn-primary mt-3 px-3 py-2 fw-bold">Add To Cart</a>
                                                 </div>
                                             </div>
                                         </div>

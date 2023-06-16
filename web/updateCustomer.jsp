@@ -50,17 +50,17 @@
 
                         <li class="row active">
                             <i class="col-2 mx-3"></i>
-                            <a href="" class="col-2">Customer</a>
+                            <a href="MainController?action=viewCustomers" class="col-2">Customer</a>
                         </li>
 
                         <li class="row">
                             <i class="col-2 mx-3"></i>
-                            <a href="" class="col-2">Sale</a>
+                            <a href="MainController?action=viewSales" class="col-2">Sale</a>
                         </li>
 
                         <li class="row">
                             <i class="col-2 mx-3"></i>
-                            <a href="" class="col-2">Guard</a>
+                            <a href="MainController?action=viewGuards" class="col-2">Guard</a>
                         </li>
 
                         <li class="row">

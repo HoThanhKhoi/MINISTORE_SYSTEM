@@ -25,16 +25,24 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
               integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
               crossorigin="anonymous" referrerpolicy="no-referrer" />
-
         <link rel="stylesheet" href="./js/index.js">
     </head>
 
     <body>
 
-
+        <header>
+            <c:choose>
+                <c:when test="${sessionScope.customer != null}">
+                    <c:import url="header.jsp" />
+                </c:when>
+                <c:otherwise>
+                    <c:import url="header_unlogined.jsp" />
+                </c:otherwise>
+            </c:choose>
+        </header>
         <!-- HEADER PATH -->
-        <nav class="navbar navbar-expand-lg header-path mb-4">
-            <div class="container">
+        <nav class="navbar navbar_path navbar-expand-lg header-path mb-4">
+            <div class="container-fluid">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
@@ -50,21 +58,20 @@
 
 
         <!-- RELATED PRODUCT -->
-        <div class="container related-product my-5">
-
-            <div class="row row-cols-md-4 d-flex justify-content-center" style="width: 100%;">
+        <div class="container-fluid product-detail my-5">
+            <div class="item-list mx-5">
+                <div class="row">
                 <c:if test="${requestScope.proCateList != null}">
                     <c:forEach var="proCate" items="${requestScope.proCateList}">
-                        <div class="col col-sm-6" style="width: 15rem;">
-                            <!-- begin item -->
-                            <div class="item item-card mb-4 text-center">
+                        <div class="col">
+                            <div class="item mb-4 text-center">
                                 <div class="card border-0 shadow">
-                                    <img src="images/Item.png" class="card-img-top" alt="">
+                                    <img src="${proCate.imgPath}" class="card-img-top" alt="">
                                     <div class="card-body">
                                         <h5 class="card-title mb-3 fw-bold">${proCate.productName}</h5>
                                         <span class="bricked-price mx-2">${proCate.price}</span>
                                         <span class="price fw-bold mx-2">${Math.round(proCate.price) - 0.45}</span></br>
-                                        <a href="#" class="btn btn-primary mt-3 px-3 py-2 fw-bold">Add To Cart</a>
+                                        <a href="MainController?action=addToCart&quantity=1&pid=${proCate.productID}&cid=${proCate.cateID}" class="btn btn-primary mt-3 px-3 py-2 fw-bold">Add To Cart</a>
                                     </div>
                                 </div>
                             </div>
@@ -73,6 +80,7 @@
                     </c:forEach>
                 </c:if>    
             </div>
+                </div>
         </div>
     </div>
 

@@ -7,7 +7,11 @@ import dao.UserDAO;
 import dto.Category;
 import dto.Product;
 import Utils.DBUtils;
+import dao.OrderDAO;
+import dao.WorksheetDAO;
+import dto.Order;
 import dto.User;
+import dto.Worksheet;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -66,9 +70,9 @@ public class main {
 //        System.out.println(list.get(i).getName());
 //    }
 //System.out.println(FormatDouble.formatNumber(134.56789));
-ArrayList<User> list = UserDAO.searchUsers(3, "h");
+ArrayList<Worksheet> list = WorksheetDAO.getAllWorksheets();
     for(int i = 0; i< list.size();i++){
-        System.out.println(list.get(i).getName());
+        System.out.println(list.get(i).getCoeffiecent());
     }
     
     

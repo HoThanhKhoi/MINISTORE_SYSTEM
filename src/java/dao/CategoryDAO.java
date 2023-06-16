@@ -56,4 +56,18 @@ public class CategoryDAO {
         cn.close();
         return cateList;
     }
+    public static ArrayList<Category> getPaginatedCategory(int pageNumber, int productPerPage) throws Exception {
+        ArrayList<Category> list = new ArrayList<>();
+        ArrayList<Category> cateList = CategoryDAO.getCategories();
+        Connection cn = DBUtils.makeConnection();
+        int start = (pageNumber - 1) * productPerPage;
+        int end = start + productPerPage - 1;
+        if (end > cateList.size()) {
+            end = cateList.size() - 1;
+        }
+        for (int i = start; i <= end; i++) {
+            list.add(cateList.get(i));
+        }
+        return list;
+    }
 }

@@ -64,7 +64,7 @@
 
                         <li class="row" id="collapseExample">
                             <i class="col-2 mx-3"></i>
-                            <a href="" class="col-2">Guard</a>
+                            <a href="MainController?action=viewGuards" class="col-2">Guard</a>
                         </li>
                         </li>
 
@@ -121,90 +121,118 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <c:if test="${requestScope.clist == null || requestScope.keyword == null}">
-                                <c:forEach var="customer" items="${UserDAO.getUsersByRole(3)}" begin="0" end="6">
-                                <form action="MainController" action="post">
-                                    <tr>
-                                        <td scope="row">${customer.userID}</td>
-                                        <td>${customer.name}</td>
-                                        <td>${customer.email}</td>
-                                        <td>${customer.phone}</td>
-                                        <td>${customer.address}</td>
-                                        <c:choose>
-                                            <c:when test="${customer.status == 0}"><td>Inactive</td></c:when>
-                                            <c:otherwise><td>Active</td></c:otherwise>
-                                        </c:choose>
-                                    <input type="hidden" name="userid" value="${customer.userID}"/>
-                                    <td>
-                                        <button type="submit" name="action" value="viewCustomerDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
-                                    </td>
-                                    </tr>
-                                </form>
-                            </c:forEach>
-                        </c:if>
-                            <c:if test="${requestScope.clist !=null && requestScope.keyword!=null}">
-                            <c:forEach var="customer" items="${requestScope.clist}">
-                                <form action="MainController" action="post">
-                                    <tr>
-                                        <td scope="row">${customer.userID}</td>
-                                        <td>${customer.name}</td>
-                                        <td>${customer.email}</td>
-                                        <td>${customer.phone}</td>
-                                        <td>${customer.address}</td>
-                                        <c:choose>
-                                            <c:when test="${customer.status == 0}"><td>Inactive</td></c:when>
-                                            <c:otherwise><td>Active</td></c:otherwise>
-                                        </c:choose>
-                                    <input type="hidden" name="userid" value="${customer.userID}"/>
-                                    <td>
-                                        <button type="submit" name="action" value="viewCustomerDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
-                                    </td>
-                                    </tr>
-                                </form>
-                            </c:forEach>
-                        </c:if>
-                        <c:if test="${requestScope.searchedCusList !=null}">
-                            <c:forEach var="customer" items="${requestScope.searchedCusList}">
-                                <form action="MainController" action="post">
-                                    <tr>
-                                        <td scope="row">${customer.userID}</td>
-                                        <td>${customer.name}</td>
-                                        <td>${customer.email}</td>
-                                        <td>${customer.phone}</td>
-                                        <td>${customer.address}</td>
-                                        <c:choose>
-                                            <c:when test="${customer.status == 0}"><td>Inactive</td></c:when>
-                                            <c:otherwise><td>Active</td></c:otherwise>
-                                        </c:choose>
-                                    <input type="hidden" name="userid" value="${customer.userID}"/>
-                                    <td>
-                                        <button type="submit" name="action" value="viewCustomerDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
-                                    </td>
-                                    </tr>
-                                </form>
-                            </c:forEach>
-                        </c:if>
-
+                            <c:choose>
+                                <c:when test="${requestScope.keyword == null}">
+                                    <c:if test="${requestScope.clist == null}">
+                                        <c:forEach var="customer" items="${UserDAO.getUsersByRole(3)}" begin="0" end="6">
+                                        <form action="MainController" action="post">
+                                            <tr>
+                                                <td scope="row">${customer.userID}</td>
+                                                <td>${customer.name}</td>
+                                                <td>${customer.email}</td>
+                                                <td>${customer.phone}</td>
+                                                <td>${customer.address}</td>
+                                                <c:choose>
+                                                    <c:when test="${customer.status == 0}"><td>Inactive</td></c:when>
+                                                    <c:otherwise><td>Active</td></c:otherwise>
+                                                </c:choose>
+                                            <input type="hidden" name="userid" value="${customer.userID}"/>
+                                            <td>
+                                                <button type="submit" name="action" value="viewCustomerDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
+                                            </td>
+                                            </tr>
+                                        </form>
+                                    </c:forEach>
+                                </c:if>
+                                <c:if test="${requestScope.clist !=null}">
+                                    <c:forEach var="customer" items="${requestScope.clist}">
+                                        <form action="MainController" action="post">
+                                            <tr>
+                                                <td scope="row">${customer.userID}</td>
+                                                <td>${customer.name}</td>
+                                                <td>${customer.email}</td>
+                                                <td>${customer.phone}</td>
+                                                <td>${customer.address}</td>
+                                                <c:choose>
+                                                    <c:when test="${customer.status == 0}"><td>Inactive</td></c:when>
+                                                    <c:otherwise><td>Active</td></c:otherwise>
+                                                </c:choose>
+                                            <input type="hidden" name="userid" value="${customer.userID}"/>
+                                            <td>
+                                                <button type="submit" name="action" value="viewCustomerDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
+                                            </td>
+                                            </tr>
+                                        </form>
+                                    </c:forEach>
+                                </c:if>
+                            </c:when>
+                            <c:otherwise>
+                                <c:forEach var="customer" items="${requestScope.searchedCusList}" begin="0" end ="6">
+                                    <form action="MainController" action="post">
+                                        <tr>
+                                            <td scope="row">${customer.userID}</td>
+                                            <td>${customer.name}</td>
+                                            <td>${customer.email}</td>
+                                            <td>${customer.phone}</td>
+                                            <td>${customer.address}</td>
+                                            <c:choose>
+                                                <c:when test="${customer.status == 0}"><td>Inactive</td></c:when>
+                                                <c:otherwise><td>Active</td></c:otherwise>
+                                            </c:choose>
+                                        <input type="hidden" name="userid" value="${customer.userID}"/>
+                                        <td>
+                                            <button type="submit" name="action" value="viewCustomerDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
+                                        </td>
+                                        </tr>
+                                    </form>
+                                </c:forEach>
+                            </c:otherwise>
+                        </c:choose>
                         </tbody>
                     </table>
+                    <c:choose>
+                        <c:when test="${requestScope.keyword == null}">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item">
+                                        <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=3"><</a>
+                                    </li>
+                                    <% int totalProduct = UserDAO.getUsersByRole(3).size();
+                                        int element = 7;
+                                        float numOfPages = (float) totalProduct / element;
+                                    %>
+                                    <%for (int i = 1; i <= (int) Math.ceil(numOfPages); i++) {%>
+                                    <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=<%=i%>&roleid=3"><%=i%></a></li>
+                                        <% }%>
+                                    <li class="page-item">
+                                        <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page+1}&roleid=3">></a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </c:when>
+                        <c:otherwise>
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item">
+                                        <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=3"><</a>
+                                    </li>
+                                    <% 
+                                        String keyword = request.getParameter("keyword");
+                                        int totalSearchProduct = UserDAO.searchUsers(3, keyword).size();
+                                        int elementPerPage = 7;
+                                        float numOfSSearrchPages = (float) totalSearchProduct / elementPerPage;
+                                    %>
+                                    <%for (int i = 1; i <= (int) Math.ceil(numOfSSearrchPages); i++) {%>
+                                    <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=<%=i%>&roleid=3"><%=i%></a></li>
+                                        <% }%>
+                                    <li class="page-item">
+                                        <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page+1}&roleid=3">></a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </c:otherwise>
+                    </c:choose>
 
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item">
-                                <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=3"><</a>
-                            </li>
-                            <% int totalProduct = UserDAO.getUsersByRole(3).size();
-                                int element = 7;
-                                float numOfPages = (float) totalProduct / element;
-                            %>
-                            <%for (int i = 1; i <= (int) Math.ceil(numOfPages); i++) {%>
-                            <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=<%=i%>&roleid=3"><%=i%></a></li>
-                                <% }%>
-                            <li class="page-item">
-                                <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page+1}&roleid=3">></a>
-                            </li>
-                        </ul>
-                    </nav>
                 </div>
             </div>
 

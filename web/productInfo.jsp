@@ -118,13 +118,13 @@
             <div class="item-list mx-5">
                 <div class="row">
 
-                    <c:forEach var="proCate" items="${requestScope.list}" begin="0" end="9">
+                    <c:forEach var="proCate" items="${requestScope.list}" begin="0" end="4">
                         <div class="col">
                             <div class="item mb-4 text-center">
                                 <div class="card border-0 shadow">
                                     <img src="./image/Item.png" class="card-img-top" alt="">
                                     <div class="card-body">
-                                        <h5 class="card-title mb-3 fw-bold">${proCate.productName}</h5>
+                                        <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProduct&pid=${proCate.productID}&cateID=${proCate.cateID}">${proCate.productName}</a></h5>
                                         <span class="bricked-price mx-2">${proCate.price}</span>
                                         <span class="price fw-bold mx-2">${Math.round(proCate.price) -0.45}</span></br>
                                         <input type="hidden" name="pid" value="${product.productID}"/>
@@ -168,8 +168,8 @@
                     toastr.success("Product is added to cart.");
                 });
             </script>
+            <c:set scope="request" var="noti" value="${null}"/>
         </c:if>
-
             <script src="js/backToTop.js"></script>
 
     </body>
