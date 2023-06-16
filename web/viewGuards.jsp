@@ -184,5 +184,8 @@
                 </ul>
             </nav>
         </div>
+        <footer>
+            <c:import url="footer.jsp" />
+        </footer>
     </body>
 </html>

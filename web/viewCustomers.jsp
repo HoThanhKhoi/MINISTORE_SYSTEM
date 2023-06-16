@@ -142,7 +142,7 @@
                                 </form>
                             </c:forEach>
                         </c:if>
-                            <c:if test="${requestScope.clist !=null && requestScope.keyword!=null}">
+                        <c:if test="${requestScope.clist !=null && requestScope.keyword!=null}">
                             <c:forEach var="customer" items="${requestScope.clist}">
                                 <form action="MainController" action="post">
                                     <tr>
@@ -209,5 +209,9 @@
             </div>
 
         </div>
+
+        <footer>
+            <c:import url="footer.jsp" />
+        </footer>
     </body>
 </html>

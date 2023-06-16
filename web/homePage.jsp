@@ -28,7 +28,7 @@
         <!-- boostrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-
+        
 
         <!-- 1. cdn min.css carousel-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
@@ -48,6 +48,7 @@
         <!-- Banner -->
         <div class="container-fluid ">
             <!-- Header -->
+            <header>
             <div class="header">
                 <nav>
                     <ul>
@@ -88,7 +89,7 @@
                     </ul>
                 </nav>
             </div>
-
+            </header>
             <!-- Banner -->
             <div class="banner">
                 <video class="w-100" autoplay loop muted>
@@ -361,6 +362,7 @@
             </div>
 
         </div>
+                      
         <button type="button" class="btn btn-floating btn-lg" id="btn-back-to-top">
             <i class="fas fa-arrow-up"></i>
         </button>
@@ -398,11 +400,14 @@
 
 
         </script>
-
+        
         <script src="./js/backToTop.js"></script>
 
         <script src="./js/countDown.js"></script>
-
+        
+        
+        
+        
     </body>
 
 </html>

@@ -8,19 +8,22 @@ body {
     font-family: 'Inter', sans-serif !important;
 }
 
+.header .container-fluid {
+    padding: 0 50px !important;
+}
+
 
 .header {
     background-color: #F6F5DB;
     padding: 10px 50px !important;
-    height: 10vh;
 }
 
-.navbar {
+
+
+.header.navbar {    
+    height: 10vh;
     padding: 0 !important;
     margin: 0 !important;
-}
-
-.header-navbar {
     border-bottom: 5px solid #07484A;
 }
 
@@ -93,4 +96,3 @@ body {
     font-weight: 500;
     line-height: 1.2;
 }
-
