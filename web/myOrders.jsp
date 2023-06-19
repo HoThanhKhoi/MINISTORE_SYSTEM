@@ -43,11 +43,11 @@
 
                 <div class="container-fluid">
                     <div class="row">
-                        
+
                         <c:if test="${requestScope.noti != null}">
                             <h1>${requestScope.noti}</h1>
                         </c:if>
-                            
+
                         <!-- menu -->
                         <div class="col-2 menu myOrder-menu">
                             <ul class="">
@@ -112,9 +112,24 @@
                                             <td>${order.customerName}</td>
                                             <td>${order.phone}</td>
                                             <td>${order.address}</td>
-                                            <td>${order.status}</td>
-                                            <td>${order.totalMoney}</td>
-                                            <td><a href="MainController?action=viewOrderDetails&orderID=${order.orderID}" >Order Details</a></td>
+                                            <td>
+                                                <c:choose>
+                                                    <c:when test="${order.status eq 2}">
+                                                        Delivering
+                                                    </c:when>
+                                                    <c:when test="${order.status eq 3}">
+                                                        Completed
+                                                    </c:when>
+                                                    <c:when test="${order.status eq 4}">
+                                                        Canceled
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        Processing
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </td>
+                                            <td>$${order.totalMoney}</td>
+                                            <td><a href="MainController?action=viewOrderInformation&orderID=${order.orderID}" >Order Details</a></td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>

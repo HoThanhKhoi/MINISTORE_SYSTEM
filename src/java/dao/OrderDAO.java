@@ -301,4 +301,20 @@ public class OrderDAO {
         }
         return list;
     }
+    
+    public static boolean changeOrderStatus(String orderID, int status) throws Exception {
+        Connection cn = DBUtils.makeConnection();
+        boolean flag = false;
+        if (cn != null) {
+            String sql = "update ORDERS\n"
+                    + "set status=?\n"
+                    + "where OrderID=?";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setInt(1, status);
+            pst.setString(2, orderID);
+            flag = pst.executeUpdate() == 1;
+            cn.close();
+        }
+        return flag;
+    }
 }

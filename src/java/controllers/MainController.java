@@ -106,8 +106,22 @@ public class MainController extends HttpServlet {
                 url = "ViewMyOrdersServlet";
             } else if (action.equalsIgnoreCase("viewMyOrdersByStatus")) {
                 url = "ViewMyOrdersByStatusServlet";
-            } else if (action.equalsIgnoreCase("viewOrderDetails")) {
-                url = "ViewOrderDetailsServlet";
+            } else if (action.equalsIgnoreCase("viewOrderInformation")) {
+                url = "ViewOrderInformationServlet";
+            } else if (action.equalsIgnoreCase("updateOrderStatus")) {
+                url = "UpdateOrderStatusServlet";
+            } else if (action.equalsIgnoreCase("reorder")) {
+                url = "ReorderServlet";
+            } else if (action.equalsIgnoreCase("viewVouchers")) {
+                url = "ViewAllVouchersServlet";
+            } else if (action.equalsIgnoreCase("viewUnexpiredVouchers")) {
+                url = "ViewUnexpiredVouchersServlet";
+            } else if (action.equalsIgnoreCase("viewExpiredVouchers")) {
+                url = "ViewExpiredVouchersServlet";
+            } else if (action.equalsIgnoreCase("viewVoucherDetailsPage")) {
+                url = "ViewVoucherDetailsServlet";
+            } else if (action.equalsIgnoreCase("updateVoucher")) {
+                url = "UpdateVoucherServlet";
             }
 
              RequestDispatcher rd = request.getRequestDispatcher(url);

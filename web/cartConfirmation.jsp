@@ -4,6 +4,7 @@
     Author     : ACER
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -59,7 +60,10 @@
                                             <tr>
                                                 <td>${sessionScope.nameList.get(cartKey)}</td>
                                                 <td>${cartitem.value}</td>
-                                                <td>${sessionScope.priceList.get(cartKey) * cartitem.value}</td>
+                                                <td>
+                                                    <fmt:formatNumber value="${sessionScope.priceList.get(cartKey) * cartitem.value}" pattern="#,##0.00" var="formattedNumber" />
+                                                    $${formattedNumber}
+                                                </td>
                                             </tr>
                                         </c:forEach>
                                     </tbody>
@@ -68,7 +72,8 @@
 
                             <div class="total mt-4">
                                 <p>Total</p>
-                                <p>$${sessionScope.totalMoney}</p>
+                                <fmt:formatNumber value="${sessionScope.totalMoney}" pattern="#,##0.00" var="formattedNumber" />
+                                <p>$${formattedNumber}</p>
                             </div>
                         </div>
 

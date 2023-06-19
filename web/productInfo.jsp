@@ -170,7 +170,7 @@
             </script>
         </c:if>
 
-            <script src="js/backToTop.js"></script>
+        <script src="js/backToTop.js"></script>
 
     </body>
 

@@ -60,7 +60,7 @@
 
                         <!-- right side: User information -->
                         <div class="col-8 form-container">
-                            <form action="MainController" method="post">
+                            <form action="MainController" method="post" onsubmit="return confirmSubmit()">
                                 <input type="hidden" name="userID" value="${sessionScope.customer.userID}">
 
                                 <div class="form-item my-5 d-flex align-items-center justify-content-center">
@@ -91,7 +91,9 @@
                                 </div>
 
                                 <div class="save-btn d-flex justify-content-center">
-                                    <button name="action" value="editProfile" class="btn btn-primary mt-3 px-3 py-2 mx-3 fw-bold">Save Changes</button>
+                                    <button name="action" value="editProfile" class="btn btn-primary mt-3 px-3 py-2 mx-3 fw-bold">
+                                        Save Changes
+                                    </button>
                                     <a role="button" href="customerProfile.jsp?&id=${sessionScope.customer.userID}" class="btn btn-primary mt-3 px-3 py-2  fw-bold">Cancel</a>
                                 </div>
                             </form>
@@ -107,6 +109,16 @@
                 </div>
             </c:otherwise>
         </c:choose>
+
+        <script>
+            function confirmSubmit() {
+                var agree = confirm("Do you want to save changes?");
+                if (agree)
+                    return true;
+                else
+                    return false;
+            };
+        </script>
     </body>
 
 </html>

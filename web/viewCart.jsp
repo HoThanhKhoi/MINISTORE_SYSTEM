@@ -127,7 +127,7 @@
                                                     <h5>${sessionScope.nameList.get(cartKey)}</h5>
                                                 </td>
 
-                                                <td class="cart-price">${sessionScope.priceList.get(cartKey)}</td>
+                                                <td class="cart-price">$${sessionScope.priceList.get(cartKey)}</td>
 
                                                 <td class="cart-quantity">
                                                     <div class="group-quantity d-flex justify-content-center align-items-center">
@@ -148,7 +148,7 @@
 
                                                 <c:set var="number" value="${sessionScope.priceList.get(cartKey) * cartitem.value}"/>
                                                 <fmt:formatNumber value="${sessionScope.priceList.get(cartKey) * cartitem.value}" pattern="#,##0.00" var="formattedNumber" />
-                                                <td class="cart-total">${formattedNumber}</td>
+                                                <td class="cart-total">$${formattedNumber}</td>
 
                                                 <td class="cart-item-btn"><a class="change button" href="MainController?action=updateCart">Update</a></td>
                                             </tr>
@@ -171,12 +171,12 @@
                                                         <c:choose>
                                                             <c:when test="${sessionScope.totalMoney >= voucher.limitPrice}">
                                                                 <option value="${voucher.voucherID}">
-                                                                    ${voucher.voucherCode} (Buy $${voucher.limitPrice} to use)
+                                                                    Discount $${voucher.discount} (Buy $${voucher.limitPrice} to use)
                                                                 </option>
                                                             </c:when>
                                                             <c:otherwise>
                                                                 <option disabled="" value="${voucher.voucherID}">
-                                                                    ${voucher.voucherCode} (Buy $${voucher.limitPrice} to use)
+                                                                    Discount $${voucher.discount} (Buy $${voucher.limitPrice} to use)
                                                                 </option>
                                                             </c:otherwise>
                                                         </c:choose>

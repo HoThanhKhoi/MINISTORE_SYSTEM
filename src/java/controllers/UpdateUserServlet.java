@@ -44,14 +44,14 @@ public class UpdateUserServlet extends HttpServlet {
             check = UserDAO.updateUser(userID, userName, phone, status);
             if (check == 1) {
                 if (roleID == 2) {
-                    request.getRequestDispatcher("MainController?action=viewSaleDetailsPage&userid=" + userID).forward(request, response);
+                    request.getRequestDispatcher("MainController?action=viewGuardDetailsPage&userid=" + userID).forward(request, response);
                 } else if (roleID == 1) {
                     request.getRequestDispatcher("MainController?action=viewSaleDetailsPage&userid=" + userID).forward(request, response);
                 } else {
-                    request.getRequestDispatcher("MainController?action=viewSaleDetailsPage&userid=" + userID).forward(request, response);
+                    request.getRequestDispatcher("MainController?action=viewCustomerDetailsPage&userid=" + userID).forward(request, response);
                 }
             } else {
-                request.getRequestDispatcher("MainController?action=viewSaleDetailsPage&userid=" + userID).forward(request, response);
+                request.getRequestDispatcher("MainController?action=viewCustomerDetailsPage&userid=" + userID).forward(request, response);
             }
         }
     }

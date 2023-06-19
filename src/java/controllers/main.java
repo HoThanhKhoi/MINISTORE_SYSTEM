@@ -7,9 +7,11 @@ import dto.Category;
 import dto.Product;
 import Utils.DBUtils;
 import dao.OrderDAO;
+import dao.VoucherDAO;
 import dto.Order;
 import dto.OrderDetail;
 import dto.User;
+import dto.Voucher;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -74,9 +76,14 @@ public class main {
 //        Order order = OrderDAO.getOrderById("MS-0002");
 //        System.out.println(order.getCustomerName() + order.getOrderID());
         
-        ArrayList<OrderDetail> list = OrderDAO.getOrderDetail("MS-0003");
-        for (OrderDetail orderDetail : list) {
-            System.out.println(orderDetail.getOrderDetailID() + "," + orderDetail.getOrderID());
+//        ArrayList<OrderDetail> list = OrderDAO.getOrderDetail("MS-0003");
+//        for (OrderDetail orderDetail : list) {
+//            System.out.println(orderDetail.getOrderDetailID() + "," + orderDetail.getOrderID());
+//        }
+        
+        ArrayList<Voucher> list = VoucherDAO.getExpiredVouchers();
+        for (Voucher v : list) {
+            System.out.println(v.getVoucherID()+","+v.getExpiredDate());
         }
     }
 }
