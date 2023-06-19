@@ -77,7 +77,7 @@ public class LoginServlet extends HttpServlet {
                             break;
                         case 1:
                             session.setAttribute("sales", user);
-                            response.sendRedirect("salesDashboard.jsp");
+                            response.sendRedirect("saleDashboard.jsp");
                             break;
                         case 2:
                             session.setAttribute("guard", user);

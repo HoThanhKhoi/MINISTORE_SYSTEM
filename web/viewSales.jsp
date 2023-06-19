@@ -176,7 +176,7 @@
                     </table>
                 </div>
             </div>
-            <nav aria-label="Page navigation example" style="margin-top:50px;">
+            <nav aria-label="Page navigation example" style="margin-top:35px;">
                 <ul class="pagination justify-content-center">
                     <li class="page-item">
                         <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=1"><</a>
@@ -193,6 +193,12 @@
                     </li>
                 </ul>
             </nav>
+            <form action="MainController" method="get">
+                <input value="1" name="roleid" type="hidden"/>
+                <button name="action" value="addEmployeePage" >
+                    Add Sale
+                </button>
+            </form>
         </div>
         <footer>
             <c:import url="footer.jsp" />

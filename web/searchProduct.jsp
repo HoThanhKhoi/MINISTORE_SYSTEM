@@ -53,7 +53,7 @@
                                             <h5 class="card-title mb-3 fw-bold">${searchItem.productName}</h5>
                                             <span class="bricked-price mx-2">${searchItem.price}</span>
                                             <span class="price fw-bold mx-2">${Math.round(searchItem.price) -0.45}</span></br>
-                                            <a href="MainController?action=addToCart&pid=${searchItem.productID}&cid=${searchItem.productID}&quantity=1" class="btn btn-primary mt-2 px-3 py-2 fw-bold">Add To Cart</a>
+                                            <a href="MainController?action=addToCart&pid=${searchItem.productID}&cid=${searchItem.cateID}&quantity=1" class="btn btn-primary mt-2 px-3 py-2 fw-bold">Add To Cart</a>
                                         </div>
                                     </div>
                                 </div>
@@ -70,7 +70,7 @@
                                             <h5 class="card-title mb-3 fw-bold">${searchItem.productName}</h5>
                                             <span class="bricked-price mx-2">${searchItem.price}</span>
                                             <span class="price fw-bold mx-2">${Math.round(searchItem.price) -0.45}</span></br>
-                                            <a href="MainController?action=addToCart&pid=${searchItem.productID}&cid=${searchItem.productID}&quantity=1" class="btn btn-primary mt-2 px-3 py-2 fw-bold">Add To Cart</a>
+                                            <a href="MainController?action=addToCart&pid=${searchItem.productID}&cid=${searchItem.cateID}&quantity=1" class="btn btn-primary mt-2 px-3 py-2 fw-bold">Add To Cart</a>
                                         </div>
                                     </div>
                                 </div>

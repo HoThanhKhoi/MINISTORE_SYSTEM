@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class UpdateUserServlet extends HttpServlet {
+public class AddEmployeeServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,24 +35,35 @@ public class UpdateUserServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String userID = request.getParameter("userid");
-            int roleID = Integer.parseInt(request.getParameter("roleid"));
-            String userName = request.getParameter("username");
+            String name = request.getParameter("name");
             String phone = request.getParameter("phone");
-            int status = Integer.parseInt(request.getParameter("status"));
-            int check = 0;
-            check = UserDAO.updateUser(userID, userName, phone, status);
-            if (check == 1) {
-                if (roleID == 2) {
-                    request.getRequestDispatcher("MainController?action=viewGuardDetailsPage&userid=" + userID).forward(request, response);
-                } else if (roleID == 1) {
-                    request.getRequestDispatcher("MainController?action=viewSaleDetailsPage&userid=" + userID).forward(request, response);
-                } else {
-                    request.getRequestDispatcher("MainController?action=viewCustomerDetailsPage&userid=" + userID).forward(request, response);
-                }
+            String address = request.getParameter("address");
+            String email = request.getParameter("email");
+            String password = "Password";
+            int status = 1;
+            int roleID = Integer.parseInt(request.getParameter("roleid"));
+            String worksheetID = request.getParameter("wid");
+
+            if (UserDAO.isEmailDuplicate(email)) {
+                request.setAttribute("error", "Email has already been existed");
+                request.getRequestDispatcher("MainController?action=addEmployeePage&roleid" + roleID).forward(request, response);
+            } else if (!phone.matches("^[0-9]{10}$")) {
+                request.setAttribute("error", "Phone must contain 10 numbers from 0 to 9");
+                request.getRequestDispatcher("MainController?action=addEmployeePage&roleid" + roleID).forward(request, response);
+            } else if (!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+                request.setAttribute("error", "Email was wrong(example@gmail.com)");
+                request.getRequestDispatcher("MainController?action=addEmployeePage&roleid" + roleID).forward(request, response);
             } else {
-                request.getRequestDispatcher("MainController?action=viewCustomerDetailsPage&userid=" + userID).forward(request, response);
+                int result = UserDAO.insertAccount(name, phone, address, email, password, status, roleID, worksheetID);
+                if (result == 1) {
+                    if (roleID == 2) {
+                        request.getRequestDispatcher("ViewGuardServlet").forward(request, response);
+                    } else if (roleID == 1) {
+                        request.getRequestDispatcher("ViewSalesServlet").forward(request, response);
+                    }
+                }
             }
+
         }
     }
 
@@ -71,7 +82,7 @@ public class UpdateUserServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(UpdateUserServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AddEmployeeServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -89,7 +100,7 @@ public class UpdateUserServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(UpdateUserServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AddEmployeeServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

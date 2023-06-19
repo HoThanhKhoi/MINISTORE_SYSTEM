@@ -29,10 +29,11 @@
 
     <body>
         <!--HEADER-->
+       
         <header>
             <c:import url="header_managerDashboard.jsp" />
         </header>
-
+        
         <!-- Dashboard -->
         <div class="dashboard">
             <div class="container-fluid">
@@ -47,13 +48,13 @@
                                 <div class="item mb_5"><a href="MainController?action=viewCustomers">Customers</a></div>
                                 <div class="item mb_5"><a href="MainController?action=viewSales">Sales</a></div>
                                 <div class="item mb_5"><a href="MainController?action=viewGuards">Guards</a></div>
-                                <div class="item mb_5">Attendance</div>
+                                <div class="item mb_5"><a href="MainController?action=viewGuards">Attendance</a></div>
                             </div>
                             <div class="col-lg"></div>
                             <div class="col-lg-5">
                                 <div class="item mb_5">Order</div>
-                                <div class="item mb_5">Category</div>
-                                <div class="item mb_5">Product</div>
+                                <div class="item mb_5"><a href="MainController?action=viewAllCategories">Category</a></div>
+                                <div class="item mb_5"><a href="MainController?action=viewAllProducts">Product</a></div>
                                 <div class="item mb_5">Voucher</div>
                             </div>
                         </div>
