@@ -17,16 +17,19 @@ public class Voucher implements Serializable {
     private String voucherCode;
     private float discount;
     private Timestamp expiredDate;
+    private float limitPrice;
 
     public Voucher() {
     }
 
-    public Voucher(String voucherID, String voucherCode, float discount, Timestamp expiredDate) {
+    public Voucher(String voucherID, String voucherCode, float discount, Timestamp expiredDate, float limitPrice) {
         this.voucherID = voucherID;
         this.voucherCode = voucherCode;
         this.discount = discount;
         this.expiredDate = expiredDate;
+        this.limitPrice = limitPrice;
     }
+
 
     public String getVoucherID() {
         return voucherID;
@@ -58,6 +61,14 @@ public class Voucher implements Serializable {
 
     public void setExpiredDate(Timestamp expiredDate) {
         this.expiredDate = expiredDate;
+    }
+
+    public float getLimitPrice() {
+        return limitPrice;
+    }
+
+    public void setLimitPrice(float limitPrice) {
+        this.limitPrice = limitPrice;
     }
     
 }

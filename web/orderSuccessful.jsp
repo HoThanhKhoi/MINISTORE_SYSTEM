@@ -53,7 +53,7 @@
 
                 <div class="best-selling-title">
                     <h2 class="pt-5 pb-5 text-center" style="color: #333"><em>Order successfully. Your order is now processing!</em></h2>
-                    <h5> Check&nbsp;<a href="#" class="card-title mb-3 fw-bold">my orders</a></h5>
+                    <h5> Check&nbsp;<a href="MainController?action=viewMyOrders" class="card-title mb-3 fw-bold">my orders</a></h5>
                 </div>
 
                 <div class="item-list mx-5">

@@ -6,23 +6,20 @@
 package controllers;
 
 import dao.OrderDAO;
-import dto.User;
-import dto.Voucher;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Timestamp;
-import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author ACER
  */
-public class ConfirmCartServlet extends HttpServlet {
+public class UpdateOrderStatusServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,42 +31,18 @@ public class ConfirmCartServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            HttpSession session = request.getSession(false);
-            String customerID = request.getParameter("cusID");
-            String customerName = request.getParameter("cusName");
-            String phone = request.getParameter("phone");
-            String address = request.getParameter("address");
-            String postalCode = request.getParameter("postalCode");
-            Timestamp time = new Timestamp(System.currentTimeMillis());
-            HashMap<String, Integer> cart = (HashMap<String, Integer>) session.getAttribute("cart");
-            String voucherID;
-            if (session.getAttribute("voucher") == null) {
-                voucherID = null;
+            String orderID = request.getParameter("orderid");
+            int status = Integer.parseInt(request.getParameter("status"));
+            boolean flag = OrderDAO.changeOrderStatus(orderID, status);
+            if (flag) {
+                response.sendRedirect("MainController?action=viewMyOrdersByStatus&status=4");
             } else {
-                Voucher voucher = (Voucher) session.getAttribute("voucher");
-                voucherID = voucher.getVoucherID();
+                request.setAttribute("error", "Cancel order failed.");
+                request.getRequestDispatcher("MainController?action=viewOrderDetails&orderID="+orderID).forward(request, response);
             }
-            String totalMoney = request.getParameter("totalMoney");
-            if (cart != null && !cart.isEmpty()) {
-                if (session.getAttribute("customer") == null) { //not login
-                    request.setAttribute("error", "You must login to checkout.");
-                } else {
-                    boolean result = OrderDAO.insertOrder(customerID, customerName, 
-                            phone, address, postalCode, cart, Float.parseFloat(totalMoney), voucherID);
-                    if (result) {
-                        session.setAttribute("cart", null);
-                        session.setAttribute("voucher", null);
-                        session.setAttribute("totalMoney", null);
-                        request.setAttribute("noti", "Save sucessfully.");
-                    } else {
-                        request.setAttribute("error", "Save fail.");
-                    }
-                }
-            }
-            request.getRequestDispatcher("orderSuccessful.jsp").forward(request, response);
         }
     }
 
@@ -85,7 +58,11 @@ public class ConfirmCartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(UpdateOrderStatusServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -99,7 +76,11 @@ public class ConfirmCartServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(UpdateOrderStatusServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

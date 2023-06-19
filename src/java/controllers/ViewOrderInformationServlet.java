@@ -6,23 +6,25 @@
 package controllers;
 
 import dao.OrderDAO;
-import dto.User;
+import dao.VoucherDAO;
+import dto.Order;
+import dto.OrderDetail;
 import dto.Voucher;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Timestamp;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author ACER
  */
-public class ConfirmCartServlet extends HttpServlet {
+public class ViewOrderInformationServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,42 +36,27 @@ public class ConfirmCartServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            HttpSession session = request.getSession(false);
-            String customerID = request.getParameter("cusID");
-            String customerName = request.getParameter("cusName");
-            String phone = request.getParameter("phone");
-            String address = request.getParameter("address");
-            String postalCode = request.getParameter("postalCode");
-            Timestamp time = new Timestamp(System.currentTimeMillis());
-            HashMap<String, Integer> cart = (HashMap<String, Integer>) session.getAttribute("cart");
-            String voucherID;
-            if (session.getAttribute("voucher") == null) {
-                voucherID = null;
-            } else {
-                Voucher voucher = (Voucher) session.getAttribute("voucher");
-                voucherID = voucher.getVoucherID();
-            }
-            String totalMoney = request.getParameter("totalMoney");
-            if (cart != null && !cart.isEmpty()) {
-                if (session.getAttribute("customer") == null) { //not login
-                    request.setAttribute("error", "You must login to checkout.");
-                } else {
-                    boolean result = OrderDAO.insertOrder(customerID, customerName, 
-                            phone, address, postalCode, cart, Float.parseFloat(totalMoney), voucherID);
-                    if (result) {
-                        session.setAttribute("cart", null);
-                        session.setAttribute("voucher", null);
-                        session.setAttribute("totalMoney", null);
-                        request.setAttribute("noti", "Save sucessfully.");
-                    } else {
-                        request.setAttribute("error", "Save fail.");
-                    }
+            String orderID = request.getParameter("orderID");
+            Order order = OrderDAO.getOrderById(orderID);
+            Voucher voucher = VoucherDAO.getVoucher(order.getVoucherID());
+            ArrayList<OrderDetail> orderDetailsList = OrderDAO.getOrderDetail(orderID);
+            if (orderDetailsList != null && !orderDetailsList.isEmpty()) {
+                float total = 0;
+                for (OrderDetail orderDetail : orderDetailsList) {
+                    total += orderDetail.getMoney();
                 }
+                request.setAttribute("order", order);
+                request.setAttribute("voucher", voucher);
+                request.setAttribute("total", total);
+                request.setAttribute("orderDetailsList", orderDetailsList);
+                request.getRequestDispatcher("orderInformation.jsp").forward(request, response);
+            } else {
+                request.setAttribute("noti", "Fail to load order details.");
+                request.getRequestDispatcher("orderInformation.jsp").forward(request, response);
             }
-            request.getRequestDispatcher("orderSuccessful.jsp").forward(request, response);
         }
     }
 
@@ -85,7 +72,11 @@ public class ConfirmCartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(ViewOrderInformationServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -99,7 +90,11 @@ public class ConfirmCartServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(ViewOrderInformationServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

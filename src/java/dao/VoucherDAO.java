@@ -25,7 +25,7 @@ public class VoucherDAO {
         ArrayList<Voucher> list = new ArrayList<>();
         Connection cn = DBUtils.makeConnection();
         if (cn != null) {
-            String sql = "select VoucherID,VoucherCode,VoucherDiscount,VoucherExpiredDate from VOUCHERS";
+            String sql = "select VoucherID,VoucherCode,VoucherDiscount,VoucherExpiredDate,LimitPrice from VOUCHERS";
             Statement st = cn.createStatement();
             ResultSet table = st.executeQuery(sql);
             if (table != null) {
@@ -34,8 +34,62 @@ public class VoucherDAO {
                     String voucherCode = table.getString("VoucherCode");
                     float discount = table.getFloat("VoucherDiscount");
                     Timestamp expiredDate = table.getTimestamp("VoucherExpiredDate");
-                    Voucher voucher = new Voucher(voucherID, voucherCode, discount, expiredDate);
+                    float limitPrice = table.getFloat("LimitPrice");
+                    Timestamp now = new Timestamp(System.currentTimeMillis());
+                    if (now.before(expiredDate)) {
+                        Voucher voucher = new Voucher(voucherID, voucherCode, discount, expiredDate, limitPrice);
+                        list.add(voucher);
+                    }
+
+                }
+            }
+        }
+        cn.close();
+        return list;
+    }
+
+    public static ArrayList<Voucher> getAllVouchers() throws Exception {
+        ArrayList<Voucher> list = new ArrayList<>();
+        Connection cn = DBUtils.makeConnection();
+        if (cn != null) {
+            String sql = "select VoucherID,VoucherCode,VoucherDiscount,VoucherExpiredDate,LimitPrice from VOUCHERS";
+            Statement st = cn.createStatement();
+            ResultSet table = st.executeQuery(sql);
+            if (table != null) {
+                while (table.next()) {
+                    String voucherID = table.getString("VoucherID");
+                    String voucherCode = table.getString("VoucherCode");
+                    float discount = table.getFloat("VoucherDiscount");
+                    Timestamp expiredDate = table.getTimestamp("VoucherExpiredDate");
+                    float limitPrice = table.getFloat("LimitPrice");
+                    Voucher voucher = new Voucher(voucherID, voucherCode, discount, expiredDate, limitPrice);
                     list.add(voucher);
+                }
+            }
+        }
+        cn.close();
+        return list;
+    }
+    
+    public static ArrayList<Voucher> getExpiredVouchers() throws Exception {
+        ArrayList<Voucher> list = new ArrayList<>();
+        Connection cn = DBUtils.makeConnection();
+        if (cn != null) {
+            String sql = "select VoucherID,VoucherCode,VoucherDiscount,VoucherExpiredDate,LimitPrice from VOUCHERS";
+            Statement st = cn.createStatement();
+            ResultSet table = st.executeQuery(sql);
+            if (table != null) {
+                while (table.next()) {
+                    String voucherID = table.getString("VoucherID");
+                    String voucherCode = table.getString("VoucherCode");
+                    float discount = table.getFloat("VoucherDiscount");
+                    Timestamp expiredDate = table.getTimestamp("VoucherExpiredDate");
+                    float limitPrice = table.getFloat("LimitPrice");
+                    Timestamp now = new Timestamp(System.currentTimeMillis());
+                    if (now.after(expiredDate)) {
+                        Voucher voucher = new Voucher(voucherID, voucherCode, discount, expiredDate, limitPrice);
+                        list.add(voucher);
+                    }
                 }
             }
         }
@@ -49,7 +103,7 @@ public class VoucherDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String s = "select VoucherID,VoucherCode,VoucherDiscount,VoucherExpiredDate from VOUCHERS where VoucherID=?";
+                String s = "select VoucherID,VoucherCode,VoucherDiscount,VoucherExpiredDate,LimitPrice from VOUCHERS where VoucherID=?";
                 PreparedStatement pst = cn.prepareStatement(s);
                 pst.setString(1, vid);
                 ResultSet rs = pst.executeQuery();
@@ -58,7 +112,8 @@ public class VoucherDAO {
                     String voucherCode = rs.getString("VoucherCode");
                     float discount = rs.getFloat("VoucherDiscount");
                     Timestamp expiredDate = rs.getTimestamp("VoucherExpiredDate");
-                    voucher = new Voucher(voucherID, voucherCode, discount, expiredDate);
+                    float limitPrice = rs.getFloat("LimitPrice");
+                    voucher = new Voucher(voucherID, voucherCode, discount, expiredDate, limitPrice);
                 }
             }
         } catch (Exception e) {

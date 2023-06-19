@@ -5,6 +5,8 @@
  */
 package controllers;
 
+import dao.VoucherDAO;
+import dto.Voucher;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -14,9 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Admin
+ * @author ACER
  */
-public class showCategoriesServlet extends HttpServlet {
+public class ViewVoucherDetailsServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,8 +33,15 @@ public class showCategoriesServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            
+            String voucherid = request.getParameter("voucherID");
+            Voucher voucher = VoucherDAO.getVoucher(voucherid);
+            if (voucher != null) {
+                request.setAttribute("voucher", voucher);
+                request.getRequestDispatcher("updateVoucher.jsp").forward(request, response);
+            } else {
+                request.setAttribute("error", "Cannot get voucher.");
+                request.getRequestDispatcher("viewVouchers.jsp").forward(request, response);
+            }
         }
     }
 

@@ -5,34 +5,43 @@
  */
 package dto;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
  *
  * @author ACER
  */
-public class Order {
+public class Order implements Serializable {
     private String orderID;
+    private String customerName;
     private String phone;
     private String address;
+    private String postalCode;
+    private float totalMoney;
     private int status;
     private Timestamp orderDate;
     private Timestamp shipDate;
     private String customerID;
     private String salesID;
+    private String voucherID;
 
     public Order() {
     }
 
-    public Order(String orderID, String phone, String address, int status, Timestamp orderDate, Timestamp shipDate, String customerID, String salesID) {
+    public Order(String orderID, String customerName, String phone, String address, String postalCode, float totalMoney, int status, Timestamp orderDate, Timestamp shipDate, String customerID, String salesID, String voucherID) {
         this.orderID = orderID;
+        this.customerName = customerName;
         this.phone = phone;
         this.address = address;
+        this.postalCode = postalCode;
+        this.totalMoney = totalMoney;
         this.status = status;
         this.orderDate = orderDate;
         this.shipDate = shipDate;
         this.customerID = customerID;
         this.salesID = salesID;
+        this.voucherID = voucherID;
     }
 
     public String getOrderID() {
@@ -43,6 +52,14 @@ public class Order {
         this.orderID = orderID;
     }
 
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+    
     public String getPhone() {
         return phone;
     }
@@ -59,6 +76,22 @@ public class Order {
         this.address = address;
     }
 
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public float getTotalMoney() {
+        return totalMoney;
+    }
+
+    public void setTotalMoney(float totalMoney) {
+        this.totalMoney = totalMoney;
+    }
+    
     public int getStatus() {
         return status;
     }
@@ -97,6 +130,14 @@ public class Order {
 
     public void setSalesID(String salesID) {
         this.salesID = salesID;
+    }
+
+    public String getVoucherID() {
+        return voucherID;
+    }
+
+    public void setVoucherID(String voucherID) {
+        this.voucherID = voucherID;
     }
     
 }

@@ -37,10 +37,6 @@
         <servlet-class>controllers.ShowPaginateServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>showCategoriesServlet</servlet-name>
-        <servlet-class>controllers.showCategoriesServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>controllers.LoginServlet</servlet-class>
     </servlet>
@@ -141,6 +137,46 @@
         <servlet-class>controllers.SearchUsersServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ViewMyOrdersServlet</servlet-name>
+        <servlet-class>controllers.ViewMyOrdersServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewMyOrdersByStatusServlet</servlet-name>
+        <servlet-class>controllers.ViewMyOrdersByStatusServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewOrderInformationServlet</servlet-name>
+        <servlet-class>controllers.ViewOrderInformationServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateOrderStatusServlet</servlet-name>
+        <servlet-class>controllers.UpdateOrderStatusServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReorderServlet</servlet-name>
+        <servlet-class>controllers.ReorderServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewAllVouchersServlet</servlet-name>
+        <servlet-class>controllers.ViewAllVouchersServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewUnexpiredVouchersServlet</servlet-name>
+        <servlet-class>controllers.ViewUnexpiredVouchersServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewExpiredVouchersServlet</servlet-name>
+        <servlet-class>controllers.ViewExpiredVouchersServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateVoucherServlet</servlet-name>
+        <servlet-class>controllers.UpdateVoucherServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewVoucherDetailsServlet</servlet-name>
+        <servlet-class>controllers.ViewVoucherDetailsServlet</servlet-class>
+        </servlet>
+        <servlet>
         <servlet-name>ViewSaleDashboardServlet</servlet-name>
         <servlet-class>controllers.ViewSaleDashboardServlet</servlet-class>
     </servlet>
@@ -321,6 +357,46 @@
         <url-pattern>/SearchUsersServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>ViewMyOrdersServlet</servlet-name>
+        <url-pattern>/ViewMyOrdersServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewMyOrdersByStatusServlet</servlet-name>
+        <url-pattern>/ViewMyOrdersByStatusServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewOrderInformationServlet</servlet-name>
+        <url-pattern>/ViewOrderInformationServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateOrderStatusServlet</servlet-name>
+        <url-pattern>/UpdateOrderStatusServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReorderServlet</servlet-name>
+        <url-pattern>/ReorderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewAllVouchersServlet</servlet-name>
+        <url-pattern>/ViewAllVouchersServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewUnexpiredVouchersServlet</servlet-name>
+        <url-pattern>/ViewUnexpiredVouchersServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewExpiredVouchersServlet</servlet-name>
+        <url-pattern>/ViewExpiredVouchersServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateVoucherServlet</servlet-name>
+        <url-pattern>/UpdateVoucherServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewVoucherDetailsServlet</servlet-name>
+        <url-pattern>/ViewVoucherDetailsServlet</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
         <servlet-name>ViewSaleDashboardServlet</servlet-name>
         <url-pattern>/ViewSaleDashboardServlet</url-pattern>
     </servlet-mapping>
