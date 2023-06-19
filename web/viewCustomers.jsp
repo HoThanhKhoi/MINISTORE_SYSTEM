@@ -214,7 +214,7 @@
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination justify-content-center">
                                     <li class="page-item">
-                                        <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=3"><</a>
+                                        <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=3&keyword=${requestScope.keyword}""><</a>
                                     </li>
                                     <% 
                                         String keyword = request.getParameter("keyword");
@@ -223,10 +223,10 @@
                                         float numOfSSearrchPages = (float) totalSearchProduct / elementPerPage;
                                     %>
                                     <%for (int i = 1; i <= (int) Math.ceil(numOfSSearrchPages); i++) {%>
-                                    <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=<%=i%>&roleid=3"><%=i%></a></li>
+                                    <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=<%=i%>&roleid=3&keyword=${requestScope.keyword}"><%=i%></a></li>
                                         <% }%>
                                     <li class="page-item">
-                                        <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page+1}&roleid=3">></a>
+                                        <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page+1}&roleid=3&keyword=${requestScope.keyword}"">></a>
                                     </li>
                                 </ul>
                             </nav>

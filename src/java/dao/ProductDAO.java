@@ -116,12 +116,12 @@ public class ProductDAO {
         }
         return list;
     }
-    
-    public static ArrayList<Product> getSearchedProducts(String keyword) throws Exception{
+
+    public static ArrayList<Product> getSearchedProducts(String keyword) throws Exception {
         ArrayList<Product> list = new ArrayList<>();
         Product product;
         Connection cn = DBUtils.makeConnection();
-        if(cn != null){
+        if (cn != null) {
             String sql = "Select ProductID,ProductName,Price,Description,StockQuantity,PRODUCTS.ImgPath,PRODUCTS.CateID  from PRODUCTS JOIN CATEGORIES ON PRODUCTS.CateID = CATEGORIES.CateID WHERE ProductName like ? or CateName like ?";
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setString(1, '%' + keyword + '%');
@@ -141,10 +141,89 @@ public class ProductDAO {
         }
         return list;
     }
-    
-    public static ArrayList<Product> getPaginatedSearchedProduct(int pageNumber, int productPerPage,String keyword) throws Exception {
+
+    public static ArrayList<Product> getPaginatedSearchedProduct(int pageNumber, int productPerPage, String keyword) throws Exception {
         ArrayList<Product> list = new ArrayList<>();
         ArrayList<Product> productList = ProductDAO.getSearchedProducts(keyword);
+        Connection cn = DBUtils.makeConnection();
+        int start = (pageNumber - 1) * productPerPage;
+        int end = start + productPerPage - 1;
+        if (end > productList.size()) {
+            end = productList.size() - 1;
+        }
+        for (int i = start; i <= end; i++) {
+            list.add(productList.get(i));
+        }
+        return list;
+    }
+
+    public static ArrayList<Product> getAlertProducts() throws Exception {
+        ArrayList<Product> list = new ArrayList<>();
+        Product product;
+        Connection cn = DBUtils.makeConnection();
+        if (cn != null) {
+            String sql = "Select ProductID,ProductName,Price,Description,StockQuantity,ImgPath,CateID from PRODUCTS \n"
+                    + "where StockQuantity >= 10 and StockQuantity <= 30";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            ResultSet table = pst.executeQuery();
+            while (table.next() && table != null) {
+                String pid = table.getString("ProductID");
+                String productName = table.getString("ProductName");
+                float price = table.getFloat("Price");
+                String description = table.getString("Description");
+                int quantity = table.getInt("StockQuantity");
+                String imgPath = table.getString("ImgPath");
+                String cateID = table.getString("CateID");
+                product = new Product(pid, productName, price, description, quantity, imgPath, cateID);
+                list.add(product);
+            }
+        }
+        return list;
+
+    }
+    
+    public static ArrayList<Product> getOutOfStocktProducts() throws Exception {
+        ArrayList<Product> list = new ArrayList<>();
+        Product product;
+        Connection cn = DBUtils.makeConnection();
+        if (cn != null) {
+            String sql = "Select ProductID,ProductName,Price,Description,StockQuantity,ImgPath,CateID from PRODUCTS where  StockQuantity < 10";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            ResultSet table = pst.executeQuery();
+            while (table.next() && table != null) {
+                String pid = table.getString("ProductID");
+                String productName = table.getString("ProductName");
+                float price = table.getFloat("Price");
+                String description = table.getString("Description");
+                int quantity = table.getInt("StockQuantity");
+                String imgPath = table.getString("ImgPath");
+                String cateID = table.getString("CateID");
+                product = new Product(pid, productName, price, description, quantity, imgPath, cateID);
+                list.add(product);
+            }
+        }
+        return list;
+
+    }
+    
+    public static ArrayList<Product> getPaginatedAlertProducts(int pageNumber, int productPerPage) throws Exception {
+        ArrayList<Product> list = new ArrayList<>();
+        ArrayList<Product> productList = ProductDAO.getAlertProducts();
+        Connection cn = DBUtils.makeConnection();
+        int start = (pageNumber - 1) * productPerPage;
+        int end = start + productPerPage - 1;
+        if (end > productList.size()) {
+            end = productList.size() - 1;
+        }
+        for (int i = start; i <= end; i++) {
+            list.add(productList.get(i));
+        }
+        return list;
+    }
+    
+    public static ArrayList<Product> getPaginatedOutProducts(int pageNumber, int productPerPage) throws Exception {
+        ArrayList<Product> list = new ArrayList<>();
+        ArrayList<Product> productList = ProductDAO.getOutOfStocktProducts();
         Connection cn = DBUtils.makeConnection();
         int start = (pageNumber - 1) * productPerPage;
         int end = start + productPerPage - 1;

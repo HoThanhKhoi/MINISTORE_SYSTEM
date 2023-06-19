@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class ViewAllProductsServlet extends HttpServlet {
+public class ManageSearchedProductsServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,10 +37,12 @@ public class ViewAllProductsServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            ArrayList<Product> list = ProductDAO.getProducts();
+            String keyword = request.getParameter("keyword");
+            ArrayList<Product> list = ProductDAO.getSearchedProducts(keyword);
+            
             if (list != null) {
-                request.setAttribute("pList", list);
-                request.setAttribute("signal", 1);
+                request.setAttribute("keyword", keyword);
+                request.setAttribute("mslist", list);
                 request.getRequestDispatcher("viewProducts.jsp").forward(request, response);
             }
         }
@@ -61,7 +63,7 @@ public class ViewAllProductsServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ViewAllProductsServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManageSearchedProductsServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -79,7 +81,7 @@ public class ViewAllProductsServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ViewAllProductsServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManageSearchedProductsServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

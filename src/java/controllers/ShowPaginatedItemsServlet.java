@@ -6,7 +6,9 @@
 package controllers;
 
 import dao.CategoryDAO;
+import dao.ProductDAO;
 import dto.Category;
+import dto.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -45,6 +47,12 @@ public class ShowPaginatedItemsServlet extends HttpServlet {
                 request.setAttribute("cplist", cateList);
                 request.setAttribute("page", pageNumber);
                 request.getRequestDispatcher("viewCategory.jsp").forward(request, response);
+            } else if(items.equals("product")){
+                ArrayList<Product> proList = ProductDAO.getPaginatedProduct(pageNumber, itemPerPage);
+                request.setAttribute("ppList", proList);
+                request.setAttribute("page", pageNumber);
+                request.setAttribute("signal", 1);
+                request.getRequestDispatcher("viewProducts.jsp").forward(request, response);
             }
         }
     }

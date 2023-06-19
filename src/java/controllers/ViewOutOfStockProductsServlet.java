@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class ViewAllProductsServlet extends HttpServlet {
+public class ViewOutOfStockProductsServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,10 +37,10 @@ public class ViewAllProductsServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            ArrayList<Product> list = ProductDAO.getProducts();
-            if (list != null) {
-                request.setAttribute("pList", list);
-                request.setAttribute("signal", 1);
+            ArrayList<Product> list = ProductDAO.getOutOfStocktProducts();
+            if(list != null){
+                request.setAttribute("outList", list);
+                request.setAttribute("signal", 3);
                 request.getRequestDispatcher("viewProducts.jsp").forward(request, response);
             }
         }
@@ -61,7 +61,7 @@ public class ViewAllProductsServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ViewAllProductsServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewOutOfStockProductsServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -79,7 +79,7 @@ public class ViewAllProductsServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ViewAllProductsServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewOutOfStockProductsServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

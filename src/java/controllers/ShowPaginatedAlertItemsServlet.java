@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class ViewAllProductsServlet extends HttpServlet {
+public class ShowPaginatedAlertItemsServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,11 +37,24 @@ public class ViewAllProductsServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            ArrayList<Product> list = ProductDAO.getProducts();
-            if (list != null) {
-                request.setAttribute("pList", list);
-                request.setAttribute("signal", 1);
-                request.getRequestDispatcher("viewProducts.jsp").forward(request, response);
+            int pageNumber = Integer.parseInt(request.getParameter("page"));
+            int productPerPage = 7;
+            String items = request.getParameter("items");
+            int signal = Integer.parseInt(request.getParameter("signal"));
+            if (items.equals("product")) {
+                if (signal == 2) {
+                    ArrayList<Product> list = ProductDAO.getPaginatedAlertProducts(pageNumber, productPerPage);
+                    request.setAttribute("alList", list);
+                    request.setAttribute("page", pageNumber);
+                    request.setAttribute("signal", 2);
+                    request.getRequestDispatcher("viewProducts.jsp").forward(request, response);
+                } else if(signal == 3){
+                    ArrayList<Product> list = ProductDAO.getPaginatedOutProducts(pageNumber, productPerPage);
+                    request.setAttribute("oList", list);
+                    request.setAttribute("page", pageNumber);
+                    request.setAttribute("signal", 2);
+                    request.getRequestDispatcher("viewProducts.jsp").forward(request, response);
+                }
             }
         }
     }
@@ -61,7 +74,7 @@ public class ViewAllProductsServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ViewAllProductsServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ShowPaginatedAlertItemsServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -79,7 +92,7 @@ public class ViewAllProductsServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ViewAllProductsServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ShowPaginatedAlertItemsServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

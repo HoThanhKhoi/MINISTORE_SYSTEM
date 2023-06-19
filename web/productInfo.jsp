@@ -71,7 +71,7 @@
         <div class="container product-detail">
             <div class="row">
                 <div class="col-5 product-detail-img">
-                    <img src="./image/Item.png" alt="">
+                    <img src="${product.imgPath}" alt="">
                 </div>
                 <c:if test="${requestScope.product != null}">
                     <div class="col-6">
@@ -122,7 +122,7 @@
                         <div class="col">
                             <div class="item mb-4 text-center">
                                 <div class="card border-0 shadow">
-                                    <img src="./image/Item.png" class="card-img-top" alt="">
+                                    <img src="${proCate.imgPath}" class="card-img-top" alt="">
                                     <div class="card-body">
                                         <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProduct&pid=${proCate.productID}&cateID=${proCate.cateID}">${proCate.productName}</a></h5>
                                         <span class="bricked-price mx-2">${proCate.price}</span>

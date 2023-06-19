@@ -168,6 +168,30 @@
         <servlet-name>ShowPaginatedItemsServlet</servlet-name>
         <servlet-class>controllers.ShowPaginatedItemsServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewProductDetailsPageServlet</servlet-name>
+        <servlet-class>controllers.ViewProductDetailsPageServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewAlertProductsServlet</servlet-name>
+        <servlet-class>controllers.ViewAlertProductsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewOutOfStockProductsServlet</servlet-name>
+        <servlet-class>controllers.ViewOutOfStockProductsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowPaginatedAlertItemsServlet</servlet-name>
+        <servlet-class>controllers.ShowPaginatedAlertItemsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManageSearchedProductsServlet</servlet-name>
+        <servlet-class>controllers.ManageSearchedProductsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManagePaginatedSearchedProductsServlet</servlet-name>
+        <servlet-class>controllers.ManagePaginatedSearchedProductsServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ResetPassServlet</servlet-name>
         <url-pattern>/ResetPassServlet</url-pattern>
@@ -323,6 +347,30 @@
     <servlet-mapping>
         <servlet-name>ShowPaginatedItemsServlet</servlet-name>
         <url-pattern>/ShowPaginatedItemsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewProductDetailsPageServlet</servlet-name>
+        <url-pattern>/ViewProductDetailsPageServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewAlertProductsServlet</servlet-name>
+        <url-pattern>/ViewAlertProductsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewOutOfStockProductsServlet</servlet-name>
+        <url-pattern>/ViewOutOfStockProductsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowPaginatedAlertItemsServlet</servlet-name>
+        <url-pattern>/ShowPaginatedAlertItemsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageSearchedProductsServlet</servlet-name>
+        <url-pattern>/ManageSearchedProductsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagePaginatedSearchedProductsServlet</servlet-name>
+        <url-pattern>/ManagePaginatedSearchedProductsServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class ViewAllProductsServlet extends HttpServlet {
+public class ManagePaginatedSearchedProductsServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,12 +37,20 @@ public class ViewAllProductsServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            ArrayList<Product> list = ProductDAO.getProducts();
-            if (list != null) {
-                request.setAttribute("pList", list);
-                request.setAttribute("signal", 1);
-                request.getRequestDispatcher("viewProducts.jsp").forward(request, response);
+            int pageNumber = Integer.parseInt(request.getParameter("page"));
+            int productPerPage = 7;
+            String keyword = request.getParameter("keyword");
+            String items = request.getParameter("items");
+            ArrayList<Product> list = ProductDAO.getPaginatedSearchedProduct(pageNumber, productPerPage, keyword);
+            if (items.equals("product")) {
+                if (list != null) {
+                    request.setAttribute("mpplist", list);
+                    request.setAttribute("page", pageNumber);
+                    request.setAttribute("keyword", keyword);
+                    request.getRequestDispatcher("viewProducts.jsp").forward(request, response);
+                }
             }
+
         }
     }
 
@@ -61,7 +69,7 @@ public class ViewAllProductsServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ViewAllProductsServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManagePaginatedSearchedProductsServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -79,7 +87,7 @@ public class ViewAllProductsServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ViewAllProductsServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManagePaginatedSearchedProductsServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
