@@ -52,7 +52,7 @@ public class ShowPaginatedAlertItemsServlet extends HttpServlet {
                     ArrayList<Product> list = ProductDAO.getPaginatedOutProducts(pageNumber, productPerPage);
                     request.setAttribute("oList", list);
                     request.setAttribute("page", pageNumber);
-                    request.setAttribute("signal", 2);
+                    request.setAttribute("signal", 3);
                     request.getRequestDispatcher("viewProducts.jsp").forward(request, response);
                 }
             }

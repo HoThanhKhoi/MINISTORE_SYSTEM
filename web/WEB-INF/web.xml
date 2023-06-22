@@ -20,10 +20,10 @@
         <servlet-name>MainController</servlet-name>
         <servlet-class>controllers.MainController</servlet-class>
     </servlet>
-    <servlet>
+    <!--    <servlet>
         <servlet-name>productInfoServlet</servlet-name>
         <servlet-class>controllers.productInfoServlet</servlet-class>
-    </servlet>
+    </servlet>-->
     <servlet>
         <servlet-name>ViewProductServlet</servlet-name>
         <servlet-class>controllers.ViewProductServlet</servlet-class>
@@ -175,8 +175,8 @@
     <servlet>
         <servlet-name>ViewVoucherDetailsServlet</servlet-name>
         <servlet-class>controllers.ViewVoucherDetailsServlet</servlet-class>
-        </servlet>
-        <servlet>
+    </servlet>
+    <servlet>
         <servlet-name>ViewSaleDashboardServlet</servlet-name>
         <servlet-class>controllers.ViewSaleDashboardServlet</servlet-class>
     </servlet>
@@ -227,6 +227,14 @@
     <servlet>
         <servlet-name>ManagePaginatedSearchedProductsServlet</servlet-name>
         <servlet-class>controllers.ManagePaginatedSearchedProductsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowPaginatedSearhedUsersServlet</servlet-name>
+        <servlet-class>controllers.ShowPaginatedSearhedUsersServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateProductServlet</servlet-name>
+        <servlet-class>controllers.UpdateProductServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ResetPassServlet</servlet-name>
@@ -395,8 +403,8 @@
     <servlet-mapping>
         <servlet-name>ViewVoucherDetailsServlet</servlet-name>
         <url-pattern>/ViewVoucherDetailsServlet</url-pattern>
-        </servlet-mapping>
-        <servlet-mapping>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ViewSaleDashboardServlet</servlet-name>
         <url-pattern>/ViewSaleDashboardServlet</url-pattern>
     </servlet-mapping>
@@ -447,6 +455,14 @@
     <servlet-mapping>
         <servlet-name>ManagePaginatedSearchedProductsServlet</servlet-name>
         <url-pattern>/ManagePaginatedSearchedProductsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowPaginatedSearhedUsersServlet</servlet-name>
+        <url-pattern>/ShowPaginatedSearhedUsersServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateProductServlet</servlet-name>
+        <url-pattern>/UpdateProductServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -6,7 +6,7 @@
 package dao;
 
 import dto.User;
-import Utils.DBUtils;
+import utils.DBUtils;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -359,6 +359,22 @@ public class UserDAO {
         return list;
 
         }
+    
+    public static ArrayList<User> getPaginatedSearchedUsers(int pageNumber, int productPerPage, int roleID,String keyword) throws Exception {
+        ArrayList<User> list = new ArrayList<>();
+        ArrayList<User> employeeList = UserDAO.searchUsers(roleID, keyword);
+        Connection cn = DBUtils.makeConnection();
+        int start = (pageNumber - 1) * productPerPage;
+        int end = start + productPerPage - 1;
+        if (end > employeeList.size()) {
+            end = employeeList.size() - 1;
+        }
+        for (int i = start; i <= end; i++) {
+            list.add(employeeList.get(i));
+        }
+        cn.close();
+        return list;
+    }
     }
 
 

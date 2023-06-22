@@ -52,19 +52,26 @@
                 <nav>
                     <ul>
                         <li>
-                            <a href="MainController?action=viewCart">Cart</a>
+                            <a href="#homePage.jsp">Home</a>
                         </li>
+
                         <li>
                             <a href="#hot-deal">Hot Deals</a>
                         </li>
+
                         <li>
                             <a href="#best-selling">Best Sellers</a>
                         </li>
+
                         <li>
                             <a href="#category">Category</a>
                         </li>
-                        <li>
 
+                        <li>
+                            <a href="MainController?action=viewCart">Cart</a>
+                        </li>
+
+                        <li>
                             <c:choose>
                                 <c:when test="${sessionScope.customer != null}">
                                     <a href="customerProfile.jsp?id=${sessionScope.customer.userID}">Profile</a>
@@ -74,6 +81,7 @@
                                 </c:otherwise>
                             </c:choose>
                         </li>
+
                         <li>
                             <c:choose>
                                 <c:when test="${sessionScope.customer != null}">
@@ -94,7 +102,6 @@
                 <video class="w-100" autoplay loop muted>
                     <source src="./image/mixkit-surface-covered-with-many-fruits-and-vegetables-seen-in-detail-10433-medium.mp4" type="video/mp4" />
                 </video>
-                <!-- <img src="./image/banner_homepage.png" alt=""> -->
                 <div class="overlay"></div>
                 <div class="banner-title text-center d-flex align-items-center">
                     <h1>Ministore </br>
@@ -103,15 +110,17 @@
                 </div>
 
                 <form class="banner-search text-center d-flex align-items-center" action="MainController" method="post">
-                    <input type="text" placeholder="Search..." name="keyword">
+                    <input type="text" placeholder="Search here..." name="keyword">
                     <button id="search-button" type="submit" class="btn" name="action" value="searchProduct"> 
                         <i class="fas fa-search"></i>
                     </button>
                 </form>
             </div>
         </div>
+
+
+        <!-- Hot Deal -->
         <c:if test="${requestScope.page == 1 || requestScope.list == null}">
-            <!-- Hot Deal -->
             <div class="container-fluid hot-deal" id="hot-deal">
                 <div class="hot-deal-title ">
                     <h1 class="pt-5 pb-5 text-center">Hot <u class="fw-bold"><em>deal</em></u> right now!</h1>
@@ -120,23 +129,23 @@
                 <div class="item-list mx-5">
                     <div class="row mx-5">
                         <div class="owl-carousel owl-theme">
-                            
+
                             <c:forEach var="product" items="${ProductDAO.getProducts()}" begin="0" end="6">
-                            <div class="item mb-4 text-center">
-                                <div class="card border-0 shadow align-items-center">
-                                    <img src="${product.imgPath}" class="card-img-top" alt="">
-                                    <div class="card-body">
-                                        <h5 class="card-title fw-bold">
-                                            <a href="MainController?action=viewProduct&pid=${product.productID}&cateID=${product.cateID}">
-                                                ${product.productName}</a>
-                                        </h5>
-                                        <span class="bricked-price mx-2">${product.price}</span>
-                                        <fmt:formatNumber value="${product.price - 0.5}" pattern="#,##0.00" var="formattedNumber" />
-                                        <span class="price fw-bold mx-2">${formattedNumber}</span></br>
-                                        <a href="MainController?action=addToCart&quantity=1&pid=${product.productID}&cateID=${product.cateID}" class="btn btn-primary mt-3 px-3 py-2 fw-bold" name="action">Add To Cart</a>
+                                <div class="item mb-4 text-center">
+                                    <div class="card border-0 shadow align-items-center">
+                                        <img src="${product.imgPath}" class="card-img-top" alt="">
+                                        <div class="card-body">
+                                            <h5 class="card-title fw-bold">
+                                                <a href="MainController?action=viewProduct&pid=${product.productID}&cateID=${product.cateID}">
+                                                    ${product.productName}</a>
+                                            </h5>
+                                            <span class="bricked-price mx-2">$${product.price}</span>
+                                            <fmt:formatNumber value="${product.price - 0.5}" pattern="#,##0.00" var="formattedNumber" />
+                                            <span class="price fw-bold mx-2">$${formattedNumber}</span></br>
+                                            <a href="MainController?action=addToCart&quantity=1&pid=${product.productID}&cid=${product.cateID}" class="btn btn-primary mt-3 px-3 py-2 fw-bold" name="action">Add To Cart</a>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>  
+                                </div>  
                             </c:forEach>
 
                         </div>
@@ -280,14 +289,14 @@
             </div>
         </div>
 
-        
-        
+
+
         <!-- BEST SELLING -->
         <div class="best-selling" id="best-selling">
             <div class="container">
 
                 <div class="best-selling-title ">
-                    <h1 class="pt-5 pb-5 text-center fw-bold"><em>Best sellers</em></h1>
+                    <h1 class="pt-5 pb-5 text-center fw-bold"><em>All products</em></h1>
                 </div>
 
                 <div class="item-list mx-5">
@@ -298,7 +307,7 @@
                                     <div class="col">
                                         <!-- begin item -->
                                         <div class="item mb-4 text-center">
-                                            <div class="card border-0 shadow">
+                                            <div class="card border-0 shadow align-items-center">
                                                 <img src="${product.imgPath}" class="card-img-top" alt="">
                                                 <div class="card-body">
                                                     <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProduct&pid=${product.productID}&cateID=${product.cateID}">${product.productName}</a></h5>
@@ -318,11 +327,11 @@
                                     <div class="col">
                                         <!-- begin item -->
                                         <div class="item mb-4 text-center">
-                                            <div class="card border-0 shadow">
+                                            <div class="card border-0 shadow align-items-center">
                                                 <img src="${product.imgPath}" class="card-img-top" alt="">
                                                 <div class="card-body">
                                                     <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProduct&pid=${product.productID}&cateID=${product.cateID}">${product.productName}</a></h5>
-                                                    <span class="bricked-price mx-2">${product.price}</span>
+                                                    <span class="bricked-price mx-2">$${product.price}</span>
                                                     <fmt:formatNumber value="${formattedNumber}" pattern="#,##0.00" var="formattedNumber" />
                                                     <span class="price fw-bold mx-2">${Math.round(product.price)-0.45}</span></br>
                                                     <a href="MainController?action=addToCart&pid=${product.productID}&cid=${product.cateID}&quantity=1" class="btn btn-primary mt-3 px-3 py-2 fw-bold">Add To Cart</a>

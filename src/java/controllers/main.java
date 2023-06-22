@@ -5,7 +5,7 @@ import dao.ProductDAO;
 import dao.UserDAO;
 import dto.Category;
 import dto.Product;
-import Utils.DBUtils;
+import utils.DBUtils;
 import dao.OrderDAO;
 import dao.VoucherDAO;
 import dto.Order;
@@ -81,9 +81,16 @@ public class main {
 //            System.out.println(orderDetail.getOrderDetailID() + "," + orderDetail.getOrderID());
 //        }
         
-        ArrayList<Voucher> list = VoucherDAO.getExpiredVouchers();
-        for (Voucher v : list) {
-            System.out.println(v.getVoucherID()+","+v.getExpiredDate());
-        }
+//        ArrayList<Voucher> list = VoucherDAO.getExpiredVouchers();
+//        for (Voucher v : list) {
+//            System.out.println(v.getVoucherID()+","+v.getExpiredDate());
+////        }
+//    ArrayList<User> list =UserDAO.getPaginatedSearchedUsers(2, 7, 3, "2");
+//    for (int i = 0; i < list.size(); i++) {
+//            System.out.println(list.get(i).getName());
+//        }
+String b = "20";
+        int a = ProductDAO.updateProduct("P-0001", "tao", Float.parseFloat(b), "tao Mi", 100, "C-0001");
+        System.out.println(a);
     }
 }

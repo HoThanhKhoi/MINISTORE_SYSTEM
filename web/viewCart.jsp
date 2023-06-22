@@ -58,7 +58,7 @@
                             <a href="MainController?action=backToHome">Home</a>
                         </li>
                         <li class="breadcrumb-item active">
-                            <a href="MainController?action=ViewCartServlet">Your Cart</a>
+                            <a href="MainController?action=ViewCartServlet">My Cart</a>
                         </li>
                     </ol>
                 </nav>
@@ -126,7 +126,7 @@
                                                 <td class="cart-item-title">
                                                     <h5>${sessionScope.nameList.get(cartKey)}</h5>
                                                 </td>
-                                                <td class="cart-price">${sessionScope.priceList.get(cartKey)}</td>
+                                                <td class="cart-price">$${sessionScope.priceList.get(cartKey)}</td>
 
                                                 <td class="cart-quantity">
                                                     <div class="group-quantity d-flex justify-content-center align-items-center">
@@ -147,7 +147,7 @@
 
                                                 <c:set var="number" value="${sessionScope.priceList.get(cartKey) * cartitem.value}"/>
                                                 <fmt:formatNumber value="${sessionScope.priceList.get(cartKey) * cartitem.value}" pattern="#,##0.00" var="formattedNumber" />
-                                                <td class="cart-total">${formattedNumber}</td>
+                                                <td class="cart-total">$${formattedNumber}</td>
 
                                                 <td class="cart-item-btn"><a class="change button" href="MainController?action=updateCart">Update</a></td>
                                             </tr>
@@ -289,7 +289,7 @@
                         </div>
                     </div>
 
-                    <div class="row mt-5">
+                    <div class="row my-3">
                         <div class="col-lg-12 d-flex justify-content-end">
                             <a href="MainController?action=cartConfirmationPage" class="button check">Next</a>
                         </div>
@@ -305,7 +305,10 @@
                 </div>
             </c:otherwise>
         </c:choose>
-
+        <!-- FOOTER -->
+        <footer>
+            <c:import url="footer.jsp" />
+        </footer>
     </body>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/updateCart.js"></script>
 </html>

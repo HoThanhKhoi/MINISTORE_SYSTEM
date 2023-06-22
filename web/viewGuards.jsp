@@ -61,21 +61,21 @@
                                 <i class="fa-solid fa-angle-right dropdown"></i>
                             </a>
                             <div class="sub-menu">
-                                <a href="viewCustomers.jsp" class="sub-item active">Customers</a>
-                                <a href="viewSales.jsp" class="sub-item">Sales</a>
-                                <a href="viewGuards.jsp" class="sub-item">Guards</a>
+                                 <a href="MainController?action=viewCustomers" class="sub-item">Customers</a>
+                                <a href="MainController?action=viewSales" class="sub-item">Sales</a>
+                                <a href="MainController?action=viewGuards" class="sub-item">Guards</a>
                             </div>
                         </div>
 
                         <div class="item">
-                            <a href="viewCategory.jsp" class="sub-btn">
+                             <a href="MainController?action=viewAllCategories" class="sub-btn">
                                 <span><i class="fa-solid fa-bars-staggered mx-3"></i></span>
                                 <span>Category</span>
                             </a>
                         </div>
 
                         <div class="item">
-                            <a  href="viewProduct.jsp" class="sub-btn">
+                           <a  href="MainController?action=viewAllProducts" class="sub-btn active">
                                 <span><i class="fa-solid fa-box mx-3"></i></span>
                                 <span>Product</span>
                             </a>

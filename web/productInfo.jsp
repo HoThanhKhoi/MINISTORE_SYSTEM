@@ -1,8 +1,4 @@
-<%-- 
-    Document   : productInfo1
-    Created on : May 28, 2023, 2:06:28 PM
-    Author     : Admin
---%>
+
 
 <%@page import="dao.ProductDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -27,6 +23,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
               integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
               crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
         <!-- toastr -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
@@ -49,14 +46,14 @@
 
 
         <!-- HEADER PATH -->
-        <nav class="navbar navbar_path navbar-expand-lg header-path mb-4">
-            <div class="container-fluid">
+        <nav class="navbar navbar_path navbar-expand-lg header-path mt-4 mb-1">
+            <div class="container">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
                             <a href="MainController?action=backToHome">Home</a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">
+                        <li class="breadcrumb-item" aria-current="page">
                             <a href="MainController?action=viewProductByCategory&cateID=${requestScope.cateID}">${requestScope.cateName}</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">
@@ -67,33 +64,39 @@
             </div>
         </nav>
 
+                        
+                        
         <!-- PRODUCT DETAIL -->
         <div class="container product-detail">
             <div class="row">
                 <div class="col-5 product-detail-img">
                     <img src="${product.imgPath}" alt="">
                 </div>
+                
                 <c:if test="${requestScope.product != null}">
                     <div class="col-6">
-                        <div class="title mb-4">${product.productName}</div>
-                        <div class="description mb-4">
+                        <div class="title mb-3">${product.productName}</div>
+                        <div class="description mb-5">
                             ${product.description}
                         </div>
 
-                        <div class="d-flex group-price mb-4">
+                        <div class="d-flex group-price mb-5">
                             <div class="bricked-price">$${product.price}</div>
                             <div class="price">$${Math.round(product.price) - 0.45}</div>
                         </div>
+                        
                         <form action="MainController" method="get">
-                            <div class="d-flex">
+                            <div class="d-flex align-items-center mb-3">
                                 <div class="group-quantity">
-                                    <a role="button" class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                    <a role="button" class="quantity-button"
+                                       onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                                         <i class="fas fa-minus"></i>
                                     </a>
                                     <input class="quantity fw-bold text-black" min="0" name="quantity" value="1" max="${product.stockQuantity}" type="number">
-                                    <a role="button" class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                    <a role="button" class="quantity-button"
+                                       onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                                         <i class="fas fa-plus"></i>
-                                    </a>
+                                    </a> 
                                 </div>
 
                                 <div class="notification">
@@ -112,6 +115,7 @@
             </div>
         </div>
 
+                
         <!-- RELATED PRODUCT -->
         <div class="container-fluid related-product my-5">
             <div class="title text-center mb-5">Related Products</div>
@@ -121,7 +125,7 @@
                     <c:forEach var="proCate" items="${requestScope.list}" begin="0" end="4">
                         <div class="col">
                             <div class="item mb-4 text-center">
-                                <div class="card border-0 shadow">
+                                <div class="card border-0 shadow align-items-center">
                                     <img src="${proCate.imgPath}" class="card-img-top" alt="">
                                     <div class="card-body">
                                         <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProduct&pid=${proCate.productID}&cateID=${proCate.cateID}">${proCate.productName}</a></h5>

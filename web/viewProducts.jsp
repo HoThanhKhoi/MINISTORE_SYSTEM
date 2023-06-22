@@ -11,7 +11,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Ministore</title>
-        <link rel="stylesheet" href="./css/manageProductScreen.css" />
+        <link rel="stylesheet" href="./css/managerScreen.css" />
 
         <!-- Icon CDN -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -38,64 +38,69 @@
         </header>
 
         <div class="container-fluid">
-            <div class="row">
 
                 <!-- menu -->
-                <div class="col-2 menu">
-                    <ul>
-                        <li class="row">
-                            <i class="fa-solid fa-user mx-3 col-2"></i>
-                            <a href="" class="col-2">User</a>
-                        </li>
+                <div class="menu-btn">
+                    <input type="checkbox" id="nav-toggle">
+                </div>
 
-                        <!-- class="collapse"-->
 
-                        <li class="row ">
-                            <i class="col-2 mx-3"></i>
-                            <a href="viewCustomers.jsp" class="col-2">Customer</a>
-                        </li>
+                <div class="side-bar">
+                    <div class="menu">
+                        <div class="item">
+                            <a class="sub-btn">
+                                <i class="fa-solid fa-user mx-3"></i>
+                                User
+                                <i class="fa-solid fa-angle-right dropdown"></i>
+                            </a>
+                            <div class="sub-menu">
+                                <a href="MainController?action=viewCustomers" class="sub-item">Customers</a>
+                                <a href="MainController?action=viewSales" class="sub-item">Sales</a>
+                                <a href="MainController?action=viewGuards" class="sub-item">Guards</a>
+                            </div>
+                        </div>
 
-                        <li class="row">
-                            <i class="col-2 mx-3"></i>
-                            <a href="" class="col-2">Sale</a>
-                        </li>
+                        <div class="item">
+                            <a href="MainController?action=viewAllCategories" class="sub-btn">
+                                <span><i class="fa-solid fa-bars-staggered mx-3"></i></span>
+                                <span>Category</span>
+                            </a>
+                        </div>
 
-                        <li class="row">
-                            <i class="col-2 mx-3"></i>
-                            <a href="" class="col-2">Guard</a>
-                        </li>
+                        <div class="item">
+                            <a  href="MainController?action=viewAllProducts" class="sub-btn active">
+                                <span><i class="fa-solid fa-box mx-3"></i></span>
+                                <span>Product</span>
+                            </a>
+                        </div>
 
-                        <li class="row active">
-                            <i class="fa-solid fa-bars-staggered mx-3 col-2"></i>
-                            <a href="" class="col-2">Category</a>
-                        </li>
+                        <div class="item">
+                            <a class="sub-btn">
+                                <span><i class="fa-solid fa-tag mx-3"></i></span>
+                                <span>Voucher</span>
+                            </a>
+                        </div>
 
-                        <li class="row">
-                            <i class="fa-solid fa-box mx-3 col-2"></i>
-                            <a href="" class="col-2">Product</a>
-                        </li>
+                        <div class="item">
+                            <a class="sub-btn">
+                                <span><i class="fa-solid fa-clipboard-user mx-3"></i></span>
+                                <span>Attendance</span>
+                            </a>
+                        </div>
 
-                        <li class="row">
-                            <i class="fa-solid fa-tag mx-3 col-2"></i>
-                            <a href="" class="col-2">Voucher</a>
-                        </li>
+                        <div class="item">
+                            <a class="sub-btn">
+                                <span><i class="fa-solid fa-cart-shopping mx-3"></i></span>
+                                <span>Order</span>
+                            </a>
+                        </div>
 
-                        <li class="row">
-                            <i class="fa-solid fa-clipboard-user mx-3 col-2"></i>
-                            <a href="" class="col-2">Attendance</a>
-                        </li>
-
-                        <li class="row">
-                            <i class="fa-solid fa-cart-shopping mx-3 col-2"></i>
-                            <a href="" class="col-2">Order</a>
-                        </li>
-
-                    </ul>
+                    </div>
                 </div>
 
 
                 <!-- table -->
-                <div class="col dashboard">
+                <div class="dashboard">
                     <div class="row">
                         <div class="col-5">
                             <form class="search text-center d-flex align-items-center" action="MainController" metohd="post">
@@ -130,26 +135,29 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <form action="MainController" action="post">
+                        
                             <c:choose>
                                 <c:when test="${requestScope.signal == 1}">
                                     <c:if test="${requestScope.ppList == null}">
                                         <c:forEach var="product" items="${requestScope.pList}" begin="0" end="6">
+                                            <form action="MainController" action="post">
                                             <tr>
                                                 <td>${product.productID}</td>
                                                 <td>${product.productName}</td>
                                                 <td>${CategoryDAO.getCategory(product.cateID).getCateName()}</td>                                 
                                                 <td>${product.price}</td>
                                                 <td>${product.stockQuantity}</td>
+                                                <input type="hidden" name="pid" value="${product.productID}"/>
                                                 <td>
                                                     <button type="submit" name="action" value="viewProductDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
                                                 </td>
-                                            <input type="hidden" value="${product.productID}"/>
+                                            </form>
                                             </tr>
                                         </c:forEach>
                                     </c:if>
                                     <c:if test="${requestScope.ppList != null}">
                                         <c:forEach var="product" items="${requestScope.ppList}" begin="0" end="6">
+                                            <form action="MainController" action="post">
                                             <tr>
                                                 <td>${product.productID}</td>
                                                 <td>${product.productName}</td>
@@ -159,14 +167,16 @@
                                                 <td>
                                                     <button type="submit" name="action" value="viewProductDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
                                                 </td>
-                                            <input type="hidden" value="${product.productID}"/>
+                                            <input type="hidden" name="pid" value="${product.productID}"/>
                                             </tr>
+                                            </form>
                                         </c:forEach>
                                     </c:if>
                                 </c:when>
                                 <c:when test="${requestScope.signal == 2}">
                                     <c:if test="${requestScope.alList == null}">
                                         <c:forEach var="product" items="${requestScope.alertList}" begin="0" end="6">
+                                            <form action="MainController" action="post">
                                             <tr>
                                                 <td>${product.productID}</td>
                                                 <td>${product.productName}</td>
@@ -176,12 +186,14 @@
                                                 <td>
                                                     <button type="submit" name="action" value="viewProductDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
                                                 </td>
-                                            <input type="hidden" value="${product.productID}"/>
+                                            <input type="hidden" name="pid" value="${product.productID}"/>
                                             </tr>
+                                            </form>
                                         </c:forEach>
                                     </c:if>
                                     <c:if test="${requestScope.alList != null}">
                                         <c:forEach var="product" items="${requestScope.alList}" begin="0" end="6">
+                                            <form action="MainController" action="post">
                                             <tr>
                                                 <td>${product.productID}</td>
                                                 <td>${product.productName}</td>
@@ -191,14 +203,16 @@
                                                 <td>
                                                     <button type="submit" name="action" value="viewProductDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
                                                 </td>
-                                            <input type="hidden" value="${product.productID}"/>
+                                            <input type="hidden" name="pid" value="${product.productID}"/>
                                             </tr>
+                                            </form>
                                         </c:forEach>
                                     </c:if>
                                 </c:when>
                                 <c:when test="${requestScope.signal == 3}">
                                     <c:if test="${requestScope.oList == null}">
                                         <c:forEach var="product" items="${requestScope.outList}" begin="0" end="6">
+                                            <form action="MainController" action="post">
                                             <tr>
                                                 <td>${product.productID}</td>
                                                 <td>${product.productName}</td>
@@ -208,12 +222,14 @@
                                                 <td>
                                                     <button type="submit" name="action" value="viewProductDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
                                                 </td>
-                                            <input type="hidden" value="${product.productID}"/>
+                                            <input type="hidden" name="pid" value="${product.productID}"/>
                                             </tr>
+                                            </form>
                                         </c:forEach>
                                     </c:if>
                                     <c:if test="${requestScope.oList != null}">
                                         <c:forEach var="product" items="${requestScope.oList}" begin="0" end="6">
+                                            <form action="MainController" action="post">
                                             <tr>
                                                 <td>${product.productID}</td>
                                                 <td>${product.productName}</td>
@@ -223,14 +239,16 @@
                                                 <td>
                                                     <button type="submit" name="action" value="viewProductDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
                                                 </td>
-                                            <input type="hidden" value="${product.productID}"/>
+                                            <input type="hidden" name="pid" value="${product.productID}"/>
                                             </tr>
+                                            </form>
                                         </c:forEach>
                                     </c:if>
                                 </c:when>
                                 <c:when test="${requestScope.keyword != null}">
                                     <c:if test="${requestScope.mpplist == null}">
                                         <c:forEach var="product" items="${requestScope.mslist}" begin="0" end="6">
+                                            <form action="MainController" action="post">
                                             <tr>
                                                 <td>${product.productID}</td>
                                                 <td>${product.productName}</td>
@@ -240,12 +258,14 @@
                                                 <td>
                                                     <button type="submit" name="action" value="viewProductDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
                                                 </td>
-                                            <input type="hidden" value="${product.productID}"/>
+                                            <input type="hidden" name="pid" value="${product.productID}"/>
                                             </tr>
+                                            </form>
                                         </c:forEach>
                                     </c:if>
                                     <c:if test="${requestScope.mpplist != null}">
                                         <c:forEach var="product" items="${requestScope.mpplist}" begin="0" end="6">
+                                            <form action="MainController" action="post">
                                             <tr>
                                                 <td>${product.productID}</td>
                                                 <td>${product.productName}</td>
@@ -255,99 +275,125 @@
                                                 <td>
                                                     <button type="submit" name="action" value="viewProductDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
                                                 </td>
-                                            <input type="hidden" value="${product.productID}"/>
+                                            <input type="hidden" name="pid" value="${product.productID}"/>
                                             </tr>
+                                            </form>
                                         </c:forEach>
                                     </c:if>
 
                                 </c:when>
                             </c:choose>
-                        </form>
+                      
                         </tbody>
                     </table>
+                    
+                    <c:choose>
+                        <c:when test="${requestScope.signal == 1}">
+                            <nav aria-label="Page navigation example" style="margin: 50px 0;">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item">
+                                        <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=${requestScope.page-1}&items=product"><</a>
+                                    </li>
+                                    <% int totalProducts = ProductDAO.getProducts().size();
+                                        int element = 7;
+                                        float numOfPages = (float) totalProducts / element;
+                                    %>
+                                    <%for (int i = 1; i <= (int) Math.ceil(numOfPages); i++) {%>
+                                    <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=<%=i%>&items=product"><%=i%></a></li>
+                                        <% }%>
+                                    <li class="page-item">
+                                        <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=${requestScope.page+1}&items=product">></a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </c:when>
+                        <c:when test="${requestScope.signal == 2}">
+                            <nav aria-label="Page navigation example" style="margin: 50px 0; ">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item">
+                                        <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showAlertItemsPage&page=${requestScope.page-1}&items=product&signal=2"><</a>
+                                    </li>
+                                    <% int totalAlertProducts = ProductDAO.getAlertProducts().size();
+                                        int elementAlert = 7;
+                                        float numOfAlertPages = (float) totalAlertProducts / elementAlert;
+                                    %>
+                                    <%for (int i = 1; i <= (int) Math.ceil(numOfAlertPages); i++) {%>
+                                    <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showAlertItemsPage&page=<%=i%>&items=product&signal=2"><%=i%></a></li>
+                                        <% }%>
+                                    <li class="page-item">
+                                        <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showAlertItemsPage&page=${requestScope.page+1}&items=product&signal=2">></a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </c:when>
+                        <c:when test="${requestScope.signal == 3}">
+                            <nav aria-label="Page navigation example" style="margin: 50px 0; ">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item">
+                                        <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showAlertItemsPage&page=${requestScope.page-1}&items=product&signal=3"><</a>
+                                    </li>
+                                    <% int totalOuttProducts = ProductDAO.getOutOfStocktProducts().size();
+                                        int elementOut = 7;
+                                        float numOfOutPages = (float) totalOuttProducts / elementOut;
+                                    %>
+                                    <%for (int i = 1; i <= (int) Math.ceil(numOfOutPages); i++) {%>
+                                    <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showAlertItemsPage&page=<%=i%>&items=product&signal=3"><%=i%></a></li>
+                                        <% }%>
+                                    <li class="page-item">
+                                        <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showAlertItemsPage&page=${requestScope.page+1}&items=product&signal=3">></a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </c:when>
+                        <c:when test="${requestScope.keyword != null || requestScope.keyword == null}">
+                            <nav aria-label="Page navigation example" style="margin: 50px 0;">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item">
+                                        <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showSearchedItemsPage&page=${requestScope.page-1}&items=product&keyword=${requestScope.keyword}"><</a>
+                                    </li>
+                                    <%
+                                        String keyword = request.getParameter("keyword");
+                                        int totalSearchProducts = ProductDAO.getSearchedProducts(keyword).size();
+                                        int elementSearch = 7;
+                                        float numOfSearchPages = (float) totalSearchProducts / elementSearch;
+                                    %>
+                                    <%for (int i = 1; i <= (int) Math.ceil(numOfSearchPages); i++) {%>
+                                    <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showSearchedItemsPage&page=<%=i%>&items=product&keyword=${requestScope.keyword}"><%=i%></a></li>
+                                        <% }%>
+                                    <li class="page-item">
+                                        <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showSearchedItemsPage&page=${requestScope.page+1}&items=product&keyword=${requestScope.keyword}">></a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </c:when>
+                    </c:choose>
                 </div>
-            </div>
-            <c:choose>
-                <c:when test="${requestScope.signal == 1}">
-                    <nav aria-label="Page navigation example" style="margin-top: 50px ">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item">
-                                <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=${requestScope.page-1}&items=product"><</a>
-                            </li>
-                            <% int totalProducts = ProductDAO.getProducts().size();
-                                int element = 7;
-                                float numOfPages = (float) totalProducts / element;
-                            %>
-                            <%for (int i = 1; i <= (int) Math.ceil(numOfPages); i++) {%>
-                            <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=<%=i%>&items=product"><%=i%></a></li>
-                                <% }%>
-                            <li class="page-item">
-                                <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=${requestScope.page+1}&items=product">></a>
-                            </li>
-                        </ul>
-                    </nav>
-                </c:when>
-                <c:when test="${requestScope.signal == 2}">
-                    <nav aria-label="Page navigation example" style="margin-top: 50px ">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item">
-                                <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showAlertItemsPage&page=${requestScope.page-1}&items=product&signal=2"><</a>
-                            </li>
-                            <% int totalAlertProducts = ProductDAO.getAlertProducts().size();
-                                int elementAlert = 7;
-                                float numOfAlertPages = (float) totalAlertProducts / elementAlert;
-                            %>
-                            <%for (int i = 1; i <= (int) Math.ceil(numOfAlertPages); i++) {%>
-                            <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showAlertItemsPage&page=<%=i%>&items=product&signal=2"><%=i%></a></li>
-                                <% }%>
-                            <li class="page-item">
-                                <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showAlertItemsPage&page=${requestScope.page+1}&items=product&signal=2">></a>
-                            </li>
-                        </ul>
-                    </nav>
-                </c:when>
-                <c:when test="${requestScope.signal == 3}">
-                    <nav aria-label="Page navigation example" style="margin-top: 50px ">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item">
-                                <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showAlertItemsPage&page=${requestScope.page-1}&items=product&signal=3"><</a>
-                            </li>
-                            <% int totalOuttProducts = ProductDAO.getOutOfStocktProducts().size();
-                                int elementOut = 7;
-                                float numOfOutPages = (float) totalOuttProducts / elementOut;
-                            %>
-                            <%for (int i = 1; i <= (int) Math.ceil(numOfOutPages); i++) {%>
-                            <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showAlertItemsPage&page=<%=i%>&items=product&signal=3"><%=i%></a></li>
-                                <% }%>
-                            <li class="page-item">
-                                <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showAlertItemsPage&page=${requestScope.page+1}&items=product&signal=3">></a>
-                            </li>
-                        </ul>
-                    </nav>
-                </c:when>
-                <c:when test="${requestScope.keyword != null || requestScope.keyword == null}">
-                    <nav aria-label="Page navigation example" style="margin-top: 50px ">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item">
-                                <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showSearchedItemsPage&page=${requestScope.page-1}&items=product&keyword=${requestScope.keyword}"><</a>
-                            </li>
-                            <%
-                                String keyword = request.getParameter("keyword");
-                                int totalSearchProducts = ProductDAO.getSearchedProducts(keyword).size();
-                                int elementSearch = 7;
-                                float numOfSearchPages = (float) totalSearchProducts / elementSearch;
-                            %>
-                            <%for (int i = 1; i <= (int) Math.ceil(numOfSearchPages); i++) {%>
-                            <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showSearchedItemsPage&page=<%=i%>&items=product&keyword=${requestScope.keyword}"><%=i%></a></li>
-                                <% }%>
-                            <li class="page-item">
-                                <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showSearchedItemsPage&page=${requestScope.page+1}&items=product&keyword=${requestScope.keyword}">></a>
-                            </li>
-                        </ul>
-                    </nav>
-                </c:when>
-            </c:choose>
-
         </div>
+
+        <!-- FOOTER -->
+        <footer>
+            <c:import url="footer.jsp" />
+        </footer>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+//jquery for toggle sub menus
+                $('.sub-btn').click(function () {
+                    $(this).next('.sub-menu').slideToggle();
+                    $(this).find('.dropdown').toggleClass('rotate');
+                });
+
+//jquery for expand and collapse the sidebar
+                $('.menu-btn').click(function () {
+                    $('.side-bar').addClass('active');
+                    $('.menu-btn').css("visibility", "hidden");
+                });
+
+                $('.close-btn').click(function () {
+                    $('.side-bar').removeClass('active');
+                    $('.menu-btn').css("visibility", "visible");
+                });
+            });
+        </script>
     </body>
 </html>

@@ -122,8 +122,36 @@ public class MainController extends HttpServlet {
                 url = "ViewVoucherDetailsServlet";
             } else if (action.equalsIgnoreCase("updateVoucher")) {
                 url = "UpdateVoucherServlet";
+            } else if (action.equalsIgnoreCase("manageSaleOrders")) {
+                url = "ManageSaleOrdersServlet";
+            } else if (action.equalsIgnoreCase("addEmployeePage")) {
+                url = "ChangeToAddPageServlet";
+            } else if (action.equalsIgnoreCase("addEmployee")) {
+                url = "AddEmployeeServlet";
+            } else if (action.equalsIgnoreCase("viewAllProducts")) {
+                url = "ViewAllProductsServlet";
+            } else if (action.equalsIgnoreCase("viewAllCategories")) {
+                url = "ViewAllCategoriesServlet";
+            } else if (action.equalsIgnoreCase("showItemsPage")) {
+                url = "ShowPaginatedItemsServlet";
+            } else if (action.equalsIgnoreCase("viewProductDetailsPage")) {
+                url = "ViewProductDetailsPageServlet";
+            } else if (action.equalsIgnoreCase("viewAlertProducts")) {
+                url = "ViewAlertProductsServlet";
+            } else if (action.equalsIgnoreCase("viewOutOfStockProducts")) {
+                url = "ViewOutOfStockProductsServlet";
+            } else if (action.equalsIgnoreCase("showAlertItemsPage")) {
+                url = "ShowPaginatedAlertItemsServlet";
+            } else if (action.equalsIgnoreCase("getSearchedProduct")) {
+                url = "ManageSearchedProductsServlet";
+            } else if (action.equalsIgnoreCase("showSearchedItemsPage")) {
+                url = "ManagePaginatedSearchedProductsServlet";
+            } else if (action.equalsIgnoreCase("showPaginatedUserPage")) {
+                url = "ShowPaginatedSearhedUsersServlet";
+            } else if (action.equalsIgnoreCase("updateProduct")) {
+                url = "UpdateProductServlet";
             }
-
+ 
              RequestDispatcher rd = request.getRequestDispatcher(url);
              rd.forward(request, response);    
              
