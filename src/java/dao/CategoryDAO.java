@@ -10,6 +10,8 @@ import Utils.DBUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
@@ -35,7 +37,7 @@ public class CategoryDAO {
         }
         return cate;
     }
-
+    
     public static ArrayList<Category> getCategories() throws Exception {
         Connection cn = DBUtils.makeConnection();
         ArrayList<Category> cateList = new ArrayList<>();
@@ -56,6 +58,10 @@ public class CategoryDAO {
         cn.close();
         return cateList;
     }
+    
+    
+    
+    
     public static ArrayList<Category> getPaginatedCategory(int pageNumber, int productPerPage) throws Exception {
         ArrayList<Category> list = new ArrayList<>();
         ArrayList<Category> cateList = CategoryDAO.getCategories();
@@ -69,5 +75,37 @@ public class CategoryDAO {
             list.add(cateList.get(i));
         }
         return list;
+    }
+    
+    public static ArrayList<String> getImgPath() throws Exception{
+        ArrayList<String> imgList = new ArrayList<>();
+        Connection cn = DBUtils.makeConnection();
+        if (cn != null){
+            String sql = "select distinct [ImgPath] from [dbo].[CATEGORIES]";
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs != null && rs.next()){
+                imgList.add(rs.getString("imgPath"));
+            }
+            cn.close();
+        }
+        return imgList;
+    }
+    
+    public static boolean updateCategory(String cateID, String cateName, String imgpath) throws Exception {
+        boolean flag = false;
+        Connection cn = DBUtils.makeConnection();
+        if (cn != null) {
+            String sql = "update CATEGORIES\n"
+                    + "set [CateName]=?,[ImgPath]=?\n"
+                    + "where CateID=?";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setString(1, cateName);
+            pst.setString(2, imgpath);
+            pst.setString(3, cateID);
+            flag = pst.executeUpdate() == 1;
+            cn.close();
+        }
+        return flag;
     }
 }

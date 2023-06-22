@@ -175,8 +175,8 @@
     <servlet>
         <servlet-name>ViewVoucherDetailsServlet</servlet-name>
         <servlet-class>controllers.ViewVoucherDetailsServlet</servlet-class>
-        </servlet>
-        <servlet>
+    </servlet>
+    <servlet>
         <servlet-name>ViewSaleDashboardServlet</servlet-name>
         <servlet-class>controllers.ViewSaleDashboardServlet</servlet-class>
     </servlet>
@@ -227,6 +227,14 @@
     <servlet>
         <servlet-name>ManagePaginatedSearchedProductsServlet</servlet-name>
         <servlet-class>controllers.ManagePaginatedSearchedProductsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>viewAllCategoriesServlet</servlet-name>
+        <servlet-class>controllers.ViewAllCategoriesServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateCategoryServlet</servlet-name>
+        <servlet-class>controllers.UpdateCategoryServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ResetPassServlet</servlet-name>
@@ -395,8 +403,8 @@
     <servlet-mapping>
         <servlet-name>ViewVoucherDetailsServlet</servlet-name>
         <url-pattern>/ViewVoucherDetailsServlet</url-pattern>
-        </servlet-mapping>
-        <servlet-mapping>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ViewSaleDashboardServlet</servlet-name>
         <url-pattern>/ViewSaleDashboardServlet</url-pattern>
     </servlet-mapping>
@@ -447,6 +455,14 @@
     <servlet-mapping>
         <servlet-name>ManagePaginatedSearchedProductsServlet</servlet-name>
         <url-pattern>/ManagePaginatedSearchedProductsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>viewAllCategoriesServlet</servlet-name>
+        <url-pattern>/viewAllCategoriesServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateCategoryServlet</servlet-name>
+        <url-pattern>/UpdateCategoryServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

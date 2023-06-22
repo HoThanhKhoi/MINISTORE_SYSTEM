@@ -48,7 +48,7 @@
                                 <div class="item mb_5"><a href="MainController?action=viewCustomers">Customers</a></div>
                                 <div class="item mb_5"><a href="MainController?action=viewSales">Sales</a></div>
                                 <div class="item mb_5"><a href="MainController?action=viewGuards">Guards</a></div>
-                                <div class="item mb_5"><a href="MainController?action=viewGuards">Attendance</a></div>
+                                <div class="item mb_5"><a href="MainController?action=viewAttendance">Attendance</a></div>
                             </div>
                             <div class="col-lg"></div>
                             <div class="col-lg-5">
@@ -79,7 +79,7 @@
                                 <div class="mb-5">$7749.69</div>
                             </div>
                         </div>
-
+                        
                         <div class="row product-stats">
                             <div class="col-lg-12 product-stats-background">
                                 <p class="product-stats-title">Products</p>

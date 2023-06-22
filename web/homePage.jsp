@@ -133,7 +133,7 @@
                                         <span class="bricked-price mx-2">${product.price}</span>
                                         <fmt:formatNumber value="${product.price - 0.5}" pattern="#,##0.00" var="formattedNumber" />
                                         <span class="price fw-bold mx-2">${formattedNumber}</span></br>
-                                        <a href="MainController?action=addToCart&quantity=1&pid=${product.productID}&cateID=${product.cateID}" class="btn btn-primary mt-3 px-3 py-2 fw-bold" name="action">Add To Cart</a>
+                                        <a href="MainController?action=addToCart&quantity=1&pid=${product.productID}&cid=${product.cateID}" class="btn btn-primary mt-3 px-3 py-2 fw-bold" name="action">Add To Cart</a>
                                     </div>
                                 </div>
                             </div>  

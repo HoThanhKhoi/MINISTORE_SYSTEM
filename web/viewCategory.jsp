@@ -104,8 +104,8 @@
 
                     </div>
                 </div>
-
-
+                
+                
                 <!-- table -->
                 <div class="col dashboard ">
                     <form class="search text-center d-flex align-items-center">
@@ -120,32 +120,38 @@
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>
+                                <th scope="col">Image</th>
                                 <th scope="col">Category Name</th>
+                                <th scope="col">Edit</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                        <form action="MainController" action="post">
-                            <c:if test="${requestScope.cplist == null}">
+
+
+                            <c:if test="${requestScope.cateList != null}">
                                 <c:forEach var="cate" items="${requestScope.cateList}" begin="0" end="6">
                                     <tr>
                                         <td>${cate.cateID}</td>
+                                        <td>
+                                            <img style="width: 40px; height: 40px;" src="${cate.imgPath}"/>
+                                        </td>
                                         <td>${cate.cateName}</td>
-                                    </tr>
-                                </c:forEach>
-                            </c:if>
-                            <c:if test="${requestScope.cplist != null}">
-                                <c:forEach var="cate" items="${requestScope.cplist}" begin="0" end="6">
-                                    <tr>
-                                        <td>${cate.cateID}</td>
-                                        <td>${cate.cateName}</td>
+
+                                        <td>
+                                            <form action="MainController" action="post">
+                                                <input type="hidden" name="cateid" value="${cate.cateID}">
+                                                <button type="submit" name="action" value="viewCategoryDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 </c:forEach>
                             </c:if>  
-                        </form>
+
                         </tbody>
                     </table>
                 </div>
+                <div><h3 style="color: red">${requestScope.error}</h3></div>
             </div>
             <nav aria-label="Page navigation example" style="margin-top: 50px ">
                 <ul class="pagination justify-content-center">
@@ -166,11 +172,12 @@
             </nav>
         </div>
         
-         <!-- FOOTER -->
+                    
+        <!-- FOOTER -->
         <footer>
             <c:import url="footer.jsp" />
         </footer>
-        
+
         <script type="text/javascript">
             $(document).ready(function () {
 //jquery for toggle sub menus

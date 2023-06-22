@@ -122,7 +122,14 @@ public class MainController extends HttpServlet {
                 url = "ViewVoucherDetailsServlet";
             } else if (action.equalsIgnoreCase("updateVoucher")) {
                 url = "UpdateVoucherServlet";
+            } else if (action.equalsIgnoreCase("viewAllCategories")) {
+                url = "ViewAllCategoriesServlet";
+            } else if (action.equalsIgnoreCase("viewCategoryDetailsPage")) {
+                url = "updateCategory.jsp";
+            } else if (action.equalsIgnoreCase("updateCategory")) {
+                url = "UpdateCategoryServlet";
             }
+            
 
              RequestDispatcher rd = request.getRequestDispatcher(url);
              rd.forward(request, response);    

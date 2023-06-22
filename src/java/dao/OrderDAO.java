@@ -317,4 +317,38 @@ public class OrderDAO {
         }
         return flag;
     }
+    
+//    public static ArrayList<Order> getOrdersBySale(String id) throws Exception {
+//        ArrayList<Order> list = new ArrayList<>();
+//        Order order;
+//        Connection cn = null;
+//        try {
+//            cn = DBUtils.makeConnection();
+//            if (cn != null) {
+//                String sql = "Select OrderID,CustomerName,ORDERS.Phone,Address,PostalCode,ORDERS.Status,OrderDate,ShipDate,ORDERS.CustomerID,SalesID from ORDERS \n"
+//                        + "join USERS  on USERS.UserID = ORDERS.SalesID where ORDERS.SalesID = ?";
+//                PreparedStatement pst = cn.prepareStatement(sql);
+//                pst.setString(1, id);
+//                ResultSet rs = pst.executeQuery();
+//                while (rs.next()) {
+//                    String orderid = rs.getString("OrderID");
+//                    String name = rs.getString("CustomerName");
+//                    String phone = rs.getString("Phone");
+//                    String address = rs.getString("Address");
+//                    String postalCode = rs.getString("PostalCode");
+//                    int status = rs.getInt("Status");
+//                    Timestamp orderDate = rs.getTimestamp("OrderDate");
+//                    Timestamp shipDate = rs.getTimestamp("ShipDate");
+//                    String customerid = rs.getString("CustomerID");
+//                    String saleid = rs.getString("SalesID");
+//                    order = new Order(orderid, phone, address, status, orderDate, shipDate, customerid, saleid);
+//                    list.add(order);
+//                }
+//                cn.close();
+//            }
+//        } catch (Exception e) {
+//
+//        };
+//        return list;
+//    }
 }
