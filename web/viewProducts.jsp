@@ -101,8 +101,8 @@
 
                 <!-- table -->
                 <div class="dashboard">
-                    <div class="row">
-                        <div class="col-5">
+                    <div class="row group-form">
+                        <div class="col">
                             <form class="search text-center d-flex align-items-center" action="MainController" metohd="post">
                                 <input name="keyword" type="text" placeholder="Search...">
                                 <button id="search-button" type="submit" name="action" value="getSearchedProduct" class="btn">
@@ -110,19 +110,21 @@
                                 </button>
                             </form>
                         </div>
-                        <div class="filter col-5 mx-3"> 
+                        <div class="filter col-4 mx-3"> 
                             <form>
                                 <button type="submit" name="action" value="viewAllProducts">All</button>
                                 <button type="submit" name="action" value="viewAlertProducts">Stock Alert</button>
                                 <button type="submit" name="action" value="viewOutOfStockProducts">Out of stock</button>
                             </form>
                         </div>
-                        <div class="col-1">
+                        
+                        <div class="add col-2">
                             <form>
                                 <button>Add</button>
                             </form>
                         </div>
-                    </div>                   
+                    </div>   
+                    
                     <table class="table mt-5 text-center">
                         <thead>
                             <tr>

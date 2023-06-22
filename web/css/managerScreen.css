@@ -494,12 +494,10 @@ label {
 
 
 /* VIEW SALE */
-.group-form {
-    width: 100%;
-}
 
 .group-form  .add {
-    width: 15%;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .group-form  .add button {
@@ -521,9 +519,39 @@ label {
 
 
 .filter {
-    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
 }
 
 .filter button {
     border: none;
+    padding: 10px 20px;
 }
+
+
+.group-form a {
+    text-decoration: none !important;
+    padding: 10px 15px;
+    color: #000;
+    background-color: rgba(0,0,0,0.05); 
+}
+
+a.btn_add  {
+    padding: 10px 30px;
+    border: none;
+    font-weight: 700;
+    background-color: #1B9C85;
+    color: #fff;
+    border: 2px solid #1B9C85;
+    border-radius: 20px !important;
+}
+
+a.btn_add:hover {
+    color: #1B9C85;
+    background-color: #fff;
+    border: 2px solid #1B9C85;
+}
+
+

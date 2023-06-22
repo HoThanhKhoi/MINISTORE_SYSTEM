@@ -1,4 +1,3 @@
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -47,156 +46,164 @@
                 </header>
 
                 <div class="container-fluid">
-                    <div class="row">
 
-                        <!-- menu -->
-                        <div class="col-2 menu">
-                            <ul>
-                                <li class="row">
-                                    <i class="fa-solid fa-user mx-3 col-2"></i>
-                                    <a href="" class="col-2">User</a>
-                                </li>
+                    <!-- menu -->
+                    <div class="menu-btn">
+                        <input type="checkbox" id="nav-toggle">
+                    </div>
+                    <div class="side-bar">
+                        <div class="menu">
+                            <div class="item">
+                                <a class="sub-btn">
+                                    <i class="fa-solid fa-user mx-3"></i>
+                                    User
+                                    <i class="fa-solid fa-angle-right dropdown"></i>
+                                </a>
+                                <div class="sub-menu">
+                                    <a href="MainController?action=viewCustomers" class="sub-item">Customers</a>
+                                    <a href="MainController?action=viewSales" class="sub-item">Sales</a>
+                                    <a href="MainController?action=viewGuards" class="sub-item">Guards</a>
+                                </div>
+                            </div>
 
-                                <!-- class="collapse"-->
+                            <div class="item">
+                                <a href="MainController?action=viewAllCategories" class="sub-btn">
+                                    <span><i class="fa-solid fa-bars-staggered mx-3"></i></span>
+                                    <span>Category</span>
+                                </a>
+                            </div>
 
-                                <li class="row ">
-                                    <i class="col-2 mx-3"></i>
-                                    <a href="viewCustomers.jsp" class="col-2">Customer</a>
-                                </li>
+                            <div class="item">
+                                <a  href="MainController?action=viewAllProducts" class="sub-btn ">
+                                    <span><i class="fa-solid fa-box mx-3"></i></span>
+                                    <span>Product</span>
+                                </a>
+                            </div>
 
-                                <li class="row">
-                                    <i class="col-2 mx-3"></i>
-                                    <a href="" class="col-2">Sale</a>
-                                </li>
+                            <div class="item">
+                                <a class="sub-btn active " href="MainController?action=viewVouchers">
+                                    <span><i class="fa-solid fa-tag mx-3"></i></span>
+                                    <span>Voucher</span>
+                                </a>
+                            </div>
 
-                                <li class="row">
-                                    <i class="col-2 mx-3"></i>
-                                    <a href="" class="col-2">Guard</a>
-                                </li>
+                            <div class="item">
+                                <a class="sub-btn">
+                                    <span><i class="fa-solid fa-clipboard-user mx-3"></i></span>
+                                    <span>Attendance</span>
+                                </a>
+                            </div>
 
-                                <li class="row active">
-                                    <i class="fa-solid fa-bars-staggered mx-3 col-2"></i>
-                                    <a href="" class="col-2">Category</a>
-                                </li>
+                            <div class="item">
+                                <a class="sub-btn">
+                                    <span><i class="fa-solid fa-cart-shopping mx-3"></i></span>
+                                    <span>Order</span>
+                                </a>
+                            </div>
 
-                                <li class="row">
-                                    <i class="fa-solid fa-box mx-3 col-2"></i>
-                                    <a href="" class="col-2">Product</a>
-                                </li>
+                        </div>
+                    </div>
 
-                                <li class="row">
-                                    <i class="fa-solid fa-tag mx-3 col-2"></i>
-                                    <a href="MainController?action=viewVouchers" class="col-2">Voucher</a>
-                                </li>
 
-                                <li class="row">
-                                    <i class="fa-solid fa-clipboard-user mx-3 col-2"></i>
-                                    <a href="" class="col-2">Attendance</a>
-                                </li>
+                    <!-- table -->
+                    <div class="dashboard">
+                        <div class="group-form d-flex justify-content-between mx-3"> 
+                            <form>
+                                <a href="MainController?action=viewVouchers">All</a>
+                                <a href="MainController?action=viewUnexpiredVouchers">Unexpired</a>
+                                <a href="MainController?action=viewExpiredVouchers">Expired</a>
+                            </form>
 
-                                <li class="row">
-                                    <i class="fa-solid fa-cart-shopping mx-3 col-2"></i>
-                                    <a href="" class="col-2">Order</a>
-                                </li>
-
-                            </ul>
+                            <a role="button" class="btn btn_add btn-success" data-bs-toggle="modal" data-bs-target="#addModal">Add</a>
                         </div>
 
 
-                        <!-- table -->
-                        <div class="col dashboard">
 
-                            <a href="MainController?action=viewVouchers">All</a>
-                            <a href="MainController?action=viewUnexpiredVouchers">Unexpired</a>
-                            <a href="MainController?action=viewExpiredVouchers">Expired</a>
-                            <a role="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addModal">Add</a>
+                        <c:choose>
+                            <c:when test="${requestScope.error != null}">
+                                <h1>${requestScope.error}</h1>
+                            </c:when>
+                            <c:otherwise>
+                                <table class="table mt-5 text-center">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Voucher Code</th>
+                                            <th scope="col">Discount</th>
+                                            <th scope="col">Expired Date</th>
+                                            <th scope="col">Limit Price</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
 
-
-                            <c:choose>
-                                <c:when test="${requestScope.error != null}">
-                                    <h1>${requestScope.error}</h1>
-                                </c:when>
-                                <c:otherwise>
-                                    <table class="table mt-5 text-center">
-                                        <thead>
+                                    <tbody>
+                                        <c:forEach var="voucher" items="${requestScope.vouchersList}" varStatus="status">
                                             <tr>
-                                                <th scope="col">ID</th>
-                                                <th scope="col">Voucher Code</th>
-                                                <th scope="col">Discount</th>
-                                                <th scope="col">Expired Date</th>
-                                                <th scope="col">Limit Price</th>
-                                                <th scope="col">Action</th>
+                                                <td>${voucher.voucherID}</td>
+                                                <td>${voucher.voucherCode}</td>
+                                                <td>$${voucher.discount}</td>
+                                                <td>${voucher.expiredDate}</td>
+                                                <td>$${voucher.limitPrice}</td>
+                                                <td>
+                                                    <a href="" data-bs-toggle="modal" data-bs-target="#myModal${status.index}">
+                                                        <i class="update fa-solid fa-pen-to-square mx-2"></i>
+                                                    </a>
+                                                </td>
                                             </tr>
-                                        </thead>
 
-                                        <tbody>
-                                            <c:forEach var="voucher" items="${requestScope.vouchersList}" varStatus="status">
-                                                <tr>
-                                                    <td>${voucher.voucherID}</td>
-                                                    <td>${voucher.voucherCode}</td>
-                                                    <td>$${voucher.discount}</td>
-                                                    <td>${voucher.expiredDate}</td>
-                                                    <td>$${voucher.limitPrice}</td>
-                                                    <td>
-                                                        <a href="" data-bs-toggle="modal" data-bs-target="#myModal${status.index}">
-                                                            <i class="update fa-solid fa-pen-to-square mx-2"></i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
 
-                                                <!--/*------------------POP UP SCREEN VOUCHER DETAIL------------------*/-->
-                                            <div class="modal" id="myModal${status.index}">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
+                                            <!--/*------------------POP UP SCREEN VOUCHER DETAIL------------------*/-->
+                                        <div class="modal" id="myModal${status.index}">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
 
-                                                        <form action="MainController" method="post">
-                                                            <!-- Modal Header -->
-                                                            <div class="modal-header">
-                                                                <h4 class="modal-title">Update Voucher</h4>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                                    <form action="MainController" method="post">
+                                                        <!-- Modal Header -->
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">Update Voucher</h4>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                                        </div>
+
+                                                        <!-- Modal body -->
+                                                        <div class="modal-body">
+                                                            <div class="mb-3 mt-3">
+                                                                <label for="vid" class="form-label">ID</label>
+                                                                <input type="text" class="form-control" id="vid" name="voucherID" value="${voucher.voucherID}" readonly="">
                                                             </div>
-
-                                                            <!-- Modal body -->
-                                                            <div class="modal-body">
-                                                                <div class="mb-3 mt-3">
-                                                                    <label for="vid" class="form-label">ID</label>
-                                                                    <input type="text" class="form-control" id="vid" name="voucherID" value="${voucher.voucherID}" readonly="">
-                                                                </div>
-                                                                <div class="mb-3">
-                                                                    <label for="vcode" class="form-label">Voucher Code</label>
-                                                                    <input type="text" class="form-control" id="vcode" name="voucherCode" value="${voucher.voucherCode}">
-                                                                </div>
-                                                                <div class="mb-3">
-                                                                    <label for="vdiscount" class="form-label">Discount</label>
-                                                                    <input type="number" step="0.01" class="form-control" id="vdiscount" name="discount" value="${voucher.discount}">
-                                                                </div>
-                                                                <div class="mb-3">
-                                                                    <label for="vdate" class="form-label">Expired Date</label>
-                                                                    <input type="datetime-local" class="form-control" id="vdate" name="expiredDate" value="${voucher.expiredDate}">
-                                                                </div>
-                                                                <div class="mb-3">
-                                                                    <label for="vprice" class="form-label">Limit Price</label>
-                                                                    <input type="number" step="0.01" class="form-control" id="vprice" name="limitPrice" value="${voucher.limitPrice}">
-                                                                </div>
+                                                            <div class="mb-3">
+                                                                <label for="vcode" class="form-label">Voucher Code</label>
+                                                                <input type="text" class="form-control" id="vcode" name="voucherCode" value="${voucher.voucherCode}">
                                                             </div>
-
-                                                            <!-- Modal footer -->
-                                                            <div class="modal-footer">
-                                                                <button type="submit" class="btn btn-success" name="action" value="updateVoucher">Update</button>
+                                                            <div class="mb-3">
+                                                                <label for="vdiscount" class="form-label">Discount</label>
+                                                                <input type="number" step="0.01" class="form-control" id="vdiscount" name="discount" value="${voucher.discount}">
                                                             </div>
-                                                        </form>
+                                                            <div class="mb-3">
+                                                                <label for="vdate" class="form-label">Expired Date</label>
+                                                                <input type="datetime-local" class="form-control" id="vdate" name="expiredDate" value="${voucher.expiredDate}">
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="vprice" class="form-label">Limit Price</label>
+                                                                <input type="number" step="0.01" class="form-control" id="vprice" name="limitPrice" value="${voucher.limitPrice}">
+                                                            </div>
+                                                        </div>
 
-                                                    </div>
+                                                        <!-- Modal footer -->
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-success" name="action" value="updateVoucher">Update</button>
+                                                        </div>
+                                                    </form>
+
                                                 </div>
                                             </div>
-                                            <!--/*--------------------------------------------------------------*/-->
-                                        </c:forEach>
-                                        </tbody>
-                                    </table>
-                                </c:otherwise>
-                            </c:choose>
+                                        </div>
+                                        <!--/*--------------------------------------------------------------*/-->
+                                    </c:forEach>
+                                    </tbody>
+                                </table>
+                            </c:otherwise>
+                        </c:choose>
 
-                        </div>
                     </div>
 
                     <!--POP UP SCREEN ADD VOUCHER-->
@@ -275,5 +282,31 @@
                 </script>
             </c:otherwise>
         </c:choose>
+
+        <!-- FOOTER -->
+        <footer>
+            <c:import url="footer.jsp" />
+        </footer>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+//jquery for toggle sub menus
+                $('.sub-btn').click(function () {
+                    $(this).next('.sub-menu').slideToggle();
+                    $(this).find('.dropdown').toggleClass('rotate');
+                });
+
+//jquery for expand and collapse the sidebar
+                $('.menu-btn').click(function () {
+                    $('.side-bar').addClass('active');
+                    $('.menu-btn').css("visibility", "hidden");
+                });
+
+                $('.close-btn').click(function () {
+                    $('.side-bar').removeClass('active');
+                    $('.menu-btn').css("visibility", "visible");
+                });
+            });
+        </script>
     </body>
 </html>
