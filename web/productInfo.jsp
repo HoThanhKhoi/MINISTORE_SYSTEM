@@ -172,7 +172,7 @@
                         "showMethod": "fadeIn",
                         "hideMethod": "fadeOut"
                     };
-                    toastr.success("Product is added to cart.");
+                    toastr.success("${requestScope.noti}");
                 });
             </script>
             <c:set scope="request" var="noti" value="${null}"/>

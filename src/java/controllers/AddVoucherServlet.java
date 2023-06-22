@@ -6,7 +6,6 @@
 package controllers;
 
 import dao.VoucherDAO;
-import dto.Voucher;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
@@ -19,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ACER
  */
-public class UpdateVoucherServlet extends HttpServlet {
+public class AddVoucherServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,19 +33,18 @@ public class UpdateVoucherServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String voucherID = request.getParameter("voucherID");
             String voucherCode = request.getParameter("voucherCode");
             String discount = request.getParameter("discount");
             String expiredDate = request.getParameter("expiredDate");
             String limitPrice = request.getParameter("limitPrice");
             expiredDate += ":00.0";
-            int result = VoucherDAO.updateVoucher(voucherID, voucherCode, 
-                    Float.parseFloat(discount), Timestamp.valueOf(expiredDate.replace("T", " ")), Float.parseFloat(limitPrice));
+            int result = VoucherDAO.addVoucher(voucherCode, Float.parseFloat(discount), 
+                    Timestamp.valueOf(expiredDate.replace("T", " ")), Float.parseFloat(limitPrice));
             if (result > 0) {
-                request.setAttribute("noti", "Update voucher successfully.");
+                request.setAttribute("noti", "Add voucher successfully.");
                 request.getRequestDispatcher("MainController?action=viewVouchers").forward(request, response);
             } else {
-                request.setAttribute("error", "Update voucher fail.");
+                request.setAttribute("error", "Add voucher fail.");
                 request.getRequestDispatcher("MainController?action=viewVouchers").forward(request, response);
             }
         }

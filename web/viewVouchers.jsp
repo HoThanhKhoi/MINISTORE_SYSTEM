@@ -1,3 +1,4 @@
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -62,6 +63,7 @@
                                     <i class="col-2 mx-3"></i>
                                     <a href="viewCustomers.jsp" class="col-2">Customer</a>
                                 </li>
+
                                 <li class="row">
                                     <i class="col-2 mx-3"></i>
                                     <a href="" class="col-2">Sale</a>

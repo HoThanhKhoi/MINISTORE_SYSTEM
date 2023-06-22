@@ -122,6 +122,8 @@ public class MainController extends HttpServlet {
                 url = "ViewVoucherDetailsServlet";
             } else if (action.equalsIgnoreCase("updateVoucher")) {
                 url = "UpdateVoucherServlet";
+            } else if (action.equalsIgnoreCase("addVoucher")) {
+                url = "AddVoucherServlet";
             } else if (action.equalsIgnoreCase("manageSaleOrders")) {
                 url = "ManageSaleOrdersServlet";
             } else if (action.equalsIgnoreCase("addEmployeePage")) {

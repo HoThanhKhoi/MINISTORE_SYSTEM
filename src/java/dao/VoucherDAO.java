@@ -6,7 +6,6 @@
 package dao;
 
 import Utils.DBUtils;
-import dto.User;
 import dto.Voucher;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -24,76 +23,112 @@ public class VoucherDAO {
     public static ArrayList<Voucher> getVouchers() throws Exception {
         ArrayList<Voucher> list = new ArrayList<>();
         Connection cn = DBUtils.makeConnection();
-        if (cn != null) {
-            String sql = "select VoucherID,VoucherCode,VoucherDiscount,VoucherExpiredDate,LimitPrice from VOUCHERS";
-            Statement st = cn.createStatement();
-            ResultSet table = st.executeQuery(sql);
-            if (table != null) {
-                while (table.next()) {
-                    String voucherID = table.getString("VoucherID");
-                    String voucherCode = table.getString("VoucherCode");
-                    float discount = table.getFloat("VoucherDiscount");
-                    Timestamp expiredDate = table.getTimestamp("VoucherExpiredDate");
-                    float limitPrice = table.getFloat("LimitPrice");
-                    Timestamp now = new Timestamp(System.currentTimeMillis());
-                    if (now.before(expiredDate)) {
-                        Voucher voucher = new Voucher(voucherID, voucherCode, discount, expiredDate, limitPrice);
-                        list.add(voucher);
-                    }
+        try {
+            cn = DBUtils.makeConnection();
+            if (cn != null) {
+                String sql = "select VoucherID,VoucherCode,VoucherDiscount,VoucherExpiredDate,LimitPrice from VOUCHERS";
+                Statement st = cn.createStatement();
+                ResultSet table = st.executeQuery(sql);
+                if (table != null) {
+                    while (table.next()) {
+                        String voucherID = table.getString("VoucherID");
+                        String voucherCode = table.getString("VoucherCode");
+                        float discount = table.getFloat("VoucherDiscount");
+                        Timestamp expiredDate = table.getTimestamp("VoucherExpiredDate");
+                        float limitPrice = table.getFloat("LimitPrice");
+                        Timestamp now = new Timestamp(System.currentTimeMillis());
+                        if (now.before(expiredDate)) {
+                            Voucher voucher = new Voucher(voucherID, voucherCode, discount, expiredDate, limitPrice);
+                            list.add(voucher);
+                        }
 
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cn != null) {
+                try {
+                    cn.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
         }
-        cn.close();
         return list;
     }
 
     public static ArrayList<Voucher> getAllVouchers() throws Exception {
         ArrayList<Voucher> list = new ArrayList<>();
-        Connection cn = DBUtils.makeConnection();
-        if (cn != null) {
-            String sql = "select VoucherID,VoucherCode,VoucherDiscount,VoucherExpiredDate,LimitPrice from VOUCHERS";
-            Statement st = cn.createStatement();
-            ResultSet table = st.executeQuery(sql);
-            if (table != null) {
-                while (table.next()) {
-                    String voucherID = table.getString("VoucherID");
-                    String voucherCode = table.getString("VoucherCode");
-                    float discount = table.getFloat("VoucherDiscount");
-                    Timestamp expiredDate = table.getTimestamp("VoucherExpiredDate");
-                    float limitPrice = table.getFloat("LimitPrice");
-                    Voucher voucher = new Voucher(voucherID, voucherCode, discount, expiredDate, limitPrice);
-                    list.add(voucher);
-                }
-            }
-        }
-        cn.close();
-        return list;
-    }
-    
-    public static ArrayList<Voucher> getExpiredVouchers() throws Exception {
-        ArrayList<Voucher> list = new ArrayList<>();
-        Connection cn = DBUtils.makeConnection();
-        if (cn != null) {
-            String sql = "select VoucherID,VoucherCode,VoucherDiscount,VoucherExpiredDate,LimitPrice from VOUCHERS";
-            Statement st = cn.createStatement();
-            ResultSet table = st.executeQuery(sql);
-            if (table != null) {
-                while (table.next()) {
-                    String voucherID = table.getString("VoucherID");
-                    String voucherCode = table.getString("VoucherCode");
-                    float discount = table.getFloat("VoucherDiscount");
-                    Timestamp expiredDate = table.getTimestamp("VoucherExpiredDate");
-                    float limitPrice = table.getFloat("LimitPrice");
-                    Timestamp now = new Timestamp(System.currentTimeMillis());
-                    if (now.after(expiredDate)) {
+        Connection cn = null;
+        try {
+            cn = DBUtils.makeConnection();
+            if (cn != null) {
+                String sql = "select VoucherID,VoucherCode,VoucherDiscount,VoucherExpiredDate,LimitPrice from VOUCHERS";
+                Statement st = cn.createStatement();
+                ResultSet table = st.executeQuery(sql);
+                if (table != null) {
+                    while (table.next()) {
+                        String voucherID = table.getString("VoucherID");
+                        String voucherCode = table.getString("VoucherCode");
+                        float discount = table.getFloat("VoucherDiscount");
+                        Timestamp expiredDate = table.getTimestamp("VoucherExpiredDate");
+                        float limitPrice = table.getFloat("LimitPrice");
                         Voucher voucher = new Voucher(voucherID, voucherCode, discount, expiredDate, limitPrice);
                         list.add(voucher);
                     }
                 }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cn != null) {
+                try {
+                    cn.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
         }
-        cn.close();
+        return list;
+    }
+
+    public static ArrayList<Voucher> getExpiredVouchers() throws Exception {
+        ArrayList<Voucher> list = new ArrayList<>();
+        Connection cn = null;
+        try {
+            cn = DBUtils.makeConnection();
+            if (cn != null) {
+                String sql = "select VoucherID,VoucherCode,VoucherDiscount,VoucherExpiredDate,LimitPrice from VOUCHERS";
+                Statement st = cn.createStatement();
+                ResultSet table = st.executeQuery(sql);
+                if (table != null) {
+                    while (table.next()) {
+                        String voucherID = table.getString("VoucherID");
+                        String voucherCode = table.getString("VoucherCode");
+                        float discount = table.getFloat("VoucherDiscount");
+                        Timestamp expiredDate = table.getTimestamp("VoucherExpiredDate");
+                        float limitPrice = table.getFloat("LimitPrice");
+                        Timestamp now = new Timestamp(System.currentTimeMillis());
+                        if (now.after(expiredDate)) {
+                            Voucher voucher = new Voucher(voucherID, voucherCode, discount, expiredDate, limitPrice);
+                            list.add(voucher);
+                        }
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cn != null) {
+                try {
+                    cn.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
         return list;
     }
 
@@ -128,5 +163,62 @@ public class VoucherDAO {
             }
         }
         return voucher;
+    }
+
+    public static int updateVoucher(String voucherID, String voucherCode, float discount, Timestamp expiredDate, float limitPrice) {
+        Connection cn = null;
+        int result = 0;
+        try {
+            cn = DBUtils.makeConnection();
+            if (cn != null) {
+                String sql = "update VOUCHERS set VoucherCode=?,VoucherDiscount=?,VoucherExpiredDate=?,LimitPrice=? where VoucherID=?";
+                PreparedStatement pst = cn.prepareStatement(sql);
+                pst.setString(1, voucherCode);
+                pst.setFloat(2, discount);
+                pst.setTimestamp(3, expiredDate);
+                pst.setFloat(4, limitPrice);
+                pst.setString(5, voucherID);
+                result = pst.executeUpdate();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cn != null) {
+                try {
+                    cn.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return result;
+    }
+
+    public static int addVoucher(String voucherCode, float discount, Timestamp expiredDate, float limitPrice) {
+        Connection cn = null;
+        int result = 0;
+        try {
+            cn = DBUtils.makeConnection();
+            if (cn != null) {
+                String sql = "insert VOUCHERS(VoucherCode,VoucherDiscount,VoucherExpiredDate,LimitPrice) values(?,?,?,?)";
+                PreparedStatement pst = cn.prepareStatement(sql);
+                pst.setString(1, voucherCode);
+                pst.setFloat(2, discount);
+                pst.setTimestamp(3, expiredDate);
+                pst.setFloat(4, limitPrice);
+                result = pst.executeUpdate();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cn != null) {
+                try {
+                    cn.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return result;
     }
 }

@@ -33,11 +33,11 @@ public class ViewVoucherDetailsServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String voucherid = request.getParameter("voucherID");
-            Voucher voucher = VoucherDAO.getVoucher(voucherid);
+            String voucherID = request.getParameter("vid");
+            Voucher voucher = VoucherDAO.getVoucher(voucherID);
             if (voucher != null) {
                 request.setAttribute("voucher", voucher);
-                request.getRequestDispatcher("updateVoucher.jsp").forward(request, response);
+                request.getRequestDispatcher("viewVouchers.jsp").forward(request, response);
             } else {
                 request.setAttribute("error", "Cannot get voucher.");
                 request.getRequestDispatcher("viewVouchers.jsp").forward(request, response);

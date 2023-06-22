@@ -177,6 +177,10 @@
         <servlet-class>controllers.ViewVoucherDetailsServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>AddVoucherServlet</servlet-name>
+        <servlet-class>controllers.AddVoucherServlet</servlet-class>
+        </servlet>
+        <servlet>
         <servlet-name>ViewSaleDashboardServlet</servlet-name>
         <servlet-class>controllers.ViewSaleDashboardServlet</servlet-class>
     </servlet>
@@ -405,6 +409,10 @@
         <url-pattern>/ViewVoucherDetailsServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>AddVoucherServlet</servlet-name>
+        <url-pattern>/AddVoucherServlet</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
         <servlet-name>ViewSaleDashboardServlet</servlet-name>
         <url-pattern>/ViewSaleDashboardServlet</url-pattern>
     </servlet-mapping>

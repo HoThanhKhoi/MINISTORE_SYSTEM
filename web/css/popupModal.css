@@ -1,0 +1,71 @@
+/*----------POP_UP CSS----------
+.modal-container{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: black;
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 300ms ease-in-out;
+    background-color: rgba(0,0,0,0.75);
+}
+.modal-container:target {
+  opacity: 1;
+  pointer-events: all;
+}
+ The popup form - hidden by default 
+.form-popup {
+    
+    margin: auto;
+    width: 90%;
+    max-width: 40rem;
+    background-color: white;
+    border-radius: 20px;
+    background: white;
+    text-align: center;
+}
+------------css basic----------------
+.form-container{
+    padding: 20px;
+}
+.form-container h1{
+    text-align: center;
+    color: rgba(41, 190, 27, 1);
+}
+.form-container p{
+    margin-bottom: 5px;
+    margin-top: 10px;
+    padding-left: 60px;
+    text-align: left;
+    color:rgba(102, 102, 102, 1);
+}
+.edit-button{
+    width: 150px;
+    margin: 30px;
+    
+    
+}
+.form-container flex-header{
+    display: flex;
+    justify-content: flex-end;
+}
+.form-container flex-header h1{
+    flex-grow: 2;
+    text-align: center;
+}
+.modal-close{
+    color: black;
+    margin-right: 30px;
+    margin-top: 1px;
+}
+.modal-close:hover{
+    color: red;
+   
+}
+----------POP_UP CSS----------*/
