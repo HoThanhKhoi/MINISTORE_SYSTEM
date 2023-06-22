@@ -26,10 +26,11 @@
               integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
               crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="./js/index.js">
+        
     </head>
 
     <body>
-
+        <!-- HEADER -->
         <header>
             <c:choose>
                 <c:when test="${sessionScope.customer != null}">
@@ -40,8 +41,10 @@
                 </c:otherwise>
             </c:choose>
         </header>
+        
+        
         <!-- HEADER PATH -->
-        <nav class="navbar navbar_path navbar-expand-lg header-path mb-4">
+        <nav class="navbar navbar_path navbar-expand-lg header-path mt-4 mb-1">
             <div class="container-fluid">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
@@ -60,27 +63,26 @@
         <!-- RELATED PRODUCT -->
         <div class="container-fluid product-detail my-5">
             <div class="item-list mx-5">
-                <div class="row">
-                <c:if test="${requestScope.proCateList != null}">
-                    <c:forEach var="proCate" items="${requestScope.proCateList}">
-                        <div class="col">
-                            <div class="item mb-4 text-center">
-                                <div class="card border-0 shadow">
-                                    <img src="${proCate.imgPath}" class="card-img-top" alt="">
-                                    <div class="card-body">
-                                        <h5 class="card-title mb-3 fw-bold">${proCate.productName}</h5>
-                                        <span class="bricked-price mx-2">${proCate.price}</span>
-                                        <span class="price fw-bold mx-2">${Math.round(proCate.price) - 0.45}</span></br>
-                                        <a href="MainController?action=addToCart&quantity=1&pid=${proCate.productID}&cid=${proCate.cateID}" class="btn btn-primary mt-3 px-3 py-2 fw-bold">Add To Cart</a>
+                <div class="row row-cols-md-5">
+                    <c:if test="${requestScope.proCateList != null}">
+                        <c:forEach var="proCate" items="${requestScope.proCateList}">
+                            <div class="col">
+                                <div class="item mb-4 text-center">
+                                    <div class="card border-0 shadow align-items-center">
+                                        <img src="${proCate.imgPath}" class="card-img-top" alt="">
+                                        <div class="card-body d-flex flex-column">
+                                            <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProduct&pid=${proCate.productID}&cateID=${proCate.cateID}">${proCate.productName}</a></h5>
+                                            <span class="price mx-2">$${proCate.price}</span>
+                                            <a href="MainController?action=addToCart&quantity=1&pid=${proCate.productID}&cid=${proCate.cateID}" class="btn btn-primary mt-3 px-3 py-2 fw-bold">Add To Cart</a>
+                                        </div>
                                     </div>
                                 </div>
+                                <!-- end item -->
                             </div>
-                            <!-- end item -->
-                        </div>
-                    </c:forEach>
-                </c:if>    
-            </div>
+                        </c:forEach>
+                    </c:if>    
                 </div>
+            </div>
         </div>
     </div>
 

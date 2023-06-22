@@ -34,14 +34,13 @@
                 <jsp:forward page="login.jsp" />
             </c:when>
             <c:otherwise>
+
                 <!--HEADER-->
                 <header>
                     <c:import url="header.jsp" />
                 </header>
 
-
-
-                <div class="container-fluid">
+                <div class="container">
                     <div class="row">
 
                         <c:if test="${requestScope.noti != null}">
@@ -49,49 +48,40 @@
                         </c:if>
 
                         <!-- menu -->
-                        <div class="col-2 menu myOrder-menu">
-                            <ul class="">
-                                <li class="title text-center mb-4">
-                                    <h3>My Order</h3>
+                        <div class="myOrder-menu">
+                            <div class="title mt-5 mb-2">
+                                <h4 class="mb-3 text-center">My Order</h4>
+                            </div>
+
+                            <ul id="myDiv">
+                                <li class="btn active">
+                                    <a href="MainController?action=viewMyOrders">All</a>
                                 </li>
 
-                                <li class="row text-center my-3 active">
-                                    <a href="MainController?action=viewMyOrders" class="">All</a>
-                                </li>
-
-                                <li class="row text-center my-3">
-                                    <a href="MainController?action=viewMyOrdersByStatus&status=1" class="">Processing</a>
+                                <li class="btn">
+                                    <a href="MainController?action=viewMyOrdersByStatus&status=1">Processing</a>
                                 </li>
 
 
-                                <li class="row text-center my-3">
-                                    <a href="MainController?action=viewMyOrdersByStatus&status=2" class="">Delivering</a>
+                                <li class="btn">
+                                    <a href="MainController?action=viewMyOrdersByStatus&status=2">Delivering</a>
                                 </li>
 
-                                <li class="row text-center my-3">
-                                    <a href="MainController?action=viewMyOrdersByStatus&status=3" class="">Completed</a>
+                                <li class="btn">
+                                    <a href="MainController?action=viewMyOrdersByStatus&status=3">Completed</a>
                                 </li>
 
-                                <li class="row text-center my-3">
-                                    <a href="MainController?action=viewMyOrdersByStatus&status=4" class="col">Canceled</a>
+                                <li class="btn">
+                                    <a href="MainController?action=viewMyOrdersByStatus&status=4">Canceled</a>
                                 </li>
-
                             </ul>
                         </div>
 
 
 
                         <!-- table -->
-                        <div class="col dashboard">
-                            <form class="search text-center d-flex align-items-center">
-                                <input type="text" placeholder="Search...">
-                                <button id="search-button" type="button" class="btn">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </form>
-
-
-                            <table class="table table-order mt-5 text-center">
+                        <div class="dashboard myOrder-dashboard">
+                            <table class="table table-order mt-2 text-center">
                                 <thead>
                                     <tr>
                                         <th class="text-center" scope="col">ID</th>
@@ -108,7 +98,6 @@
                                     <c:forEach var="order" items="${requestScope.ordersList}">
                                         <tr>
                                             <td scope="row" class="fw-bold">${order.orderID}</td>
-                                            <!--<td></td>-->
                                             <td>${order.customerName}</td>
                                             <td>${order.phone}</td>
                                             <td>${order.address}</td>
@@ -137,7 +126,7 @@
 
                             <div class="container mt-5 dashboard-footer">
                                 <div class="col-lg-12 d-flex justify-content-center">
-                                    <a href="homePage.jsp" class="button check align-items-center">Explore more products
+                                    <a href="homePage.jsp" class="button align-items-center">Explore more products
                                         <i class="fa-solid fa-angles-right "></i>   
                                     </a>
                                 </div>
@@ -150,5 +139,19 @@
                 <footer><c:import url="footer.jsp"/></footer>
                 </c:otherwise>
             </c:choose>
+
+        <script>
+            var btnContainer = document.getElementById("myDiv");
+
+            var btns = btnContainer.getElementsByClassName("btn");
+
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].addEventListener("click", function () {
+                    var current = document.getElementsByClassName("active");
+                    current[0].className = current[0].className.replace(" active", "");
+                    this.className += " active";
+                });
+            }
+        </script>
     </body>
 </html>

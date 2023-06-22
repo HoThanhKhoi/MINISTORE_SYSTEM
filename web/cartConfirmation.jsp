@@ -38,6 +38,9 @@
             </c:when>
             <c:otherwise>
                 <!--HEADER-->
+                <header>
+                    <c:import url="header_cart.jsp" />
+                </header>
 
                 <div class="container mt-5">
                     <div class="row justify-content-between align-items-center">
@@ -49,6 +52,7 @@
                                     <thead>
                                         <tr>
                                             <th>Product</th>
+                                            <th></th>
                                             <th>Quantity</th>
                                             <th>Price</th>
                                         </tr>
@@ -58,9 +62,15 @@
                                         <c:forEach varStatus="counter" var="cartitem" items="${sessionScope.cart}">
                                             <c:set scope="page" var="cartKey" value="${cartitem.key}"/>
                                             <tr>
-                                                <td>${sessionScope.nameList.get(cartKey)}</td>
+                                                <td  class="cart-item-img">                                                 
+                                                    <img src="${sessionScope.imgList.get(cartKey)}" style="width: 80px;"/>
+                                                </td>
+
+                                                <td class="cart-item-title">${sessionScope.nameList.get(cartKey)}</td>
+
                                                 <td>${cartitem.value}</td>
-                                                <td>
+
+                                                <td class="cart-price">
                                                     <fmt:formatNumber value="${sessionScope.priceList.get(cartKey) * cartitem.value}" pattern="#,##0.00" var="formattedNumber" />
                                                     $${formattedNumber}
                                                 </td>
@@ -135,7 +145,10 @@
                 </div>        
             </c:otherwise>
         </c:choose>
-
+        <!-- FOOTER -->
+        <footer>
+            <c:import url="footer.jsp" />
+        </footer>
         <script src="./js/validation_input.js"></script>
     </body>
 </html>

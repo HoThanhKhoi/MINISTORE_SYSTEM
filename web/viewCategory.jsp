@@ -37,7 +37,6 @@
         </header>
 
         <div class="container-fluid">
-            <div class="row">
 
                 <!-- menu -->
                 <div class="menu-btn">
@@ -45,14 +44,7 @@
                 </div>
 
 
-                <div class="col-2 side-bar">
-                    <!--                    <header>
-                                            <div class="close-btn">
-                                                <i class="fa-sharp fa-solid fa-circle-xmark"></i>
-                                            </div>
-                                        </header>-->
-
-
+                <div class="side-bar">
                     <div class="menu">
                         <div class="item">
                             <a class="sub-btn">
@@ -61,21 +53,21 @@
                                 <i class="fa-solid fa-angle-right dropdown"></i>
                             </a>
                             <div class="sub-menu">
-                                <a href="#" class="sub-item active">Customers</a>
-                                <a href="#" class="sub-item">Sales</a>
-                                <a href="#" class="sub-item">Guards</a>
+                                <a href="MainController?action=viewCustomers" class="sub-item">Customers</a>
+                                <a href="MainController?action=viewSales" class="sub-item">Sales</a>
+                                <a href="MainController?action=viewGuards" class="sub-item">Guards</a>
                             </div>
                         </div>
 
                         <div class="item">
-                            <a class="sub-btn">
+                            <a href="MainController?action=viewAllCategories" class="sub-btn active">
                                 <span><i class="fa-solid fa-bars-staggered mx-3"></i></span>
                                 <span>Category</span>
                             </a>
                         </div>
 
                         <div class="item">
-                            <a class="sub-btn">
+                            <a  href="MainController?action=viewAllProducts" class="sub-btn">
                                 <span><i class="fa-solid fa-box mx-3"></i></span>
                                 <span>Product</span>
                             </a>
@@ -107,7 +99,7 @@
 
 
                 <!-- table -->
-                <div class="col dashboard ">
+                <div class="dashboard ">
                     <form class="search text-center d-flex align-items-center">
                         <input type="text" placeholder="Search...">
                         <button id="search-button" type="button" class="btn">
@@ -145,32 +137,33 @@
                         </form>
                         </tbody>
                     </table>
+
+                    <nav aria-label="Page navigation example" style="margin-top: 50px ">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item">
+                                <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=${requestScope.page-1}&items=category"><</a>
+                            </li>
+                            <% int totalCategories = CategoryDAO.getCategories().size();
+                                int element = 7;
+                                float numOfPages = (float) totalCategories / element;
+                            %>
+                            <%for (int i = 1; i <= (int) Math.ceil(numOfPages); i++) {%>
+                            <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=<%=i%>&items=category"><%=i%></a></li>
+                                <% }%>
+                            <li class="page-item">
+                                <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=${requestScope.page+1}&items=category">></a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
-            </div>
-            <nav aria-label="Page navigation example" style="margin-top: 50px ">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item">
-                        <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=${requestScope.page-1}&items=category"><</a>
-                    </li>
-                    <% int totalCategories = CategoryDAO.getCategories().size();
-                        int element = 7;
-                        float numOfPages = (float) totalCategories / element;
-                    %>
-                    <%for (int i = 1; i <= (int) Math.ceil(numOfPages); i++) {%>
-                    <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=<%=i%>&items=category"><%=i%></a></li>
-                        <% }%>
-                    <li class="page-item">
-                        <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=${requestScope.page+1}&items=category">></a>
-                    </li>
-                </ul>
-            </nav>
+
         </div>
-        
-         <!-- FOOTER -->
+
+        <!-- FOOTER -->
         <footer>
             <c:import url="footer.jsp" />
         </footer>
-        
+
         <script type="text/javascript">
             $(document).ready(function () {
 //jquery for toggle sub menus

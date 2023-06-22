@@ -32,6 +32,7 @@
                 </c:otherwise>
             </c:choose>
         </header>
+        
         <form class="banner-search text-center d-flex align-items-center" action="MainController" method="post">
             <input type="text" placeholder="Search..." name="keyword">
             <button id="search-button" type="submit" class="btn" name="action" value="searchProduct">
@@ -41,7 +42,7 @@
         <div class="noti-key">Search result for <strong>'${sessionScope.keyword}'</strong></div>
         <div class="container-fluid product-detail">
             <div class="item-list mx-5">
-                <div class="row">
+                <div class="row row-cols-md-5">
 
                     <c:if test="${requestScope.slist == null}">
                         <c:forEach var="searchItem" items="${requestScope.list}" begin="0" end="19">
@@ -51,8 +52,8 @@
                                         <img src="./image/Item.png" class="card-img-top" alt="">
                                         <div class="card-body">
                                             <h5 class="card-title mb-3 fw-bold">${searchItem.productName}</h5>
-                                            <span class="bricked-price mx-2">${searchItem.price}</span>
-                                            <span class="price fw-bold mx-2">${Math.round(searchItem.price) -0.45}</span></br>
+                                            <span class="bricked-price mx-2">$${searchItem.price}</span>
+                                            <span class="price fw-bold mx-2">$${Math.round(searchItem.price) -0.45}</span></br>
                                             <a href="MainController?action=addToCart&pid=${searchItem.productID}&cid=${searchItem.cateID}&quantity=1" class="btn btn-primary mt-2 px-3 py-2 fw-bold">Add To Cart</a>
                                         </div>
                                     </div>
@@ -68,8 +69,8 @@
                                         <img src="./image/Item.png" class="card-img-top" alt="">
                                         <div class="card-body">
                                             <h5 class="card-title mb-3 fw-bold">${searchItem.productName}</h5>
-                                            <span class="bricked-price mx-2">${searchItem.price}</span>
-                                            <span class="price fw-bold mx-2">${Math.round(searchItem.price) -0.45}</span></br>
+                                            <span class="bricked-price mx-2">$${searchItem.price}</span>
+                                            <span class="price fw-bold mx-2">$${Math.round(searchItem.price) -0.45}</span></br>
                                             <a href="MainController?action=addToCart&pid=${searchItem.productID}&cid=${searchItem.cateID}&quantity=1" class="btn btn-primary mt-2 px-3 py-2 fw-bold">Add To Cart</a>
                                         </div>
                                     </div>

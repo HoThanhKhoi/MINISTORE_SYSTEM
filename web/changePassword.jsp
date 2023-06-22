@@ -49,13 +49,18 @@
                             <div class="title text-center">My Account</div>
                             <div class="sub-menu text-center">
                                 <div class="item">
-                                    <a class="item" href="customerProfile.jsp?id=${sessionScope.customer.userID}">Overview</a>
+                                    <a class="item"
+                                       href="customerProfile.jsp?id=${sessionScope.customer.userID}">Overview</a>
+                                </div>
+                                <div class="item fw-bold">
+                                    <a class="item" href="changePassword.jsp?id=${sessionScope.customer.userID}">Change
+                                        Password</a>
                                 </div>
                                 <div class="item">
-                                    <a class="item fw-bold" href="changePassword.jsp?id=${sessionScope.customer.userID}">Change Password</a>
+                                    <a class="item" href="MainController?action=viewMyOrders">My Orders</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> 
 
                         <!-- right side: User information -->
                         <div class="col-8 form-container">

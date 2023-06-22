@@ -36,164 +36,173 @@
         </header>
 
         <div class="container-fluid">
-            <div class="row align-items-center">
+            <div class=" align-items-center">
 
                 <!-- menu -->
-                <div class="col-2 menu">
-                    <ul>
-                        <li class="row">
-                            <i class="fa-solid fa-user mx-3 col-2"></i>
-                            <a href="" class="col-2">User</a>
-                        </li>
+                <div class="menu-btn">
+                    <input type="checkbox" id="nav-toggle">
+                </div>
+                <div class="side-bar">
+                    <div class="menu">
+                        <div class="item">
+                            <a class="sub-btn">
+                                <i class="fa-solid fa-user mx-3"></i>
+                                User
+                                <i class="fa-solid fa-angle-right dropdown"></i>
+                            </a>
+                            <div class="sub-menu">
+                                <a href="MainController?action=viewCustomers" class="sub-item ">Customers</a>
+                                <a href="MainController?action=viewSales" class="sub-item active">Sales</a>
+                                <a href="MainController?action=viewGuards" class="sub-item">Guards</a>
+                            </div>
+                        </div>
 
-                        <!-- class="collapse"-->
+                        <div class="item">
+                            <a href="MainController?action=viewAllCategories" class="sub-btn">
+                                <span><i class="fa-solid fa-bars-staggered mx-3"></i></span>
+                                <span>Category</span>
+                            </a>
+                        </div>
 
-                       <li class="row">
-                            <i class="col-2 mx-3"></i>
-                            <a href="MainController?action=viewCustomers" class="col-2">Customer</a>
-                        </li>
+                        <div class="item">
+                            <a  href="MainController?action=viewAllProducts" class="sub-btn">
+                                <span><i class="fa-solid fa-box mx-3"></i></span>
+                                <span>Product</span>
+                            </a>
+                        </div>
 
-                        <li class="row active">
-                            <i class="col-2 mx-3"></i>
-                            <a href="MainController?action=viewSales" class="col-2">Sale</a>
-                        </li>
+                        <div class="item">
+                            <a class="sub-btn">
+                                <span><i class="fa-solid fa-tag mx-3"></i></span>
+                                <span>Voucher</span>
+                            </a>
+                        </div>
 
-                        <li class="row">
-                            <i class="col-2 mx-3"></i>
-                            <a href="MainController?action=viewGuards" class="col-2">Guard</a>
-                        </li>
+                        <div class="item">
+                            <a class="sub-btn">
+                                <span><i class="fa-solid fa-clipboard-user mx-3"></i></span>
+                                <span>Attendance</span>
+                            </a>
+                        </div>
 
-                        <li class="row">
-                            <i class="fa-solid fa-bars-staggered mx-3 col-2"></i>
-                            <a href="" class="col-2 ms-1 d-none d-sm-inline">Category</a>
-                        </li>
+                        <div class="item">
+                            <a class="sub-btn">
+                                <span><i class="fa-solid fa-cart-shopping mx-3"></i></span>
+                                <span>Order</span>
+                            </a>
+                        </div>
 
-                        <li class="row">
-                            <i class="fa-solid fa-box mx-3 col-2"></i>
-                            <a href="" class="col-2">Product</a>
-                        </li>
-
-                        <li class="row">
-                            <i class="fa-solid fa-tag mx-3 col-2"></i>
-                            <a href="" class="col-2">Voucher</a>
-                        </li>
-
-                        <li class="row">
-                            <i class="fa-solid fa-clipboard-user mx-3 col-2"></i>
-                            <a href="" class="col-2">Attendance</a>
-                        </li>
-
-                        <li class="row">
-                            <i class="fa-solid fa-cart-shopping mx-3 col-2"></i>
-                            <a href="" class="col-2">Order</a>
-                        </li>
-
-                    </ul>
+                    </div>
                 </div>
 
 
-                <!-- info -->
-                <div class="col-lg-4 cus-info">
-                    <form action="">
-                        <div class="form-item my-5 d-flex align-items-center justify-content-center">
-                            <div class="col-3">
-                                <label for="">ID</label>
-                            </div>
-                            <div class="col-9">
-                                <input type="text" id="id" value="${requestScope.sale.userID}" disabled="">
-                            </div>
+                <!-- dashboard -->
+                <div class="dashboard cus-dashboard">
+                    <div class="row align-items-center mx-5">
+
+                        <div class="col cus-info ">
+                            <form action="">
+                                <div class="form-item my-5 d-flex align-items-center justify-content-center">
+                                    <div class="col-3">
+                                        <label for="">ID</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text" id="id" value="${requestScope.sale.userID}" disabled="">
+                                    </div>
+                                </div>
+
+                                <div class="form-item my-5 d-flex align-items-center justify-content-center">
+                                    <div class="col-3">
+                                        <label for="">Name</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text" id="name" value="${requestScope.sale.name}" disabled="">
+                                    </div>
+                                </div>
+
+                                <div class="form-item my-5 d-flex align-items-center justify-content-center">
+                                    <div class="col-3">
+                                        <label for="">Phone</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="tel" id="phone" value="${requestScope.sale.phone}" disabled="">
+                                    </div>
+                                </div>
+
+                                <div class="form-item my-5 d-flex align-items-center justify-content-center">
+                                    <div class="col-3">
+                                        <label for="">Address</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text" id="phone" value="${requestScope.sale.address}" disabled="">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-item my-5 d-flex align-items-center justify-content-center">
+                                    <div class="col-3">
+                                        <label for="">Email</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text" id="email" value="${requestScope.sale.email}" disabled="">
+                                    </div>
+                                </div>
+                            </form>
                         </div>
 
-                        <div class="form-item my-5 d-flex align-items-center justify-content-center">
-                            <div class="col-3">
-                                <label for="">Name</label>
-                            </div>
-                            <div class="col-9">
-                                <input type="text" id="name" value="${requestScope.sale.name}" disabled="">
-                            </div>
-                        </div>
-
-                        <div class="form-item my-5 d-flex align-items-center justify-content-center">
-                            <div class="col-3">
-                                <label for="">Phone</label>
-                            </div>
-                            <div class="col-9">
-                                <input type="tel" id="phone" value="${requestScope.sale.phone}" disabled="">
-                            </div>
-                        </div>
-
-                        <div class="form-item my-5 d-flex align-items-center justify-content-center">
-                            <div class="col-3">
-                                <label for="">Address</label>
-                            </div>
-                            <div class="col-9">
-                                <input type="text" id="phone" value="${requestScope.sale.address}" disabled="">
-                            </div>
-                        </div>
 
 
-                        <div class="form-item my-5 d-flex align-items-center justify-content-center">
-                            <div class="col-3">
-                                <label for="">Email</label>
-                            </div>
-                            <div class="col-9">
-                                <input type="text" id="email" value="${requestScope.sale.email}" disabled="">
-                            </div>
-                        </div>
-                    </form>
+                        <!-- update status -->
+                        <div class="col cus-update">
+                            <form>
+                                <div class="my-5 d-flex align-items-center justify-content-center">
+                                    <div class="col-3">
+                                        <label for="">Role</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text" disabled placeholder="Sale">
+                                    </div>
+                                </div>   
+
+                                <div class="order my-5 d-flex align-items-center justify-content-center">
+                                    <div class="col-3">
+                                        <label for="">Order</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <a role="button">Sale's Schedule</a>
+                                    </div>
+                                </div>  
+
+                                <div class="status my-5 d-flex align-items-center">
+                                    <div class="col-3">
+                                        <label for="">Status</label>
+                                    </div>
+                                    <div class="col-9 status-btn">
+                                        <c:choose>
+                                            <c:when test="${requestScope.sale.status == 1}">
+                                                <a role="button" id="active" style="background-color: #1B9C85;color:black;text-decoration: none" href="" >Active</a>
+                                                <a role="button" id="inactive" style="background-color: #F6F5DB;color:black;text-decoration: none" href="">Inactive</a>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <a role="button" id="active" style="background-color: #F6F5DB;color:black;text-decoration: none" href="" >Active</a>
+                                                <a role="button" id="inactive" style="background-color: #FF5B5B;color:black;text-decoration: none" href="">Inactive</a>
+                                            </c:otherwise>    
+
+                                        </c:choose>
+
+
+                                        <input type="hidden" id="s" name="status" value="1"/>                               
+                                    </div>
+                                </div>
+
+                            </form>
+
+
+                        </div> 
+
+                    </div>
+
                 </div>
-
-
-
-                <!-- update status -->
-                <div class="col update-cus">
-                    <form>
-                        <div class="my-5 d-flex align-items-center justify-content-center">
-                            <div class="col-3">
-                                <label for="">Role</label>
-                            </div>
-                            <div class="col-9">
-                                <input type="text" disabled placeholder="Sale">
-                            </div>
-                        </div>   
-
-                        <div class="order my-5 d-flex align-items-center justify-content-center">
-                            <div class="col-3">
-                                <label for="">Order</label>
-                            </div>
-                            <div class="col-9">
-                                <a role="button">Sale's Schedule</a>
-                            </div>
-                        </div>  
-
-                        <div class="status my-5 d-flex align-items-center">
-                            <div class="col-3">
-                                <label for="">Status</label>
-                            </div>
-                            <div class="col status-btn">
-                                <c:choose>
-                                    <c:when test="${requestScope.sale.status == 1}">
-                                        <a role="button" id="active" style="background-color: #1B9C85;color:black;text-decoration: none" href="" >Active</a>
-                                        <a role="button" id="inactive" style="background-color: #F6F5DB;color:black;text-decoration: none" href="">Inactive</a>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <a role="button" id="active" style="background-color: #F6F5DB;color:black;text-decoration: none" href="" >Active</a>
-                                        <a role="button" id="inactive" style="background-color: #FF5B5B;color:black;text-decoration: none" href="">Inactive</a>
-                                    </c:otherwise>    
-
-                                </c:choose>
-
-
-                                <input type="hidden" id="s" name="status" value="1"/>                               
-                            </div>
-                        </div>
-
-                    </form>
-
-
-                </div> 
-
-
             </div>
 
         </div>
@@ -212,7 +221,7 @@
                 inactiveBtn.style.backgroundColor = "#F6F5DB";
                 status.value = "1";
                 console.log(status.value);
-                activeBtn.href = "MainController?action=updateUser&userid=" + userID + "&username=" + userName.value + "&phone=" + phone.value + "&status=" + status.value + "&roleid=" + roleID ;
+                activeBtn.href = "MainController?action=updateUser&userid=" + userID + "&username=" + userName.value + "&phone=" + phone.value + "&status=" + status.value + "&roleid=" + roleID;
             });
             inactiveBtn.addEventListener("click", function () {
                 var userName = document.getElementById("name");

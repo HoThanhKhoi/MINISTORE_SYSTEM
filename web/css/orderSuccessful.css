@@ -7,34 +7,13 @@
 
 .container-fluid {
     position: relative;
-    height: 80vh;
     width: 100%;
 }
 
 .row {
     margin: 0 !important;
 }
-/* Section: HOT DEAL */
-.hot-deal {
-    background: #F6F5DB;
-    height: 100%;
-}
 
-.hot-deal-title {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding-top: 8px;
-}
-
-.hot-deal-title h1 {
-    text-transform: uppercase;
-    font-size: 70px;
-}
-
-.hot-deal-title img {
-    width: 150px;
-}
 
 .item .card {
     cursor: pointer;
@@ -96,42 +75,8 @@
     border: 1px solid #1B9C85;
 }
 
-/* carousel */
-.owl-prev {     
-    left: -30px;
-}
-
-.owl-next {
-    right: -30px;
-}
-
-.owl-prev, .owl-next {
-    position: absolute;
-    top: 30%;
-}
-
-.owl-prev span, .owl-next span {
-    font-size: 60px;
-}
-
-.owl-nav span:hover {
-    color: #1B9C85;
-}
-
-.owl-nav button:hover {
-    background-color: transparent !important;
-}
-
-.owl-dots .active span {
-    background-color: #1B9C85 !important;
-}
-/* end carousel */
 
 
-.hot-deal-banner img {
-    width: 100%;
-}
-/* BEST SELLING */
 .best-selling {
     background-color: #FEFBF6 !important;
 }
@@ -163,11 +108,8 @@
 }
 
 .best-selling-title {
-    margin: 1px solid #000 !important;
-    border-bottom: 1px solid #333 !important;
+    border-bottom: 1px solid rgba(0,0,0,0.3) !important;
     margin-bottom: 70px !important;
-    
-    
 }
 
 .header {
@@ -222,6 +164,13 @@
     padding: 0 !important;
 }
 
+.link {
+    text-decoration: none;
+    color: #1B9C85;
+    font-weight: 700;
+}
 
-
+.link:hover {
+    color: #007965;
+}
 

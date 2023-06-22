@@ -29,17 +29,16 @@
 
     <body>
         <!--HEADER-->
-       
         <header>
             <c:import url="header_managerDashboard.jsp" />
         </header>
         
         <!-- Dashboard -->
-        <div class="dashboard">
-            <div class="container-fluid">
+        <div class="dashboard mb-5">
+            <div class="container">
                 <div class="row">
                     <div class="col management">
-                        <div class="title text-center">
+                        <div class="dashboard-title text-center">
                             <h4>Management Board</h4>
                         </div>
 

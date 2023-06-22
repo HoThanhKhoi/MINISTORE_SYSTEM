@@ -19,7 +19,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Order Successful</title>
         <link rel="stylesheet" href="css/orderSuccessful.css">
-        
+
 
         <!-- Icon CDN -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -31,33 +31,22 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
 
-        <!-- 1. cdn min.css carousel-->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
-              integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
-              crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-        <!-- 2. own carousel theme min.css -->
-        <link rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
-              integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
-              crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <body>
-        
+
         <header>
             <c:import url="header.jsp" />
         </header>
-        
-        <div class="best-selling" id="best-selling">
-            <div class="container">
 
+        <div class="best-selling">
+            <div class="container">
                 <div class="best-selling-title">
                     <h2 class="pt-5 pb-5 text-center" style="color: #333"><em>Order successfully. Your order is now processing!</em></h2>
-                    <h5> Check&nbsp;<a href="MainController?action=viewMyOrders" class="card-title mb-3 fw-bold">my orders</a></h5>
+                    <h5> Check&nbsp;<a class="link" href="MainController?action=viewMyOrders" class="card-title mb-3 fw-bold">my orders</a></h5>
                 </div>
 
                 <div class="item-list mx-5">
-                    <div class="row ">
+                    <div class="row row-cols-md-5">
                         <c:if test="${ProductDAO.getProducts() != null}">
                             <c:if test="${requestScope.list == null}">
                                 <c:forEach var="product" items="${ProductDAO.getProducts()}" begin="0" end="19">
@@ -123,6 +112,6 @@
             </div>
 
         </div>
-        
+
     </body>
 </html>

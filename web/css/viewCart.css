@@ -38,6 +38,7 @@ li::before {
 
 .cart-table table {
     width: 100%;
+    height: 55vh;
 }
 
 
@@ -50,7 +51,7 @@ li::before {
 .table-fixed tbody {
     position: relative;
     display: block;
-    max-height: 45vh;
+    max-height: 50vh;
     overflow-y: scroll;
     font-weight: 600;
 }
@@ -114,16 +115,16 @@ thead tr th {
 tbody tr {
     border-left: 1px solid rgba(0, 0, 0, 0.35);
     border-right: 1px solid rgba(0, 0, 0, 0.35);
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.15);
 }
 
 tbody tr td {
     padding: 10px;
-    border-bottom: 0.5px solid rgba(0, 0, 0, 0.15);
 }
-
 
 .cart-item-img img {
     width: 150px;
+    padding: 15px;
     border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
