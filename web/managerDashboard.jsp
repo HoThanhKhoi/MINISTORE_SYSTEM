@@ -54,7 +54,7 @@
                                 <div class="item mb_5">Order</div>
                                 <div class="item mb_5"><a href="MainController?action=viewAllCategories">Category</a></div>
                                 <div class="item mb_5"><a href="MainController?action=viewAllProducts">Product</a></div>
-                                <div class="item mb_5">Voucher</div>
+                                <div class="item mb_5"><a href="MainController?action=viewVouchers">Voucher</a></div>
                             </div>
                         </div>
                     </div>

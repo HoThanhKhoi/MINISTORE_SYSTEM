@@ -275,7 +275,7 @@ tbody tr:last-child {
 
 /*empty cart*/
 .empty-content {
-    height: 70vh !important;
+    height: 80vh !important;
     display: flex;
     flex-direction: column;
     justify-content: center;
