@@ -5,7 +5,7 @@
  */
 package dao;
 
-import Utils.DBUtils;
+import utils.DBUtils;
 import dto.Voucher;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

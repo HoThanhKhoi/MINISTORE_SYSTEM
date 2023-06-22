@@ -51,9 +51,9 @@
                             <i class="fa-solid fa-angle-right dropdown"></i>
                         </a>
                         <div class="sub-menu">
-                            <a href="viewCustomers.jsp" class="sub-item ">Customers</a>
-                            <a href="viewSales.jsp" class="sub-item active">Sales</a>
-                            <a href="viewGuards.jsp" class="sub-item">Guards</a>
+                            <a href="MainController?action=viewCustomers" class="sub-item ">Customers</a>
+                            <a href="MainController?action=viewSales" class="sub-item active">Sales</a>
+                            <a href="MainController?action=viewGuards" class="sub-item">Guards</a>
                         </div>
                     </div>
 
@@ -178,7 +178,7 @@
                     </c:if>
                     </tbody>
                 </table>
-                
+
                 <nav aria-label="Page navigation example" style="margin-top:35px;">
                     <ul class="pagination justify-content-center">
                         <li class="page-item">
@@ -196,7 +196,7 @@
                         </li>
                     </ul>
                 </nav>
-                        
+
             </div>
 
 

@@ -5,7 +5,7 @@
  */
 package dao;
 
-import Utils.DBUtils;
+import utils.DBUtils;
 import dto.Order;
 import dto.OrderDetail;
 import java.sql.Connection;
