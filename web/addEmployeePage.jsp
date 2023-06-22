@@ -38,13 +38,13 @@
 
         <div class="container-fluid">
             <c:if test="${requestScope.error != null}">
-                    <div class="alert alert-warning alert-dismissible fade show" role="alert" style=" padding-top:15px;width:430px;padding-right:45px; margin: 0;position: absolute;right:0;top:10px">
-                        <strong class="error" style="font-size: 15px">${error}!</strong> 
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="width:20px"></button>
-                    </div>
-                </c:if> 
-            <div class="row align-items-center">
+                <div class="alert alert-warning alert-dismissible fade show" role="alert" style=" padding-top:15px;width:430px;padding-right:45px; margin: 0;position: absolute;right:0;top:10px">
+                    <strong class="error" style="font-size: 15px">${error}!</strong> 
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="width:20px"></button>
+                </div>
+            </c:if> 
 
+            <div class="row align-items-center">
                 <!-- menu -->
                 <div class="col-2 menu">
                     <ul>
@@ -53,14 +53,13 @@
                             <a href="" class="col-2">User</a>
                         </li>
 
-                        <!-- class="collapse"-->
 
-                        <li class="row active">
+                        <li class="row ">
                             <i class="col-2 mx-3"></i>
                             <a href="MainController?action=viewCustomers" class="col-2">Customer</a>
                         </li>
 
-                        <li class="row">
+                        <li class="row active">
                             <i class="col-2 mx-3"></i>
                             <a href="MainController?action=viewSales" class="col-2">Sale</a>
                         </li>
@@ -94,10 +93,9 @@
                             <i class="fa-solid fa-cart-shopping mx-3 col-2"></i>
                             <a href="" class="col-2">Order</a>
                         </li>
-
                     </ul>
                 </div>
-                
+
                 <c:choose>
                     <c:when test="${requestScope.roleID == 2}">
                         <div class="col" style="overflow: hidden">
@@ -158,7 +156,7 @@
                                                 <div class="col-3">
                                                     <label for="">Schedule</label>
                                                 </div>
-                                                <div class="col-6 mx-3" style="width:200px ">
+                                                <div class="col-9 mx-3" style="width:200px ">
                                                     <select class="form-select" aria-label="Default select example" name="wid">
                                                         <c:forEach var="worksheet" items="${WorksheetDAO.getAllWorksheets()}">
                                                             <option value="${worksheet.worksheetID}">${worksheet.worksheetName}</option>
@@ -172,7 +170,7 @@
                                                 <div class="col-3">
                                                     <label for="">Status</label>
                                                 </div>
-                                                <div class="col status-btn">
+                                                <div class="col-9 status-btn">
                                                     <a role="button" id="active" style="background-color: #1B9C85;color:black;text-decoration: none;border-top-right-radius: 30px;
                                                        border-bottom-right-radius: 30px;">Active</a>
                                                 </div>
@@ -272,10 +270,13 @@
                         </div>
                     </c:otherwise>
                 </c:choose>
-                <!-- info -->
-
             </div>
-
         </div>
+        
+        <!-- FOOTER -->
+        <footer>
+            <c:import url="footer.jsp" />
+        </footer>
+
     </body>
 </html>

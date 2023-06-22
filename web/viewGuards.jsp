@@ -37,22 +37,13 @@
         </header>
 
         <div class="container-fluid">
-            <div class="row">
+            <div class="">
 
-                <!-- menu -->
+                 <!-- menu -->
                 <div class="menu-btn">
                     <input type="checkbox" id="nav-toggle">
                 </div>
-
-
-                <div class="col-2 side-bar">
-                    <!--                    <header>
-                                            <div class="close-btn">
-                                                <i class="fa-sharp fa-solid fa-circle-xmark"></i>
-                                            </div>
-                                        </header>-->
-
-
+                <div class="side-bar">
                     <div class="menu">
                         <div class="item">
                             <a class="sub-btn">
@@ -61,21 +52,21 @@
                                 <i class="fa-solid fa-angle-right dropdown"></i>
                             </a>
                             <div class="sub-menu">
-                                <a href="viewCustomers.jsp" class="sub-item active">Customers</a>
-                                <a href="viewSales.jsp" class="sub-item">Sales</a>
-                                <a href="viewGuards.jsp" class="sub-item">Guards</a>
+                                <a href="MainController?action=viewCustomers" class="sub-item ">Customers</a>
+                                <a href="MainController?action=viewSales" class="sub-item">Sales</a>
+                                <a href="MainController?action=viewGuards" class="sub-item active">Guards</a>
                             </div>
                         </div>
 
                         <div class="item">
-                            <a href="viewCategory.jsp" class="sub-btn">
+                            <a href="MainController?action=viewAllCategories" class="sub-btn">
                                 <span><i class="fa-solid fa-bars-staggered mx-3"></i></span>
                                 <span>Category</span>
                             </a>
                         </div>
 
                         <div class="item">
-                            <a  href="viewProduct.jsp" class="sub-btn">
+                            <a  href="MainController?action=viewAllProducts" class="sub-btn">
                                 <span><i class="fa-solid fa-box mx-3"></i></span>
                                 <span>Product</span>
                             </a>
@@ -106,8 +97,9 @@
                 </div>
 
 
+
                 <!-- table -->
-                <div class="col dashboard">
+                <div class="dashboard mt-5">
                     <form class="search text-center d-flex align-items-center">
                         <input type="text" placeholder="Search...">
                         <button id="search-button" type="button" class="btn">
@@ -116,7 +108,7 @@
                     </form>
 
 
-                    <table class="table mt-5 text-center">
+                    <table class="table mt-4 text-center">
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>

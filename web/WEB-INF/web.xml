@@ -20,10 +20,10 @@
         <servlet-name>MainController</servlet-name>
         <servlet-class>controllers.MainController</servlet-class>
     </servlet>
-    <servlet>
+<!--    <servlet>
         <servlet-name>productInfoServlet</servlet-name>
         <servlet-class>controllers.productInfoServlet</servlet-class>
-    </servlet>
+    </servlet>-->
     <servlet>
         <servlet-name>ViewProductServlet</servlet-name>
         <servlet-class>controllers.ViewProductServlet</servlet-class>

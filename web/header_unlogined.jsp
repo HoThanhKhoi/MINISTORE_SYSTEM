@@ -58,7 +58,7 @@
                             <span>Login</span>
                         </a>
                     </li>
-<li class="nav-item nav-item-txt">
+                    <li class="nav-item nav-item-txt">
                         <a href="register.jsp">
                             <span>Register</span>
                         </a>

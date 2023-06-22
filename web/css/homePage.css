@@ -356,6 +356,10 @@ em:hover::before, em:focus::before {
     text-transform: uppercase;
 }
 
+ul.pagination {
+    margin: 0 !important;
+}
+
 
 
 
@@ -377,15 +381,14 @@ h1 {
     font-size: 1.5em;
     list-style-type: none;
     padding: 20px;
-    text-transform: uppercase;
 }
 
 #countdown li span {
     display: block;
     font-size: 35px;
     margin: 0 20px;
+    font-weight: 500;
 }
-
 
 /* Back To Top */
 #btn-back-to-top {
@@ -398,8 +401,10 @@ h1 {
     border: none;
     width: 40px;
     height: 40px;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
 }
-
 
 .pagination li:active {
     font-weight: 800;
