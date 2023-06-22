@@ -52,7 +52,7 @@ public class AddToCartServlet extends HttpServlet {
                     }
                 }
                 session.setAttribute("cart", cart);
-                request.setAttribute("noti", "success");
+                request.setAttribute("noti", "Product is added to cart.");
                 String url ="MainController?action=viewProduct&pid=" + pid + "&cateID=" + cid;
                 request.getRequestDispatcher(url).forward(request, response);
             }

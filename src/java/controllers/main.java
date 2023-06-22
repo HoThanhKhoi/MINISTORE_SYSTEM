@@ -15,6 +15,7 @@ import dto.Voucher;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -81,9 +82,19 @@ public class main {
 //            System.out.println(orderDetail.getOrderDetailID() + "," + orderDetail.getOrderID());
 //        }
         
-        ArrayList<Voucher> list = VoucherDAO.getExpiredVouchers();
-        for (Voucher v : list) {
-            System.out.println(v.getVoucherID()+","+v.getExpiredDate());
+//        ArrayList<Voucher> list = VoucherDAO.getExpiredVouchers();
+//        for (Voucher v : list) {
+//            System.out.println(v.getVoucherID()+","+v.getExpiredDate());
+//        }
+        
+        String t = "2023-05-31T00:00:00.0";
+        System.out.println(Timestamp.valueOf(t.replace("T", " ")));
+        
+        int result = VoucherDAO.updateVoucher("V-0011", "VOUCHER11", 2.8f, Timestamp.valueOf(t.replace("T", " ")), 200);
+        if (result > 0) {
+            System.out.println("yay");
+        } else {
+            System.out.println("bruh");
         }
     }
 }

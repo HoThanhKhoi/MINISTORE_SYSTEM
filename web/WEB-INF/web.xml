@@ -176,6 +176,10 @@
         <servlet-name>ViewVoucherDetailsServlet</servlet-name>
         <servlet-class>controllers.ViewVoucherDetailsServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddVoucherServlet</servlet-name>
+        <servlet-class>controllers.AddVoucherServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ResetPassServlet</servlet-name>
         <url-pattern>/ResetPassServlet</url-pattern>
@@ -343,6 +347,10 @@
     <servlet-mapping>
         <servlet-name>ViewVoucherDetailsServlet</servlet-name>
         <url-pattern>/ViewVoucherDetailsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddVoucherServlet</servlet-name>
+        <url-pattern>/AddVoucherServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

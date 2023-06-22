@@ -165,7 +165,7 @@
                         "showMethod": "fadeIn",
                         "hideMethod": "fadeOut"
                     };
-                    toastr.success("Product is added to cart.");
+                    toastr.success("${requestScope.noti}");
                 });
             </script>
         </c:if>
