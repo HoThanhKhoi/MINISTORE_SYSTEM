@@ -5,10 +5,11 @@
  */
 package controllers;
 
-import dao.ProductDAO;
-import dto.Product;
+import dao.UserDAO;
+import dto.User;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -20,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class ViewProductDetailsPageServlet extends HttpServlet {
+public class ShowPaginatedSearhedUsersServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,11 +37,19 @@ public class ViewProductDetailsPageServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String pid = request.getParameter("pid");
-            Product product = ProductDAO.getProductInfo(pid);
-            if (product != null) {
-                request.setAttribute("product", product);
-                request.getRequestDispatcher("updateProduct.jsp").forward(request, response);
+            String keyword = request.getParameter("keyword");
+            int roleid = Integer.parseInt(request.getParameter("roleid"));
+            int pageNumber = Integer.parseInt(request.getParameter("page"));
+            int usersPerPage = 7;
+            ArrayList<User> list = UserDAO.getPaginatedSearchedUsers(pageNumber, usersPerPage, roleid, keyword);
+            if (list != null) {
+                if (roleid == 3) {
+                    request.setAttribute("keyword", keyword);
+                    request.setAttribute("page", pageNumber);
+                    request.setAttribute("cslist", list);
+                    request.getRequestDispatcher("viewCustomers.jsp").forward(request, response);
+                }
+
             }
 
         }
@@ -61,7 +70,7 @@ public class ViewProductDetailsPageServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ViewProductDetailsPageServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ShowPaginatedSearhedUsersServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -79,7 +88,7 @@ public class ViewProductDetailsPageServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ViewProductDetailsPageServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ShowPaginatedSearhedUsersServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

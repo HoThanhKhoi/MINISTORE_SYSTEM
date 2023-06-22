@@ -5,12 +5,8 @@
  */
 package controllers;
 
-import dao.ProductDAO;
-import dto.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class ViewProductDetailsPageServlet extends HttpServlet {
+public class UpdateProductServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,17 +28,15 @@ public class ViewProductDetailsPageServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, Exception {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             String pid = request.getParameter("pid");
-            Product product = ProductDAO.getProductInfo(pid);
-            if (product != null) {
-                request.setAttribute("product", product);
-                request.getRequestDispatcher("updateProduct.jsp").forward(request, response);
-            }
-
+            String pName = request.getParameter("pName");
+            String pDes = request.getParameter("pDes");
+            String  pPrice = request.getParameter("pPrice");
+            
         }
     }
 
@@ -58,11 +52,7 @@ public class ViewProductDetailsPageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (Exception ex) {
-            Logger.getLogger(ViewProductDetailsPageServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -76,11 +66,7 @@ public class ViewProductDetailsPageServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (Exception ex) {
-            Logger.getLogger(ViewProductDetailsPageServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

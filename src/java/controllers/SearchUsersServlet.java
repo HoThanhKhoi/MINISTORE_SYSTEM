@@ -40,10 +40,13 @@ public class SearchUsersServlet extends HttpServlet {
             int roleid = Integer.parseInt(request.getParameter("roleid"));
             String keyword = request.getParameter("keyword");
             ArrayList<User> list = UserDAO.searchUsers(roleid, keyword);
-            if(list != null){
-                request.setAttribute("searchedCusList", list);
-                request.setAttribute("keyword", keyword);
-                request.getRequestDispatcher("viewCustomers.jsp").forward(request, response);
+            if (list != null) {
+                if (roleid == 3) {
+                    request.setAttribute("searchedCusList", list);
+                    request.setAttribute("keyword", keyword);
+                    request.getRequestDispatcher("viewCustomers.jsp").forward(request, response);
+                }
+
             }
         }
     }

@@ -63,6 +63,8 @@ li::before {
 
 .table-fixed tr {
     display: flex;
+    align-items: center;
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.15);
 }
 
 .table-fixed td,
@@ -275,7 +277,7 @@ tbody tr:last-child {
 
 /*empty cart*/
 .empty-content {
-    height: 70vh !important;
+    height: 80vh !important;
     display: flex;
     flex-direction: column;
     justify-content: center;

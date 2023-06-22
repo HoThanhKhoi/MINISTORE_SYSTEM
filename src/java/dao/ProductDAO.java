@@ -6,7 +6,7 @@
 package dao;
 
 import dto.Product;
-import Utils.DBUtils;
+import utils.DBUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -181,7 +181,7 @@ public class ProductDAO {
         return list;
 
     }
-    
+
     public static ArrayList<Product> getOutOfStocktProducts() throws Exception {
         ArrayList<Product> list = new ArrayList<>();
         Product product;
@@ -205,7 +205,7 @@ public class ProductDAO {
         return list;
 
     }
-    
+
     public static ArrayList<Product> getPaginatedAlertProducts(int pageNumber, int productPerPage) throws Exception {
         ArrayList<Product> list = new ArrayList<>();
         ArrayList<Product> productList = ProductDAO.getAlertProducts();
@@ -220,7 +220,7 @@ public class ProductDAO {
         }
         return list;
     }
-    
+
     public static ArrayList<Product> getPaginatedOutProducts(int pageNumber, int productPerPage) throws Exception {
         ArrayList<Product> list = new ArrayList<>();
         ArrayList<Product> productList = ProductDAO.getOutOfStocktProducts();
@@ -235,4 +235,23 @@ public class ProductDAO {
         }
         return list;
     }
+
+    public static int updateProduct(String pid, String productName, float price, String description, int quantity, String cateID) throws Exception {
+        int result = 0;
+        Connection cn = DBUtils.makeConnection();
+        if (cn != null) {
+            String sql = "UPDATE PRODUCTS SET ProductName= ?,Price= ?,Description=?,StockQuantity=?,CateID=? \n"
+                    + "where ProductID = ?";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setString(1, productName);
+            pst.setFloat(2, price);
+            pst.setString(3, description);
+            pst.setInt(4, quantity);
+            pst.setString(5, cateID);
+            pst.setString(6,pid);
+            result = pst.executeUpdate();
+        }
+        return result;
+    }
+//    product = new Product(pid, productName, price, description, quantity, imgPath, cateID);
 }

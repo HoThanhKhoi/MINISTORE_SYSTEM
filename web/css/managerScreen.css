@@ -134,7 +134,7 @@ body {
 }
 
 .search input {
-    width: 40%;
+    width: 80%;
     position: relative;
     border-radius: 30px;
     border: 0.5px solid rgba(0, 0, 0, 0.2);
@@ -261,6 +261,30 @@ table button {
     display: block;
 }
 
+.filter{
+    padding: 0.8125rem 1.25rem;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(0,0,0,.03);
+}
+
+.filter button{
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.02);
+    height: 2.125rem;
+    line-height: 2.125rem;
+    border-radius: 2px;
+    border: 0;
+    align-items: center;
+    text-transform: capitalize;
+    padding: 0 0.9375rem;
+    background: #fff;
+    white-space: nowrap;
+    margin-left: 0.625rem;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
 
 @media only screen and (max-width: 768px) {
     .side-bar {

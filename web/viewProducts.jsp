@@ -43,6 +43,8 @@
                 <div class="menu-btn">
                     <input type="checkbox" id="nav-toggle">
                 </div>
+
+
                 <div class="side-bar">
                     <div class="menu">
                         <div class="item">
@@ -133,26 +135,29 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <form action="MainController" action="post">
+                        
                             <c:choose>
                                 <c:when test="${requestScope.signal == 1}">
                                     <c:if test="${requestScope.ppList == null}">
                                         <c:forEach var="product" items="${requestScope.pList}" begin="0" end="6">
+                                            <form action="MainController" action="post">
                                             <tr>
                                                 <td>${product.productID}</td>
                                                 <td>${product.productName}</td>
                                                 <td>${CategoryDAO.getCategory(product.cateID).getCateName()}</td>                                 
                                                 <td>${product.price}</td>
                                                 <td>${product.stockQuantity}</td>
+                                                <input type="hidden" name="pid" value="${product.productID}"/>
                                                 <td>
                                                     <button type="submit" name="action" value="viewProductDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
                                                 </td>
-                                            <input type="hidden" value="${product.productID}"/>
+                                            </form>
                                             </tr>
                                         </c:forEach>
                                     </c:if>
                                     <c:if test="${requestScope.ppList != null}">
                                         <c:forEach var="product" items="${requestScope.ppList}" begin="0" end="6">
+                                            <form action="MainController" action="post">
                                             <tr>
                                                 <td>${product.productID}</td>
                                                 <td>${product.productName}</td>
@@ -162,14 +167,16 @@
                                                 <td>
                                                     <button type="submit" name="action" value="viewProductDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
                                                 </td>
-                                            <input type="hidden" value="${product.productID}"/>
+                                            <input type="hidden" name="pid" value="${product.productID}"/>
                                             </tr>
+                                            </form>
                                         </c:forEach>
                                     </c:if>
                                 </c:when>
                                 <c:when test="${requestScope.signal == 2}">
                                     <c:if test="${requestScope.alList == null}">
                                         <c:forEach var="product" items="${requestScope.alertList}" begin="0" end="6">
+                                            <form action="MainController" action="post">
                                             <tr>
                                                 <td>${product.productID}</td>
                                                 <td>${product.productName}</td>
@@ -179,12 +186,14 @@
                                                 <td>
                                                     <button type="submit" name="action" value="viewProductDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
                                                 </td>
-                                            <input type="hidden" value="${product.productID}"/>
+                                            <input type="hidden" name="pid" value="${product.productID}"/>
                                             </tr>
+                                            </form>
                                         </c:forEach>
                                     </c:if>
                                     <c:if test="${requestScope.alList != null}">
                                         <c:forEach var="product" items="${requestScope.alList}" begin="0" end="6">
+                                            <form action="MainController" action="post">
                                             <tr>
                                                 <td>${product.productID}</td>
                                                 <td>${product.productName}</td>
@@ -194,14 +203,16 @@
                                                 <td>
                                                     <button type="submit" name="action" value="viewProductDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
                                                 </td>
-                                            <input type="hidden" value="${product.productID}"/>
+                                            <input type="hidden" name="pid" value="${product.productID}"/>
                                             </tr>
+                                            </form>
                                         </c:forEach>
                                     </c:if>
                                 </c:when>
                                 <c:when test="${requestScope.signal == 3}">
                                     <c:if test="${requestScope.oList == null}">
                                         <c:forEach var="product" items="${requestScope.outList}" begin="0" end="6">
+                                            <form action="MainController" action="post">
                                             <tr>
                                                 <td>${product.productID}</td>
                                                 <td>${product.productName}</td>
@@ -211,12 +222,14 @@
                                                 <td>
                                                     <button type="submit" name="action" value="viewProductDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
                                                 </td>
-                                            <input type="hidden" value="${product.productID}"/>
+                                            <input type="hidden" name="pid" value="${product.productID}"/>
                                             </tr>
+                                            </form>
                                         </c:forEach>
                                     </c:if>
                                     <c:if test="${requestScope.oList != null}">
                                         <c:forEach var="product" items="${requestScope.oList}" begin="0" end="6">
+                                            <form action="MainController" action="post">
                                             <tr>
                                                 <td>${product.productID}</td>
                                                 <td>${product.productName}</td>
@@ -226,14 +239,16 @@
                                                 <td>
                                                     <button type="submit" name="action" value="viewProductDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
                                                 </td>
-                                            <input type="hidden" value="${product.productID}"/>
+                                            <input type="hidden" name="pid" value="${product.productID}"/>
                                             </tr>
+                                            </form>
                                         </c:forEach>
                                     </c:if>
                                 </c:when>
                                 <c:when test="${requestScope.keyword != null}">
                                     <c:if test="${requestScope.mpplist == null}">
                                         <c:forEach var="product" items="${requestScope.mslist}" begin="0" end="6">
+                                            <form action="MainController" action="post">
                                             <tr>
                                                 <td>${product.productID}</td>
                                                 <td>${product.productName}</td>
@@ -243,12 +258,14 @@
                                                 <td>
                                                     <button type="submit" name="action" value="viewProductDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
                                                 </td>
-                                            <input type="hidden" value="${product.productID}"/>
+                                            <input type="hidden" name="pid" value="${product.productID}"/>
                                             </tr>
+                                            </form>
                                         </c:forEach>
                                     </c:if>
                                     <c:if test="${requestScope.mpplist != null}">
                                         <c:forEach var="product" items="${requestScope.mpplist}" begin="0" end="6">
+                                            <form action="MainController" action="post">
                                             <tr>
                                                 <td>${product.productID}</td>
                                                 <td>${product.productName}</td>
@@ -258,14 +275,15 @@
                                                 <td>
                                                     <button type="submit" name="action" value="viewProductDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
                                                 </td>
-                                            <input type="hidden" value="${product.productID}"/>
+                                            <input type="hidden" name="pid" value="${product.productID}"/>
                                             </tr>
+                                            </form>
                                         </c:forEach>
                                     </c:if>
 
                                 </c:when>
                             </c:choose>
-                        </form>
+                      
                         </tbody>
                     </table>
                     

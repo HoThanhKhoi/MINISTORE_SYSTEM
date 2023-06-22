@@ -154,6 +154,10 @@ public class MainController extends HttpServlet {
                 url = "updateCategory.jsp";
             } else if (action.equalsIgnoreCase("updateCategory")) {
                 url = "UpdateCategoryServlet";
+            } else if (action.equalsIgnoreCase("updateProduct")) {
+                url = "UpdateProductServlet";
+            } else if (action.equalsIgnoreCase("showPaginatedUserPage")) {
+                url = "ShowPaginatedSearhedUsersServlet";
             }
             
 

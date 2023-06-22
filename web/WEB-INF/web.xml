@@ -23,7 +23,7 @@
 <!--    <servlet>
         <servlet-name>productInfoServlet</servlet-name>
         <servlet-class>controllers.productInfoServlet</servlet-class>
-    </servlet>-->
+        </servlet>-->
     <servlet>
         <servlet-name>ViewProductServlet</servlet-name>
         <servlet-class>controllers.ViewProductServlet</servlet-class>
@@ -179,8 +179,8 @@
     <servlet>
         <servlet-name>AddVoucherServlet</servlet-name>
         <servlet-class>controllers.AddVoucherServlet</servlet-class>
-        </servlet>
-        <servlet>
+    </servlet>
+    <servlet>
         <servlet-name>ViewSaleDashboardServlet</servlet-name>
         <servlet-class>controllers.ViewSaleDashboardServlet</servlet-class>
     </servlet>
@@ -231,6 +231,14 @@
     <servlet>
         <servlet-name>ManagePaginatedSearchedProductsServlet</servlet-name>
         <servlet-class>controllers.ManagePaginatedSearchedProductsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowPaginatedSearhedUsersServlet</servlet-name>
+        <servlet-class>controllers.ShowPaginatedSearhedUsersServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateProductServlet</servlet-name>
+        <servlet-class>controllers.UpdateProductServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>viewAllCategoriesServlet</servlet-name>
@@ -411,8 +419,8 @@
     <servlet-mapping>
         <servlet-name>AddVoucherServlet</servlet-name>
         <url-pattern>/AddVoucherServlet</url-pattern>
-        </servlet-mapping>
-        <servlet-mapping>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ViewSaleDashboardServlet</servlet-name>
         <url-pattern>/ViewSaleDashboardServlet</url-pattern>
     </servlet-mapping>
@@ -463,6 +471,14 @@
     <servlet-mapping>
         <servlet-name>ManagePaginatedSearchedProductsServlet</servlet-name>
         <url-pattern>/ManagePaginatedSearchedProductsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowPaginatedSearhedUsersServlet</servlet-name>
+        <url-pattern>/ShowPaginatedSearhedUsersServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateProductServlet</servlet-name>
+        <url-pattern>/UpdateProductServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>viewAllCategoriesServlet</servlet-name>
