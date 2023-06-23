@@ -149,8 +149,8 @@
                                             <td>${sale.phone}</td>
                                             <td>${sale.address}</td>
                                             <c:choose>
-                                                <c:when test="${sale.status == 0}"><td>Inactive</td></c:when>
-                                                <c:otherwise><td>Active</td></c:otherwise>
+                                                <c:when test="${sale.status == 0}"><td><span class="status_btn status_cancel">Inactive</span></td></c:when>
+                                                <c:otherwise><td><span class="status_btn status_completed">Active</span> </td></c:otherwise>
                                             </c:choose>
                                         <input type="hidden" name="userid" value="${sale.userID}"/>
                                         <td>
@@ -170,8 +170,8 @@
                                             <td>${sale.phone}</td>
                                             <td>${sale.address}</td>
                                             <c:choose>
-                                                <c:when test="${sale.status == 0}"><td>Inactive</td></c:when>
-                                                <c:otherwise><td>Active</td></c:otherwise>
+                                                <c:when test="${sale.status == 0}"><td><span class="status_btn status_cancel">Inactive</span></td></c:when>
+                                                <c:otherwise><td><span class="status_btn status_completed">Active</span></td></c:otherwise>
                                             </c:choose>
                                         <input type="hidden" name="userid" value="${sale.userID}"/>
                                         <td>
@@ -185,26 +185,26 @@
                         </table>
 
                         <nav aria-label="Page navigation example" style="margin-top:35px;">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item">
-                            <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=1" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <% int totalProduct = UserDAO.getUsersByRole(1).size();
-                            int element = 7;
-                            float numOfPages = (float) totalProduct / element;
-                        %>
-                        <%for (int i = 1; i <= (int) Math.ceil(numOfPages); i++) {%>
-                        <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=<%=i%>&roleid=1"><%=i%></a></li>
-                            <% }%>
-                        <li class="page-item">
-                            <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page+1}&roleid=1" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item">
+                                    <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=1" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <% int totalProduct = UserDAO.getUsersByRole(1).size();
+                                    int element = 7;
+                                    float numOfPages = (float) totalProduct / element;
+                                %>
+                                <%for (int i = 1; i <= (int) Math.ceil(numOfPages); i++) {%>
+                                <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=<%=i%>&roleid=1"><%=i%></a></li>
+                                    <% }%>
+                                <li class="page-item">
+                                    <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page+1}&roleid=1" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
 
                     </div>
 

@@ -32,7 +32,7 @@
                 </c:otherwise>
             </c:choose>
         </header>
-        
+
         <form class="banner-search text-center d-flex align-items-center" action="MainController" method="post">
             <input type="text" placeholder="Search..." name="keyword">
             <button id="search-button" type="submit" class="btn" name="action" value="searchProduct">
@@ -49,10 +49,15 @@
                             <div class="col">
                                 <div class="item mb-4 text-center">
                                     <div class="card border-0 shadow align-items-center">
-                                        <img src="${searchItem.imgPath}" class="card-img-top" alt="">
+                                        <a href="MainController?action=viewProduct&pid=${searchItem.productID}&cateID=${searchItem.cateID}">
+                                            <img src="${searchItem.imgPath}" class="card-img-top" alt="">
+                                        </a>
                                         <div class="card-body">
-                                            <h5 class="card-title mb-3 fw-bold">${searchItem.productName}</h5>
-                                            <span class="bricked-price mx-2">$${searchItem.price}</span>
+                                            <h5 class="card-title mb-3 fw-bold">
+                                                <a href="MainController?action=viewProduct&pid=${searchItem.productID}&cateID=${searchItem.cateID}">
+                                                    ${searchItem.productName}
+                                                </a>
+                                            </h5>                                            <span class="bricked-price mx-2">$${searchItem.price}</span>
                                             <span class="price fw-bold mx-2">$${Math.round(searchItem.price) -0.45}</span></br>
                                             <a href="MainController?action=addToCart&pid=${searchItem.productID}&cid=${searchItem.cateID}&quantity=1" class="btn btn-primary mt-2 px-3 py-2 fw-bold">Add To Cart</a>
                                         </div>
@@ -66,9 +71,15 @@
                             <div class="col">
                                 <div class="item mb-4 text-center">
                                     <div class="card border-0 shadow align-items-center">
-                                        <img src="${searchItem.imgPath}" class="card-img-top" alt="">
+                                        <a href="MainController?action=viewProduct&pid=${searchItem.productID}&cateID=${searchItem.cateID}">
+                                            <img src="${searchItem.imgPath}" class="card-img-top" alt="">
+                                        </a>
                                         <div class="card-body">
-                                            <h5 class="card-title mb-3 fw-bold">${searchItem.productName}</h5>
+                                            <h5 class="card-title mb-3 fw-bold">
+                                                <a href="MainController?action=viewProduct&pid=${searchItem.productID}&cateID=${searchItem.cateID}">
+                                                    ${searchItem.productName}
+                                                </a>
+                                            </h5>
                                             <span class="bricked-price mx-2">$${searchItem.price}</span>
                                             <span class="price fw-bold mx-2">$${Math.round(searchItem.price) -0.45}</span></br>
                                             <a href="MainController?action=addToCart&pid=${searchItem.productID}&cid=${searchItem.cateID}&quantity=1" class="btn btn-primary mt-2 px-3 py-2 fw-bold">Add To Cart</a>
@@ -80,7 +91,7 @@
                     </c:if>
                 </div>
             </div>
-            
+
             <nav aria-label="Page navigation example" class="mt-4">
                 <ul class="pagination justify-content-center">
                     <li class="page-item">

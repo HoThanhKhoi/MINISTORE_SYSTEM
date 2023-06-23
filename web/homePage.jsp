@@ -130,7 +130,7 @@
                             <c:forEach var="product" items="${ProductDAO.getProducts()}" begin="0" end="6">
                                 <div class="item mb-4 text-center">
                                     <div class="card border-0 shadow align-items-center">
-                                        <img src="${product.imgPath}" class="card-img-top" alt="">
+                                        <a href="MainController?action=viewProduct&pid=${product.productID}&cateID=${product.cateID}"><img src="${product.imgPath}" class="card-img-top" alt=""></a>
                                         <div class="card-body">
                                             <h5 class="card-title fw-bold">
                                                 <a href="MainController?action=viewProduct&pid=${product.productID}&cateID=${product.cateID}">
@@ -192,7 +192,9 @@
                         <c:forEach var="cate" items="${CategoryDAO.getCategories()}" begin="0" end="1">                                
                             <div class="item mb-4 text-center">
                                 <div class="card border-0 shadow align-items-center ">
-                                    <img src="${cate.imgPath}" class="card-img-top" alt="">
+                                    <a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">                                   
+                                        <img src="${cate.imgPath}" class="card-img-top" alt="">
+                                    </a>
                                     <div class="overlay"></div>
                                     <div class="card-content">
                                         <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
@@ -208,8 +210,9 @@
                         <c:forEach var="cate" items="${CategoryDAO.getCategories()}" begin="2" end="3">                                
                             <div class="item mb-4 text-center">
                                 <div class="card border-0 shadow align-items-center ">
-                                    <img src="${cate.imgPath}" class="card-img-top" alt="">
-                                    <div class="overlay"></div>
+                                    <a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">                                   
+                                        <img src="${cate.imgPath}" class="card-img-top" alt="">
+                                    </a>                                    <div class="overlay"></div>
                                     <div class="card-content">
                                         <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
                                     </div>
@@ -225,8 +228,9 @@
                         <c:forEach var="cate" items="${CategoryDAO.getCategories()}" begin="4" end="5">                                
                             <div class="item mb-4 text-center">
                                 <div class="card border-0 shadow align-items-center ">
-                                    <img src="${cate.imgPath}" class="card-img-top" alt="">
-                                    <div class="overlay"></div>
+                                    <a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">                                   
+                                        <img src="${cate.imgPath}" class="card-img-top" alt="">
+                                    </a>                                    <div class="overlay"></div>
                                     <div class="card-content">
                                         <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
                                     </div>
@@ -245,7 +249,9 @@
                         <c:forEach var="cate" items="${CategoryDAO.getCategories()}" begin="6" end="7">                                
                             <div class="item mb-4 text-center">
                                 <div class="card border-0 shadow align-items-center ">
-                                    <img src="${cate.imgPath}" class="card-img-top" alt="">
+                                    <a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">                                   
+                                        <img src="${cate.imgPath}" class="card-img-top" alt="">
+                                    </a>                                   
                                     <div class="overlay"></div>
                                     <div class="card-content">
                                         <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
@@ -260,7 +266,9 @@
                         <c:forEach var="cate" items="${CategoryDAO.getCategories()}" begin="8" end="9">                                
                             <div class="item mb-4 text-center">
                                 <div class="card border-0 shadow align-items-center ">
-                                    <img src="${cate.imgPath}" class="card-img-top" alt="">
+                                    <a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">                                   
+                                        <img src="${cate.imgPath}" class="card-img-top" alt="">
+                                    </a>
                                     <div class="overlay"></div>
                                     <div class="card-content">
                                         <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
@@ -275,7 +283,9 @@
                         <c:forEach var="cate" items="${CategoryDAO.getCategories()}" begin="10" end="11">                                
                             <div class="item mb-4 text-center">
                                 <div class="card border-0 shadow align-items-center ">
-                                    <img src="${cate.imgPath}" class="card-img-top" alt="">
+                                    <a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">                                   
+                                        <img src="${cate.imgPath}" class="card-img-top" alt="">
+                                    </a>
                                     <div class="overlay"></div>
                                     <div class="card-content">
                                         <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
@@ -311,7 +321,9 @@
                                         <!-- begin item -->
                                         <div class="item mb-4 text-center">
                                             <div class="card border-0 shadow align-items-center">
-                                                <img src="${product.imgPath}" class="card-img-top" alt="">
+                                                <a href="MainController?action=viewProduct&pid=${product.productID}&cateID=${product.cateID}">
+                                                    <img src="${product.imgPath}" class="card-img-top" alt="">
+                                                </a>
                                                 <div class="card-body">
                                                     <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProduct&pid=${product.productID}&cateID=${product.cateID}">${product.productName}</a></h5>
                                                     <span class="bricked-price mx-2">$${product.price}</span>
@@ -331,8 +343,9 @@
                                         <!-- begin item -->
                                         <div class="item mb-4 text-center">
                                             <div class="card border-0 shadow align-items-center">
-                                                <img src="${product.imgPath}" class="card-img-top" alt="">
-                                                <div class="card-body">
+                                                <a href="MainController?action=viewProduct&pid=${product.productID}&cateID=${product.cateID}">
+                                                    <img src="${product.imgPath}" class="card-img-top" alt="">
+                                                </a>                                                <div class="card-body">
                                                     <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProduct&pid=${product.productID}&cateID=${product.cateID}">${product.productName}</a></h5>
                                                     <span class="bricked-price mx-2">$${product.price}</span>
                                                     <fmt:formatNumber value="${formattedNumber}" pattern="#,##0.00" var="formattedNumber" />
@@ -351,7 +364,7 @@
                     </div>
                 </div>
 
-               
+
                 <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center ">
                         <li class="page-item">

@@ -122,7 +122,9 @@
 
                         <c:choose>
                             <c:when test="${requestScope.error != null}">
-                                <h1>${requestScope.error}</h1>
+                                <div class="alert alert-danger alert-dismissible fade show notification" role="alert" style="padding: 15px 45px;text-align: center;width:430px;opacity: 100%;margin: 20px auto 0;">
+                                    <strong class="error">${requestScope.error}</strong>
+                                </div>
                             </c:when>
                             <c:otherwise>
                                 <table class="table mt-5 text-center">

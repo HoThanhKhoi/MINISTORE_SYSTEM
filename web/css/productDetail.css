@@ -1,5 +1,3 @@
-
-
 * {
     padding: 0;
     margin: 0;
@@ -184,7 +182,7 @@ input::-webkit-inner-spin-button {
 
 
 .bricked-price {
-    text-decoration: line-through;
+text-decoration: line-through;
     color: rgba(51, 51, 51, 0.8);
 }
 
@@ -269,4 +267,10 @@ input::-webkit-inner-spin-button {
     height: 40px;
     display: flex !important;
     justify-content: center;align-items: center;
+}
+
+
+.cus-info {
+    height: 70%;
+    margin: 20px;
 }

@@ -372,7 +372,7 @@
                                     float numOfAlertPages = (float) totalAlertProducts / elementAlert;
                                 %>
                                 <%for (int i = 1; i <= (int) Math.ceil(numOfAlertPages); i++) {%>
-                                <li class="page-item "><a class="page-link " style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showAlertItemsPage&page=<%=i%>&items=product&signal=2"><%=i%></a></li>
+<li class="page-item "><a class="page-link " style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showAlertItemsPage&page=<%=i%>&items=product&signal=2"><%=i%></a></li>
                                     <% }%>
                                 <li class="page-item">
                                     <a class="page-link" style="padding: 5px 10px !important;color: #1B9C85" href="MainController?action=showAlertItemsPage&page=${requestScope.page+1}&items=product&signal=2" aria-label="Next">
@@ -411,7 +411,7 @@
                         <nav aria-label="Page navigation example" style="margin: 10px 0;">
                             <ul class="pagination justify-content-center">
                                 <li class="page-item">
-                                    <a class="page-link" style="padding: 5px 10px !important;color: #1B9C85" href="MainController?action=showSearchedItemsPage&page=${requestScope.page-1}&items=product&keyword=${requestScope.keyword}" aria-label="Previous">
+<a class="page-link" style="padding: 5px 10px !important;color: #1B9C85" href="MainController?action=showSearchedItemsPage&page=${requestScope.page-1}&items=product&keyword=${requestScope.keyword}" aria-label="Previous">
                                         <span aria-hidden="true">&laquo;</span>
                                     </a>
                                 </li>

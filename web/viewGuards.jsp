@@ -136,8 +136,8 @@
                                                 <td>${guard.phone}</td>
                                                 <td>${guard.address}</td>
                                                 <c:choose>
-                                                    <c:when test="${guard.status == 0}"><td>Inactive</td></c:when>
-                                                    <c:otherwise><td>Active</td></c:otherwise>
+                                                    <c:when test="${guard.status == 0}"><td><span class="status_btn status_cancel">Inactive</span></td></c:when>
+                                                    <c:otherwise><td><span class="status_btn status_completed">Active</span></td></c:otherwise>
                                                 </c:choose>
                                             <input type="hidden" name="userid" value="${guard.userID}"/>
                                             <td>
@@ -157,8 +157,8 @@
                                                 <td>${guard.phone}</td>
                                                 <td>${guard.address}</td>
                                                 <c:choose>
-                                                    <c:when test="${guard.status == 0}"><td>Inactive</td></c:when>
-                                                    <c:otherwise><td>Active</td></c:otherwise>
+                                                    <c:when test="${guard.status == 0}"><td><span class="status_btn status_cancel">Inactive</span></td></c:when>
+                                                    <c:otherwise><td><span class="status_btn status_completed">Active</span></td></c:otherwise>
                                                 </c:choose>
                                             <input type="hidden" name="userid" value="${guard.userID}"/>
                                             <td>
@@ -176,7 +176,9 @@
                     <nav aria-label="Page navigation example" style="margin-top:35px;">
                         <ul class="pagination justify-content-center">
                             <li class="page-item">
-                                <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=2"><</a>
+                                <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=2" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
                             </li>
                             <% int totalProduct = UserDAO.getUsersByRole(2).size();
                                 int element = 7;
@@ -186,7 +188,9 @@
                             <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=<%=i%>&roleid=2"><%=i%></a></li>
                                 <% }%>
                             <li class="page-item">
-                                <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page+1}&roleid=2">></a>
+                                <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page+1}&roleid=2" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
                             </li>
                         </ul>
                     </nav>
