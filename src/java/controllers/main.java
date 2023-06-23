@@ -87,14 +87,19 @@ public class main {
 //            System.out.println(v.getVoucherID()+","+v.getExpiredDate());
 //        }
         
-        String t = "2023-05-31T00:00:00.0";
-        System.out.println(Timestamp.valueOf(t.replace("T", " ")));
-        
-        int result = VoucherDAO.updateVoucher("V-0011", "VOUCHER11", 2.8f, Timestamp.valueOf(t.replace("T", " ")), 200);
-        if (result > 0) {
-            System.out.println("yay");
-        } else {
-            System.out.println("bruh");
-        }
+//        String t = "2023-05-31T00:00:00.0";
+//        System.out.println(Timestamp.valueOf(t.replace("T", " ")));
+//        
+//        int result = VoucherDAO.updateVoucher("V-0011", "VOUCHER11", 2.8f, Timestamp.valueOf(t.replace("T", " ")), 200);
+//        if (result > 0) {
+//            System.out.println("yay");
+//        } else {
+//            System.out.println("bruh");
+//        }
+
+ArrayList<Category> list = CategoryDAO.getCategories();
+for(int i =0;i<list.size();i++){
+    System.out.println(list.get(i).getCateName());
+}
     }
 }

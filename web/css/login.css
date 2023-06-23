@@ -64,6 +64,10 @@ html {
     font-family: 'Inter', sans-serif !important;
 }
 
+.left-side-title h1 a{
+    color: #fff;
+    text-decoration: none;
+}
 .left-side-title p {
     position: absolute;
     bottom: 0;

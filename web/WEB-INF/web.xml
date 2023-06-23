@@ -20,7 +20,7 @@
         <servlet-name>MainController</servlet-name>
         <servlet-class>controllers.MainController</servlet-class>
     </servlet>
-<!--    <servlet>
+    <!--    <servlet>
         <servlet-name>productInfoServlet</servlet-name>
         <servlet-class>controllers.productInfoServlet</servlet-class>
         </servlet>-->
@@ -247,6 +247,10 @@
     <servlet>
         <servlet-name>UpdateCategoryServlet</servlet-name>
         <servlet-class>controllers.UpdateCategoryServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewAllOrdersServlet</servlet-name>
+        <servlet-class>controllers.ViewAllOrdersServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ResetPassServlet</servlet-name>
@@ -487,6 +491,10 @@
     <servlet-mapping>
         <servlet-name>UpdateCategoryServlet</servlet-name>
         <url-pattern>/UpdateCategoryServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewAllOrdersServlet</servlet-name>
+        <url-pattern>/ViewAllOrdersServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
