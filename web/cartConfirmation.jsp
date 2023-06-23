@@ -42,7 +42,7 @@
                     <c:import url="header_cart.jsp" />
                 </header>
 
-                <div class="container mt-5">
+                <div class="container my-5">
                     <div class="row justify-content-between align-items-center">
 
                         <!-- check out -->

@@ -104,7 +104,7 @@
 
 
                     <!-- table -->
-                    <div class="dashboard">
+                    <div class="dashboard mt-5">
                         <form class="search text-center d-flex align-items-center" action="MainController" method="get">
                             <input type="text" placeholder="Search here..." name="keyword">
                             <button id="search-button" type="submit" class="btn" name="action" value="searchUsers">
@@ -114,7 +114,7 @@
                         </form>
 
 
-                        <table class="table mt-5 text-center">
+                        <table class="table mt-4 text-center">
                             <thead>
                                 <tr>
                                     <th scope="col">ID</th>

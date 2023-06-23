@@ -15,6 +15,7 @@ body {
 /* Breadcrumb */
 .breadcrumb {
     background-color: transparent !important;
+    margin-bottom: 0 !important;
 }
 
 .breadcrumb li a,
@@ -135,8 +136,9 @@ tbody tr td {
     padding-left: 30px !important;
 }
 
-.cart-item-title h5 {
+.cart-item-title h5 a {
     font-size: 18px !important;
+    color: #000;
 }
 
 .cart-quantity input {
@@ -295,4 +297,8 @@ tbody tr:last-child {
 
 a {
     text-decoration: none !important;
+}
+
+.error a {
+    color: #1B9C85;
 }

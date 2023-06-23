@@ -50,7 +50,7 @@
 
 
         <!-- HEADER PATH -->
-        <nav class="navbar navbar-expand-lg header-path mt-4 align-items-center">
+        <nav class="navbar navbar-expand-lg header-path mt-4">
             <div class="container justify-content-start ">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
@@ -96,6 +96,14 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
+
+                            <c:if test="${requestScope.error != null}">
+                                <div class="alert alert-danger alert-dismissible fade show notification" role="alert" style="padding: 15px 45px;text-align: center;width:430px;opacity: 100%;margin: 0 auto 20px;">
+                                    <strong class="error">${requestScope.error}</strong>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="width:20px"></button>
+                                </div>
+                            </c:if>    
+
                             <div class="cart-table">
                                 <div class="mainBodyCart">
                                     <table class="table-fixed">
@@ -121,12 +129,16 @@
                                                     </td>
 
                                                     <td class="cart-item-img">
-                                                        <img src="${sessionScope.imgList.get(cartKey)}" alt="">
+                                                        <a href="MainController?action=viewProduct&pid=${cartitem.key}&cateID=${ProductDAO.getProductInfo(cartKey).cateID}"><img src="${sessionScope.imgList.get(cartKey)}" alt=""></a>
                                                     </td>
 
                                                     <td class="cart-item-title">
-                                                        <h5>${sessionScope.nameList.get(cartKey)}</h5>
+                                                        <h5><a href="MainController?action=viewProduct&pid=${cartitem.key}&cateID=${ProductDAO.getProductInfo(cartKey).cateID}">
+                                                                ${sessionScope.nameList.get(cartKey)}
+                                                            </a>
+                                                        </h5>
                                                     </td>
+
                                                     <td class="cart-price">$${sessionScope.priceList.get(cartKey)}</td>
 
                                                     <td class="cart-quantity">
@@ -298,12 +310,7 @@
                         </div>
                     </div>
 
-                    <c:if test="${requestScope.error != null}">
-                        <div class="alert alert-danger alert-dismissible fade show notification" role="alert" style="padding: 15px 45px;text-align: center;width:430px;opacity: 100%;margin: 30px auto">
-                            <strong class="error">${requestScope.error}</strong>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="width:20px"></button>
-                        </div>
-                    </c:if>            
+
 
                 </div>
             </c:otherwise>

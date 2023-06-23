@@ -38,7 +38,7 @@
 
         <!-- HEADER PATH -->
         <nav class="navbar navbar-expand-lg ">
-            <div class="container justify-content-start ">
+            <div class="container justify-content-start mt-4">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
@@ -55,11 +55,12 @@
             </div>
         </nav>
 
-        <div class="container">
+        <div class="container mb-5">
             <div class="row justify-content-between">
                 <c:if test="${requestScope.noti != null}">
                     ${requestScope.noti}
                 </c:if>
+
                 <!-- info -->
                 <div class="col-lg-5 order-info">
                     <form action="">
@@ -154,6 +155,7 @@
                             <thead>
                                 <tr>
                                     <th>Product</th>
+                                    <th></th>
                                     <th>Quantity</th>
                                     <th>Price</th>
                                 </tr>
@@ -162,9 +164,12 @@
                             <tbody>
                                 <c:forEach var="details" items="${requestScope.orderDetailsList}">
                                     <tr>
-                                        <td>${details.productName}</td>
+                                        <td  class="cart-item-img">                                                 
+                                            <img src="${details.imgPath}" style="width: 80px;"/>
+                                        </td>
+                                        <td class="cart-item-title">${details.productName}</td>
                                         <td>${details.quantity}</td>
-                                        <td>$${details.money}</td>
+                                        <td class="cart-price">$${details.money}</td>
                                     </tr>
                                 </c:forEach>
                             </tbody>
@@ -183,29 +188,40 @@
                         </div>
                     </c:if>
 
-                    <div class="mt-5">
-                        <c:choose>
-                            <c:when test="${requestScope.order.status == 1}">
-                                <a href="MainController?action=updateOrderStatus&orderid=${requestScope.order.orderID}&status=4" 
-                                   class="btn btn-danger" role="button">Cancel</a>
-                            </c:when>
-                            <c:otherwise>
-                                <a href="" class="btn btn-danger disabled" role="button">Cancel</a>
-                            </c:otherwise>
-                        </c:choose>
+
+                    <div class="mt-4 d-flex justify-content-between">
+                        <div class="">
+                            <c:if test="${requestScope.order.status == 4 || requestScope.order.status == 3}">
+                                <div class="">
+                                    <a href="MainController?action=reorder&orderid=${requestScope.order.orderID}" 
+                                       class="btn btn_reorder" role="button">Reorder</a>
+                                </div>
+                            </c:if>
+                        </div>
+                        <div class="">
+                            <c:choose>
+                                <c:when test="${requestScope.order.status == 1}">
+                                    <a href="MainController?action=updateOrderStatus&orderid=${requestScope.order.orderID}&status=4" 
+                                       class="btn btn-danger btn-cancel" role="button">Cancel</a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="" class="btn btn-danger disabled" role="button">Cancel</a>
+                                </c:otherwise>
+                            </c:choose>
+                        </div>
+
+
+
                     </div>
 
-                    <c:if test="${requestScope.order.status == 4}">
-                        <div class="mt-5">
-                            <a href="MainController?action=reorder&orderid=${requestScope.order.orderID}" 
-                               class="btn btn-danger" role="button">Reorder</a>
-                        </div>
-                    </c:if>
                 </div>
 
             </div>
         </div>
 
+        <footer>
+            <c:import url="footer.jsp" />
+        </footer>
     </body>
 
 </html>
