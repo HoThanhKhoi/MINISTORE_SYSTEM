@@ -54,7 +54,7 @@
                                         <!-- begin item -->
                                         <div class="item mb-4 text-center">
                                             <div class="card border-0 shadow">
-                                                <img src="./image/Item.png" class="card-img-top" alt="">
+                                                <img src="${product.imgPath}" class="card-img-top" alt="">
                                                 <div class="card-body">
                                                     <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProduct&pid=${product.productID}&cateID=${product.cateID}">${product.productName}</a></h5>
                                                     <span class="bricked-price mx-2">${product.price}</span>
@@ -74,7 +74,7 @@
                                         <!-- begin item -->
                                         <div class="item mb-4 text-center">
                                             <div class="card border-0 shadow">
-                                                <img src="./image/Item.png" class="card-img-top" alt="">
+                                                <img src="${product.imgPath}" class="card-img-top" alt="">
                                                 <div class="card-body">
                                                     <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProduct&pid=${product.productID}&cateID=${product.cateID}">${product.productName}</a></h5>
                                                     <span class="bricked-price mx-2">${product.price}</span>

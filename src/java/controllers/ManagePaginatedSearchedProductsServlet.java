@@ -38,7 +38,7 @@ public class ManagePaginatedSearchedProductsServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             int pageNumber = Integer.parseInt(request.getParameter("page"));
-            int productPerPage = 7;
+            int productPerPage = 6;
             String keyword = request.getParameter("keyword");
             String items = request.getParameter("items");
             ArrayList<Product> list = ProductDAO.getPaginatedSearchedProduct(pageNumber, productPerPage, keyword);

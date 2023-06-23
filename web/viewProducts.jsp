@@ -39,337 +39,394 @@
 
         <div class="container-fluid">
 
-                <!-- menu -->
-                <div class="menu-btn">
-                    <input type="checkbox" id="nav-toggle">
-                </div>
+            <!-- menu -->
+            <div class="menu-btn">
+                <input type="checkbox" id="nav-toggle">
+            </div>
 
 
-                <div class="side-bar">
-                    <div class="menu">
-                        <div class="item">
-                            <a class="sub-btn">
-                                <i class="fa-solid fa-user mx-3"></i>
-                                User
-                                <i class="fa-solid fa-angle-right dropdown"></i>
-                            </a>
-                            <div class="sub-menu">
-                                <a href="MainController?action=viewCustomers" class="sub-item">Customers</a>
-                                <a href="MainController?action=viewSales" class="sub-item">Sales</a>
-                                <a href="MainController?action=viewGuards" class="sub-item">Guards</a>
-                            </div>
+            <div class="side-bar">
+                <div class="menu">
+                    <div class="item">
+                        <a class="sub-btn">
+                            <i class="fa-solid fa-user mx-3"></i>
+                            User
+                            <i class="fa-solid fa-angle-right dropdown"></i>
+                        </a>
+                        <div class="sub-menu">
+                            <a href="MainController?action=viewCustomers" class="sub-item">Customers</a>
+                            <a href="MainController?action=viewSales" class="sub-item">Sales</a>
+                            <a href="MainController?action=viewGuards" class="sub-item">Guards</a>
                         </div>
-
-                        <div class="item">
-                            <a href="MainController?action=viewAllCategories" class="sub-btn">
-                                <span><i class="fa-solid fa-bars-staggered mx-3"></i></span>
-                                <span>Category</span>
-                            </a>
-                        </div>
-
-                        <div class="item">
-                            <a  href="MainController?action=viewAllProducts" class="sub-btn active">
-                                <span><i class="fa-solid fa-box mx-3"></i></span>
-                                <span>Product</span>
-                            </a>
-                        </div>
-
-                        <div class="item">
-                            <a class="sub-btn" href="MainController?action=viewVouchers">
-                                <span><i class="fa-solid fa-tag mx-3"></i></span>
-                                <span>Voucher</span>
-                            </a>
-                        </div>
-
-                        <div class="item">
-                            <a class="sub-btn">
-                                <span><i class="fa-solid fa-clipboard-user mx-3"></i></span>
-                                <span>Attendance</span>
-                            </a>
-                        </div>
-
-                        <div class="item">
-                            <a class="sub-btn">
-                                <span><i class="fa-solid fa-cart-shopping mx-3"></i></span>
-                                <span>Order</span>
-                            </a>
-                        </div>
-
                     </div>
+
+                    <div class="item">
+                        <a href="MainController?action=viewAllCategories" class="sub-btn">
+                            <span><i class="fa-solid fa-bars-staggered mx-3"></i></span>
+                            <span>Category</span>
+                        </a>
+                    </div>
+
+                    <div class="item">
+                        <a  href="MainController?action=viewAllProducts" class="sub-btn active">
+                            <span><i class="fa-solid fa-box mx-3"></i></span>
+                            <span>Product</span>
+                        </a>
+                    </div>
+
+                    <div class="item">
+                        <a class="sub-btn" href="MainController?action=viewVouchers">
+                            <span><i class="fa-solid fa-tag mx-3"></i></span>
+                            <span>Voucher</span>
+                        </a>
+                    </div>
+
+                    <div class="item">
+                        <a class="sub-btn">
+                            <span><i class="fa-solid fa-clipboard-user mx-3"></i></span>
+                            <span>Attendance</span>
+                        </a>
+                    </div>
+
+                    <div class="item">
+                        <a class="sub-btn">
+                            <span><i class="fa-solid fa-cart-shopping mx-3"></i></span>
+                            <span>Order</span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- table -->
+            <div class="dashboard mt-5">
+                <div class="row group-form">
+                    <div class="col">
+                        <form class="search text-center d-flex align-items-center" action="MainController" metohd="post">
+                            <input name="keyword" type="text" placeholder="Search...">
+                            <button id="search-button" type="submit" name="action" value="getSearchedProduct" class="btn">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </div>
+
+
+
+                    <div class="add col-2">
+                        <form>
+                            <button>Add</button>
+                        </form>
+                    </div>
+                </div>   
+
+                <div class="mt-2 myOrder-menu d-flex">
+                    <ul id="myDiv">
+                        <form action="MainController" method="post">
+                            <li class="btn">
+                                <button type="submit" name="action" value="viewAllProducts">All</button>
+                            </li>
+
+                            <li class="btn">
+                                <button type="submit" name="action" value="viewAlertProducts">Stock Alert</button>
+                            </li>
+
+                            <li class="btn">
+                                <button type="submit" name="action" value="viewOutOfStockProducts">Out of stock</button>
+                            </li>
+                        </form>
+                    </ul>
                 </div>
 
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Category Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-                <!-- table -->
-                <div class="dashboard">
-                    <div class="row group-form">
-                        <div class="col">
-                            <form class="search text-center d-flex align-items-center" action="MainController" metohd="post">
-                                <input name="keyword" type="text" placeholder="Search...">
-                                <button id="search-button" type="submit" name="action" value="getSearchedProduct" class="btn">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </form>
-                        </div>
-                        <div class="filter col-4 mx-3"> 
-                            <form>
-                                <button type="submit" name="action" value="viewAllProducts">All</button>
-                                <button type="submit" name="action" value="viewAlertProducts">Stock Alert</button>
-                                <button type="submit" name="action" value="viewOutOfStockProducts">Out of stock</button>
-                            </form>
-                        </div>
-                        
-                        <div class="add col-2">
-                            <form>
-                                <button>Add</button>
-                            </form>
-                        </div>
-                    </div>   
-                    
-                    <table class="table mt-5 text-center">
-                        <thead>
-                            <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Product Name</th>
-                                <th scope="col">Category Name</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        
-                            <c:choose>
-                                <c:when test="${requestScope.signal == 1}">
-                                    <c:if test="${requestScope.ppList == null}">
-                                        <c:forEach var="product" items="${requestScope.pList}" begin="0" end="6">
-                                            <form action="MainController" action="post">
-                                            <tr>
-                                                <td>${product.productID}</td>
-                                                <td>${product.productName}</td>
-                                                <td>${CategoryDAO.getCategory(product.cateID).getCateName()}</td>                                 
-                                                <td>${product.price}</td>
-                                                <td>${product.stockQuantity}</td>
-                                                <input type="hidden" name="pid" value="${product.productID}"/>
-                                                <td>
-                                                    <button type="submit" name="action" value="viewProductDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
-                                                </td>
-                                            </form>
-                                            </tr>
-                                        </c:forEach>
-                                    </c:if>
-                                    <c:if test="${requestScope.ppList != null}">
-                                        <c:forEach var="product" items="${requestScope.ppList}" begin="0" end="6">
-                                            <form action="MainController" action="post">
-                                            <tr>
-                                                <td>${product.productID}</td>
-                                                <td>${product.productName}</td>
-                                                <td>${CategoryDAO.getCategory(product.cateID).getCateName()}</td>                                 
-                                                <td>${product.price}</td>
-                                                <td>${product.stockQuantity}</td>
-                                                <td>
-                                                    <button type="submit" name="action" value="viewProductDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
-                                                </td>
-                                            <input type="hidden" name="pid" value="${product.productID}"/>
-                                            </tr>
-                                            </form>
-                                        </c:forEach>
-                                    </c:if>
-                                </c:when>
-                                <c:when test="${requestScope.signal == 2}">
-                                    <c:if test="${requestScope.alList == null}">
-                                        <c:forEach var="product" items="${requestScope.alertList}" begin="0" end="6">
-                                            <form action="MainController" action="post">
-                                            <tr>
-                                                <td>${product.productID}</td>
-                                                <td>${product.productName}</td>
-                                                <td>${CategoryDAO.getCategory(product.cateID).getCateName()}</td>                                 
-                                                <td>${product.price}</td>
-                                                <td>${product.stockQuantity}</td>
-                                                <td>
-                                                    <button type="submit" name="action" value="viewProductDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
-                                                </td>
-                                            <input type="hidden" name="pid" value="${product.productID}"/>
-                                            </tr>
-                                            </form>
-                                        </c:forEach>
-                                    </c:if>
-                                    <c:if test="${requestScope.alList != null}">
-                                        <c:forEach var="product" items="${requestScope.alList}" begin="0" end="6">
-                                            <form action="MainController" action="post">
-                                            <tr>
-                                                <td>${product.productID}</td>
-                                                <td>${product.productName}</td>
-                                                <td>${CategoryDAO.getCategory(product.cateID).getCateName()}</td>                                 
-                                                <td>${product.price}</td>
-                                                <td>${product.stockQuantity}</td>
-                                                <td>
-                                                    <button type="submit" name="action" value="viewProductDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
-                                                </td>
-                                            <input type="hidden" name="pid" value="${product.productID}"/>
-                                            </tr>
-                                            </form>
-                                        </c:forEach>
-                                    </c:if>
-                                </c:when>
-                                <c:when test="${requestScope.signal == 3}">
-                                    <c:if test="${requestScope.oList == null}">
-                                        <c:forEach var="product" items="${requestScope.outList}" begin="0" end="6">
-                                            <form action="MainController" action="post">
-                                            <tr>
-                                                <td>${product.productID}</td>
-                                                <td>${product.productName}</td>
-                                                <td>${CategoryDAO.getCategory(product.cateID).getCateName()}</td>                                 
-                                                <td>${product.price}</td>
-                                                <td>${product.stockQuantity}</td>
-                                                <td>
-                                                    <button type="submit" name="action" value="viewProductDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
-                                                </td>
-                                            <input type="hidden" name="pid" value="${product.productID}"/>
-                                            </tr>
-                                            </form>
-                                        </c:forEach>
-                                    </c:if>
-                                    <c:if test="${requestScope.oList != null}">
-                                        <c:forEach var="product" items="${requestScope.oList}" begin="0" end="6">
-                                            <form action="MainController" action="post">
-                                            <tr>
-                                                <td>${product.productID}</td>
-                                                <td>${product.productName}</td>
-                                                <td>${CategoryDAO.getCategory(product.cateID).getCateName()}</td>                                 
-                                                <td>${product.price}</td>
-                                                <td>${product.stockQuantity}</td>
-                                                <td>
-                                                    <button type="submit" name="action" value="viewProductDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
-                                                </td>
-                                            <input type="hidden" name="pid" value="${product.productID}"/>
-                                            </tr>
-                                            </form>
-                                        </c:forEach>
-                                    </c:if>
-                                </c:when>
-                                <c:when test="${requestScope.keyword != null}">
-                                    <c:if test="${requestScope.mpplist == null}">
-                                        <c:forEach var="product" items="${requestScope.mslist}" begin="0" end="6">
-                                            <form action="MainController" action="post">
-                                            <tr>
-                                                <td>${product.productID}</td>
-                                                <td>${product.productName}</td>
-                                                <td>${CategoryDAO.getCategory(product.cateID).getCateName()}</td>                                 
-                                                <td>${product.price}</td>
-                                                <td>${product.stockQuantity}</td>
-                                                <td>
-                                                    <button type="submit" name="action" value="viewProductDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
-                                                </td>
-                                            <input type="hidden" name="pid" value="${product.productID}"/>
-                                            </tr>
-                                            </form>
-                                        </c:forEach>
-                                    </c:if>
-                                    <c:if test="${requestScope.mpplist != null}">
-                                        <c:forEach var="product" items="${requestScope.mpplist}" begin="0" end="6">
-                                            <form action="MainController" action="post">
-                                            <tr>
-                                                <td>${product.productID}</td>
-                                                <td>${product.productName}</td>
-                                                <td>${CategoryDAO.getCategory(product.cateID).getCateName()}</td>                                 
-                                                <td>${product.price}</td>
-                                                <td>${product.stockQuantity}</td>
-                                                <td>
-                                                    <button type="submit" name="action" value="viewProductDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
-                                                </td>
-                                            <input type="hidden" name="pid" value="${product.productID}"/>
-                                            </tr>
-                                            </form>
-                                        </c:forEach>
-                                    </c:if>
-
-                                </c:when>
-                            </c:choose>
-                      
-                        </tbody>
-                    </table>
-                    
-                    <c:choose>
-                        <c:when test="${requestScope.signal == 1}">
-                            <nav aria-label="Page navigation example" style="margin: 50px 0;">
-                                <ul class="pagination justify-content-center">
-                                    <li class="page-item">
-                                        <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=${requestScope.page-1}&items=product"><</a>
-                                    </li>
-                                    <% int totalProducts = ProductDAO.getProducts().size();
-                                        int element = 7;
-                                        float numOfPages = (float) totalProducts / element;
-                                    %>
-                                    <%for (int i = 1; i <= (int) Math.ceil(numOfPages); i++) {%>
-                                    <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=<%=i%>&items=product"><%=i%></a></li>
-                                        <% }%>
-                                    <li class="page-item">
-                                        <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=${requestScope.page+1}&items=product">></a>
-                                    </li>
-                                </ul>
-                            </nav>
+                        <c:choose>
+                            <c:when test="${requestScope.signal == 1}">
+                                <c:if test="${requestScope.ppList == null}">
+                                    <c:forEach var="product" items="${requestScope.pList}" begin="0" end="5">
+                                    <form action="MainController" action="post">
+                                        <tr>
+                                            <td>${product.productID}</td>
+                                            <td>
+                                                <img style="width: 40px; height: 40px;" src="${product.imgPath}"/>
+                                            </td>
+                                            <td>${product.productName}</td>
+                                            <td>${CategoryDAO.getCategory(product.cateID).getCateName()}</td>                                 
+                                            <td>${product.price}</td>
+                                            <td>${product.stockQuantity}</td>
+                                        <input type="hidden" name="pid" value="${product.productID}"/>
+                                        <td>
+                                            <button type="submit" name="action" value="viewProductDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
+                                        </td>
+                                    </form>
+                                    </tr>
+                                </c:forEach>
+                            </c:if>
+                            <c:if test="${requestScope.ppList != null}">
+                                <c:forEach var="product" items="${requestScope.ppList}" begin="0" end="5">
+                                    <form action="MainController" action="post">
+                                        <tr>
+                                            <td>${product.productID}</td>
+                                            <td>
+                                                <img style="width: 40px; height: 40px;" src="${product.imgPath}"/>
+                                            </td>
+                                            <td>${product.productName}</td>
+                                            <td>${CategoryDAO.getCategory(product.cateID).getCateName()}</td>                                 
+                                            <td>${product.price}</td>
+                                            <td>${product.stockQuantity}</td>
+                                            <td>
+                                                <button type="submit" name="action" value="viewProductDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
+                                            </td>
+                                        <input type="hidden" name="pid" value="${product.productID}"/>
+                                        </tr>
+                                    </form>
+                                </c:forEach>
+                            </c:if>
                         </c:when>
                         <c:when test="${requestScope.signal == 2}">
-                            <nav aria-label="Page navigation example" style="margin: 50px 0; ">
-                                <ul class="pagination justify-content-center">
-                                    <li class="page-item">
-                                        <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showAlertItemsPage&page=${requestScope.page-1}&items=product&signal=2"><</a>
-                                    </li>
-                                    <% int totalAlertProducts = ProductDAO.getAlertProducts().size();
-                                        int elementAlert = 7;
-                                        float numOfAlertPages = (float) totalAlertProducts / elementAlert;
-                                    %>
-                                    <%for (int i = 1; i <= (int) Math.ceil(numOfAlertPages); i++) {%>
-                                    <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showAlertItemsPage&page=<%=i%>&items=product&signal=2"><%=i%></a></li>
-                                        <% }%>
-                                    <li class="page-item">
-                                        <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showAlertItemsPage&page=${requestScope.page+1}&items=product&signal=2">></a>
-                                    </li>
-                                </ul>
-                            </nav>
+                            <c:if test="${requestScope.alList == null}">
+                                <c:forEach var="product" items="${requestScope.alertList}" begin="0" end="5">
+                                    <form action="MainController" action="post">
+                                        <tr>
+                                            <td>${product.productID}</td>
+                                            <td>
+                                                <img style="width: 40px; height: 40px;" src="${product.imgPath}"/>
+                                            </td>
+                                            <td>${product.productName}</td>
+                                            <td>${CategoryDAO.getCategory(product.cateID).getCateName()}</td>                                 
+                                            <td>${product.price}</td>
+                                            <td>${product.stockQuantity}</td>
+                                            <td>
+                                                <button type="submit" name="action" value="viewProductDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
+                                            </td>
+                                        <input type="hidden" name="pid" value="${product.productID}"/>
+                                        </tr>
+                                    </form>
+                                </c:forEach>
+                            </c:if>
+                            <c:if test="${requestScope.alList != null}">
+                                <c:forEach var="product" items="${requestScope.alList}" begin="0" end="5">
+                                    <form action="MainController" action="post">
+                                        <tr>
+                                            <td>${product.productID}</td>
+                                            <td>
+                                                <img style="width: 40px; height: 40px;" src="${product.imgPath}"/>
+                                            </td>
+                                            <td>${product.productName}</td>
+                                            <td>${CategoryDAO.getCategory(product.cateID).getCateName()}</td>                                 
+                                            <td>${product.price}</td>
+                                            <td>${product.stockQuantity}</td>
+                                            <td>
+                                                <button type="submit" name="action" value="viewProductDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
+                                            </td>
+                                        <input type="hidden" name="pid" value="${product.productID}"/>
+                                        </tr>
+                                    </form>
+                                </c:forEach>
+                            </c:if>
                         </c:when>
                         <c:when test="${requestScope.signal == 3}">
-                            <nav aria-label="Page navigation example" style="margin: 50px 0; ">
-                                <ul class="pagination justify-content-center">
-                                    <li class="page-item">
-                                        <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showAlertItemsPage&page=${requestScope.page-1}&items=product&signal=3"><</a>
-                                    </li>
-                                    <% int totalOuttProducts = ProductDAO.getOutOfStocktProducts().size();
-                                        int elementOut = 7;
-                                        float numOfOutPages = (float) totalOuttProducts / elementOut;
-                                    %>
-                                    <%for (int i = 1; i <= (int) Math.ceil(numOfOutPages); i++) {%>
-                                    <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showAlertItemsPage&page=<%=i%>&items=product&signal=3"><%=i%></a></li>
-                                        <% }%>
-                                    <li class="page-item">
-                                        <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showAlertItemsPage&page=${requestScope.page+1}&items=product&signal=3">></a>
-                                    </li>
-                                </ul>
-                            </nav>
+                            <c:if test="${requestScope.oList == null}">
+                                <c:forEach var="product" items="${requestScope.outList}" begin="0" end="5">
+                                    <form action="MainController" action="post">
+                                        <tr>
+                                            <td>${product.productID}</td>
+                                            <td>
+                                                <img style="width: 40px; height: 40px;" src="${product.imgPath}"/>
+                                            </td>
+                                            <td>${product.productName}</td>
+                                            <td>${CategoryDAO.getCategory(product.cateID).getCateName()}</td>                                 
+                                            <td>${product.price}</td>
+                                            <td>${product.stockQuantity}</td>
+                                            <td>
+                                                <button type="submit" name="action" value="viewProductDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
+                                            </td>
+                                        <input type="hidden" name="pid" value="${product.productID}"/>
+                                        </tr>
+                                    </form>
+                                </c:forEach>
+                            </c:if>
+                            <c:if test="${requestScope.oList != null}">
+                                <c:forEach var="product" items="${requestScope.oList}" begin="0" end="5">
+                                    <form action="MainController" action="post">
+                                        <tr>
+                                            <td>${product.productID}</td>
+                                            <td>
+                                                <img style="width: 40px; height: 40px;" src="${product.imgPath}"/>
+                                            </td>
+                                            <td>${product.productName}</td>
+                                            <td>${CategoryDAO.getCategory(product.cateID).getCateName()}</td>                                 
+                                            <td>${product.price}</td>
+                                            <td>${product.stockQuantity}</td>
+                                            <td>
+                                                <button type="submit" name="action" value="viewProductDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
+                                            </td>
+                                        <input type="hidden" name="pid" value="${product.productID}"/>
+                                        </tr>
+                                    </form>
+                                </c:forEach>
+                            </c:if>
                         </c:when>
-                        <c:when test="${requestScope.keyword != null || requestScope.keyword == null}">
-                            <nav aria-label="Page navigation example" style="margin: 50px 0;">
-                                <ul class="pagination justify-content-center">
-                                    <li class="page-item">
-                                        <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showSearchedItemsPage&page=${requestScope.page-1}&items=product&keyword=${requestScope.keyword}"><</a>
-                                    </li>
-                                    <%
-                                        String keyword = request.getParameter("keyword");
-                                        int totalSearchProducts = ProductDAO.getSearchedProducts(keyword).size();
-                                        int elementSearch = 7;
-                                        float numOfSearchPages = (float) totalSearchProducts / elementSearch;
-                                    %>
-                                    <%for (int i = 1; i <= (int) Math.ceil(numOfSearchPages); i++) {%>
-                                    <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showSearchedItemsPage&page=<%=i%>&items=product&keyword=${requestScope.keyword}"><%=i%></a></li>
-                                        <% }%>
-                                    <li class="page-item">
-                                        <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showSearchedItemsPage&page=${requestScope.page+1}&items=product&keyword=${requestScope.keyword}">></a>
-                                    </li>
-                                </ul>
-                            </nav>
+                        <c:when test="${requestScope.keyword != null}">
+                            <c:if test="${requestScope.mpplist == null}">
+                                <c:forEach var="product" items="${requestScope.mslist}" begin="0" end="5">
+                                    <form action="MainController" action="post">
+                                        <tr>
+                                            <td>${product.productID}</td>
+                                            <td>
+                                                <img style="width: 40px; height: 40px;" src="${product.imgPath}"/>
+                                            </td>
+                                            <td>${product.productName}</td>
+                                            <td>${CategoryDAO.getCategory(product.cateID).getCateName()}</td>                                 
+                                            <td>${product.price}</td>
+                                            <td>${product.stockQuantity}</td>
+                                            <td>
+                                                <button type="submit" name="action" value="viewProductDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
+                                            </td>
+                                        <input type="hidden" name="pid" value="${product.productID}"/>
+                                        </tr>
+                                    </form>
+                                </c:forEach>
+                            </c:if>
+                            <c:if test="${requestScope.mpplist != null}">
+                                <c:forEach var="product" items="${requestScope.mpplist}" begin="0" end="5">
+                                    <form action="MainController" action="post">
+                                        <tr>
+                                            <td>${product.productID}</td>
+                                            <td>
+                                                <img style="width: 40px; height: 40px;" src="${product.imgPath}"/>
+                                            </td>
+                                            <td>${product.productName}</td>
+                                            <td>${CategoryDAO.getCategory(product.cateID).getCateName()}</td>                                 
+                                            <td>${product.price}</td>
+                                            <td>${product.stockQuantity}</td>
+                                            <td>
+                                                <button type="submit" name="action" value="viewProductDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
+                                            </td>
+                                        <input type="hidden" name="pid" value="${product.productID}"/>
+                                        </tr>
+                                    </form>
+                                </c:forEach>
+                            </c:if>
+
                         </c:when>
                     </c:choose>
-                </div>
+
+                    </tbody>
+                </table>
+
+                <c:choose>
+                    <c:when test="${requestScope.signal == 1}">
+                        <nav aria-label="Page navigation example" style="margin: 10px 0;">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item">
+                                    <a class="page-link" style="padding: 5px 10px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=${requestScope.page-1}&items=product" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <% int totalProducts = ProductDAO.getProducts().size();
+                                    int element = 6;
+                                    float numOfPages = (float) totalProducts / element;
+                                %>
+                                <%for (int i = 1; i <= (int) Math.ceil(numOfPages); i++) {%>
+                                <li class="page-item "><a class="page-link " style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=<%=i%>&items=product"><%=i%></a></li>
+                                    <% }%>
+                                <li class="page-item">
+                                    <a class="page-link" style="padding: 5px 10px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=${requestScope.page+1}&items=product" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </c:when>
+
+                    <c:when test="${requestScope.signal == 2}">
+                        <nav aria-label="Page navigation example" style="margin: 10px 0; ">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item">
+                                    <a class="page-link" style="padding: 5px 10px !important;color: #1B9C85" href="MainController?action=showAlertItemsPage&page=${requestScope.page-1}&items=product&signal=2"  aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <% int totalAlertProducts = ProductDAO.getAlertProducts().size();
+                                    int elementAlert = 6;
+                                    float numOfAlertPages = (float) totalAlertProducts / elementAlert;
+                                %>
+                                <%for (int i = 1; i <= (int) Math.ceil(numOfAlertPages); i++) {%>
+                                <li class="page-item "><a class="page-link " style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showAlertItemsPage&page=<%=i%>&items=product&signal=2"><%=i%></a></li>
+                                    <% }%>
+                                <li class="page-item">
+                                    <a class="page-link" style="padding: 5px 10px !important;color: #1B9C85" href="MainController?action=showAlertItemsPage&page=${requestScope.page+1}&items=product&signal=2" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </c:when>
+
+                    <c:when test="${requestScope.signal == 3}">
+                        <nav aria-label="Page navigation example" style="margin: 10px 0; ">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item">
+                                    <a class="page-link" style="padding: 5px 10px !important;color: #1B9C85" href="MainController?action=showAlertItemsPage&page=${requestScope.page-1}&items=product&signal=3"  aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <% int totalOuttProducts = ProductDAO.getOutOfStocktProducts().size();
+                                    int elementOut = 6;
+                                    float numOfOutPages = (float) totalOuttProducts / elementOut;
+                                %>
+                                <%for (int i = 1; i <= (int) Math.ceil(numOfOutPages); i++) {%>
+                                <li class="page-item "><a class="page-link " style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showAlertItemsPage&page=<%=i%>&items=product&signal=3"><%=i%></a></li>
+                                    <% }%>
+                                <li class="page-item">
+                                    <a class="page-link" style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showAlertItemsPage&page=${requestScope.page+1}&items=product&signal=3" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </c:when>
+
+                    <c:when test="${requestScope.keyword != null || requestScope.keyword == null}">
+                        <nav aria-label="Page navigation example" style="margin: 10px 0;">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item">
+                                    <a class="page-link" style="padding: 5px 10px !important;color: #1B9C85" href="MainController?action=showSearchedItemsPage&page=${requestScope.page-1}&items=product&keyword=${requestScope.keyword}" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <%
+                                    String keyword = request.getParameter("keyword");
+                                    int totalSearchProducts = ProductDAO.getSearchedProducts(keyword).size();
+                                    int elementSearch = 6;
+                                    float numOfSearchPages = (float) totalSearchProducts / elementSearch;
+                                %>
+                                <%for (int i = 1; i <= (int) Math.ceil(numOfSearchPages); i++) {%>
+                                <li class="page-item "><a class="page-link " style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showSearchedItemsPage&page=<%=i%>&items=product&keyword=${requestScope.keyword}"><%=i%></a></li>
+                                    <% }%>
+                                <li class="page-item">
+                                    <a class="page-link" style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showSearchedItemsPage&page=${requestScope.page+1}&items=product&keyword=${requestScope.keyword}" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </c:when>
+                </c:choose>
+            </div>
         </div>
 
         <!-- FOOTER -->

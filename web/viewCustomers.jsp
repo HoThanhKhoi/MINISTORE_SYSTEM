@@ -99,7 +99,7 @@
 
 
             <!-- table -->
-            <div class="dashboard">
+            <div class="dashboard mt-5">
                 <form class="search text-center d-flex align-items-center" action="MainController" method="get">
                     <input type="text" placeholder="Search here..." name="keyword">
                     <button id="search-button" type="submit" class="btn" name="action" value="searchUsers">
@@ -109,7 +109,7 @@
                 </form>
 
 
-                <table class="table mt-5 text-center">
+                <table class="table mt-4 text-center">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -242,7 +242,9 @@
                         <nav aria-label="Page navigation example">
                             <ul class="pagination justify-content-center">
                                 <li class="page-item">
-                                    <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=3&keyword=${requestScope.keyword}""><</a>
+                                    <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=3&keyword=${requestScope.keyword}" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
                                 </li>
                                 <%
                                     String keyword = request.getParameter("keyword");
@@ -254,7 +256,9 @@
                                 <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showPaginatedUserPage&page=<%=i%>&roleid=3&keyword=${requestScope.keyword}"><%=i%></a></li>
                                     <% }%>
                                 <li class="page-item">
-                                    <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showPaginatedUserPage&page=${requestScope.page+1}&roleid=3&keyword=${requestScope.keyword}">></a>
+                                    <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showPaginatedUserPage&page=${requestScope.page+1}&roleid=3&keyword=${requestScope.keyword}" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
                                 </li>
                             </ul>
                         </nav>

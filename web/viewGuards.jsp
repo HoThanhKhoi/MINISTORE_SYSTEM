@@ -39,7 +39,7 @@
         <div class="container-fluid">
             <div class="">
 
-                 <!-- menu -->
+                <!-- menu -->
                 <div class="menu-btn">
                     <input type="checkbox" id="nav-toggle">
                 </div>
@@ -171,7 +171,9 @@
             <nav aria-label="Page navigation example" style="margin-top:35px;">
                 <ul class="pagination justify-content-center">
                     <li class="page-item">
-                        <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=2"><</a>
+                        <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=2" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
                     </li>
                     <% int totalProduct = UserDAO.getUsersByRole(2).size();
                         int element = 7;
@@ -181,7 +183,9 @@
                     <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=<%=i%>&roleid=2"><%=i%></a></li>
                         <% }%>
                     <li class="page-item">
-                        <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page+1}&roleid=2">></a>
+                        <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page+1}&roleid=2" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
                     </li>
                 </ul>
             </nav>

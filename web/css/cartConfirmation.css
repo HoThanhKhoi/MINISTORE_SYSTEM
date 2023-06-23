@@ -10,10 +10,7 @@ body {
     font-size: 16px !important;
 }
 
-.container {
-    padding: 20px 0 !important;
-    margin-bottom: 10vh;
-}
+
 
 /* Breadcrumb */
 .breadcrumb {
@@ -182,13 +179,14 @@ form input::placeholder {
 }
 
 
-form .btn {
-    color: #fff;
-    background-color: #1B9C85;
+form .btn, .btn_reorder  {
+    font-size: 16px !important;
+    color: #fff !important;
+    background-color: #1B9C85  !important;
     border: 2px solid #1B9C85;
     border-radius: 40px;
-    font-weight: 500;
-    border-radius: 10px;
+    font-weight: 600  !important;
+    border-radius: 10px !important;
     padding: 10px 20px;
 }
 
@@ -211,6 +209,7 @@ form .btn:hover {
     background-color:  rgba(246, 245, 219, 0.5);
     border: none;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    margin: 50px 0;
 }
 
 .order-info form {
@@ -248,4 +247,14 @@ form .btn:hover {
     width: 100%;
     border-radius: 40px !important;
     z-index: 999;
+}
+
+.btn-cancel {
+    font-size: 16px !important;
+    font-weight: 700;
+    background-color: #1B9C85;
+    color: #fff;
+    border: 1px solid #1B9C85;
+    border-radius: 10px !important;
+    padding: 5px 15px; 
 }
