@@ -22,7 +22,7 @@
         <!-- boostrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        
+
         <!-- toastr -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
@@ -61,17 +61,35 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="MainController?action=logout">
+                        <a href="MainController?action=logout" data-bs-toggle="modal" data-bs-target="#logoutModal">
                             <span><i class="fa-solid fa-right-from-bracket"></i></span>
                         </a>
                     </li>
                 </ul>
-                
-                
+
+
             </div>
         </nav>  
 
-        
+<!--        <div class="modal" id="logoutModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cancel</button>
+                        <form action="MainController?" method="post">
+                            <button type="submit" class="btn btn-primary" name="action" value="logout">OK</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+
 
 
 

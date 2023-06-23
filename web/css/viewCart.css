@@ -135,8 +135,9 @@ tbody tr td {
     padding-left: 30px !important;
 }
 
-.cart-item-title h5 {
+.cart-item-title h5 a {
     font-size: 18px !important;
+    color: #000;
 }
 
 .cart-quantity input {

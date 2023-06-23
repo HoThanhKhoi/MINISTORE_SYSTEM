@@ -1,4 +1,3 @@
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -47,6 +46,7 @@
                             <h1>${requestScope.noti}</h1>
                         </c:if>
 
+
                         <!-- menu -->
                         <div class="myOrder-menu">
                             <div class="title mt-5 mb-2">
@@ -54,26 +54,114 @@
                             </div>
 
                             <ul id="myDiv">
-                                <li class="btn active">
-                                    <a href="MainController?action=viewMyOrders">All</a>
-                                </li>
+                                <c:choose>
+                                    <c:when test="${param.status == 1}">
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrders">All</a>
+                                        </li>
 
-                                <li class="btn">
-                                    <a href="MainController?action=viewMyOrdersByStatus&status=1">Processing</a>
-                                </li>
+                                        <li class="btn active">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=1">Processing</a>
+                                        </li>
 
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=2">Delivering</a>
+                                        </li>
 
-                                <li class="btn">
-                                    <a href="MainController?action=viewMyOrdersByStatus&status=2">Delivering</a>
-                                </li>
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=3">Completed</a>
+                                        </li>
 
-                                <li class="btn">
-                                    <a href="MainController?action=viewMyOrdersByStatus&status=3">Completed</a>
-                                </li>
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=4">Canceled</a>
+                                        </li>
+                                    </c:when>
+                                    <c:when test="${param.status == 2}">
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrders">All</a>
+                                        </li>
 
-                                <li class="btn">
-                                    <a href="MainController?action=viewMyOrdersByStatus&status=4">Canceled</a>
-                                </li>
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=1">Processing</a>
+                                        </li>
+
+                                        <li class="btn active">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=2">Delivering</a>
+                                        </li>
+
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=3">Completed</a>
+                                        </li>
+
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=4">Canceled</a>
+                                        </li>
+                                    </c:when>
+                                    <c:when test="${param.status == 3}">
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrders">All</a>
+                                        </li>
+
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=1">Processing</a>
+                                        </li>
+
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=2">Delivering</a>
+                                        </li>
+
+                                        <li class="btn active">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=3">Completed</a>
+                                        </li>
+
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=4">Canceled</a>
+                                        </li>
+                                    </c:when>
+                                    <c:when test="${param.status == 4}">
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrders">All</a>
+                                        </li>
+
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=1">Processing</a>
+                                        </li>
+
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=2">Delivering</a>
+                                        </li>
+
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=3">Completed</a>
+                                        </li>
+
+                                        <li class="btn active">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=4">Canceled</a>
+                                        </li>
+                                    </c:when> 
+                                    <c:otherwise>
+                                        <li class="btn active">
+                                            <a href="MainController?action=viewMyOrders">All</a>
+                                        </li>
+
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=1">Processing</a>
+                                        </li>
+
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=2">Delivering</a>
+                                        </li>
+
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=3">Completed</a>
+                                        </li>
+
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=4">Canceled</a>
+                                        </li>
+                                    </c:otherwise>
+                                </c:choose>
+
                             </ul>
                         </div>
 
@@ -140,18 +228,18 @@
                 </c:otherwise>
             </c:choose>
 
-        <script>
-            var btnContainer = document.getElementById("myDiv");
-
-            var btns = btnContainer.getElementsByClassName("btn");
-
-            for (var i = 0; i < btns.length; i++) {
-                btns[i].addEventListener("click", function () {
-                    var current = document.getElementsByClassName("active");
-                    current[0].className = current[0].className.replace(" active", "");
-                    this.className += " active";
-                });
-            }
-        </script>
+        <!--        <script>
+                    var btnContainer = document.getElementById("myDiv");
+        
+                    var btns = btnContainer.getElementsByClassName("btn");
+        
+                    for (var i = 0; i < btns.length; i++) {
+                        btns[i].addEventListener("click", function () {
+                            var current = document.getElementsByClassName("active");
+                            current[0].className = current[0].className.replace(" active", "");
+                            this.className += " active";
+                        });
+                    }
+                </script>-->
     </body>
 </html>

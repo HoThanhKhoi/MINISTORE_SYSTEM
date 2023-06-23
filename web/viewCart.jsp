@@ -121,11 +121,14 @@
                                                     </td>
 
                                                     <td class="cart-item-img">
-                                                        <img src="${sessionScope.imgList.get(cartKey)}" alt="">
+                                                        <a href="MainController?action=viewProduct&pid=${cartitem.key}&cateID=${ProductDAO.getProductInfo(cartKey).cateID}"><img src="${sessionScope.imgList.get(cartKey)}" alt=""></a>
                                                     </td>
 
                                                     <td class="cart-item-title">
-                                                        <h5>${sessionScope.nameList.get(cartKey)}</h5>
+                                                        <h5><a href="MainController?action=viewProduct&pid=${cartitem.key}&cateID=${ProductDAO.getProductInfo(cartKey).cateID}">
+                                                                ${sessionScope.nameList.get(cartKey)}
+                                                            </a>
+                                                        </h5>
                                                     </td>
                                                     <td class="cart-price">$${sessionScope.priceList.get(cartKey)}</td>
 
