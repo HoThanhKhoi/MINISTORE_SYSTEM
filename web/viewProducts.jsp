@@ -111,7 +111,7 @@
                             </form>
                         </div>
                         <div class="filter col-4 mx-3"> 
-                            <form>
+                            <form action="MainController" method="post">
                                 <button type="submit" name="action" value="viewAllProducts">All</button>
                                 <button type="submit" name="action" value="viewAlertProducts">Stock Alert</button>
                                 <button type="submit" name="action" value="viewOutOfStockProducts">Out of stock</button>

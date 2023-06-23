@@ -49,7 +49,7 @@
                             <div class="col">
                                 <div class="item mb-4 text-center">
                                     <div class="card border-0 shadow align-items-center">
-                                        <img src="./image/Item.png" class="card-img-top" alt="">
+                                        <img src="${searchItem.imgPath}" class="card-img-top" alt="">
                                         <div class="card-body">
                                             <h5 class="card-title mb-3 fw-bold">${searchItem.productName}</h5>
                                             <span class="bricked-price mx-2">$${searchItem.price}</span>
@@ -66,7 +66,7 @@
                             <div class="col">
                                 <div class="item mb-4 text-center">
                                     <div class="card border-0 shadow align-items-center">
-                                        <img src="./image/Item.png" class="card-img-top" alt="">
+                                        <img src="${searchItem.imgPath}" class="card-img-top" alt="">
                                         <div class="card-body">
                                             <h5 class="card-title mb-3 fw-bold">${searchItem.productName}</h5>
                                             <span class="bricked-price mx-2">$${searchItem.price}</span>

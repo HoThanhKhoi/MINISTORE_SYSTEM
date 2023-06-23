@@ -5,8 +5,12 @@
  */
 package controllers;
 
+import dao.CategoryDAO;
+import dao.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -28,7 +32,7 @@ public class UpdateProductServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -36,7 +40,19 @@ public class UpdateProductServlet extends HttpServlet {
             String pName = request.getParameter("pName");
             String pDes = request.getParameter("pDes");
             String  pPrice = request.getParameter("pPrice");
-            
+            int pStock = Integer.parseInt(request.getParameter("pStock"));
+            String cateID = request.getParameter("cateid");
+            String cateName = CategoryDAO.getCategory(cateID).getCateName();
+            int result;
+            result = ProductDAO.updateProduct(pid,pName,Float.parseFloat(pPrice), pDes ,pStock,cateID);
+            if(result == 1){
+                request.setAttribute("noti", "Update successfully");
+                request.setAttribute("catename", cateName);
+                request.getRequestDispatcher("MainController?action=viewProductDetailsPage&" + pid).forward(request, response);
+            }else{
+//                response.sendRedirect("index.jsp");
+            }
+        
         }
     }
 
@@ -52,7 +68,11 @@ public class UpdateProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(UpdateProductServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -66,7 +86,11 @@ public class UpdateProductServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(UpdateProductServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

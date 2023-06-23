@@ -329,4 +329,52 @@ public class OrderDAO {
         }
         return flag;
     }
+
+    public static ArrayList<Order> getOrderBySaleId(String saleid) throws Exception {
+        Connection cn = null;
+        ArrayList<Order> list = new ArrayList<>();
+        Order order = null;
+        try {
+            cn = DBUtils.makeConnection();
+            if (cn != null) {
+                String s = "select OrderID,CustomerName,Phone,Address,PostalCode,TotalMoney,"
+                        + "Status,OrderDate,ShipDate,CustomerID,SalesID,VoucherID\n"
+                        + "from ORDERS where SalesID=?";
+                PreparedStatement pst = cn.prepareStatement(s);
+                pst.setString(1, saleid);
+                ResultSet rs = pst.executeQuery();
+                if (rs != null) {
+                    while (rs.next()) {
+                        String userID = rs.getString("OrderID");
+                        String userName = rs.getString("CustomerName");
+                        String userPhone = rs.getString("Phone");
+                        String userAddress = rs.getString("Address");
+                        String userPostalCode = rs.getString("PostalCode");
+                        float totalMoney = rs.getFloat("TotalMoney");
+                        int status = rs.getInt("Status");
+                        Timestamp orderDate = rs.getTimestamp("OrderDate");
+                        Timestamp shipDate = rs.getTimestamp("ShipDate");
+                        String customerID = rs.getString("CustomerID");
+                        String salesID = rs.getString("SalesID");
+                        String voucherID = rs.getString("VoucherID");
+                        order = new Order(userID, userName, userPhone, userAddress, userPostalCode,
+                                totalMoney, status, orderDate, shipDate, customerID, salesID, voucherID);
+                        list.add(order);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cn != null) {
+                try {
+                    cn.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return list;
+    }
+
 }

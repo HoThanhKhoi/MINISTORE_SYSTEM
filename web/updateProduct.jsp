@@ -4,8 +4,9 @@
     Author     : Admin
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="dao.CategoryDAO"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -48,7 +49,7 @@
 
                 <c:if test="${requestScope.product != null}">
                     <div class="col-lg-4 cus-info">
-                        <form action="">
+                        <form action="MainController">
                             <div class="form-item my-5 d-flex align-items-center justify-content-center">
                                 <div class="col-3">
                                     <label for="">ID</label>
@@ -72,7 +73,7 @@
                                     <label for="">Description</label>
                                 </div>
                                 <div class="col-9">
-                                    <input name="pDes" type="tel" id="phone" value="${requestScope.product.description}">
+                                    <input name="pDes" type="text" id="phone" value="${requestScope.product.description}">
                                 </div>
                             </div>
 
@@ -91,7 +92,7 @@
                                     <label for="">Stock Quantity</label>
                                 </div>
                                 <div class="col-9">
-                                    <input type="text" id="email" value="${requestScope.product.stockQuantity}">
+                                    <input name="pStock" type="text" id="email" value="${requestScope.product.stockQuantity}">
                                 </div>
                             </div> 
                             <div class="form-item my-5 d-flex align-items-center justify-content-center">
@@ -100,12 +101,15 @@
                                 </div>
                                 <div class="col-9">
                                     <select class="form-select" aria-label="Default select example" name="cateid">
+                                        <c:set var="cateid" value="${requestScope.product.cateID}"/>
+                                        <option value="${cateid}" selected>${CategoryDAO.getCategory(cateid).cateName}</option>
                                         <c:forEach var="cate" items="${CategoryDAO.getCategories()}">
-                                            <option value="${cate.CateID}">${cate.CateName}</option>
+                                            <option value="${cate.cateID}">${cate.cateName}</option>
                                         </c:forEach>
                                     </select>
                                 </div>
                             </div> 
+                            <input name="pid" type="hidden" value="${requestScope.product.productID}">
                             <button type="submit" name="action" value="updateProduct">Update</button>
                         </form>
                     </div>
@@ -113,5 +117,30 @@
 
             </div>
         </div>
+                <c:if test="${requestScope.noti != null}">
+            <script>
+                $(function () {
+                    toastr.options = {
+                        "closeButton": true,
+                        "debug": false,
+                        "newestOnTop": false,
+                        "progressBar": false,
+                        "positionClass": "toast-top-center",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "5000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    };
+                    toastr.success("${requestScope.noti}");
+                });
+            </script>
+            <c:set scope="request" var="noti" value="${null}"/>
+        </c:if>
     </body>
 </html>

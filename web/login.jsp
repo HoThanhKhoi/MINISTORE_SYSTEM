@@ -20,7 +20,7 @@
                     <img src="./image/image 8.png" alt="" />
                     <div class="overlay"></div>
                     <div class="left-side-title">
-                        <h1>MINISTORE</h1>
+                        <h1><a href="MainController?action=">MINISTORE</a></h1>
                         <p>
                             SHOP <i><u>EVERYTHING</u></i> WITH YOUR FINGERTIPS!
                         </p>

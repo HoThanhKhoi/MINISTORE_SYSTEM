@@ -52,7 +52,7 @@
                 <nav>
                     <ul>
                         <li>
-                            <a href="#homePage.jsp">Home</a>
+                            <a href="MainController?action=backToHome">Home</a>
                         </li>
 
                         <li>
@@ -85,7 +85,7 @@
                         <li>
                             <c:choose>
                                 <c:when test="${sessionScope.customer != null}">
-                                    <a href="MainController?action=logout">Logout</a>
+                                    <a href="" data-bs-toggle="modal" data-bs-target="#myModal">Logout</a>
                                 </c:when>
                                 <c:otherwise>
                                     <a href="login.jsp">Login</a>
@@ -96,8 +96,30 @@
                     </ul>
                 </nav>
             </div>
+            <!-- Modal Pop up -->
+            <div class="modal" id="myModal">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Notice</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div>Are you sure to logout</div>
+                            <form action="MainController">
+                                <div class="mb-3 mt-3">
 
-            
+                                    <button type="button" class="btn btn-success" data-bs-dismiss="modal" name="action" value="logout">OK</button>
+<!--                                    <button class="btn-close">Cancel</button>-->
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Banner -->
             <div class="banner">
                 <video class="w-100" autoplay loop muted>
@@ -140,7 +162,7 @@
                                                 <a href="MainController?action=viewProduct&pid=${product.productID}&cateID=${product.cateID}">
                                                     ${product.productName}</a>
                                             </h5>
-                                             <fmt:formatNumber value="${product.price + 0.5}" pattern="#,##0.00" var="formattedNumber" />
+                                            <fmt:formatNumber value="${product.price + 0.5}" pattern="#,##0.00" var="formattedNumber" />
                                             <span class="bricked-price mx-2">$${formattedNumber}</span>                                          
                                             <span class="price fw-bold mx-2">$${product.price}</span></br>
                                             <a href="MainController?action=addToCart&quantity=1&pid=${product.productID}&cid=${product.cateID}" class="btn btn-primary mt-3 px-3 py-2 fw-bold" name="action">Add To Cart</a>
@@ -155,7 +177,7 @@
 
                 <div class="hot-deal-footer">
                     <div class="container">
-                        
+
                         <div id="countdown">
                             <h2 class="py-4 text-center"><em>Deals end in</em></h2>
                             <ul>
@@ -168,11 +190,11 @@
                                 <li><span id="seconds"></span>Seconds</li>
                             </ul>
                         </div>
-                        
-                        
-                        
-                        
-                        
+
+
+
+
+
                     </div>
                 </div>
 
@@ -375,9 +397,9 @@
             </div>
 
         </div>
-                        
-                        
-                        
+
+
+
         <button type="button" class="btn btn-floating btn-lg" id="btn-back-to-top">
             <i class="fas fa-arrow-up"></i>
         </button>
@@ -400,7 +422,7 @@
                 loop: true, //loop the carousel from the last item -> first item 
                 margin: 10,
                 nav: true, //make reference to the nav controls button (prev and next button)
-    
+
                 responsive: {
                     0: {
                         items: 1

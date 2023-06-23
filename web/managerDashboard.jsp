@@ -51,7 +51,7 @@
                             </div>
                             <div class="col-lg"></div>
                             <div class="col-lg-5">
-                                <div class="item mb_5">Order</div>
+                                <div class="item mb_5"><a href="MainController?action=viewAllOrders">Order</a></div>
                                 <div class="item mb_5"><a href="MainController?action=viewAllCategories">Category</a></div>
                                 <div class="item mb_5"><a href="MainController?action=viewAllProducts">Product</a></div>
                                 <div class="item mb_5"><a href="MainController?action=viewVouchers">Vouchers</a></div>

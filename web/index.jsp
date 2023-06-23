@@ -3,7 +3,8 @@
     Created on : May 25, 2023, 9:51:13 PM
     Author     : ACER
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="dao.CategoryDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,10 +13,9 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello ${customer.getName()}</h1>
-        <form action="MainController" method="post">
-            <button type="submit" name="action" value="logout">Logout</button>
-        </form>
-        
-    </body>
+    <c:forEach var="cate" items="${CategoryDAO.getCategories()}">
+        <div>${cate.cateID}</div>
+    </c:forEach>
+
+</body>
 </html>
