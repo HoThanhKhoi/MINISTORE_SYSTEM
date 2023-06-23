@@ -36,7 +36,8 @@
     <body>
         <c:choose>
             <c:when test="${sessionScope.manager == null}">
-                <jsp:forward page="login.jsp" />
+                <c:set var="warning" value="You need to log in as Admin to access" scope="request"/>
+                <jsp:forward page="login.jsp"/>
             </c:when>
             <c:otherwise>
 

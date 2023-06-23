@@ -28,93 +28,100 @@
     </head>
 
     <body>
-        <!--HEADER-->
-        <header>
-            <c:import url="header_managerDashboard.jsp" />
-        </header>
-        
-        <!-- Dashboard -->
-        <div class="dashboard mb-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col management">
-                        <div class="dashboard-title text-center">
-                            <h4>Management Board</h4>
-                        </div>
+        <c:choose>
+            <c:when test="${sessionScope.manager == null}">
+                <c:set var="warning" value="You need to log in as Admin to access" scope="request"/>
+                <jsp:forward page="login.jsp"/>
+            </c:when>
+            <c:otherwise>
+                <!--HEADER-->
+                <header>
+                    <c:import url="header_managerDashboard.jsp" />
+                </header>
 
-                        <div class="row content text-center">
-                            <div class="col-lg-5">
-                                <div class="item mb_5"><a href="MainController?action=viewCustomers">Customers</a></div>
-                                <div class="item mb_5"><a href="MainController?action=viewSales">Sales</a></div>
-                                <div class="item mb_5"><a href="MainController?action=viewGuards">Guards</a></div>
-                                <div class="item mb_5"><a href="MainController?action=viewAttendance">Attendance</a></div>
-                            </div>
-                            <div class="col-lg"></div>
-                            <div class="col-lg-5">
-                                <div class="item mb_5">Order</div>
-                                <div class="item mb_5"><a href="MainController?action=viewAllCategories">Category</a></div>
-                                <div class="item mb_5"><a href="MainController?action=viewAllProducts">Product</a></div>
-                                <div class="item mb_5"><a href="MainController?action=viewVouchers">Vouchers</a></div>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Dashboard -->
+                <div class="dashboard mb-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col management">
+                                <div class="dashboard-title text-center">
+                                    <h4>Management Board</h4>
+                                </div>
 
-                    <div class="col stats">
-                        <div class="title text-center my-5">
-                            <h4>Month to date</h4>
-                            <div class="border-bt"></div>
-                        </div>
-
-                        <div class="row content">
-                            <div class="col-lg-8">
-                                <div class="mb ">Unique customers</div>
-                                <div class="mb">Total orders</div>
-                                <div class="mb">Revenue</div>
-                            </div>
-                            <!-- <div class="col-lg"></div> -->
-                            <div class="col-lg-4">
-                                <div class="mb ">7749</div>
-                                <div class="mb">7749</div>
-                                <div class="mb-5">$7749.69</div>
-                            </div>
-                        </div>
-                        
-                        <div class="row product-stats">
-                            <div class="col-lg-12 product-stats-background">
-                                <p class="product-stats-title">Products</p>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <ul>
-                                            <li>Most viewed</li>
-                                            <li>Best sellers</li>
-                                        </ul>
+                                <div class="row content text-center">
+                                    <div class="col-lg-5">
+                                        <div class="item mb_5"><a href="MainController?action=viewCustomers">Customers</a></div>
+                                        <div class="item mb_5"><a href="MainController?action=viewSales">Sales</a></div>
+                                        <div class="item mb_5"><a href="MainController?action=viewGuards">Guards</a></div>
+                                        <div class="item mb_5"><a href="MainController?action=viewAttendance">Attendance</a></div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <ul class="product-stats-info">
-                                            <div class="product-stats-info-item">
-                                                <li>organic</li>
-                                                <div class="div"></div>
+                                    <div class="col-lg"></div>
+                                    <div class="col-lg-5">
+                                        <div class="item mb_5">Order</div>
+                                        <div class="item mb_5"><a href="MainController?action=viewAllCategories">Category</a></div>
+                                        <div class="item mb_5"><a href="MainController?action=viewAllProducts">Product</a></div>
+                                        <div class="item mb_5"><a href="MainController?action=viewVouchers">Vouchers</a></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col stats">
+                                <div class="title text-center my-5">
+                                    <h4>Month to date</h4>
+                                    <div class="border-bt"></div>
+                                </div>
+
+                                <div class="row content">
+                                    <div class="col-lg-8">
+                                        <div class="mb ">Unique customers</div>
+                                        <div class="mb">Total orders</div>
+                                        <div class="mb">Revenue</div>
+                                    </div>
+                                    <!-- <div class="col-lg"></div> -->
+                                    <div class="col-lg-4">
+                                        <div class="mb ">7749</div>
+                                        <div class="mb">7749</div>
+                                        <div class="mb-5">$7749.69</div>
+                                    </div>
+                                </div>
+
+                                <div class="row product-stats">
+                                    <div class="col-lg-12 product-stats-background">
+                                        <p class="product-stats-title">Products</p>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <ul>
+                                                    <li>Most viewed</li>
+                                                    <li>Best sellers</li>
+                                                </ul>
                                             </div>
+                                            <div class="col-lg-6">
+                                                <ul class="product-stats-info">
+                                                    <div class="product-stats-info-item">
+                                                        <li>organic</li>
+                                                        <div class="div"></div>
+                                                    </div>
 
 
-                                            <div class="product-stats-info-item">
-                                                <li>organic</li>
-                                                <div class="div"></div>
+                                                    <div class="product-stats-info-item">
+                                                        <li>organic</li>
+                                                        <div class="div"></div>
+                                                    </div>
+
+                                                </ul>
                                             </div>
+                                        </div>
 
-                                        </ul>
                                     </div>
                                 </div>
 
                             </div>
                         </div>
-
                     </div>
                 </div>
-            </div>
-        </div>
 
-
+            </c:otherwise>
+        </c:choose>
         <!-- FOOTER -->
         <footer>
             <c:import url="footer.jsp" />

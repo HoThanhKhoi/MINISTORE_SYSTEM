@@ -30,7 +30,7 @@
                     request.setAttribute("imgList", imgList);
                     request.setAttribute("categoryList", catelist);
                 %>
-                
+
                 <form action="MainController" method="get">
                     <table>
                         <tr>

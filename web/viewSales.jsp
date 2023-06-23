@@ -30,179 +30,187 @@
     </head>
 
     <body>
+        <c:choose>
+            <c:when test="${sessionScope.manager == null}">
+                <c:set var="warning" value="You need to log in as Admin to access" scope="request"/>
+                <jsp:forward page="login.jsp"/>
+            </c:when>
+            <c:otherwise>
+                <!--HEADER-->
+                <header>
+                    <c:import url="header_managerDashboard.jsp" />
+                </header>
 
-        <!--HEADER-->
-        <header>
-            <c:import url="header_managerDashboard.jsp" />
-        </header>
+                <div class="container-fluid">
 
-        <div class="container-fluid">
+                    <!-- menu -->
+                    <div class="menu-btn">
+                        <input type="checkbox" id="nav-toggle">
+                    </div>
+                    <div class="side-bar">
+                        <div class="menu">
+                            <div class="item">
+                                <a class="sub-btn">
+                                    <i class="fa-solid fa-user mx-3"></i>
+                                    User
+                                    <i class="fa-solid fa-angle-right dropdown"></i>
+                                </a>
+                                <div class="sub-menu">
+                                    <a href="MainController?action=viewCustomers" class="sub-item ">Customers</a>
+                                    <a href="MainController?action=viewSales" class="sub-item active">Sales</a>
+                                    <a href="MainController?action=viewGuards" class="sub-item">Guards</a>
+                                </div>
+                            </div>
 
-            <!-- menu -->
-            <div class="menu-btn">
-                <input type="checkbox" id="nav-toggle">
-            </div>
-            <div class="side-bar">
-                <div class="menu">
-                    <div class="item">
-                        <a class="sub-btn">
-                            <i class="fa-solid fa-user mx-3"></i>
-                            User
-                            <i class="fa-solid fa-angle-right dropdown"></i>
-                        </a>
-                        <div class="sub-menu">
-                            <a href="MainController?action=viewCustomers" class="sub-item ">Customers</a>
-                            <a href="MainController?action=viewSales" class="sub-item active">Sales</a>
-                            <a href="MainController?action=viewGuards" class="sub-item">Guards</a>
+                            <div class="item">
+                                <a href="viewCategory.jsp" class="sub-btn">
+                                    <span><i class="fa-solid fa-bars-staggered mx-3"></i></span>
+                                    <span>Category</span>
+                                </a>
+                            </div>
+
+                            <div class="item">
+                                <a  href="viewProduct.jsp" class="sub-btn">
+                                    <span><i class="fa-solid fa-box mx-3"></i></span>
+                                    <span>Product</span>
+                                </a>
+                            </div>
+
+                            <div class="item">
+                                <a href="MainController?action=viewVouchers" class="sub-btn">
+                                    <span><i class="fa-solid fa-tag mx-3"></i></span>
+                                    <span>Voucher</span>
+                                </a>
+                            </div>
+
+                            <div class="item">
+                                <a class="sub-btn">
+                                    <span><i class="fa-solid fa-clipboard-user mx-3"></i></span>
+                                    <span>Attendance</span>
+                                </a>
+                            </div>
+
+                            <div class="item">
+                                <a class="sub-btn">
+                                    <span><i class="fa-solid fa-cart-shopping mx-3"></i></span>
+                                    <span>Order</span>
+                                </a>
+                            </div>
+
                         </div>
                     </div>
 
-                    <div class="item">
-                        <a href="viewCategory.jsp" class="sub-btn">
-                            <span><i class="fa-solid fa-bars-staggered mx-3"></i></span>
-                            <span>Category</span>
-                        </a>
+
+                    <!-- table -->
+                    <div class="dashboard mt-5">
+
+                        <div class="group-form d-flex justify-content-between">
+                            <div class="w-100">
+                                <form class="search text-center d-flex align-items-center">
+                                    <input type="text" placeholder="Search...">
+                                    <button id="search-button" type="button" class="btn">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </form>
+                            </div>                    
+
+                            <div class="add">                    
+                                <form class="" action="MainController" method="get">
+                                    <input value="1" name="roleid" type="hidden"/>
+                                    <button name="action" value="addEmployeePage" >
+                                        Add Sale
+                                    </button>
+                                </form>                    
+                            </div>                    
+                        </div>
+
+
+
+                        <table class="table mt-4 text-center">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col">Address</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:if test="${requestScope.slist == null}">
+                                    <c:forEach var="sale" items="${requestScope.salesList}" begin="0" end="6">
+                                    <form action="MainController" action="post">
+                                        <tr>
+                                            <td scope="row">${sale.userID}</td>
+                                            <td>${sale.name}</td>
+                                            <td>${sale.email}</td>
+                                            <td>${sale.phone}</td>
+                                            <td>${sale.address}</td>
+                                            <c:choose>
+                                                <c:when test="${sale.status == 0}"><td>Inactive</td></c:when>
+                                                <c:otherwise><td>Active</td></c:otherwise>
+                                            </c:choose>
+                                        <input type="hidden" name="userid" value="${sale.userID}"/>
+                                        <td>
+                                            <button type="submit" name="action" value="viewSaleDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
+                                        </td>
+                                        </tr>
+                                    </form>
+                                </c:forEach>
+                            </c:if>
+                            <c:if test="${requestScope.slist !=null}">
+                                <c:forEach var="sale" items="${requestScope.slist}">
+                                    <form action="MainController" action="post">
+                                        <tr>
+                                            <td scope="row">${sale.userID}</td>
+                                            <td>${sale.name}</td>
+                                            <td>${sale.email}</td>
+                                            <td>${sale.phone}</td>
+                                            <td>${sale.address}</td>
+                                            <c:choose>
+                                                <c:when test="${sale.status == 0}"><td>Inactive</td></c:when>
+                                                <c:otherwise><td>Active</td></c:otherwise>
+                                            </c:choose>
+                                        <input type="hidden" name="userid" value="${sale.userID}"/>
+                                        <td>
+                                            <button type="submit" name="action" value="viewSaleDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
+                                        </td>
+                                        </tr>
+                                    </form>
+                                </c:forEach>
+                            </c:if>
+                            </tbody>
+                        </table>
+
+                        <nav aria-label="Page navigation example" style="margin-top:35px;">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item">
+                                    <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=1"><</a>
+                                </li>
+                                <% int totalProduct = UserDAO.getUsersByRole(1).size();
+                                    int element = 7;
+                                    float numOfPages = (float) totalProduct / element;
+                                %>
+                                <%for (int i = 1; i <= (int) Math.ceil(numOfPages); i++) {%>
+                                <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=<%=i%>&roleid=1"><%=i%></a></li>
+                                    <% }%>
+                                <li class="page-item">
+                                    <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page+1}&roleid=1">></a>
+                                </li>
+                            </ul>
+                        </nav>
+
                     </div>
 
-                    <div class="item">
-                        <a  href="viewProduct.jsp" class="sub-btn">
-                            <span><i class="fa-solid fa-box mx-3"></i></span>
-                            <span>Product</span>
-                        </a>
-                    </div>
-
-                    <div class="item">
-                        <a href="MainController?action=viewVouchers" class="sub-btn">
-                            <span><i class="fa-solid fa-tag mx-3"></i></span>
-                            <span>Voucher</span>
-                        </a>
-                    </div>
-
-                    <div class="item">
-                        <a class="sub-btn">
-                            <span><i class="fa-solid fa-clipboard-user mx-3"></i></span>
-                            <span>Attendance</span>
-                        </a>
-                    </div>
-
-                    <div class="item">
-                        <a class="sub-btn">
-                            <span><i class="fa-solid fa-cart-shopping mx-3"></i></span>
-                            <span>Order</span>
-                        </a>
-                    </div>
 
                 </div>
-            </div>
+                <footer>
+                    <c:import url="footer.jsp" />
+                </footer>
 
-
-            <!-- table -->
-            <div class="dashboard mt-5">
-
-                <div class="group-form d-flex justify-content-between">
-                    <div class="w-100">
-                        <form class="search text-center d-flex align-items-center">
-                            <input type="text" placeholder="Search...">
-                            <button id="search-button" type="button" class="btn">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </form>
-                    </div>                    
-
-                    <div class="add">                    
-                        <form class="" action="MainController" method="get">
-                            <input value="1" name="roleid" type="hidden"/>
-                            <button name="action" value="addEmployeePage" >
-                                Add Sale
-                            </button>
-                        </form>                    
-                    </div>                    
-                </div>
-
-
-
-                <table class="table mt-4 text-center">
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Phone</th>
-                            <th scope="col">Address</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <c:if test="${requestScope.slist == null}">
-                            <c:forEach var="sale" items="${requestScope.salesList}" begin="0" end="6">
-                            <form action="MainController" action="post">
-                                <tr>
-                                    <td scope="row">${sale.userID}</td>
-                                    <td>${sale.name}</td>
-                                    <td>${sale.email}</td>
-                                    <td>${sale.phone}</td>
-                                    <td>${sale.address}</td>
-                                    <c:choose>
-                                        <c:when test="${sale.status == 0}"><td>Inactive</td></c:when>
-                                        <c:otherwise><td>Active</td></c:otherwise>
-                                    </c:choose>
-                                <input type="hidden" name="userid" value="${sale.userID}"/>
-                                <td>
-                                    <button type="submit" name="action" value="viewSaleDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
-                                </td>
-                                </tr>
-                            </form>
-                        </c:forEach>
-                    </c:if>
-                    <c:if test="${requestScope.slist !=null}">
-                        <c:forEach var="sale" items="${requestScope.slist}">
-                            <form action="MainController" action="post">
-                                <tr>
-                                    <td scope="row">${sale.userID}</td>
-                                    <td>${sale.name}</td>
-                                    <td>${sale.email}</td>
-                                    <td>${sale.phone}</td>
-                                    <td>${sale.address}</td>
-                                    <c:choose>
-                                        <c:when test="${sale.status == 0}"><td>Inactive</td></c:when>
-                                        <c:otherwise><td>Active</td></c:otherwise>
-                                    </c:choose>
-                                <input type="hidden" name="userid" value="${sale.userID}"/>
-                                <td>
-                                    <button type="submit" name="action" value="viewSaleDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
-                                </td>
-                                </tr>
-                            </form>
-                        </c:forEach>
-                    </c:if>
-                    </tbody>
-                </table>
-
-                <nav aria-label="Page navigation example" style="margin-top:35px;">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item">
-                            <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=1"><</a>
-                        </li>
-                        <% int totalProduct = UserDAO.getUsersByRole(1).size();
-                            int element = 7;
-                            float numOfPages = (float) totalProduct / element;
-                        %>
-                        <%for (int i = 1; i <= (int) Math.ceil(numOfPages); i++) {%>
-                        <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=<%=i%>&roleid=1"><%=i%></a></li>
-                            <% }%>
-                        <li class="page-item">
-                            <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page+1}&roleid=1">></a>
-                        </li>
-                    </ul>
-                </nav>
-
-            </div>
-
-
-        </div>
-        <footer>
-            <c:import url="footer.jsp" />
-        </footer>
+            </c:otherwise>
+        </c:choose>
     </body>
 </html>

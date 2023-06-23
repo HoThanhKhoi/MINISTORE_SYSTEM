@@ -36,82 +36,90 @@
     </head>
 
     <body>
-        <header>
-            <c:import url="header_managerDashboard.jsp" />
-        </header>
+        <c:choose>
+            <c:when test="${sessionScope.manager == null}">
+                <c:set var="warning" value="You need to log in as Admin to access" scope="request"/>
+                <jsp:forward page="login.jsp"/>
+            </c:when>
+            <c:otherwise>
+                <header>
+                    <c:import url="header_managerDashboard.jsp" />
+                </header>
 
-        <div class="container product-detail">
-            <div class="row">
-                <div class="col-5 product-detail-img">
-                    <img src="${requestScope.product.imgPath}" alt="">
-                </div>
+                <div class="container product-detail">
+                    <div class="row">
+                        <div class="col-5 product-detail-img">
+                            <img src="${requestScope.product.imgPath}" alt="">
+                        </div>
 
-                <c:if test="${requestScope.product != null}">
-                    <div class="col-lg-4 cus-info">
-                        <form action="">
-                            <div class="form-item my-5 d-flex align-items-center justify-content-center">
-                                <div class="col-3">
-                                    <label for="">ID</label>
-                                </div>
-                                <div class="col-9">
-                                    <input name="pid" type="text" id="id" value="${requestScope.product.productID}" disabled="">
-                                </div>
+                        <c:if test="${requestScope.product != null}">
+                            <div class="col-lg-4 cus-info">
+                                <form action="">
+                                    <div class="form-item my-5 d-flex align-items-center justify-content-center">
+                                        <div class="col-3">
+                                            <label for="">ID</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input name="pid" type="text" id="id" value="${requestScope.product.productID}" disabled="">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-item my-5 d-flex align-items-center justify-content-center">
+                                        <div class="col-3">
+                                            <label for="">Name</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input name="pName" type="text" id="name" value="${requestScope.product.productName}">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-item my-5 d-flex align-items-center justify-content-center">
+                                        <div class="col-3">
+                                            <label for="">Description</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input name="pDes" type="tel" id="phone" value="${requestScope.product.description}">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-item my-5 d-flex align-items-center justify-content-center">
+                                        <div class="col-3">
+                                            <label for="">Price</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input name="pPrice" type="text" id="phone" value="${requestScope.product.price}">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-item my-5 d-flex align-items-center justify-content-center">
+                                        <div class="col-3">
+                                            <label for="">Stock Quantity</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input type="text" id="email" value="${requestScope.product.stockQuantity}">
+                                        </div>
+                                    </div> 
+                                    <div class="form-item my-5 d-flex align-items-center justify-content-center">
+                                        <div class="col-3">
+                                            <label for="">Category</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <select class="form-select" aria-label="Default select example" name="cateid">
+                                                <c:forEach var="cate" items="${CategoryDAO.getCategories()}">
+                                                    <option value="${cate.CateID}">${cate.CateName}</option>
+                                                </c:forEach>
+                                            </select>
+                                        </div>
+                                    </div> 
+                                    <button type="submit" name="action" value="updateProduct">Update</button>
+                                </form>
                             </div>
+                        </c:if>
 
-                            <div class="form-item my-5 d-flex align-items-center justify-content-center">
-                                <div class="col-3">
-                                    <label for="">Name</label>
-                                </div>
-                                <div class="col-9">
-                                    <input name="pName" type="text" id="name" value="${requestScope.product.productName}">
-                                </div>
-                            </div>
-
-                            <div class="form-item my-5 d-flex align-items-center justify-content-center">
-                                <div class="col-3">
-                                    <label for="">Description</label>
-                                </div>
-                                <div class="col-9">
-                                    <input name="pDes" type="tel" id="phone" value="${requestScope.product.description}">
-                                </div>
-                            </div>
-
-                            <div class="form-item my-5 d-flex align-items-center justify-content-center">
-                                <div class="col-3">
-                                    <label for="">Price</label>
-                                </div>
-                                <div class="col-9">
-                                    <input name="pPrice" type="text" id="phone" value="${requestScope.product.price}">
-                                </div>
-                            </div>
-
-
-                            <div class="form-item my-5 d-flex align-items-center justify-content-center">
-                                <div class="col-3">
-                                    <label for="">Stock Quantity</label>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" id="email" value="${requestScope.product.stockQuantity}">
-                                </div>
-                            </div> 
-                            <div class="form-item my-5 d-flex align-items-center justify-content-center">
-                                <div class="col-3">
-                                    <label for="">Category</label>
-                                </div>
-                                <div class="col-9">
-                                    <select class="form-select" aria-label="Default select example" name="cateid">
-                                        <c:forEach var="cate" items="${CategoryDAO.getCategories()}">
-                                            <option value="${cate.CateID}">${cate.CateName}</option>
-                                        </c:forEach>
-                                    </select>
-                                </div>
-                            </div> 
-                            <button type="submit" name="action" value="updateProduct">Update</button>
-                        </form>
                     </div>
-                </c:if>
-
-            </div>
-        </div>
+                </div>
+            </c:otherwise>
+        </c:choose>
     </body>
 </html>
