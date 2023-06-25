@@ -78,7 +78,7 @@
                             </div>
 
                             <div class="item">
-                                <a class="sub-btn">
+                                <a href="MainController?action=viewVouchers" class="sub-btn">
                                     <span><i class="fa-solid fa-tag mx-3"></i></span>
                                     <span>Voucher</span>
                                 </a>
@@ -123,43 +123,66 @@
                             </thead>
 
                             <tbody>
-                                <c:if test="${requestScope.cplist == null}">
-                                    <c:forEach var="cate" items="${requestScope.cateList}" begin="0" end="5">
+                                
+                                    <c:forEach var="cate" items="${requestScope.cateList}" varStatus="status" begin="0" end="5">
                                         <tr>
                                             <td>${cate.cateID}</td>
                                             <td>
                                                 <img style="width: 40px; height: 40px;" src="${cate.imgPath}"/>
                                             </td>
                                             <td>${cate.cateName}</td>
-
                                             <td>
-                                                <form action="MainController" action="post">
-                                                    <input type="hidden" name="cateid" value="${cate.cateID}">
-                                                    <button type="submit" name="action" value="viewCategoryDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
-                                                </form>
+                                                <a href="" data-bs-toggle="modal" data-bs-target="#myModal${status.index}">
+                                                    <i class="update fa-solid fa-pen-to-square mx-2"></i>
+                                                </a>
                                             </td>
                                         </tr>
-                                    </c:forEach>
-                                </c:if> 
-                                <c:if test="${requestScope.cplist != null}">
-                                    <c:forEach var="cate" items="${requestScope.cplist}" begin="0" end="5">
-                                        <tr>
-                                            <td>${cate.cateID}</td>
-                                            <td>
-                                                <img style="width: 40px; height: 40px;" src="${cate.imgPath}"/>
-                                            </td>
-                                            <td>${cate.cateName}</td>
 
-                                            <td>
-                                                <form action="MainController" action="post">
-                                                    <input type="hidden" name="cateid" value="${cate.cateID}">
-                                                    <button type="submit" name="action" value="viewCategoryDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
+
+                                        <!--/*------------------POP UP SCREEN VOUCHER DETAIL------------------*/-->
+                                    <div class="modal" id="myModal${status.index}">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+
+                                                <form action="MainController" method="post">
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Update Voucher</h4>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                                    </div>
+
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <div class="mb-3 mt-3">
+                                                            <label for="cid" class="form-label">Category ID</label>
+                                                            <input type="hidden" class="form-control" id="cid" name="cateID" value="${cate.cateid}" readonly="">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="cname" class="form-label">Category Name</label>
+                                                            <input type="text" class="form-control" id="cname" name="catename">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="cname" class="form-label">Image</label>
+                                                            <select name="imgpath">
+                                                                <c:forEach var="image" items="${imgList}">
+                                                                    <option value="${image}">${image}</option>
+                                                                </c:forEach>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-success" name="action" value="updateVoucher">Update</button>
+                                                    </div>
                                                 </form>
-                                            </td>
-                                        </tr>
-                                    </c:forEach>
-                                </c:if>
 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/*--------------------------------------------------------------*/-->
+                                </c:forEach>
+                             
                             </tbody>
                         </table>
 

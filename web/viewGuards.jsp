@@ -78,7 +78,7 @@
                                 </div>
 
                                 <div class="item">
-                                    <a class="sub-btn">
+                                    <a href="MainController?action=viewVouchers" class="sub-btn">
                                         <span><i class="fa-solid fa-tag mx-3"></i></span>
                                         <span>Voucher</span>
                                     </a>
@@ -105,13 +105,27 @@
 
                         <!-- table -->
                         <div class="dashboard mt-5">
-                            <form class="search text-center d-flex align-items-center">
-                                <input type="text" placeholder="Search...">
-                                <button id="search-button" type="button" class="btn">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </form>
 
+                            <div class="group-form d-flex justify-content-between">
+                                <div class="w-100">
+                                    <form class="search text-center d-flex align-items-center">
+                                        <input type="text" placeholder="Search...">
+                                        <button id="search-button" type="button" class="btn">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </form>
+                                </div>                    
+
+
+                                <div class="add">                    
+                                    <form action="MainController" method="get">
+                                        <input value="2" name="roleid" type="hidden"/>
+                                        <button name="action" value="addEmployeePage" >
+                                            Add Guards
+                                        </button>
+                                    </form>                    
+                                </div>   
+                            </div>
 
                             <table class="table mt-4 text-center">
                                 <thead>
@@ -171,35 +185,31 @@
 
                                 </tbody>
                             </table>
+                            <nav aria-label="Page navigation example" style="margin-top:35px;">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item">
+                                        <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=2" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <% int totalProduct = UserDAO.getUsersByRole(2).size();
+                                        int element = 7;
+                                        float numOfPages = (float) totalProduct / element;
+                                    %>
+                                    <%for (int i = 1; i <= (int) Math.ceil(numOfPages); i++) {%>
+                                    <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=<%=i%>&roleid=2"><%=i%></a></li>
+                                        <% }%>
+                                    <li class="page-item">
+                                        <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page+1}&roleid=2" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
                         </div>
                     </div>
-                    <nav aria-label="Page navigation example" style="margin-top:35px;">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item">
-                                <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=2" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <% int totalProduct = UserDAO.getUsersByRole(2).size();
-                                int element = 7;
-                                float numOfPages = (float) totalProduct / element;
-                            %>
-                            <%for (int i = 1; i <= (int) Math.ceil(numOfPages); i++) {%>
-                            <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=<%=i%>&roleid=2"><%=i%></a></li>
-                                <% }%>
-                            <li class="page-item">
-                                <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page+1}&roleid=2" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                    <form action="MainController" method="get">
-                        <input value="2" name="roleid" type="hidden"/>
-                        <button name="action" value="addEmployeePage" >
-                            Add Guards
-                        </button>
-                    </form>
+
+
 
                 </div>
             </c:otherwise>
