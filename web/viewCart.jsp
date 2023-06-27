@@ -95,10 +95,10 @@
                 <!-- Cart not null -->
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-12 d-flex justify-content-center flex-column align-items-center">
 
                             <c:if test="${requestScope.error != null}">
-                                <div class="alert alert-danger alert-dismissible fade show notification" role="alert" style="padding: 15px 45px;text-align: center;width:430px;opacity: 100%;margin: 0 auto 20px;">
+                                <div class="alert alert-danger alert-dismissible fade show notification" role="alert" style="padding: 15px 40px;text-align: center;width:430px;opacity: 100%;margin: 0 auto 15px;">
                                     <strong class="error">${requestScope.error}</strong>
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="width:20px"></button>
                                 </div>
@@ -133,9 +133,14 @@
                                                     </td>
 
                                                     <td class="cart-item-title">
-                                                        <h5><a href="MainController?action=viewProduct&pid=${cartitem.key}&cateID=${ProductDAO.getProductInfo(cartKey).cateID}">
+                                                        <h5>
+                                                            <a href="MainController?action=viewProduct&pid=${cartitem.key}&cateID=${ProductDAO.getProductInfo(cartKey).cateID}">
                                                                 ${sessionScope.nameList.get(cartKey)}
-                                                            </a>
+                                                            </a><br/>
+                                                            <a class="cart-description" href="MainController?action=viewProduct&pid=${cartitem.key}&cateID=${ProductDAO.getProductInfo(cartKey).cateID}">
+                                                                ${sessionScope.desList.get(cartKey)}
+                                                            </a> 
+                                                                                                                   
                                                         </h5>
                                                     </td>
 
@@ -179,7 +184,7 @@
                                     <div class="row mt-4 justify-content-end">
                                         <div class="voucher col-3">
                                             <form action="MainController" method="post" class="d-flex">
-                                                <select class="form-select" aria-label="" name="vid">
+                                                <select class="form-select" aria-label="Default select example" name="vid">
                                                     <option selected>${VoucherDAO.getVoucher(param.vid).voucherCode}</option>
                                                     <c:forEach var="voucher" items="${sessionScope.voucherList}">
                                                         <c:choose>
@@ -217,7 +222,7 @@
                     </div>
 
                     <div class="row mt-3 mb-5">
-                        <div class="col-lg-12 d-flex justify-content-end">
+                        <div class="col-lg-12 d-flex justify-content-end button_next">
                             <a href="MainController?action=cartConfirmationPage" class="button check">Next</a>
                         </div>
                     </div>

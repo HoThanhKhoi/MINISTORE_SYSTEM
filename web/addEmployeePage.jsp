@@ -44,239 +44,265 @@
                 </div>
             </c:if> 
 
-            <div class="row align-items-center">
-                <!-- menu -->
-                <div class="col-2 menu">
-                    <ul>
-                        <li class="row">
-                            <i class="fa-solid fa-user mx-3 col-2"></i>
-                            <a href="" class="col-2">User</a>
-                        </li>
 
-
-                        <li class="row ">
-                            <i class="col-2 mx-3"></i>
-                            <a href="MainController?action=viewCustomers" class="col-2">Customer</a>
-                        </li>
-
-                        <li class="row active">
-                            <i class="col-2 mx-3"></i>
-                            <a href="MainController?action=viewSales" class="col-2">Sale</a>
-                        </li>
-
-                        <li class="row">
-                            <i class="col-2 mx-3"></i>
-                            <a href="MainController?action=viewGuards" class="col-2">Guard</a>
-                        </li>
-
-                        <li class="row">
-                            <i class="fa-solid fa-bars-staggered mx-3 col-2"></i>
-                            <a href="" class="col-2 ms-1 d-none d-sm-inline">Category</a>
-                        </li>
-
-                        <li class="row">
-                            <i class="fa-solid fa-box mx-3 col-2"></i>
-                            <a href="" class="col-2">Product</a>
-                        </li>
-
-                        <li class="row">
-                            <i class="fa-solid fa-tag mx-3 col-2"></i>
-                            <a href="" class="col-2">Voucher</a>
-                        </li>
-
-                        <li class="row">
-                            <i class="fa-solid fa-clipboard-user mx-3 col-2"></i>
-                            <a href="" class="col-2">Attendance</a>
-                        </li>
-
-                        <li class="row">
-                            <i class="fa-solid fa-cart-shopping mx-3 col-2"></i>
-                            <a href="" class="col-2">Order</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <c:choose>
-                    <c:when test="${requestScope.roleID == 2}">
-                        <div class="col" style="overflow: hidden">
-                            <form action="MainController" method="post">
-                                <div class="col d-flex">
-                                    <div class="col-5 cus-info">
-                                        <div class="form">
-                                            <div class="form-item my-5 d-flex align-items-center justify-content-center">
-                                                <div class="col-3">
-                                                    <label for="">Name</label>
-                                                </div>
-                                                <div class="col-9">
-                                                    <input name="name" type="text" id="name" value="" required="">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-item my-5 d-flex align-items-center justify-content-center">
-                                                <div class="col-3">
-                                                    <label for="">Phone</label>
-                                                </div>
-                                                <div class="col-9">
-                                                    <input name="phone" type="tel" id="phone" value="" required="">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-item my-5 d-flex align-items-center justify-content-center">
-                                                <div class="col-3">
-                                                    <label for="" >Address</label>
-                                                </div>
-                                                <div class="col-9">
-                                                    <input name="address" type="text" id="phone" value="" >
-                                                </div>
-                                            </div>
-
-
-                                            <div class="form-item my-5 d-flex align-items-center justify-content-center">
-                                                <div class="col-3">
-                                                    <label for="">Email</label>
-                                                </div>
-                                                <div class="col-9">
-                                                    <input name="email" type="text" id="email" value="${requestScope.cus.email}" required="" >
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- update status -->
-                                    <div class="col-4 update-cus">
-                                        <div class="form">
-                                            <div class="my-5 d-flex align-items-center justify-content-center">
-                                                <div class="col-3">
-                                                    <label for="">Role</label>
-                                                </div>
-                                                <div class="col-9">
-                                                    <input type="text" disabled placeholder="Guard">
-                                                </div>
-                                            </div>
-                                            <div class="order my-5 d-flex align-items-center justify-content-center">
-                                                <div class="col-3">
-                                                    <label for="">Schedule</label>
-                                                </div>
-                                                <div class="col-9 mx-3" style="width:200px ">
-                                                    <select class="form-select" aria-label="Default select example" name="wid">
-                                                        <c:forEach var="worksheet" items="${WorksheetDAO.getAllWorksheets()}">
-                                                            <option value="${worksheet.worksheetID}">${worksheet.worksheetName}</option>
-                                                        </c:forEach>
-
-                                                    </select>
-                                                </div>
-                                            </div>  
-
-                                            <div class="status my-5 d-flex align-items-center">
-                                                <div class="col-3">
-                                                    <label for="">Status</label>
-                                                </div>
-                                                <div class="col-9 status-btn">
-                                                    <a role="button" id="active" style="background-color: #1B9C85;color:black;text-decoration: none;border-top-right-radius: 30px;
-                                                       border-bottom-right-radius: 30px;">Active</a>
-                                                </div>
-                                            </div>
-                                        </div>    
-                                    </div>
-                                    <input type="hidden"  value="2" name="roleid"/>
-                                    <button id="addBtn" name="action" value="addEmployee">Add</button>
-                                </div>
-                            </form>
-                        </div>
-                    </c:when>
-                    <c:otherwise>
-                        <div class="col" style="overflow: hidden">
-                            <form action="MainController" method="post">
-                                <div class="col d-flex">
-                                    <div class="col-5 cus-info">
-                                        <div class="form">
-                                            <div class="form-item my-5 d-flex align-items-center justify-content-center">
-                                                <div class="col-3">
-                                                    <label for="">Name</label>
-                                                </div>
-                                                <div class="col-9">
-                                                    <input name="name" type="text" id="name" value="" required="">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-item my-5 d-flex align-items-center justify-content-center">
-                                                <div class="col-3">
-                                                    <label for="">Phone</label>
-                                                </div>
-                                                <div class="col-9">
-                                                    <input name="phone" type="tel" id="phone" value="" required="">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-item my-5 d-flex align-items-center justify-content-center">
-                                                <div class="col-3">
-                                                    <label for="" >Address</label>
-                                                </div>
-                                                <div class="col-9">
-                                                    <input name="address" type="text" id="phone" value="" >
-                                                </div>
-                                            </div>
-
-
-                                            <div class="form-item my-5 d-flex align-items-center justify-content-center">
-                                                <div class="col-3">
-                                                    <label for="">Email</label>
-                                                </div>
-                                                <div class="col-9">
-                                                    <input name="email" type="text" id="email" value="${requestScope.cus.email}" required="" >
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- update status -->
-                                    <div class="col-4 update-cus">
-                                        <div class="form">
-                                            <div class="my-5 d-flex align-items-center justify-content-center">
-                                                <div class="col-3">
-                                                    <label for="">Role</label>
-                                                </div>
-                                                <div class="col-9">
-                                                    <input type="text" disabled placeholder="Sale">
-                                                </div>
-                                            </div>
-                                            <div class="order my-5 d-flex align-items-center justify-content-center">
-                                                <div class="col-3">
-                                                    <label for="">Schedule</label>
-                                                </div>
-                                                <div class="col-6 mx-3" style="width:200px ">
-                                                    <select class="form-select" aria-label="Default select example" name="wid">
-                                                        <c:forEach var="worksheet" items="${WorksheetDAO.getAllWorksheets()}">
-                                                            <option value="${worksheet.worksheetID}">${worksheet.worksheetName}</option>
-                                                        </c:forEach>
-
-                                                    </select>
-                                                </div>
-                                            </div>  
-
-                                            <div class="status my-5 d-flex align-items-center">
-                                                <div class="col-3">
-                                                    <label for="">Status</label>
-                                                </div>
-                                                <div class="col status-btn">
-                                                    <a role="button" id="active" style="background-color: #1B9C85;color:black;text-decoration: none;border-top-right-radius: 30px;
-                                                       border-bottom-right-radius: 30px;">Active</a>
-                                                </div>
-                                            </div>
-                                        </div>    
-                                    </div>
-                                    <input type="hidden"  value="1" name="roleid"/>
-                                    <button id="addBtn" name="action" value="addEmployee">Add</button>
-                                </div>
-                            </form>
-                        </div>
-                    </c:otherwise>
-                </c:choose>
+            <!-- menu -->
+            <div class="menu-btn">
+                <input type="checkbox" id="nav-toggle">
             </div>
+            <div class=" side-bar">
+                <div class="menu">
+                    <div class="item">
+                        <a class="sub-btn">
+                            <i class="fa-solid fa-user mx-3"></i>
+                            User
+                            <i class="fa-solid fa-angle-right dropdown"></i>
+                        </a>
+                        <div class="sub-menu">
+                            <a href="MainController?action=viewCustomers" class="sub-item active">Customers</a>
+                            <a href="MainController?action=viewSales" class="sub-item">Sales</a>
+                            <a href="MainController?action=viewGuards" class="sub-item">Guards</a>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <a href="MainController?action=viewAllCategories" class="sub-btn">
+                            <span><i class="fa-solid fa-bars-staggered mx-3"></i></span>
+                            <span>Category</span>
+                        </a>
+                    </div>
+
+                    <div class="item">
+                        <a  href="MainController?action=viewAllProducts" class="sub-btn">
+                            <span><i class="fa-solid fa-box mx-3"></i></span>
+                            <span>Product</span>
+                        </a>
+                    </div>
+
+                    <div class="item">
+                        <a href="MainController?action=viewVouchers" class="sub-btn">
+                            <span><i class="fa-solid fa-tag mx-3"></i></span>
+                            <span>Voucher</span>
+                        </a>
+                    </div>
+
+                    <div class="item">
+                        <a class="sub-btn">
+                            <span><i class="fa-solid fa-clipboard-user mx-3"></i></span>
+                            <span>Attendance</span>
+                        </a>
+                    </div>
+
+                    <div class="item">
+                        <a class="sub-btn">
+                            <span><i class="fa-solid fa-cart-shopping mx-3"></i></span>
+                            <span>Order</span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <c:choose>
+                <c:when test="${requestScope.roleID == 2}">
+                    <div class="dashboard mt-5" style="overflow: hidden">
+                        <form action="MainController" method="post">
+                            <div class="col d-flex">
+                                <div class="col-5 cus-info">
+                                    <div class="form">
+                                        <div class="form-item my-5 d-flex align-items-center justify-content-center">
+                                            <div class="col-3">
+                                                <label for="">Name</label>
+                                            </div>
+                                            <div class="col-9">
+                                                <input name="name" type="text" id="name" value="" required="">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-item my-5 d-flex align-items-center justify-content-center">
+                                            <div class="col-3">
+                                                <label for="">Phone</label>
+                                            </div>
+                                            <div class="col-9">
+                                                <input name="phone" type="tel" id="phone" value="" required="">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-item my-5 d-flex align-items-center justify-content-center">
+                                            <div class="col-3">
+                                                <label for="" >Address</label>
+                                            </div>
+                                            <div class="col-9">
+                                                <input name="address" type="text" id="phone" value="" >
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-item my-5 d-flex align-items-center justify-content-center">
+                                            <div class="col-3">
+                                                <label for="">Email</label>
+                                            </div>
+                                            <div class="col-9">
+                                                <input name="email" type="text" id="email" value="${requestScope.cus.email}" required="" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- update status -->
+                                <div class="col-4 update-cus">
+                                    <div class="form">
+                                        <div class="my-5 d-flex align-items-center justify-content-center">
+                                            <div class="col-3">
+                                                <label for="">Role</label>
+                                            </div>
+                                            <div class="col-9">
+                                                <input type="text" disabled placeholder="Guard">
+                                            </div>
+                                        </div>
+                                        <div class="order my-5 d-flex align-items-center justify-content-center">
+                                            <div class="col-3">
+                                                <label for="">Schedule</label>
+                                            </div>
+                                            <div class="col-9 mx-3" style="width:200px ">
+                                                <select class="form-select" aria-label="Default select example" name="wid">
+                                                    <c:forEach var="worksheet" items="${WorksheetDAO.getAllWorksheets()}">
+                                                        <option value="${worksheet.worksheetID}">${worksheet.worksheetName}</option>
+                                                    </c:forEach>
+
+                                                </select>
+                                            </div>
+                                        </div>  
+
+                                        <div class="status my-5 d-flex align-items-center">
+                                            <div class="col-3">
+                                                <label for="">Status</label>
+                                            </div>
+                                            <div class="col-9 status-btn">
+                                                <a role="button" id="active" style="background-color: #1B9C85;color:black;text-decoration: none;border-top-right-radius: 30px;
+                                                   border-bottom-right-radius: 30px;">Active</a>
+                                            </div>
+                                        </div>
+                                    </div>    
+                                </div>
+                                <input type="hidden"  value="2" name="roleid"/>
+                                <button id="addBtn" name="action" value="addEmployee">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <div class="col" style="overflow: hidden">
+                        <form action="MainController" method="post">
+                            <div class="col d-flex">
+                                <div class="col-5 cus-info">
+                                    <div class="form">
+                                        <div class="form-item my-5 d-flex align-items-center justify-content-center">
+                                            <div class="col-3">
+                                                <label for="">Name</label>
+                                            </div>
+                                            <div class="col-9">
+                                                <input name="name" type="text" id="name" value="" required="">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-item my-5 d-flex align-items-center justify-content-center">
+                                            <div class="col-3">
+                                                <label for="">Phone</label>
+                                            </div>
+                                            <div class="col-9">
+                                                <input name="phone" type="tel" id="phone" value="" required="">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-item my-5 d-flex align-items-center justify-content-center">
+                                            <div class="col-3">
+                                                <label for="" >Address</label>
+                                            </div>
+                                            <div class="col-9">
+                                                <input name="address" type="text" id="phone" value="" >
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-item my-5 d-flex align-items-center justify-content-center">
+                                            <div class="col-3">
+                                                <label for="">Email</label>
+                                            </div>
+                                            <div class="col-9">
+                                                <input name="email" type="text" id="email" value="${requestScope.cus.email}" required="" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- update status -->
+                                <div class="col-4 update-cus">
+                                    <div class="form">
+                                        <div class="my-5 d-flex align-items-center justify-content-center">
+                                            <div class="col-3">
+                                                <label for="">Role</label>
+                                            </div>
+                                            <div class="col-9">
+                                                <input type="text" disabled placeholder="Sale">
+                                            </div>
+                                        </div>
+                                        <div class="order my-5 d-flex align-items-center justify-content-center">
+                                            <div class="col-3">
+                                                <label for="">Schedule</label>
+                                            </div>
+                                            <div class="col-6 mx-3" style="width:200px ">
+                                                <select class="form-select" aria-label="Default select example" name="wid">
+                                                    <c:forEach var="worksheet" items="${WorksheetDAO.getAllWorksheets()}">
+                                                        <option value="${worksheet.worksheetID}">${worksheet.worksheetName}</option>
+                                                    </c:forEach>
+
+                                                </select>
+                                            </div>
+                                        </div>  
+
+                                        <div class="status my-5 d-flex align-items-center">
+                                            <div class="col-3">
+                                                <label for="">Status</label>
+                                            </div>
+                                            <div class="col status-btn">
+                                                <a role="button" id="active" style="background-color: #1B9C85;color:black;text-decoration: none;border-top-right-radius: 30px;
+                                                   border-bottom-right-radius: 30px;">Active</a>
+                                            </div>
+                                        </div>
+                                    </div>    
+                                </div>
+                                <input type="hidden"  value="1" name="roleid"/>
+                                <button id="addBtn" name="action" value="addEmployee">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                </c:otherwise>
+            </c:choose>
         </div>
-        
+
         <!-- FOOTER -->
         <footer>
             <c:import url="footer.jsp" />
         </footer>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+//jquery for toggle sub menus
+                $('.sub-btn').click(function () {
+                    $(this).next('.sub-menu').slideToggle();
+                    $(this).find('.dropdown').toggleClass('rotate');
+                });
+
+//jquery for expand and collapse the sidebar
+                $('.menu-btn').click(function () {
+                    $('.side-bar').addClass('active');
+                    $('.menu-btn').css("visibility", "hidden");
+                });
+
+                $('.close-btn').click(function () {
+                    $('.side-bar').removeClass('active');
+                    $('.menu-btn').css("visibility", "visible");
+                });
+            });
+        </script>
 
     </body>
 </html>

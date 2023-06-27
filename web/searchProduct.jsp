@@ -57,7 +57,8 @@
                                                 <a href="MainController?action=viewProduct&pid=${searchItem.productID}&cateID=${searchItem.cateID}">
                                                     ${searchItem.productName}
                                                 </a>
-                                            </h5>                                            <span class="bricked-price mx-2">$${searchItem.price}</span>
+                                            </h5>                                            
+                                            <span class="bricked-price mx-2">$${searchItem.price}</span>
                                             <span class="price fw-bold mx-2">$${Math.round(searchItem.price) -0.45}</span></br>
                                             <a href="MainController?action=addToCart&pid=${searchItem.productID}&cid=${searchItem.cateID}&quantity=1" class="btn btn-primary mt-2 px-3 py-2 fw-bold">Add To Cart</a>
                                         </div>
@@ -66,6 +67,7 @@
                             </div>
                         </c:forEach>
                     </c:if>
+
                     <c:if test="${requestScope.slist != null}">
                         <c:forEach var="searchItem" items="${requestScope.slist}">
                             <div class="col">

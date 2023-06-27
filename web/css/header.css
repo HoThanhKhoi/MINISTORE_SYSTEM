@@ -54,6 +54,7 @@ body {
 .nav li a {
     font-size: 25px;
     color: #07484A;
+    text-decoration: none !important;
 }
 
 .nav li .btn-item {
@@ -64,6 +65,10 @@ body {
 .nav li a:hover {
     background-color: transparent !important;
     color: #1B9C85;
+}
+
+.nav-item.header-title h3 {
+    color: #07484A;
 }
 
 .nav .cart i {
