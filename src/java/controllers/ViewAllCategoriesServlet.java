@@ -38,8 +38,11 @@ public class ViewAllCategoriesServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             ArrayList<Category> list = CategoryDAO.getCategories();
+            ArrayList<String> imgList = CategoryDAO.getImgPath();
+            
             if(list != null){
                 request.setAttribute("cateList", list);
+                request.setAttribute("imgList", imgList);
                 request.getRequestDispatcher("viewCategory.jsp").forward(request, response);
             }
         }

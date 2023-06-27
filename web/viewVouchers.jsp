@@ -109,6 +109,12 @@
                     <!-- table -->
                     <div class="dashboard">
                         <div class="group-form d-flex justify-content-between mx-3"> 
+                            <form action="MainController" method="get" class="search text-center d-flex align-items-center">
+                                <input type="text" placeholder="Search..." name="keyword" value="${param.keyword}">
+                                <button id="search-button" type="submit" class="btn" name="action" value="searchVoucher">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </form>
                             <form>
                                 <a href="MainController?action=viewVouchers">All</a>
                                 <a href="MainController?action=viewUnexpiredVouchers">Unexpired</a>

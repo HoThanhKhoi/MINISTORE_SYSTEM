@@ -73,20 +73,16 @@ public class main {
 //        for (int i = 0; i < list.size(); i++) {
 //            System.out.println(list.get(i).getName());
 //        }
-        
 //        Order order = OrderDAO.getOrderById("MS-0002");
 //        System.out.println(order.getCustomerName() + order.getOrderID());
-        
 //        ArrayList<OrderDetail> list = OrderDAO.getOrderDetail("MS-0003");
 //        for (OrderDetail orderDetail : list) {
 //            System.out.println(orderDetail.getOrderDetailID() + "," + orderDetail.getOrderID());
 //        }
-        
-//        ArrayList<Voucher> list = VoucherDAO.getExpiredVouchers();
-//        for (Voucher v : list) {
-//            System.out.println(v.getVoucherID()+","+v.getExpiredDate());
-//        }
-        
+        ArrayList<Voucher> list = VoucherDAO.getSearchedVouchers("13");
+        for (Voucher v : list) {
+            System.out.println(v.getVoucherID()+","+v.getExpiredDate());
+        }
 //        String t = "2023-05-31T00:00:00.0";
 //        System.out.println(Timestamp.valueOf(t.replace("T", " ")));
 //        
@@ -96,10 +92,17 @@ public class main {
 //        } else {
 //            System.out.println("bruh");
 //        }
-
-ArrayList<Category> list = CategoryDAO.getCategories();
-for(int i =0;i<list.size();i++){
-    System.out.println(list.get(i).getCateName());
-}
+//        ArrayList<Category> list = CategoryDAO.getCategories();
+//        for (int i = 0; i < list.size(); i++) {
+//            System.out.println(list.get(i).getCateName());
+//        }
+        
+//        ArrayList<String> imgList = CategoryDAO.getImgPath();
+//        for (String string : imgList) {
+//            System.out.println(string);
+//        }
+        
+        
+        
     }
 }
