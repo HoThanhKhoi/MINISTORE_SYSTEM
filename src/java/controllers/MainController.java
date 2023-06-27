@@ -162,6 +162,8 @@ public class MainController extends HttpServlet {
                 url = "ShowPaginatedVouchersServlet";
             } else if(action.equalsIgnoreCase("addNewCategory")) {
                 url="AddNewCategoryServlet";
+            } else if (action.equalsIgnoreCase("searchVoucher")) {
+                url = "SearchVouchersServlet";
             }
             
 

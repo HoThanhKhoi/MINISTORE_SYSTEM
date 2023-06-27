@@ -222,6 +222,39 @@ public class VoucherDAO {
         return result;
     }
     
+    public static ArrayList<Voucher> getSearchedVouchers(String keyword) throws Exception {
+        ArrayList<Voucher> list = new ArrayList<>();
+        Connection cn = null;
+        try {
+            cn = DBUtils.makeConnection();
+            if (cn != null) {
+                String sql = "select VoucherID,VoucherCode,VoucherDiscount,VoucherExpiredDate,LimitPrice "
+                        + "from VOUCHERS where VoucherCode like ?";
+                PreparedStatement pst = cn.prepareStatement(sql);
+                pst.setString(1, "%" + keyword + "%");
+                ResultSet table = pst.executeQuery();
+                if (table != null) {
+                    while (table.next()) {
+                        String voucherID = table.getString("VoucherID");
+                        String voucherCode = table.getString("VoucherCode");
+                        float discount = table.getFloat("VoucherDiscount");
+                        Timestamp expiredDate = table.getTimestamp("VoucherExpiredDate");
+                        float limitPrice = table.getFloat("LimitPrice");
+                        Voucher voucher = new Voucher(voucherID, voucherCode, discount, expiredDate, limitPrice);
+                        list.add(voucher);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cn != null) {
+                try {
+                    cn.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
     public static ArrayList<Voucher> getPaginatedVouchers(int pageNumber, int voucherPerPage,ArrayList<Voucher> voucherList) throws Exception{
         ArrayList<Voucher> list = new ArrayList<>();
       
