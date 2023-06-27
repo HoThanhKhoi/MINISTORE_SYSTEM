@@ -63,7 +63,7 @@
                             </div>
 
                             <div class="item">
-                                <a href="viewCategory.jsp" class="sub-btn">
+                                <a href="MainController?action=viewAllCategories" class="sub-btn">
                                     <span><i class="fa-solid fa-bars-staggered mx-3"></i></span>
                                     <span>Category</span>
                                 </a>
@@ -118,7 +118,7 @@
                                 <form class="" action="MainController" method="get">
                                     <input value="1" name="roleid" type="hidden"/>
                                     <button name="action" value="addEmployeePage" >
-                                        Add Sale
+                                        Add
                                     </button>
                                 </form>                    
                             </div>                    

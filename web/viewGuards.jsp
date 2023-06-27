@@ -121,7 +121,7 @@
                                     <form action="MainController" method="get">
                                         <input value="2" name="roleid" type="hidden"/>
                                         <button name="action" value="addEmployeePage" >
-                                            Add Guards
+                                            Add
                                         </button>
                                     </form>                    
                                 </div>   

@@ -110,7 +110,9 @@
                                 <i class="fas fa-search"></i>
                             </button>
                         </form>
-
+                        <div class="add col-2">
+                        <a role="button" class="btn btn_add btn-success" data-bs-toggle="modal" data-bs-target="#addModal">Add</a>
+                        </div>
 
                         <table class="table mt-4 text-center">
                             <thead>
@@ -123,23 +125,22 @@
                             </thead>
 
                             <tbody>
-                                
-                                    <c:forEach var="cate" items="${requestScope.cateList}" varStatus="status" begin="0" end="5">
+
+                                <c:if test="${requestScope.cplist == null}">
+                                    <c:forEach var="cate" items="${requestScope.cateList}" begin="0" end="5" varStatus="status">
                                         <tr>
                                             <td>${cate.cateID}</td>
                                             <td>
                                                 <img style="width: 40px; height: 40px;" src="${cate.imgPath}"/>
                                             </td>
                                             <td>${cate.cateName}</td>
+
                                             <td>
-                                                <a href="" data-bs-toggle="modal" data-bs-target="#myModal${status.index}">
-                                                    <i class="update fa-solid fa-pen-to-square mx-2"></i>
-                                                </a>
+                                                <button data-bs-toggle="modal" data-bs-target="#myModal${status.index}"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
                                             </td>
                                         </tr>
 
-
-                                        <!--/*------------------POP UP SCREEN VOUCHER DETAIL------------------*/-->
+                                        <!--/*------------------POP UP SCREEN CATEGORY DETAIL------------------*/-->
                                     <div class="modal" id="myModal${status.index}">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -147,22 +148,23 @@
                                                 <form action="MainController" method="post">
                                                     <!-- Modal Header -->
                                                     <div class="modal-header">
-                                                        <h4 class="modal-title">Update Voucher</h4>
+                                                        <h4 class="modal-title">Update Category</h4>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                                     </div>
 
                                                     <!-- Modal body -->
                                                     <div class="modal-body">
                                                         <div class="mb-3 mt-3">
-                                                            <label for="cid" class="form-label">Category ID</label>
-                                                            <input type="hidden" class="form-control" id="cid" name="cateID" value="${cate.cateid}" readonly="">
+                                                            <label for="cid" class="form-label">ID: </label>
+                                                            <input type="hidden" class="form-control" id="cid" name="cateID" value="${cate.cateID}" readonly="">
+                                                            ${cate.cateID}
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="cname" class="form-label">Category Name</label>
-                                                            <input type="text" class="form-control" id="cname" name="catename">
+                                                            <input type="text" class="form-control" id="cname" name="cateName" value="${cate.cateName}">
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="cname" class="form-label">Image</label>
+                                                            <label for="" class="form-label">Image</label>
                                                             <select name="imgpath">
                                                                 <c:forEach var="image" items="${imgList}">
                                                                     <option value="${image}">${image}</option>
@@ -173,7 +175,7 @@
 
                                                     <!-- Modal footer -->
                                                     <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-success" name="action" value="updateVoucher">Update</button>
+                                                        <button type="submit" class="btn btn-success" name="action" value="updateCategory">Update</button>
                                                     </div>
                                                 </form>
 
@@ -182,7 +184,68 @@
                                     </div>
                                     <!--/*--------------------------------------------------------------*/-->
                                 </c:forEach>
-                             
+                            </c:if> 
+                            <c:if test="${requestScope.cplist != null}">
+                                <c:forEach var="cate" items="${requestScope.cplist}" begin="0" end="5" varStatus="status">
+                                    <tr>
+                                        <td>${cate.cateID}</td>
+                                        <td>
+                                            <img style="width: 40px; height: 40px;" src="${cate.imgPath}"/>
+                                        </td>
+                                        <td>${cate.cateName}</td>
+
+                                        <td>
+                                            <button data-bs-toggle="modal" data-bs-target="#myModal${status.index}"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
+                                        </td>
+                                    </tr>
+
+                                    <!--/*------------------POP UP SCREEN CATEGORY DETAIL------------------*/-->
+                                    <div class="modal" id="myModal${status.index}">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+
+                                                <form action="MainController" method="post">
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Update Category</h4>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                                    </div>
+
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <div class="mb-3 mt-3">
+                                                            <label for="cid" class="form-label">ID: </label>
+                                                            <input type="hidden" class="form-control" id="cid" name="cateID" value="${cate.cateID}" readonly="">
+                                                            ${cate.cateID}
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="cname" class="form-label">Category Name</label>
+                                                            <input type="text" class="form-control" id="cname" name="cateName" value="${cate.cateName}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="" class="form-label">Image</label>
+                                                            <select name="imgpath">
+                                                                <option selected>${cate.imgPath}</option>
+                                                                <c:forEach var="image" items="${imgList}">
+                                                                    <option value="${image}">${image}</option>
+                                                                </c:forEach>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-success" name="action" value="updateCategory">Update</button>
+                                                    </div>
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/*--------------------------------------------------------------*/-->
+                                </c:forEach>
+                            </c:if>
+
                             </tbody>
                         </table>
 
@@ -209,6 +272,35 @@
                         </nav>
                     </div>
 
+                    <div class="modal" id="addModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                                <form action="MainController" method="post">
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Add New Category</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <div class="mb-3">
+                                            <label for="cname" class="form-label">Category Name</label>
+                                            <input type="text" class="form-control" id="cname" name="cateName" required="">
+                                        </div>
+                                        
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-success" name="action" value="addNewCategory">Add</button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
                     <!-- FOOTER -->
                     <footer>
                         <c:import url="footer.jsp" />

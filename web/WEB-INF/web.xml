@@ -252,6 +252,10 @@
         <servlet-name>ViewAllOrdersServlet</servlet-name>
         <servlet-class>controllers.ViewAllOrdersServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddNewCategoryServlet</servlet-name>
+        <servlet-class>controllers.AddNewCategoryServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ResetPassServlet</servlet-name>
         <url-pattern>/ResetPassServlet</url-pattern>
@@ -495,6 +499,10 @@
     <servlet-mapping>
         <servlet-name>ViewAllOrdersServlet</servlet-name>
         <url-pattern>/ViewAllOrdersServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddNewCategoryServlet</servlet-name>
+        <url-pattern>/AddNewCategoryServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

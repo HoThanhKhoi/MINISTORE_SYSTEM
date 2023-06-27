@@ -34,16 +34,14 @@
         <!-- HEADER -->
         <nav class="header navbar">
             <div class="container-fluid">
-                <ul class="nav nav-2 navbar-nav align-items-center">
+                <ul class="nav nav-3 navbar-nav align-items-center">
                     <li class="nav-item">
-                        <a href="homePage.jsp">
+                        <a href="managerDashboard.jsp">
                             <i class="fa-solid fa-house"></i>
                         </a>
                     </li>
-                    <li class="nav-item header-title">
-                        <a href="managerDashboard.jsp" class="nav-link">
-                            <h3>Dashboard</h3> 
-                        </a>
+                    <li class="nav-item header-title">           
+                            <h3>Manager Dashboard</h3> 
                     </li>
                 </ul>
 

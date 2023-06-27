@@ -108,4 +108,34 @@ public class CategoryDAO {
         }
         return flag;
     }
+    
+    public static boolean checkCategoryName(String cateName) throws Exception{
+        boolean flag = false;
+        Connection cn = DBUtils.makeConnection();
+        if (cn != null){
+            String sql = "select * from CATEGORIES where CateName=?";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setString(1, cateName);
+            ResultSet rs = pst.executeQuery();
+            if (rs != null && rs.next()){
+                flag = true;
+            }
+            cn.close();
+        }
+        return flag;
+    }
+    
+    public static boolean addNewCategory(String cateName) throws Exception {
+        boolean flag = false;
+        Connection cn = DBUtils.makeConnection();
+        if (cn != null) {
+            String sql = "insert CATEGORIES(CateName)\n"
+                    + "values (?)";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setString(1, cateName);
+            flag = pst.executeUpdate() == 1;
+            cn.close();
+        }
+        return flag;
+    }
 }
