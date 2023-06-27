@@ -7,7 +7,7 @@
 body {
     background-color: #FEFBF6 !important;
     font-family: 'Inter', sans-serif !important;
-    font-size: 18px !important;
+    font-size: 16px !important;
     overflow-x: hidden;
 }
 
@@ -16,6 +16,7 @@ body {
 .breadcrumb {
     background-color: transparent !important;
     margin-bottom: 0 !important;
+    margin-left: 65px;
 }
 
 .breadcrumb li a,
@@ -33,7 +34,8 @@ li::before {
 .cart-table {
     background-color: #fff;
     padding: 0 20px 10px;
-    width: 100%;
+
+    width: 90%;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
 }
 
@@ -84,17 +86,22 @@ li::before {
 
 .table-fixed td:nth-child(2),
 .table-fixed th:nth-child(2) {
-    flex-basis: 60%;
+    flex-basis: 35%;
+}
+
+.table-fixed td:nth-child(3),
+.table-fixed th:nth-child(3) {
+    flex-basis: 80%;
 }
 
 .table-fixed td:nth-child(4),
 .table-fixed th:nth-child(4) {
-    flex-basis: 30%;
+    flex-basis: 40%;
 }
 
 .table-fixed td:nth-child(5),
 .table-fixed th:nth-child(5) {
-    flex-basis: 55%;
+    flex-basis: 50%;
 }
 
 .table-fixed td:nth-child(6),
@@ -104,7 +111,7 @@ li::before {
 
 .table-fixed td:last-child,
 .table-fixed th:last-child {
-    flex-basis: 40%;
+    flex-basis: 30%;
 }
 
 
@@ -121,14 +128,13 @@ tbody tr {
     border-bottom: 0.5px solid rgba(0, 0, 0, 0.15);
 }
 
-tbody tr td {
-    padding: 10px;
+.table-fixed td {
+    padding: 5px !important;
 }
 
 .cart-item-img img {
-    width: 150px;
-    padding: 15px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    width: 80px;
+    height: 80px;
 }
 
 .cart-item-title {
@@ -136,14 +142,25 @@ tbody tr td {
     padding-left: 30px !important;
 }
 
+
+.cart-item-title h5  {
+    font-size: 16px !important;
+    color: #000;
+    font-weight: 500;
+}
+
 .cart-item-title h5 a {
-    font-size: 18px !important;
     color: #000;
 }
 
+
+.cart-description {
+    font-weight: 300;
+}
+
 .cart-quantity input {
-    width: 50px;
-    padding: 10px;
+    width: 40px;
+    padding: 5px;
     text-align: center;
     color: #1B9C85 !important;
     background-color: #E4E3E0;
@@ -152,7 +169,7 @@ tbody tr td {
 }
 
 .cart-quantity i {
-    font-size: 14px;
+    font-size: 12px;
     text-align: center;
     border: none;
     color: #1B9C85 !important;
@@ -160,7 +177,7 @@ tbody tr td {
 
 .cart-quantity .quantity-button {
     color: #1B9C85;
-    padding: 10px;
+    padding: 5px;
     margin: 0 5px;
     text-align: center;
     background-color: #E4E3E0;
@@ -191,6 +208,12 @@ tbody tr td {
     border: 1px solid #1B9C85;
     border-radius: 10px !important;
     padding: 5px 15px; 
+}
+
+.change {
+    padding: 5px; 
+    font-weight: 600;
+    font-size: 14px !important;
 }
 
 .mainBodyCart{
@@ -276,6 +299,9 @@ tbody tr:last-child {
     border: none;
 }
 
+.button_next a {
+    margin-right: 65px !important;
+}
 
 /*empty cart*/
 .empty-content {

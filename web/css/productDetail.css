@@ -270,3 +270,9 @@ input::-webkit-inner-spin-button {
     display: flex !important;
     justify-content: center;align-items: center;
 }
+
+
+.cus-info {
+    height: 70%;
+    margin: 20px;
+}

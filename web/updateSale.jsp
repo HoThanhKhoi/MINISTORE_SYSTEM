@@ -72,7 +72,7 @@
                         </div>
 
                         <div class="item">
-                            <a class="sub-btn">
+                        <a href="MainController?action=viewVouchers" class="sub-btn">
                                 <span><i class="fa-solid fa-tag mx-3"></i></span>
                                 <span>Voucher</span>
                             </a>
@@ -155,7 +155,7 @@
                         <!-- update status -->
                         <div class="col cus-update">
                             <form>
-                                <div class="my-5 d-flex align-items-center justify-content-center">
+                                <div class="mt-3 mb-5 d-flex align-items-center justify-content-center">
                                     <div class="col-3">
                                         <label for="">Role</label>
                                     </div>
@@ -166,14 +166,23 @@
 
                                 <div class="order my-5 d-flex align-items-center justify-content-center">
                                     <div class="col-3">
-                                        <label for="">Order</label>
+                                        <label for="">Schedule</label>
                                     </div>
                                     <div class="col-9">
-                                        <a role="button">Sale's Schedule</a>
+                                        <a role="button">View Schedule</a>
+                                    </div>
+                                </div>  
+                                
+                                <div class="order my-5 d-flex align-items-center justify-content-center">
+                                    <div class="col-3">
+                                        <label for="">Salary</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <a role="button">View Salary</a>
                                     </div>
                                 </div>  
 
-                                <div class="status my-5 d-flex align-items-center">
+                                <div class="status mt-5 mb-3 d-flex align-items-center">
                                     <div class="col-3">
                                         <label for="">Status</label>
                                     </div>

@@ -73,7 +73,7 @@
                     </div>
 
                     <div class="item">
-                        <a class="sub-btn">
+                        <a href="MainController?action=viewVouchers" class="sub-btn">
                             <span><i class="fa-solid fa-tag mx-3"></i></span>
                             <span>Voucher</span>
                         </a>
@@ -134,8 +134,8 @@
                                             <td>${customer.phone}</td>
                                             <td>${customer.address}</td>
                                             <c:choose>
-                                                <c:when test="${customer.status == 0}"><td>Inactive</td></c:when>
-                                                <c:otherwise><td>Active</td></c:otherwise>
+                                                <c:when test="${customer.status == 0}"><td><span class="status_btn status_cancel">Inactive</span></td></c:when>
+                                                <c:otherwise><td><span class="status_btn status_completed">Active</span></td></c:otherwise>
                                             </c:choose>
                                         <input type="hidden" name="userid" value="${customer.userID}"/>
                                         <td>
@@ -155,8 +155,8 @@
                                             <td>${customer.phone}</td>
                                             <td>${customer.address}</td>
                                             <c:choose>
-                                                <c:when test="${customer.status == 0}"><td>Inactive</td></c:when>
-                                                <c:otherwise><td>Active</td></c:otherwise>
+                                                <c:when test="${customer.status == 0}"><td><span class="status_btn status_cancel">Inactive</span></td></c:when>
+                                                <c:otherwise><td><span class="status_btn status_completed">Active</span></td></c:otherwise>
                                             </c:choose>
                                         <input type="hidden" name="userid" value="${customer.userID}"/>
                                         <td>
@@ -178,8 +178,8 @@
                                             <td>${customer.phone}</td>
                                             <td>${customer.address}</td>
                                             <c:choose>
-                                                <c:when test="${customer.status == 0}"><td>Inactive</td></c:when>
-                                                <c:otherwise><td>Active</td></c:otherwise>
+                                                <c:when test="${customer.status == 0}"><td><span class="status_btn status_cancel">Inactive</span></td></c:when>
+                                                <c:otherwise><td><span class="status_btn status_completed">Active</span></td></c:otherwise>
                                             </c:choose>
                                         <input type="hidden" name="userid" value="${customer.userID}"/>
                                         <td>
@@ -200,8 +200,8 @@
                                             <td>${customer.phone}</td>
                                             <td>${customer.address}</td>
                                             <c:choose>
-                                                <c:when test="${customer.status == 0}"><td>Inactive</td></c:when>
-                                                <c:otherwise><td>Active</td></c:otherwise>
+                                                <c:when test="${customer.status == 0}"><td><span class="status_btn status_cancel">Inactive</span></td></c:when>
+                                                <c:otherwise><td><span class="status_btn status_completed">Active</span></td></c:otherwise>
                                             </c:choose>
                                         <input type="hidden" name="userid" value="${customer.userID}"/>
                                         <td>
@@ -213,11 +213,9 @@
                             </c:if>
                         </c:when>
                     </c:choose>    
-
-
-
                     </tbody>
                 </table>
+                
                 <c:choose>
                     <c:when test="${requestScope.keyword == null}">
                         <nav aria-label="Page navigation example">

@@ -142,8 +142,8 @@
                                     <td>${sale.phone}</td>
                                     <td>${sale.address}</td>
                                     <c:choose>
-                                        <c:when test="${sale.status == 0}"><td class="status_inactive">Inactive</td></c:when>
-                                        <c:otherwise><td class="status_active"><h5>Active</h5></td></c:otherwise>
+                                        <c:when test="${sale.status == 0}"><td><span class="status_btn status_cancel">Inactive</span></td></c:when>
+                                        <c:otherwise><td><span class="status_btn status_completed">Active</span> </td></c:otherwise>
                                     </c:choose>
                                 <input type="hidden" name="userid" value="${sale.userID}"/>
                                 <td>
@@ -163,8 +163,8 @@
                                     <td>${sale.phone}</td>
                                     <td>${sale.address}</td>
                                     <c:choose>
-                                        <c:when test="${sale.status == 0}"><td class="status_inactive">Inactive</td></c:when>
-                                        <c:otherwise><td class="status_active"><h5>Active</h5></td></c:otherwise>
+                                        <c:when test="${sale.status == 0}"><td><span class="status_btn status_cancel">Inactive</span></td></c:when>
+                                        <c:otherwise><td><span class="status_btn status_completed">Active</span></td></c:otherwise>
                                     </c:choose>
                                 <input type="hidden" name="userid" value="${sale.userID}"/>
                                 <td>

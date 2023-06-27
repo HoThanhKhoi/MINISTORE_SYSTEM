@@ -92,7 +92,7 @@
                                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                                         <i class="fas fa-minus"></i>
                                     </a>
-                                    <input class="quantity fw-bold text-black" min="0" name="quantity" value="1" max="${product.stockQuantity}" type="number">
+                                    <input class="quantity fw-bold text-black" min="1" name="quantity" value="1" max="${product.stockQuantity}" type="number">
                                     <a role="button" class="quantity-button"
                                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                                         <i class="fas fa-plus"></i>
@@ -126,7 +126,9 @@
                         <div class="col">
                             <div class="item mb-4 text-center">
                                 <div class="card border-0 shadow align-items-center">
-                                    <img src="${proCate.imgPath}" class="card-img-top" alt="">
+                                    <a href="MainController?action=viewProduct&pid=${proCate.productID}&cateID=${proCate.cateID}">
+                                        <img src="${proCate.imgPath}" class="card-img-top" alt="">
+                                    </a>
                                     <div class="card-body">
                                         <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProduct&pid=${proCate.productID}&cateID=${proCate.cateID}">${proCate.productName}</a></h5>
                                         <span class="bricked-price mx-2">$${proCate.price}</span>

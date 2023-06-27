@@ -51,6 +51,7 @@ public class ViewCartServlet extends HttpServlet {
                 HashMap<String, Float> priceList = new HashMap<>();
                 HashMap<String, String> nameList = new HashMap<>();
                 HashMap<String, String> imgList = new HashMap<>();
+                HashMap<String, String> desList = new HashMap<>();
                 for (String pid : pidList) {
                     int quantity = cart.get(pid);
                     Product p = ProductDAO.getProductInfo(pid);
@@ -58,12 +59,14 @@ public class ViewCartServlet extends HttpServlet {
                     priceList.put(pid, p.getPrice());
                     nameList.put(pid, p.getProductName());
                     imgList.put(pid, p.getImgPath());
+                    desList.put(pid, p.getDescription());
                 }
 
                 session.setAttribute("totalMoney", money);
                 session.setAttribute("priceList", priceList);
                 session.setAttribute("nameList", nameList);
                 session.setAttribute("imgList", imgList);
+                session.setAttribute("desList", desList);
                 session.setAttribute("voucherList", voucherList);
 //                session.setAttribute("voucher", null);
             }

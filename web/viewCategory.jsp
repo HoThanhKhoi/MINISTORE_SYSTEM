@@ -73,7 +73,7 @@
                     </div>
 
                     <div class="item">
-                        <a class="sub-btn">
+                        <a href="MainController?action=viewVouchers" class="sub-btn">
                             <span><i class="fa-solid fa-tag mx-3"></i></span>
                             <span>Voucher</span>
                         </a>

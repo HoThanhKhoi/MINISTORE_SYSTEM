@@ -19,10 +19,10 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap"
               rel="stylesheet">
 
-         <!-- boostrap -->
+        <!-- boostrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        
+
         <!-- toastr -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
@@ -34,16 +34,15 @@
         <!-- HEADER -->
         <nav class="header navbar">
             <div class="container-fluid">
-                <ul class="nav nav-2 navbar-nav align-items-center">
+                <ul class="nav nav-3 navbar-nav align-items-center">
                     <li class="nav-item">
-                        <a href="homePage.jsp">
+                        <a href="managerDashboard.jsp">
                             <i class="fa-solid fa-house"></i>
                         </a>
                     </li>
+                    
                     <li class="nav-item header-title">
-                        <a href="managerDashboard.jsp" class="nav-link">
-                            <h3>Dashboard</h3> 
-                        </a>
+                        <h3>Manager Dashboard</h3> 
                     </li>
                 </ul>
 
