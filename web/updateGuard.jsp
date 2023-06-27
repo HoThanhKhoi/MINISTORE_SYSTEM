@@ -261,5 +261,11 @@
                 inactiveBtn.href = "MainController?action=updateUser&userid=" + userID + "&username=" + userName.value + "&phone=" + phone.value + "&status=" + status.value + "&roleid=" + roleID;
             });
         </script>
+
+        <script>
+            if (window.history.replaceState) {
+                window.history.replaceState(null, null, "MainController?action=viewGuards");
+            }
+        </script>
     </body>
 </html>

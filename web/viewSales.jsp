@@ -63,25 +63,25 @@
                             </div>
 
                             <div class="item">
-                                <a href="viewCategory.jsp" class="sub-btn">
-                                    <span><i class="fa-solid fa-bars-staggered mx-3"></i></span>
-                                    <span>Category</span>
-                                </a>
-                            </div>
+                                    <a href="MainController?action=viewAllCategories" class="sub-btn">
+                                        <span><i class="fa-solid fa-bars-staggered mx-3"></i></span>
+                                        <span>Category</span>
+                                    </a>
+                                </div>
 
-                            <div class="item">
-                                <a  href="viewProduct.jsp" class="sub-btn">
-                                    <span><i class="fa-solid fa-box mx-3"></i></span>
-                                    <span>Product</span>
-                                </a>
-                            </div>
+                                <div class="item">
+                                    <a  href="MainController?action=viewAllProducts" class="sub-btn">
+                                        <span><i class="fa-solid fa-box mx-3"></i></span>
+                                        <span>Product</span>
+                                    </a>
+                                </div>
 
-                            <div class="item">
-                                <a href="MainController?action=viewVouchers" class="sub-btn">
-                                    <span><i class="fa-solid fa-tag mx-3"></i></span>
-                                    <span>Voucher</span>
-                                </a>
-                            </div>
+                                <div class="item">
+                                    <a href="MainController?action=viewVouchers" class="sub-btn">
+                                        <span><i class="fa-solid fa-tag mx-3"></i></span>
+                                        <span>Voucher</span>
+                                    </a>
+                                </div>
 
                             <div class="item">
                                 <a class="sub-btn">

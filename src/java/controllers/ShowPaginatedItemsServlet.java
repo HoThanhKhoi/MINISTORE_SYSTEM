@@ -41,10 +41,12 @@ public class ShowPaginatedItemsServlet extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             int pageNumber = Integer.parseInt(request.getParameter("page"));
             String items = request.getParameter("items");
+            ArrayList<String> imgList = CategoryDAO.getImgPath();
             int itemPerPage = 6;
             if (items.equals("category")) {
                 ArrayList<Category> cateList = CategoryDAO.getPaginatedCategory(pageNumber, itemPerPage);
                 request.setAttribute("cplist", cateList);
+                request.setAttribute("imgList", imgList);
                 request.setAttribute("page", pageNumber);
                 request.getRequestDispatcher("viewCategory.jsp").forward(request, response);
             } else if(items.equals("product")){

@@ -36,12 +36,15 @@ public class ViewAllVouchersServlet extends HttpServlet {
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+           
             ArrayList<Voucher> vouchersList = VoucherDAO.getAllVouchers();
             if (vouchersList != null && !vouchersList.isEmpty()) {
                 request.setAttribute("vouchersList", vouchersList);
+                request.setAttribute("signal", 1);
                 request.getRequestDispatcher("viewVouchers.jsp").forward(request, response);
             } else {
                 request.setAttribute("error", "You don't have any vouchers.");
+                
                 request.getRequestDispatcher("viewVouchers.jsp").forward(request, response);
             }
         }

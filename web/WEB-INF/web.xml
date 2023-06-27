@@ -252,6 +252,10 @@
         <servlet-name>ViewAllOrdersServlet</servlet-name>
         <servlet-class>controllers.ViewAllOrdersServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ShowPaginatedVouchersServlet</servlet-name>
+        <servlet-class>controllers.ShowPaginatedVouchersServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ResetPassServlet</servlet-name>
         <url-pattern>/ResetPassServlet</url-pattern>
@@ -495,6 +499,10 @@
     <servlet-mapping>
         <servlet-name>ViewAllOrdersServlet</servlet-name>
         <url-pattern>/ViewAllOrdersServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowPaginatedVouchersServlet</servlet-name>
+        <url-pattern>/ShowPaginatedVouchersServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

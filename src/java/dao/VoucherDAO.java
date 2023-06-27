@@ -221,4 +221,19 @@ public class VoucherDAO {
         }
         return result;
     }
+    
+    public static ArrayList<Voucher> getPaginatedVouchers(int pageNumber, int voucherPerPage,ArrayList<Voucher> voucherList) throws Exception{
+        ArrayList<Voucher> list = new ArrayList<>();
+      
+        Connection cn = DBUtils.makeConnection();
+        int start = (pageNumber - 1) * voucherPerPage;
+        int end = start + voucherPerPage - 1;
+        if (end > voucherList.size() || end == voucherList.size()) {
+            end = voucherList.size() - 1;
+        }
+        for (int i = start; i <= end; i++) {
+            list.add(voucherList.get(i));
+        }
+        return list;
+    }
 }
