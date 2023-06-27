@@ -367,23 +367,42 @@
 
                 <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center ">
-                        <li class="page-item">
-                            <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showPage&page=${requestScope.page-1}" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <% int totalProduct = ProductDAO.getTotalProduct();
-                            int element = 20;
-                            float numOfPages = (float) totalProduct / element;
-                        %>
-                        <%for (int i = 1; i <= (int) Math.ceil(numOfPages); i++) {%>
-                        <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showPage&page=<%=i%>"><%=i%></a></li>
-                            <% }%>
-                        <li class="page-item">
-                            <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showPage&page=${requestScope.page+1}" aria-label="Next">
+                        <c:if test="${requestScope.page == 1 || requestScope.page == null}">
+                            <li class="page-item">
+                                <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showPage&page=1" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        </c:if>
+                        <c:if test="${requestScope.page > 1}">
+                            <li class="page-item">
+                                <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showPage&page=${requestScope.page-1}" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        </c:if>
+
+                        <c:set var="totalProducts" value="${ProductDAO.getTotalProduct()}"/>
+                        <c:set var="numOfPages" value="${Math.ceil(totalProducts / 20)}"/>
+                        <fmt:formatNumber value="${numOfPages}" pattern="0" var="intNumPage" />
+                        <c:forEach var="i" begin="1" end="${numOfPages}" step="1">
+                            <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showPage&page=${i}">${i}</a></li>
+                       </c:forEach>
+                        <c:if test="${requestScope.page >= numOfPages  }">
+                            <li class="page-item">
+                            <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showPage&page=${intNumPage}" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
                             </a>
                         </li>
+                        </c:if>
+                        <c:if test="${requestScope.page <  numOfPages || requestScope.page == null}">
+                            <li class="page-item">
+                            <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showPage&page=${requestScope.page + 1}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                        </c:if>
+                        
                     </ul>
                 </nav>
             </div>

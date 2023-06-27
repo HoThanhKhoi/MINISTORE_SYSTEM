@@ -1,5 +1,7 @@
 package controllers;
 
+import java.time.LocalDate;
+import java.time.temporal.WeekFields;
 import dao.CategoryDAO;
 import dao.ProductDAO;
 import dao.UserDAO;
@@ -96,10 +98,26 @@ public class main {
 //        for (int i = 0; i < list.size(); i++) {
 //            System.out.println(list.get(i).getCateName());
 //        }
-        
-        ArrayList<String> imgList = CategoryDAO.getImgPath();
-        for (String string : imgList) {
-            System.out.println(string);
+//        ArrayList<String> imgList = CategoryDAO.getImgPath();
+//        for (String string : imgList) {
+//            System.out.println(string);
+//        }
+// ArrayList<Voucher> uvlist = VoucherDAO.getAllVouchers();
+//                ArrayList<Voucher> list = VoucherDAO.getPaginatedVouchers(2, 6,uvlist);
+//             for (int i = 0; i < list.size(); i++) {
+//            System.out.println(list.get(i).getVoucherCode());
+//        }   
+        LocalDate startDate = LocalDate.of(2023, 1, 1);
+        LocalDate endDate = LocalDate.of(2023, 12, 31);
+
+        LocalDate current = startDate;
+        WeekFields weekFields = WeekFields.ISO;
+
+        while (current.isBefore(endDate) || current.isEqual(endDate)) {
+            int weekNumber = current.get(weekFields.weekOfWeekBasedYear());
+            System.out.println("Week " + weekNumber + ": " + current);
+
+            current = current.plusDays(7);
         }
     }
 }

@@ -182,7 +182,11 @@
 
 
         <script src="js/backToTop.js"></script>
-
+		<script>
+                if (window.history.replaceState) {
+                    window.history.replaceState(null, null, "MainController?action=viewProduct&pid=${product.productID}&cateID=${product.cateID}");
+                }
+        </script>
     </body>
 
 </html>

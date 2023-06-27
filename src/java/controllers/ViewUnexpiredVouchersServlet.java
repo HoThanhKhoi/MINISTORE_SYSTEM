@@ -39,6 +39,7 @@ public class ViewUnexpiredVouchersServlet extends HttpServlet {
             ArrayList<Voucher> vouchersList = VoucherDAO.getVouchers();
             if (vouchersList != null && !vouchersList.isEmpty()) {
                 request.setAttribute("vouchersList", vouchersList);
+                request.setAttribute("signal", 2);
                 request.getRequestDispatcher("viewVouchers.jsp").forward(request, response);
             } else {
                 request.setAttribute("error", "You don't have any vouchers.");

@@ -46,6 +46,7 @@ public class ShowPaginatedItemsServlet extends HttpServlet {
             if (items.equals("category")) {
                 ArrayList<Category> cateList = CategoryDAO.getPaginatedCategory(pageNumber, itemPerPage);
                 request.setAttribute("cplist", cateList);
+                request.setAttribute("imgList", imgList);
                 request.setAttribute("page", pageNumber);
                 request.setAttribute("imgList", imgList);
                 request.getRequestDispatcher("viewCategory.jsp").forward(request, response);

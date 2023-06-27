@@ -212,9 +212,11 @@ public class ProductDAO {
         Connection cn = DBUtils.makeConnection();
         int start = (pageNumber - 1) * productPerPage;
         int end = start + productPerPage - 1;
-        if (end > productList.size()) {
+        if (end > productList.size() || end == productList.size()) {
             end = productList.size() - 1;
         }
+        
+        
         for (int i = start; i <= end; i++) {
             list.add(productList.get(i));
         }
@@ -227,7 +229,7 @@ public class ProductDAO {
         Connection cn = DBUtils.makeConnection();
         int start = (pageNumber - 1) * productPerPage;
         int end = start + productPerPage - 1;
-        if (end > productList.size()) {
+        if (end > productList.size() || end == productList.size()) {
             end = productList.size() - 1;
         }
         for (int i = start; i <= end; i++) {

@@ -16,13 +16,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author ACER
+ * @author Admin
  */
-public class ViewExpiredVouchersServlet extends HttpServlet {
+public class ShowPaginatedVouchersServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,14 +36,34 @@ public class ViewExpiredVouchersServlet extends HttpServlet {
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            ArrayList<Voucher> vouchersList = VoucherDAO.getExpiredVouchers();
-            if (vouchersList != null && !vouchersList.isEmpty()) {
-                request.setAttribute("vouchersList", vouchersList);
-                request.setAttribute("signal", 3);
+            /* TODO output your page here. You may use following sample code. */
+            int signal = Integer.parseInt(request.getParameter("signal"));
+            int pageNumber = Integer.parseInt(request.getParameter("page"));
+            int voucherPerPage = 6;
+            if (signal == 1) {
+                ArrayList<Voucher> alist = VoucherDAO.getAllVouchers();
+                ArrayList<Voucher> list = VoucherDAO.getPaginatedVouchers(pageNumber, voucherPerPage, alist);
+                request.setAttribute("vlist", list);
+                request.setAttribute("signal", 1);
+                request.setAttribute("vouchersList", alist);
+                request.setAttribute("page", pageNumber);
                 request.getRequestDispatcher("viewVouchers.jsp").forward(request, response);
-            } else {
-                request.setAttribute("error", "You don't have any vouchers.");
-               
+            } 
+            else if (signal == 2) {
+                ArrayList<Voucher> uvlist = VoucherDAO.getVouchers();
+                ArrayList<Voucher> list = VoucherDAO.getPaginatedVouchers(pageNumber, voucherPerPage, uvlist);
+                request.setAttribute("vlist", list);
+                request.setAttribute("signal", 2);
+                request.setAttribute("vouchersList", uvlist);
+                request.setAttribute("page", pageNumber);
+                request.getRequestDispatcher("viewVouchers.jsp").forward(request, response);
+            } else if (signal == 3) {
+                ArrayList<Voucher> evlist = VoucherDAO.getExpiredVouchers();
+                ArrayList<Voucher> list = VoucherDAO.getPaginatedVouchers(pageNumber, voucherPerPage, evlist);
+                request.setAttribute("vlist", list);
+                request.setAttribute("signal", 3);
+                request.setAttribute("vouchersList", evlist);
+                request.setAttribute("page", pageNumber);
                 request.getRequestDispatcher("viewVouchers.jsp").forward(request, response);
             }
         }
@@ -65,7 +84,7 @@ public class ViewExpiredVouchersServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ViewExpiredVouchersServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ShowPaginatedVouchersServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -83,7 +102,7 @@ public class ViewExpiredVouchersServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ViewExpiredVouchersServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ShowPaginatedVouchersServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

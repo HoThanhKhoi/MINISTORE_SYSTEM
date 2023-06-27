@@ -1,3 +1,5 @@
+<%@page import="dto.Voucher"%>
+<%@page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -126,8 +128,6 @@
                                     <strong class="error">${requestScope.error}</strong>
                                 </div>
                             </c:when>
-
-
                             <c:otherwise>
                                 <table class="table mt-5 text-center">
                                     <thead>
@@ -142,7 +142,73 @@
                                     </thead>
 
                                     <tbody>
-                                        <c:forEach var="voucher" items="${requestScope.vouchersList}" varStatus="status">
+                                        <c:if test="${requestScope.vlist == null}">
+                                            <c:forEach var="voucher" items="${requestScope.vouchersList}" varStatus="status" begin="0" end="5">
+                                                <tr>
+                                                    <td>${voucher.voucherID}</td>
+                                                    <td>${voucher.voucherCode}</td>
+                                                    <td>$${voucher.discount}</td>
+                                                    <td>${voucher.expiredDate}</td>
+                                                    <td>$${voucher.limitPrice}</td>
+                                                    <td>
+                                                        <a href="" data-bs-toggle="modal" data-bs-target="#myModal${status.index}">
+                                                            <i class="update fa-solid fa-pen-to-square mx-2"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+
+
+                                                <!--/*------------------POP UP SCREEN VOUCHER DETAIL------------------*/-->
+                                            <div class="modal" id="myModal${status.index}">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+
+                                                        <form action="MainController" method="post">
+                                                            <!-- Modal Header -->
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title">Update Voucher</h4>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                                            </div>
+
+                                                            <!-- Modal body -->
+                                                            <div class="modal-body">
+                                                                <div class="mb-3 mt-3">
+                                                                    <label for="vid" class="form-label">ID</label>
+                                                                    <input type="text" class="form-control" id="vid" name="voucherID" value="${voucher.voucherID}" readonly="">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="vcode" class="form-label">Voucher Code</label>
+                                                                    <input type="text" class="form-control" id="vcode" name="voucherCode" value="${voucher.voucherCode}">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="vdiscount" class="form-label">Discount</label>
+                                                                    <input type="number" step="0.01" class="form-control" id="vdiscount" name="discount" value="${voucher.discount}">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="vdate" class="form-label">Expired Date</label>
+                                                                    <input type="datetime-local" class="form-control" id="vdate" name="expiredDate" value="${voucher.expiredDate}">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="vprice" class="form-label">Limit Price</label>
+                                                                    <input type="number" step="0.01" class="form-control" id="vprice" name="limitPrice" value="${voucher.limitPrice}">
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Modal footer -->
+                                                            <div class="modal-footer">
+                                                                <button type="submit" class="btn btn-success" name="action" value="updateVoucher">Update</button>
+                                                            </div>
+                                                        </form>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/*--------------------------------------------------------------*/-->
+                                        </c:forEach>
+                                    </c:if>
+
+                                    <c:if test="${requestScope.vlist != null}">
+                                        <c:forEach var="voucher" items="${requestScope.vlist}" varStatus="status">
                                             <tr>
                                                 <td>${voucher.voucherID}</td>
                                                 <td>${voucher.voucherCode}</td>
@@ -158,56 +224,95 @@
 
 
                                             <!--/*------------------POP UP SCREEN VOUCHER DETAIL------------------*/-->
-                                        <div class="modal" id="myModal${status.index}">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
+                                            <div class="modal" id="myModal${status.index}">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
 
-                                                    <form action="MainController" method="post">
-                                                        <!-- Modal Header -->
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title">Update Voucher</h4>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                                        </div>
+                                                        <form action="MainController" method="post">
+                                                            <!-- Modal Header -->
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title">Update Voucher</h4>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                                            </div>
 
-                                                        <!-- Modal body -->
-                                                        <div class="modal-body">
-                                                            <div class="mb-3 mt-3">
-                                                                <label for="vid" class="form-label">ID</label>
-                                                                <input type="text" class="form-control" id="vid" name="voucherID" value="${voucher.voucherID}" readonly="">
+                                                            <!-- Modal body -->
+                                                            <div class="modal-body">
+                                                                <div class="mb-3 mt-3">
+                                                                    <label for="vid" class="form-label">ID</label>
+                                                                    <input type="text" class="form-control" id="vid" name="voucherID" value="${voucher.voucherID}" readonly="">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="vcode" class="form-label">Voucher Code</label>
+                                                                    <input type="text" class="form-control" id="vcode" name="voucherCode" value="${voucher.voucherCode}">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="vdiscount" class="form-label">Discount</label>
+                                                                    <input type="number" step="0.01" class="form-control" id="vdiscount" name="discount" value="${voucher.discount}">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="vdate" class="form-label">Expired Date</label>
+                                                                    <input type="datetime-local" class="form-control" id="vdate" name="expiredDate" value="${voucher.expiredDate}">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="vprice" class="form-label">Limit Price</label>
+                                                                    <input type="number" step="0.01" class="form-control" id="vprice" name="limitPrice" value="${voucher.limitPrice}">
+                                                                </div>
                                                             </div>
-                                                            <div class="mb-3">
-                                                                <label for="vcode" class="form-label">Voucher Code</label>
-                                                                <input type="text" class="form-control" id="vcode" name="voucherCode" value="${voucher.voucherCode}">
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="vdiscount" class="form-label">Discount</label>
-                                                                <input type="number" step="0.01" class="form-control" id="vdiscount" name="discount" value="${voucher.discount}">
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="vdate" class="form-label">Expired Date</label>
-                                                                <input type="datetime-local" class="form-control" id="vdate" name="expiredDate" value="${voucher.expiredDate}">
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="vprice" class="form-label">Limit Price</label>
-                                                                <input type="number" step="0.01" class="form-control" id="vprice" name="limitPrice" value="${voucher.limitPrice}">
-                                                            </div>
-                                                        </div>
 
-                                                        <!-- Modal footer -->
-                                                        <div class="modal-footer">
-                                                            <button type="submit" class="btn btn-success" name="action" value="updateVoucher">Update</button>
-                                                        </div>
-                                                    </form>
+                                                            <!-- Modal footer -->
+                                                            <div class="modal-footer">
+                                                                <button type="submit" class="btn btn-success" name="action" value="updateVoucher">Update</button>
+                                                            </div>
+                                                        </form>
 
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <!--/*--------------------------------------------------------------*/-->
-                                    </c:forEach>
+                                            <!--/*--------------------------------------------------------------*/-->
+                                        </c:forEach>
+                                    </c:if>
                                     </tbody>
                                 </table>
                             </c:otherwise>
                         </c:choose>
+
+                        <nav aria-label="Page navigation example" style="margin: 10px 0;">
+                            <ul class="pagination justify-content-center">
+                                <c:if test="${requestScope.page == 1  || requestScope.page== null}">
+                                    <li class="page-item">
+                                        <a class="page-link" style="padding: 5px 10px !important;color: #1B9C85" href="MainController?action=showVouchersPage&page=1&signal=${requestScope.signal}" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                </c:if>
+                                <c:if test="${requestScope.page > 1}">
+                                    <li class="page-item">
+                                        <a class="page-link" style="padding: 5px 10px !important;color: #1B9C85" href="MainController?action=showVouchersPage&page=${requestScope.page-1}&signal=${requestScope.signal}" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                </c:if>
+
+                                <%
+                                    ArrayList<Voucher> list = (ArrayList<Voucher>) request.getAttribute("vouchersList");
+                                    int totalVouchers = list.size();
+                                    int element = 6;
+                                    float numOfSearchPages = (float) totalVouchers / element;
+                                %>
+                                <%for (int i = 1; i <= (int) Math.ceil(numOfSearchPages); i++) {%>
+                                <li class="page-item "><a class="page-link " style="padding:5px 10px !important;color: #1B9C85" 
+                                                          href="MainController?action=showVouchersPage&page=<%=i%>&signal=${requestScope.signal}"><%=i%></a></li>
+                                    <% }%>
+
+                                <li class="page-item">
+                                    <a class="page-link" style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showVouchersPage&page=${requestScope.page + 1}&signal=${requestScope.signal}" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </nav>
+
 
                     </div>
 
