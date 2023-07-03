@@ -54,7 +54,7 @@ public class AddEmployeeServlet extends HttpServlet {
                 request.setAttribute("error", "Email was wrong(example@gmail.com)");
                 request.getRequestDispatcher("MainController?action=addEmployeePage&roleid" + roleID).forward(request, response);
             } else {
-                int result = UserDAO.insertAccount(name, phone, address, email, password, status, roleID, worksheetID);
+                int result = UserDAO.insertAccount(name, phone, address, email, password, status, roleID);
                 if (result == 1) {
                     if (roleID == 2) {
                         request.getRequestDispatcher("ViewGuardServlet").forward(request, response);

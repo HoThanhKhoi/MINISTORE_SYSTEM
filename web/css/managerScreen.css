@@ -612,4 +612,16 @@ a.btn_add:hover {
     border: 2px solid #1B9C85;
 }
 
+.noti-key {
+    margin-left:5%;
+    margin-top:3%;
+    margin-bottom:3%;
+    color: rgba(0, 0, 0, 0.75);     
+}
+
+.noti-key strong {
+    color: #000;
+    margin-left: 5px;
+}
+
 

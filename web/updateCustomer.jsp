@@ -262,5 +262,10 @@
                 });
             });
         </script>
+         <script>
+            if (window.history.replaceState) {
+                window.history.replaceState(null, null, "MainController?action=viewCustomerDetailsPage&userid=${requestScope.cus.userID}");
+            }
+        </script>
     </body>
 </html>

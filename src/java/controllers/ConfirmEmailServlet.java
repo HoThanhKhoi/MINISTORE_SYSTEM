@@ -41,7 +41,7 @@ public class ConfirmEmailServlet extends HttpServlet {
             String phone = (String) request.getParameter("phone");
             String password = (String) request.getParameter("password");
             String email = request.getParameter("email");
-            int result = UserDAO.insertAccount(userName, phone, null, email, password, 1, 3, null);
+            int result = UserDAO.insertAccount(userName, phone, null, email, password, 1, 3);
             if (result == 1) {
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             }

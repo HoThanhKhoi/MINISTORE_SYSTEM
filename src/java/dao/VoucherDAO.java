@@ -221,7 +221,7 @@ public class VoucherDAO {
         }
         return result;
     }
-    
+
     public static ArrayList<Voucher> getSearchedVouchers(String keyword) throws Exception {
         ArrayList<Voucher> list = new ArrayList<>();
         Connection cn = null;
@@ -255,9 +255,11 @@ public class VoucherDAO {
                     e.printStackTrace();
                 }
             }
-    public static ArrayList<Voucher> getPaginatedVouchers(int pageNumber, int voucherPerPage,ArrayList<Voucher> voucherList) throws Exception{
+        }
+    return list;
+    }
+    public static ArrayList<Voucher> getPaginatedVouchers(int pageNumber, int voucherPerPage, ArrayList<Voucher> voucherList) throws Exception {
         ArrayList<Voucher> list = new ArrayList<>();
-      
         Connection cn = DBUtils.makeConnection();
         int start = (pageNumber - 1) * voucherPerPage;
         int end = start + voucherPerPage - 1;

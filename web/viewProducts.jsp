@@ -1,6 +1,7 @@
 
 <%@page import="dao.ProductDAO"%>
 <%@page import="dao.CategoryDAO"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -111,18 +112,15 @@
                         <div class="row group-form">
                             <div class="col">
                                 <form class="search text-center d-flex align-items-center" action="MainController" metohd="post">
-                                    <input name="keyword" type="text" placeholder="Search...">
+                                    <input name="keyword" type="text" placeholder="Search..." value="${param.keyword == null ? '' : param.keyword}">
                                     <button id="search-button" type="submit" name="action" value="getSearchedProduct" class="btn">
                                         <i class="fas fa-search"></i>
                                     </button>
                                 </form>
                             </div>
-
-
-
                             <div class="add col-2">
-                                <form>
-                                    <button>Add</button>
+                                <form action="MainController" method="post">
+                                    <button name="action" value="viewAddPage">Add</button>
                                 </form>
                             </div>
                         </div>   
@@ -356,29 +354,43 @@
                                         <c:set var="size" value="${ProductDAO.getProducts().size()}"/>
                                         <c:set var="numOfPage" value="${Math.ceil(size / 6)}"/>
                                         <c:set var="pageNum" value="${requestScope.page}"/>
+                                        <fmt:formatNumber value="${pageNum}" pattern="0" var="intNumPage" />
+                                        <fmt:formatNumber value="${numOfPage}" pattern="0" var="intLastPage" />
                                         <c:if test="${requestScope.page == 0 || requestScope.page == null}">
                                             <c:set var="pageNum" value="1"/>
                                         </c:if>
-                                        <c:if test="${pageNum==1 || pageNum==2}">
-                                            <c:forEach var="i" begin="1" end="5" step="1">
-                                                <li class="page-item "><a class="page-link " style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=${i}&items=product">${i}</a></li>
+                                        <c:if test="${numOfPage >= 5}">
+                                            <c:if test="${pageNum==1 || pageNum==2}">
+                                                <c:forEach var="i" begin="1" end="5" step="1">
+                                                    <li class="page-item "><a class="page-link " style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=${i}&items=product">${i}</a></li>
+                                                    </c:forEach>
+                                                </c:if>
+                                                <c:if test="${pageNum > 2 && pageNum < numOfPage}">
+                                                    <c:forEach var="i" begin="${pageNum -2}" end="${pageNum+2}" step="1">
+                                                    <li class="page-item "><a class="page-link " style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=${i}&items=product">${i}</a></li>
+
                                                 </c:forEach>
                                             </c:if>
-                                            <c:if test="${pageNum > 2 && pageNum < numOfPage}">
-                                                <c:forEach var="i" begin="${pageNum -2}" end="${pageNum+2}" step="1">
-                                                <li class="page-item "><a class="page-link " style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=${i}&items=product">${i}</a></li>
-                                                </c:forEach>
+                                        </c:if>
+
+                                        <c:if test="${numOfPage >= 10}">
+                                            <c:if test="${pageNum <= numOfPage - 2}">
+                                                <li class="page-item "><a class="page-link " style="padding:5px 10px !important;color: #1B9C85" href="#">...</a></li>
+                                                <li class="page-item ">
+                                                    <a class="page-link " style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=${intLastPage}&items=product">${intLastPage}</a>
+                                                </li>
                                             </c:if>
-                                            <c:if test="${pageNum == numOfPage}">
+                                        </c:if>
+                                        <c:if test="${pageNum >= numOfPage}">
                                             <li class="page-item">
-                                                <a class="page-link" style="padding: 5px 10px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=${numOfPage}&items=product" aria-label="Next">
+                                                <a class="page-link" style="padding: 5px 10px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=${intNumPage}&items=product" aria-label="Next">
                                                     <span aria-hidden="true">&raquo;</span>
                                                 </a>
                                             </li>
                                         </c:if>
-                                        <c:if test="${pageNum < numOfPage}">
+                                        <c:if test="${pageNum < numOfPage || pageNum == null}">
                                             <li class="page-item">
-                                                <a class="page-link" style="padding: 5px 10px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=${pageNum}&items=product" aria-label="Next">
+                                                <a class="page-link" style="padding: 5px 10px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=${pageNum + 1}&items=product" aria-label="Next">
                                                     <span aria-hidden="true">&raquo;</span>
                                                 </a>
                                             </li>
@@ -444,8 +456,7 @@
                                         </c:if>
                                         <c:forEach var="i" begin="1" end="${numOfOutPages}" step="1">
                                             <li class="page-item "><a class="page-link " style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showAlertItemsPage&page=${i}&items=product&signal=3">${i}</a></li>
-
-                                        </c:forEach>
+                                            </c:forEach>
 
                                         <li class="page-item">
                                             <a class="page-link" style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showAlertItemsPage&page=${requestScope.page+1}&items=product&signal=3" aria-label="Next">
@@ -496,15 +507,15 @@
                                             <c:forEach var="i" begin="${pageNum - 2}" end="${pageNum + 2}" step="1">
                                                 <li class="page-item "><a class="page-link " style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showSearchedItemsPage&page=${i}&items=product&keyword=${requestScope.keyword}">${i}</a></li>
                                                 </c:forEach>           
-                                            </c:if>            
-
-
+                                            </c:if>
 
                                         <li class="page-item">
                                             <a class="page-link" style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showSearchedItemsPage&page=${requestScope.page+1}&items=product&keyword=${requestScope.keyword}" aria-label="Next">
                                                 <span aria-hidden="true">&raquo;</span>
                                             </a>
                                         </li>
+                                        <li class="page-item ">...</li>
+                                        <li class="page-item "><a class="page-link " style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showSearchedItemsPage&page=${numOfSearchPages}&items=product&keyword=${requestScope.keyword}">${numOfSearchPages}</a></li>
                                     </ul>
                                 </nav>
                             </c:when>

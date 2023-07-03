@@ -167,7 +167,7 @@
                                                             <label for="" class="form-label">Image</label>
                                                             <select name="imgpath">
                                                                 <c:forEach var="image" items="${imgList}">
-                                                                    <option value="${image}">${image}</option>
+                                                                    <option value="${image}"  data-image="${image}"></option>
                                                                 </c:forEach>
                                                             </select>
                                                         </div>
@@ -227,7 +227,7 @@
                                                             <select name="imgpath">
                                                                 <option selected>${cate.imgPath}</option>
                                                                 <c:forEach var="image" items="${imgList}">
-                                                                    <option value="${image}">${image}</option>
+                                                                    <option value="${image}" style="background-image: url(${image})"></option>
                                                                 </c:forEach>
                                                             </select>
                                                         </div>

@@ -21,9 +21,8 @@ public class User implements Serializable {
     private String password;
     private int status;
     private int role;
-    private String worksheetID;
 
-    public User(String userID, String name, String phone, String address, String email, String password, int status, int role, String worksheetID) {
+    public User(String userID, String name, String phone, String address, String email, String password, int status, int role) {
         this.userID = userID;
         this.name = name;
         this.phone = phone;
@@ -32,7 +31,6 @@ public class User implements Serializable {
         this.password = password;
         this.status = status;
         this.role = role;
-        this.worksheetID = worksheetID;
     }
 
    public String getUserID() {
@@ -99,12 +97,5 @@ public class User implements Serializable {
         this.role = role;
     }
 
-    public String getWorksheetID() {
-        return worksheetID;
-    }
-
-    public void setWorksheetID(String worksheetID) {
-        this.worksheetID = worksheetID;
-    }
 
 }

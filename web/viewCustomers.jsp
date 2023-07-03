@@ -1,5 +1,6 @@
 
 <%@page import="dao.UserDAO"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -106,7 +107,7 @@
                     <!-- table -->
                     <div class="dashboard mt-5">
                         <form class="search text-center d-flex align-items-center" action="MainController" method="get">
-                            <input type="text" placeholder="Search here..." name="keyword">
+                            <input type="text" placeholder="Search here..." name="keyword" value="${param.keyword == null ? '' : param.keyword}">
                             <button id="search-button" type="submit" class="btn" name="action" value="searchUsers">
                                 <i class="fas fa-search"></i>
                             </button>
@@ -224,40 +225,73 @@
                             <c:when test="${requestScope.keyword == null}">
                                 <nav aria-label="Page navigation example">
                                     <ul class="pagination justify-content-center">
-                                        <li class="page-item">
-                                            <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=3"><</a>
-                                        </li>
-                                        <% int totalProduct = UserDAO.getUsersByRole(3).size();
-                                            int element = 7;
-                                            float numOfPages = (float) totalProduct / element;
-                                        %>
-                                        <%for (int i = 1; i <= (int) Math.ceil(numOfPages); i++) {%>
-                                        <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=<%=i%>&roleid=3"><%=i%></a></li>
-                                            <% }%>
-                                        <li class="page-item">
-                                            <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page+1}&roleid=3">></a>
-                                        </li>
+                                        
+                                        <c:if test="${requestScope.page > 1}">
+                                            <li class="page-item">
+                                                <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=3"><</a>
+                                            </li>
+                                        </c:if>
+                                        <c:if test="${requestScope.page == 1 || requestScope.page == null}">
+                                            <li class="page-item">
+                                                <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${1}&roleid=3"><</a>
+                                            </li>
+                                        </c:if>
+                                        <c:set var="totalCus" value="${UserDAO.getUsersByRole(3).size()}"/>
+                                        <c:set var="numOfPage" value="${Math.ceil(totalCus / 7)}"/>
+                                        <fmt:formatNumber value="${numOfPage}" pattern="0" var="intLastPage" />
+                                        <c:forEach var="i" begin="1" end="${numOfPage}" step="1">
+                                            <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${i}&roleid=3">${i}</a></li>
+                                        </c:forEach>
+                                            <c:choose>
+                                                <c:when test="${intLastPage > 1}">
+                                                    <c:if test="${requestScope.page < numOfPage || pageNum == null}">
+                                                    <li class="page-item">
+                                                        <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page+1}&roleid=3">></a>
+                                                    </li>
+                                                    </c:if>
+                                                <c:if test="${requestScope.page >= numOfPage}">
+                                                    <li class="page-item">
+                                                        <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${intLastPage}&roleid=3">></a>
+                                                    </li>
+                                                </c:if>
+                                                </c:when>
+                                                <c:when test="${intLastPage <= 1}">
+                                                    <c:if test="${pageNum == 1 || pageNumm == null}">
+                                                    <li class="page-item">
+                                                        <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="#">></a>
+                                                    </li>
+                                                    </c:if>
+                                                   
+                                                </c:when>
+                                        </c:choose>
                                     </ul>
                                 </nav>
                             </c:when>
                             <c:otherwise>
                                 <nav aria-label="Page navigation example">
                                     <ul class="pagination justify-content-center">
-                                        <li class="page-item">
-                                            <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=3&keyword=${requestScope.keyword}""><</a>
+                                        <c:if test="${requestScope.pageNum > 1}"> 
+                                            <li class="page-item">
+                                            <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=3&keyword=${requestScope.keyword}"><</a>
                                         </li>
-                                        <%
-                                            String keyword = request.getParameter("keyword");
-                                            int totalSearchProduct = UserDAO.searchUsers(3, keyword).size();
-                                            int elementPerPage = 7;
-                                            float numOfSSearrchPages = (float) totalSearchProduct / elementPerPage;
-                                        %>
-                                        <%for (int i = 1; i <= (int) Math.ceil(numOfSSearrchPages); i++) {%>
-                                        <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showPaginatedUserPage&page=<%=i%>&roleid=3&keyword=${requestScope.keyword}"><%=i%></a></li>
-                                            <% }%>
+                                        </c:if>
+                                        <c:if test="${requestScope.pageNum == 1 || requestScope.pageNum==null}"> 
+                                            <li class="page-item">
+                                            <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${1}&roleid=3&keyword=${requestScope.keyword}"><</a>
+                                        </li>
+                                        </c:if>
+                                        <c:set var="totalSearchProducts" value="${UserDAO.searchUsers(3, requestScope.keyword).size()}"/>
+                                        <c:set var="numOfSSearchPages" value="${Math.ceil(totalSearchProducts / 7)}"/>
+                                        <fmt:formatNumber value="${numOfPage}" pattern="0" var="intLastPage" />
+                                        <c:forEach var="i" begin="1" end="${numOfSSearchPages}">
+                                            <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showPaginatedUserPage&page=${i}&roleid=3&keyword=${requestScope.keyword}">${i}</a></li>
+                                        </c:forEach>
+                                            
                                         <li class="page-item">
                                             <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showPaginatedUserPage&page=${requestScope.page+1}&roleid=3&keyword=${requestScope.keyword}">></a>
                                         </li>
+
+                                        <li class="page-item "><a class="page-link " style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showSearchedItemsPage&page=${numOfSearchPages}&items=product&keyword=${requestScope.keyword}">${numOfSearchPages}</a></li>
                                     </ul>
                                 </nav>
                             </c:otherwise>

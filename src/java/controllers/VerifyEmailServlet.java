@@ -65,7 +65,7 @@ public class VerifyEmailServlet extends HttpServlet {
                 String to = email;// change accordingly
                 String content = "<h1>Email Verification</h1>"
                         + "<p>Thank you for registering. Please click the button below to verify your email address:</p>"
-                        + "<a href=\"http://localhost:3030/Temp-MINISTORE/MainController?action=confirmEmail&email="+email+"&usname="+userName+"&phone="+phone+"&password="+password  
+                        + "<a href=\"http://localhost:3030/TTG_26_6_2023/MainController?action=confirmEmail&email="+email+"&usname="+userName+"&phone="+phone+"&password="+password  
                         + "\">Verify Email</a>";
                 // Get the session object
                 Properties props = new Properties();
@@ -89,12 +89,12 @@ public class VerifyEmailServlet extends HttpServlet {
                     message.setSubject("Hello");
                     message.setContent(content, "text/html; charset=utf-8");
                     // send message
-                    Transport.send(message);
-                    System.out.println("<h3>message sent successfully<h3/>");    
+                    Transport.send(message);  
                 } catch (MessagingException e) {
                     throw new RuntimeException(e);
                 }
-                dispatcher = request.getRequestDispatcher("Waiting.jsp");
+                request.setAttribute("noti", "Please check your email");
+                request.getRequestDispatcher("register.jsp").forward(request, response);
 
                 //request.setAttribute("status", "success");
                 

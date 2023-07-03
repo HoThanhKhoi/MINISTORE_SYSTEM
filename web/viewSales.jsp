@@ -70,7 +70,7 @@
                             </div>
 
                             <div class="item">
-                                <a  href="viewProduct.jsp" class="sub-btn">
+                                <a  href="MainController?action=viewAllProducts" class="sub-btn">
                                     <span><i class="fa-solid fa-box mx-3"></i></span>
                                     <span>Product</span>
                                 </a>
@@ -82,35 +82,30 @@
                                     <span>Voucher</span>
                                 </a>
                             </div>
-
                             <div class="item">
                                 <a class="sub-btn">
                                     <span><i class="fa-solid fa-clipboard-user mx-3"></i></span>
                                     <span>Attendance</span>
                                 </a>
                             </div>
-
                             <div class="item">
                                 <a class="sub-btn">
                                     <span><i class="fa-solid fa-cart-shopping mx-3"></i></span>
                                     <span>Order</span>
                                 </a>
                             </div>
-
                         </div>
                     </div>
-
-
                     <!-- table -->
                     <div class="dashboard mt-5">
-
                         <div class="group-form d-flex justify-content-between">
                             <div class="w-100">
-                                <form class="search text-center d-flex align-items-center">
-                                    <input type="text" placeholder="Search...">
-                                    <button id="search-button" type="button" class="btn">
+                                <form class="search text-center d-flex align-items-center" action="MainController" method="get">
+                                    <input type="text" placeholder="Search..." name="keyword">
+                                    <button id="search-button" type="submit" class="btn" name="action" value="searchUsers">
                                         <i class="fas fa-search"></i>
                                     </button>
+                                <input type="hidden" name="roleid" value="1"/>
                                 </form>
                             </div>                    
 
@@ -123,9 +118,6 @@
                                 </form>                    
                             </div>                    
                         </div>
-
-
-
                         <table class="table mt-4 text-center">
                             <thead>
                                 <tr>
@@ -153,6 +145,7 @@
                                                 <c:otherwise><td><span class="status_btn status_completed">Active</span> </td></c:otherwise>
                                             </c:choose>
                                         <input type="hidden" name="userid" value="${sale.userID}"/>
+                                        <input type="hidden" name="roleid" value="1"/>
                                         <td>
                                             <button type="submit" name="action" value="viewSaleDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
                                         </td>
@@ -174,9 +167,12 @@
                                                 <c:otherwise><td><span class="status_btn status_completed">Active</span></td></c:otherwise>
                                             </c:choose>
                                         <input type="hidden" name="userid" value="${sale.userID}"/>
+                                        <input type="hidden" name="roleid" value="1"/>
                                         <td>
-                                            <button type="submit" name="action" value="viewSaleDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
+                                            <button type="submit" name="action" value="viewSaleDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2"></i></button>
+                                            <button type="submit" name="action" value="deleteEmployee"><i class="delete fa-regular fa-trash-can"></i></button>
                                         </td>
+
                                         </tr>
                                     </form>
                                 </c:forEach>
@@ -210,6 +206,31 @@
 
 
                 </div>
+                <c:if test="${requestScope.noti != null}">
+                    <script>
+                        $(function () {
+                            toastr.options = {
+                                "closeButton": true,
+                                "debug": false,
+                                "newestOnTop": false,
+                                "progressBar": false,
+                                "positionClass": "toast-top-center",
+                                "preventDuplicates": false,
+                                "onclick": null,
+                                "showDuration": "300",
+                                "hideDuration": "1000",
+                                "timeOut": "5000",
+                                "extendedTimeOut": "1000",
+                                "showEasing": "swing",
+                                "hideEasing": "linear",
+                                "showMethod": "fadeIn",
+                                "hideMethod": "fadeOut"
+                            };
+                            toastr.success("${requestScope.noti}");
+                        });
+                    </script>
+                    <c:set scope="request" var="noti" value="${null}"/>
+                </c:if>
                 <footer>
                     <c:import url="footer.jsp" />
                 </footer>

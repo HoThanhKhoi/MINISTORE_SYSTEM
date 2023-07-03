@@ -164,6 +164,12 @@ public class MainController extends HttpServlet {
                 url="AddNewCategoryServlet";
             } else if (action.equalsIgnoreCase("searchVoucher")) {
                 url = "SearchVouchersServlet";
+            } else if (action.equalsIgnoreCase("deleteEmployee")) {
+                url = "DeleteEmployeeServlet";
+            } else if (action.equalsIgnoreCase("viewAddPage")) {
+                url = "addProduct.jsp";
+            } else if (action.equalsIgnoreCase("addProduct")) {
+                url = "AddNewProductServlet";
             }
             
 

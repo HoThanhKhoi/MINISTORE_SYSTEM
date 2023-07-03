@@ -45,6 +45,11 @@ public class SearchUsersServlet extends HttpServlet {
                     request.setAttribute("searchedCusList", list);
                     request.setAttribute("keyword", keyword);
                     request.getRequestDispatcher("viewCustomers.jsp").forward(request, response);
+                } else if (roleid == 1) {
+                    request.setAttribute("salesList", list);
+                    request.setAttribute("keyword", keyword);
+                    request.getRequestDispatcher("viewSales.jsp").forward(request, response);
+
                 }
 
             }

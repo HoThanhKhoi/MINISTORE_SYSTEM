@@ -192,24 +192,15 @@
                                                         <a role="button" id="active" style="background-color: #F6F5DB;color:black;text-decoration: none" href="" >Active</a>
                                                         <a role="button" id="inactive" style="background-color: #FF5B5B;color:black;text-decoration: none" href="">Inactive</a>
                                                     </c:otherwise>    
-
                                                 </c:choose>
-
-
                                                 <input type="hidden" id="s" name="status" value="1"/>                               
                                             </div>
                                         </div>
-
                                     </form>
-
-
                                 </div> 
-
                             </div>
-
                         </div>
                     </div>
-
                 </div>
             </c:otherwise>
         </c:choose>
@@ -239,6 +230,11 @@
                 console.log(status.value);
                 inactiveBtn.href = "MainController?action=updateUser&userid=" + userID + "&username=" + userName.value + "&phone=" + phone.value + "&status=" + status.value + "&roleid=" + roleID;
             });
+        </script>
+        <script>
+            if (window.history.replaceState) {
+                window.history.replaceState(null, null, "MainController?action=viewSaleDetailsPage&userid=${requestScope.sale.userID}");
+            }
         </script>
     </body>
 </html>

@@ -303,6 +303,10 @@
                 });
             });
         </script>
-
+        <script>
+            if (window.history.replaceState) {
+                window.history.replaceState(null, null, "MainController?action=showUserPage&roleid=${requestScope.roleID}");
+            }
+        </script>
     </body>
 </html>

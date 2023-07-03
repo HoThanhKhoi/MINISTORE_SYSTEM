@@ -1,6 +1,7 @@
 <%@page import="dto.Voucher"%>
 <%@page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -112,7 +113,7 @@
                     <div class="dashboard">
                         <div class="group-form d-flex justify-content-between mx-3"> 
                             <form action="MainController" method="get" class="search text-center d-flex align-items-center">
-                                <input type="text" placeholder="Search..." name="keyword" value="${param.keyword}">
+                                <input type="text"  placeholder="Search..." name="keyword" value="${param.keyword == null ? "" : param.keyword}">
                                 <button id="search-button" type="submit" class="btn" name="action" value="searchVoucher">
                                     <i class="fas fa-search"></i>
                                 </button>
@@ -293,28 +294,50 @@
                                 </c:if>
                                 <c:if test="${requestScope.page > 1}">
                                     <li class="page-item">
-                                        <a class="page-link" style="padding: 5px 10px !important;color: #1B9C85" href="MainController?action=showVouchersPage&page=${requestScope.page-1}&signal=${requestScope.signal}" aria-label="Previous">
+                                        <a class="page-link" style="padding: 5px 10px !important;color: #1B9C85" href="MainController?action=showVouchersPage&page=${requestScope.page-1}&signal=${requestScope.signal}&keyword=${keyword}" aria-label="Previous">
                                             <span aria-hidden="true">&laquo;</span>
                                         </a>
                                     </li>
                                 </c:if>
 
-                                <%
-                                    ArrayList<Voucher> list = (ArrayList<Voucher>) request.getAttribute("vouchersList");
-                                    int totalVouchers = list.size();
-                                    int element = 6;
-                                    float numOfSearchPages = (float) totalVouchers / element;
-                                %>
-                                <%for (int i = 1; i <= (int) Math.ceil(numOfSearchPages); i++) {%>
-                                <li class="page-item "><a class="page-link " style="padding:5px 10px !important;color: #1B9C85" 
-                                                          href="MainController?action=showVouchersPage&page=<%=i%>&signal=${requestScope.signal}"><%=i%></a></li>
-                                    <% }%>
+                                <c:set var="voucherList" value="${requestScope.vouchersList}"/>
+                                <c:set var="totalVoucher" value="${voucherList.size()}"/>
+                                <c:set var="numOfSearchPages" value="${Math.ceil(totalVoucher / 6)}"/>
+                                <c:set var="keyword" value="${requestScope.keyword}"/>
+                                <fmt:formatNumber value="${numOfSearchPages}" pattern="0" var="intLastPage" />
 
-                                <li class="page-item">
-                                    <a class="page-link" style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showVouchersPage&page=${requestScope.page + 1}&signal=${requestScope.signal}" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                </li>
+                                <c:forEach var="i" begin="1" end="${numOfSearchPages}">
+                                    <li class="page-item "><a class="page-link " style="padding:5px 10px !important;color: #1B9C85" 
+                                                              href="MainController?action=showVouchersPage&page=${i}&signal=${requestScope.signal}&keyword=${keyword}">${i}</a></li>
+                                    </c:forEach>
+                                    <c:choose>
+                                        <c:when test="${intLastPage > 1}">
+                                            <c:if test="${requestScope.page <  numOfSearchPages || requestScope.page == null}">
+                                            <li class="page-item">
+                                                <a class="page-link" style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showVouchersPage&page=${requestScope.page + 1}&signal=${requestScope.signal}&keyword=${keyword}" aria-label="Next">
+                                                    <span aria-hidden="true">&raquo;</span>
+                                                </a>
+                                            </li>
+                                        </c:if>                          
+                                        <c:if test="${requestScope.page >=  numOfSearchPages}">
+                                            <li class="page-item">
+                                                <a class="page-link" style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showVouchersPage&page=${intLastPage}&signal=${requestScope.signal}&keyword=${keyword}" aria-label="Next">
+                                                    <span aria-hidden="true">&raquo;</span>
+                                                </a>
+                                            </li>
+                                        </c:if> 
+                                    </c:when>
+                                        <c:when test="${intLastPage <= 1}">
+                                            <c:if test="${requestScope.page == 1 || requestScope.page ==null}">
+                                                 <li class="page-item">
+                                                <a class="page-link" style="padding:5px 10px !important;color: #1B9C85" href="#" aria-label="Next">
+                                                    <span aria-hidden="true">&raquo;</span>
+                                                </a>
+                                            </li>
+                                            </c:if>
+                                        </c:when>
+                                </c:choose>                            
+
 
                             </ul>
                         </nav>
