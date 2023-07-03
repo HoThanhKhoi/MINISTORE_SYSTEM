@@ -255,14 +255,18 @@
     <servlet>
         <servlet-name>AddNewCategoryServlet</servlet-name>
         <servlet-class>controllers.AddNewCategoryServlet</servlet-class>
-        </servlet>
-        <servlet>
+    </servlet>
+    <servlet>
         <servlet-name>ShowPaginatedVouchersServlet</servlet-name>
         <servlet-class>controllers.ShowPaginatedVouchersServlet</servlet-class>
-        </servlet>
-        <servlet>
+    </servlet>
+    <servlet>
         <servlet-name>SearchVouchersServlet</servlet-name>
         <servlet-class>controllers.SearchVouchersServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddNewProductServlet</servlet-name>
+        <servlet-class>controllers.AddNewProductServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ResetPassServlet</servlet-name>
@@ -511,14 +515,18 @@
     <servlet-mapping>
         <servlet-name>ShowPaginatedVouchersServlet</servlet-name>
         <url-pattern>/ShowPaginatedVouchersServlet</url-pattern>
-        </servlet-mapping>
-        <servlet-mapping>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>AddNewCategoryServlet</servlet-name>
         <url-pattern>/AddNewCategoryServlet</url-pattern>
-        </servlet-mapping>
-        <servlet-mapping>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>SearchVouchersServlet</servlet-name>
         <url-pattern>/SearchVouchersServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddNewProductServlet</servlet-name>
+        <url-pattern>/AddNewProductServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

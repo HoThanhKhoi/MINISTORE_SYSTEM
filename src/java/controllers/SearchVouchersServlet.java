@@ -40,6 +40,8 @@ public class SearchVouchersServlet extends HttpServlet {
             ArrayList<Voucher> vouchersList = VoucherDAO.getSearchedVouchers(keyword);
             if (vouchersList != null && !vouchersList.isEmpty()) {
                 request.setAttribute("vouchersList", vouchersList);
+                request.setAttribute("signal", 4);
+                request.setAttribute("keyword", keyword);
                 request.getRequestDispatcher("viewVouchers.jsp").forward(request, response);
             } else {
                 request.setAttribute("error", "Voucher not found.");

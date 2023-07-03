@@ -40,6 +40,7 @@ public class ShowPaginatedVouchersServlet extends HttpServlet {
             int signal = Integer.parseInt(request.getParameter("signal"));
             int pageNumber = Integer.parseInt(request.getParameter("page"));
             int voucherPerPage = 6;
+            String keyword= request.getParameter("keyword");
             if (signal == 1) {
                 ArrayList<Voucher> alist = VoucherDAO.getAllVouchers();
                 ArrayList<Voucher> list = VoucherDAO.getPaginatedVouchers(pageNumber, voucherPerPage, alist);
@@ -63,6 +64,15 @@ public class ShowPaginatedVouchersServlet extends HttpServlet {
                 request.setAttribute("vlist", list);
                 request.setAttribute("signal", 3);
                 request.setAttribute("vouchersList", evlist);
+                request.setAttribute("page", pageNumber);
+                request.getRequestDispatcher("viewVouchers.jsp").forward(request, response);
+            } else if(signal == 4){
+                ArrayList<Voucher> svlist = VoucherDAO.getSearchedVouchers(keyword);
+                ArrayList<Voucher> list = VoucherDAO.getPaginatedVouchers(pageNumber, voucherPerPage, svlist);
+                request.setAttribute("vlist", list);
+                request.setAttribute("signal", 4);
+                request.setAttribute("keyword", keyword);
+                request.setAttribute("vouchersList", svlist);
                 request.setAttribute("page", pageNumber);
                 request.getRequestDispatcher("viewVouchers.jsp").forward(request, response);
             }

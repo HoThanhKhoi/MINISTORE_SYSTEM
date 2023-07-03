@@ -85,7 +85,7 @@ public class ProductDAO {
         Connection cn = DBUtils.makeConnection();
         int start = (pageNumber - 1) * productPerPage;
         int end = start + productPerPage - 1;
-        if (end > productList.size()) {
+        if (end > productList.size() || end == productList.size() ) {
             end = productList.size() - 1;
         }
         for (int i = start; i <= end; i++) {
@@ -148,7 +148,7 @@ public class ProductDAO {
         Connection cn = DBUtils.makeConnection();
         int start = (pageNumber - 1) * productPerPage;
         int end = start + productPerPage - 1;
-        if (end > productList.size()) {
+        if (end > productList.size() || end == productList.size()) {
             end = productList.size() - 1;
         }
         for (int i = start; i <= end; i++) {
@@ -254,6 +254,36 @@ public class ProductDAO {
             result = pst.executeUpdate();
         }
         return result;
+    }
+    
+    public static int addProduct(String pName,float price,String des,int stockQuantity,String imgPath,String cateID) throws Exception{
+        int result = 0;
+         Connection cn = DBUtils.makeConnection();
+         try{
+             if(cn != null){
+                 String sql ="INSERT INTO PRODUCTS (ProductName,Price,Description,StockQuantity,ImgPath,CateID)"
+                         + " VALUES (?,?,?,?,?,?)";
+                 PreparedStatement pst = cn.prepareStatement(sql);
+                 pst.setString(1,pName);
+                 pst.setFloat(2,price);
+                 pst.setString(3,des);
+                 pst.setInt(4, stockQuantity);
+                 pst.setString(5,imgPath);
+                 pst.setString(6,cateID);
+                 result = pst.executeUpdate();
+             }
+         }catch(Exception e){
+         e.printStackTrace();
+        } finally {
+            if (cn != null) {
+                try {
+                    cn.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+         return result;
     }
 //    product = new Product(pid, productName, price, description, quantity, imgPath, cateID);
 }

@@ -57,7 +57,7 @@
                             <div class="button">
                                 <button type="submit" class="btn" value="login" name="action">Login</button>
                             </div>
-                                
+
                         </form>
                         <div class="login-footer">
                             Don't have an account? <a href="MainController?action=register">Register</a>
@@ -66,6 +66,11 @@
                 </div>
 
             </div>
-        </div>        
+        </div>    
+        <script>
+            if (window.history.replaceState) {
+                window.history.replaceState(null, null, "login.jsp");
+            }
+        </script>
     </body>
 </html>

@@ -107,17 +107,7 @@ public class main {
 //             for (int i = 0; i < list.size(); i++) {
 //            System.out.println(list.get(i).getVoucherCode());
 //        }   
-        LocalDate startDate = LocalDate.of(2023, 1, 1);
-        LocalDate endDate = LocalDate.of(2023, 12, 31);
-
-        LocalDate current = startDate;
-        WeekFields weekFields = WeekFields.ISO;
-
-        while (current.isBefore(endDate) || current.isEqual(endDate)) {
-            int weekNumber = current.get(weekFields.weekOfWeekBasedYear());
-            System.out.println("Week " + weekNumber + ": " + current);
-
-            current = current.plusDays(7);
-        }
+    int result =ProductDAO.addProduct("as", Float.parseFloat("20"), "dees", 2, "21", "C-0001");;
+        System.out.println(Math.ceil(4/7));
     }
 }
