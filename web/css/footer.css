@@ -9,10 +9,8 @@ body {
     display: flex; 
     flex-direction: column !important;
     height: 10vh;
-/*    position: fixed;
     left: 0;
-    bottom: 0;
-    width: 100%;*/
+    bottom: 0  !important;
 }
 
 .content {

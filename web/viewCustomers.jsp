@@ -104,9 +104,9 @@
 
 
                     <!-- table -->
-                    <div class="dashboard mt-5">
+                    <div class="dashboard mt-4">
                         <form class="search text-center d-flex align-items-center" action="MainController" method="get">
-                            <input type="text" placeholder="Search here..." name="keyword">
+                            <input type="text" placeholder="Search..." name="keyword">
                             <button id="search-button" type="submit" class="btn" name="action" value="searchUsers">
                                 <i class="fas fa-search"></i>
                             </button>

@@ -106,9 +106,10 @@
                 <c:when test="${requestScope.roleID == 2}">
                     <div class="dashboard mt-5" style="overflow: hidden">
                         <form action="MainController" method="post">
-                            <div class="col d-flex">
+                            <div class="row align-items-center mx-5">
                                 <div class="col-5 cus-info">
-                                    <div class="form">
+                                    <div class="form-item my-5 d-flex align-items-center justify-content-center">
+
                                         <div class="form-item my-5 d-flex align-items-center justify-content-center">
                                             <div class="col-3">
                                                 <label for="">Name</label>
@@ -148,7 +149,7 @@
                                     </div>
                                 </div>
                                 <!-- update status -->
-                                <div class="col-4 update-cus">
+                                <div class="col-5 cus-update">
                                     <div class="form">
                                         <div class="my-5 d-flex align-items-center justify-content-center">
                                             <div class="col-3">
@@ -158,11 +159,11 @@
                                                 <input type="text" disabled placeholder="Guard">
                                             </div>
                                         </div>
-                                        <div class="order my-5 d-flex align-items-center justify-content-center">
+                                        <div class="my-5 d-flex align-items-center">
                                             <div class="col-3">
                                                 <label for="">Schedule</label>
                                             </div>
-                                            <div class="col-9 mx-3" style="width:200px ">
+                                            <div class="col-9">
                                                 <select class="form-select" aria-label="Default select example" name="wid">
                                                     <c:forEach var="worksheet" items="${WorksheetDAO.getAllWorksheets()}">
                                                         <option value="${worksheet.worksheetID}">${worksheet.worksheetName}</option>
@@ -172,7 +173,7 @@
                                             </div>
                                         </div>  
 
-                                        <div class="status my-5 d-flex align-items-center">
+                                        <div class="status status-add my-5 d-flex align-items-center">
                                             <div class="col-3">
                                                 <label for="">Status</label>
                                             </div>
@@ -183,58 +184,58 @@
                                         </div>
                                     </div>    
                                 </div>
-                                <input type="hidden"  value="2" name="roleid"/>
-                                <button id="addBtn" name="action" value="addEmployee">Add</button>
+                                <div class="d-flex justify-content-center">
+                                    <input type="hidden"  value="1" name="roleid"/>
+                                    <button class="add" id="addBtn" name="action" value="addEmployee">Add</button>
+                                </div>
                             </div>
                         </form>
                     </div>
                 </c:when>
                 <c:otherwise>
-                    <div class="col" style="overflow: hidden">
+                    <div class="dashboard cus-dashboard" style="overflow: hidden">
                         <form action="MainController" method="post">
-                            <div class="col d-flex">
+                            <div class="row align-items-center mx-5">
                                 <div class="col-5 cus-info">
-                                    <div class="form">
-                                        <div class="form-item my-5 d-flex align-items-center justify-content-center">
-                                            <div class="col-3">
-                                                <label for="">Name</label>
-                                            </div>
-                                            <div class="col-9">
-                                                <input name="name" type="text" id="name" value="" required="">
-                                            </div>
+                                    <div class="form-item my-5 d-flex align-items-center justify-content-center">
+                                        <div class="col-3">
+                                            <label for="">Name</label>
                                         </div>
-
-                                        <div class="form-item my-5 d-flex align-items-center justify-content-center">
-                                            <div class="col-3">
-                                                <label for="">Phone</label>
-                                            </div>
-                                            <div class="col-9">
-                                                <input name="phone" type="tel" id="phone" value="" required="">
-                                            </div>
+                                        <div class="col-9">
+                                            <input name="name" type="text" id="name" value="" required="">
                                         </div>
+                                    </div>
 
-                                        <div class="form-item my-5 d-flex align-items-center justify-content-center">
-                                            <div class="col-3">
-                                                <label for="" >Address</label>
-                                            </div>
-                                            <div class="col-9">
-                                                <input name="address" type="text" id="phone" value="" >
-                                            </div>
+                                    <div class="form-item my-5 d-flex align-items-center justify-content-center">
+                                        <div class="col-3">
+                                            <label for="">Phone</label>
                                         </div>
+                                        <div class="col-9">
+                                            <input name="phone" type="tel" id="phone" value="" required="">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-item my-5 d-flex align-items-center justify-content-center">
+                                        <div class="col-3">
+                                            <label for="" >Address</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input name="address" type="text" id="phone" value="" >
+                                        </div>
+                                    </div>
 
 
-                                        <div class="form-item my-5 d-flex align-items-center justify-content-center">
-                                            <div class="col-3">
-                                                <label for="">Email</label>
-                                            </div>
-                                            <div class="col-9">
-                                                <input name="email" type="text" id="email" value="${requestScope.cus.email}" required="" >
-                                            </div>
+                                    <div class="form-item my-5 d-flex align-items-center justify-content-center">
+                                        <div class="col-3">
+                                            <label for="">Email</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input name="email" type="text" id="email" value="${requestScope.cus.email}" required="" >
                                         </div>
                                     </div>
                                 </div>
                                 <!-- update status -->
-                                <div class="col-4 update-cus">
+                                <div class="col-5 cus-update">
                                     <div class="form">
                                         <div class="my-5 d-flex align-items-center justify-content-center">
                                             <div class="col-3">
@@ -244,11 +245,11 @@
                                                 <input type="text" disabled placeholder="Sale">
                                             </div>
                                         </div>
-                                        <div class="order my-5 d-flex align-items-center justify-content-center">
+                                        <div class="my-5 d-flex align-items-center">
                                             <div class="col-3">
                                                 <label for="">Schedule</label>
                                             </div>
-                                            <div class="col-6 mx-3" style="width:200px ">
+                                            <div class="col-9">
                                                 <select class="form-select" aria-label="Default select example" name="wid">
                                                     <c:forEach var="worksheet" items="${WorksheetDAO.getAllWorksheets()}">
                                                         <option value="${worksheet.worksheetID}">${worksheet.worksheetName}</option>
@@ -258,7 +259,7 @@
                                             </div>
                                         </div>  
 
-                                        <div class="status my-5 d-flex align-items-center">
+                                        <div class="status status-add my-5 d-flex align-items-center">
                                             <div class="col-3">
                                                 <label for="">Status</label>
                                             </div>
@@ -269,8 +270,10 @@
                                         </div>
                                     </div>    
                                 </div>
-                                <input type="hidden"  value="1" name="roleid"/>
-                                <button id="addBtn" name="action" value="addEmployee">Add</button>
+                                <div class="d-flex justify-content-center">
+                                    <input type="hidden"  value="1" name="roleid"/>
+                                    <button class="add" id="addBtn" name="action" value="addEmployee">Add</button>
+                                </div>
                             </div>
                         </form>
                     </div>

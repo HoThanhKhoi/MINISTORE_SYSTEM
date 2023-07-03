@@ -255,6 +255,10 @@ public class VoucherDAO {
                     e.printStackTrace();
                 }
             }
+        }
+        return list;
+    }
+    
     public static ArrayList<Voucher> getPaginatedVouchers(int pageNumber, int voucherPerPage,ArrayList<Voucher> voucherList) throws Exception{
         ArrayList<Voucher> list = new ArrayList<>();
       

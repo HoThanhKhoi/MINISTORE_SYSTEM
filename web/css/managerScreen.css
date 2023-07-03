@@ -10,6 +10,9 @@ body {
     background-color: #FEFBF6 !important;
 }
 
+.container-fluid {
+    max-height: calc(90vh - 4px) !important;
+}
 
 .active {
     background-color: #fff;
@@ -30,7 +33,7 @@ body {
     transition-property: left;
     overflow-y: auto;
     z-index: 1;
-    height: 90vh !important;
+    min-height: calc(90vh - 4px) !important;
 }
 
 .side-bar::-webkit-scrollbar {
@@ -44,7 +47,6 @@ body {
 .side-bar .menu {
     padding: 10px 0;
     width: 100%;
-    /*margin-top: 30px;*/
 }
 
 .side-bar .menu .item {
@@ -138,17 +140,18 @@ body {
 .dashboard {
     margin-left: 300px;
     padding: 0 40px !important;
-    height: calc(90vh - 30px);
+    min-height: calc(90vh - 30px);
     margin-top: 30px !important;
 }
 
 .search input {
-    width: 80%;
+    width: 300px;
     position: relative;
-    border-radius: 30px;
-    border: 0.5px solid rgba(0, 0, 0, 0.2);
-    padding: 10px 60px !important;
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
+    padding: 8px 50px !important;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 18px;
 }
 
 .search button {
@@ -370,10 +373,10 @@ label {
 /* cus-update */
 .cus-update {
     margin-left: 50px;
-    height: 100%;
+/*    height: 100%;*/
 }
 
-.cus-update form {
+.cus-update .form {
     padding: 40px 0;
     height: 100%;
     display: flex;
@@ -381,7 +384,7 @@ label {
     justify-content: space-between;
 }
 
-.cus-update form input {
+.cus-update  input {
     width: 100%;
     padding: 5px 0;
     border: none;
@@ -389,7 +392,7 @@ label {
     background-color: transparent;
 }
 
-.cus-update form input::placeholder {
+.cus-update  input::placeholder {
     font-weight: 500;
     text-align: center;
 }
@@ -433,7 +436,20 @@ label {
     border-radius:  0 100px 100px 0;
 }
 
+.cus-update .status-add a {
+    border-radius: 100px !important;
+}
 
+.cus-dashboard button {
+    font-size: 16px !important;
+    font-weight: 700;
+    background-color: #1B9C85;
+    color: #fff;
+    border: 2px solid #1B9C85;
+    border-radius: 10px !important;
+    padding: 8px 15px;
+    text-decoration: none;
+}
 
 
 /* My Order */
@@ -544,7 +560,6 @@ label {
 
 
 /* VIEW SALES */
-
 .group-form  .add {
     width: 20%;
     display: flex;
@@ -552,7 +567,8 @@ label {
 }
 
 .group-form  .add button {
-    padding: 10px 20px;
+    min-width: 100px;
+    padding: 10px;
     border: none;
     font-weight: 700;
     background-color: #1B9C85;
@@ -567,14 +583,6 @@ label {
     border: 2px solid #1B9C85;
 }
 
-/*.status_active h5 {
-    color: #74dc9d;
-    font-weight: 500 !important;
-    font-size: 16px;
-    background-color: #e3faef;
-    border-radius: 40px;
-    width: 80px;
-}*/
 
 .filter {
     display: flex;
