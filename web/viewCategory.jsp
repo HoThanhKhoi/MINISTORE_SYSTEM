@@ -104,14 +104,19 @@
 
                     <!-- table -->
                     <div class="dashboard mt-5">
-                        <form class="search text-center d-flex align-items-center">
-                            <input type="text" placeholder="Search...">
-                            <button id="search-button" type="button" class="btn">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </form>
-                        <div class="add col-2">
-                        <a role="button" class="btn btn_add btn-success" data-bs-toggle="modal" data-bs-target="#addModal">Add</a>
+                        <div class="group-form d-flex justify-content-between">
+                            <div>
+                                <form class="search text-center d-flex align-items-center">
+                                    <input type="text" placeholder="Search..." name="keyword">
+                                    <button id="search-button" type="submit" class="btn" name="action">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </form>
+                            </div>                    
+
+                            <div class="add">                    
+                                <a role="button" class="btn btn_add btn-success" data-bs-toggle="modal" data-bs-target="#addModal">Add</a>
+                            </div>                    
                         </div>
 
                         <table class="table mt-4 text-center">
