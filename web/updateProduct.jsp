@@ -158,7 +158,7 @@
 
                                         <div class="form-item my-5">
                                             <label class="mb-2" for="exampleFormControlTextarea1" >Description</label>
-                                            <textarea name="pDes" type="text" id="phone" value="${requestScope.product.description}" class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                                            <textarea name="pDes" type="text" id="phone" value="" class="form-control" id="exampleFormControlTextarea1" rows="4">${requestScope.product.description}</textarea>
                                         </div>             
                                     </form>
                                 </div>

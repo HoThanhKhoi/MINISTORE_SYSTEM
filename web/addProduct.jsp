@@ -144,7 +144,7 @@
 
                                     <div class="form-item my-5">
                                         <label class="mb-2" for="exampleFormControlTextarea1" >Description</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name="pDes"></textarea>
                                     </div>
                                 </div>
 
@@ -214,7 +214,7 @@
         </script>
         <script>
             if (window.history.replaceState) {
-                window.history.replaceState(null, null, "MainController?action=showUserPage&roleid=${requestScope.roleID}");
+                window.history.replaceState(null, null, "MainController?action=viewAllProducts");
             }
         </script>
 

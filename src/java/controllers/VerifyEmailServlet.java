@@ -67,7 +67,7 @@ public class VerifyEmailServlet extends HttpServlet {
                         + "<p>Thank you for registering. Please click the button below to verify your email address:</p>"
                         + "<a href=\"http://localhost:3030/TTG_26_6_2023/MainController?action=confirmEmail&email="+email+"&usname="+userName+"&phone="+phone+"&password="+password  
                         + "\">Verify Email</a>";
-                // Get the session object
+                // Get the session objectlocalhost:3030/TTG_26_6_2023/
                 Properties props = new Properties();
                 props.put("mail.smtp.host", "smtp.gmail.com");
                 props.put("mail.smtp.socketFactory.port", "465");

@@ -238,11 +238,11 @@ public class ProductDAO {
         return list;
     }
 
-    public static int updateProduct(String pid, String productName, float price, String description, int quantity, String cateID) throws Exception {
+    public static int updateProduct(String pid, String productName, float price, String description, int quantity,String imgPath, String cateID) throws Exception {
         int result = 0;
         Connection cn = DBUtils.makeConnection();
         if (cn != null) {
-            String sql = "UPDATE PRODUCTS SET ProductName= ?,Price= ?,Description=?,StockQuantity=?,CateID=? \n"
+            String sql = "UPDATE PRODUCTS SET ProductName= ?,Price= ?,Description=?,StockQuantity=?,ImgPath=?,CateID=? \n"
                     + "where ProductID = ?";
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setString(1, productName);
@@ -250,7 +250,8 @@ public class ProductDAO {
             pst.setString(3, description);
             pst.setInt(4, quantity);
             pst.setString(5, cateID);
-            pst.setString(6,pid);
+            pst.setString(6, imgPath);
+            pst.setString(7,pid);
             result = pst.executeUpdate();
         }
         return result;
