@@ -170,7 +170,11 @@ public class MainController extends HttpServlet {
                 url = "addProduct.jsp";
             } else if (action.equalsIgnoreCase("addProduct")) {
                 url = "AddNewProductServlet";
-            }
+            } else if (action.equalsIgnoreCase("viewAllOrders")) {
+                url = "ViewAllOrdersServlet";
+            } else if (action.equalsIgnoreCase("viewOrderDetailsPage")) {
+                url = "ViewOrderDetailsPageServlet";
+            } 
             
 
              RequestDispatcher rd = request.getRequestDispatcher(url);

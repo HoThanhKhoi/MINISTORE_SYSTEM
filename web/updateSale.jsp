@@ -91,11 +91,11 @@
                                 </div>
 
                                 <div class="item">
-                                    <a class="sub-btn">
-                                        <span><i class="fa-solid fa-cart-shopping mx-3"></i></span>
-                                        <span>Order</span>
-                                    </a>
-                                </div>
+                                <a class="sub-btn" href="MainController?action=viewAllOrders">
+                                    <span><i class="fa-solid fa-cart-shopping mx-3"></i></span>
+                                    <span>Order</span>
+                                </a>
+                            </div>
 
                             </div>
                         </div>

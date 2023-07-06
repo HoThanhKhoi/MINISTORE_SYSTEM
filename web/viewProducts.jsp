@@ -97,7 +97,7 @@
                             </div>
 
                             <div class="item">
-                                <a class="sub-btn">
+                                <a class="sub-btn" href="MainController?action=viewAllOrders">
                                     <span><i class="fa-solid fa-cart-shopping mx-3"></i></span>
                                     <span>Order</span>
                                 </a>
@@ -152,7 +152,7 @@
                                     <th scope="col">Category Name</th>
                                     <th scope="col">Price</th>
                                     <th scope="col">Quantity</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">Details</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -524,10 +524,7 @@
                 </div>
             </c:otherwise>
         </c:choose>
-        <!-- FOOTER -->
-        <footer>
-            <c:import url="footer.jsp" />
-        </footer>
+
         <script type="text/javascript">
             $(document).ready(function () {
 //jquery for toggle sub menus

@@ -13,6 +13,7 @@ import java.sql.Timestamp;
  * @author ACER
  */
 public class Order implements Serializable {
+
     private String orderID;
     private String customerName;
     private String phone;
@@ -44,6 +45,18 @@ public class Order implements Serializable {
         this.voucherID = voucherID;
     }
 
+    public Order(String orderID, String customerID, String customerName, String phone, Timestamp orderDate, float totalMoney, String salesID, int status) {
+        this.orderID = orderID;
+        this.customerID = customerID;
+        this.customerName = customerName;
+        this.phone = phone;
+        this.totalMoney = totalMoney;
+        this.orderDate = orderDate;
+        this.salesID = salesID;
+        this.status = status;
+
+    }
+
     public String getOrderID() {
         return orderID;
     }
@@ -59,7 +72,7 @@ public class Order implements Serializable {
     public void setCustomerName(String customerName) {
         this.customerName = customerName;
     }
-    
+
     public String getPhone() {
         return phone;
     }
@@ -91,7 +104,7 @@ public class Order implements Serializable {
     public void setTotalMoney(float totalMoney) {
         this.totalMoney = totalMoney;
     }
-    
+
     public int getStatus() {
         return status;
     }
@@ -139,5 +152,5 @@ public class Order implements Serializable {
     public void setVoucherID(String voucherID) {
         this.voucherID = voucherID;
     }
-    
+
 }

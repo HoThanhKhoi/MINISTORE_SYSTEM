@@ -34,6 +34,7 @@ import java.util.ArrayList;
 public class main {
 
     public static void main(String[] args) throws Exception {
+        ArrayList<Product> list = ProductDAO.getProducts();
 //        Connection cn = DBUtils.makeConnection();
 //        if(cn != null){
 //            String sql = "Select * from USERS";
@@ -107,7 +108,9 @@ public class main {
 //             for (int i = 0; i < list.size(); i++) {
 //            System.out.println(list.get(i).getVoucherCode());
 //        }   
-    int result =ProductDAO.addProduct("as", Float.parseFloat("20"), "dees", 2, "21", "C-0001");;
-        System.out.println(Math.ceil(4/7));
-    }
+//    int result =ProductDAO.addProduct("as", Float.parseFloat("20"), "dees", 2, "21", "C-0001");;
+//        System.out.println(Math.ceil(4/7));
+//    }
+   
+}
 }

@@ -268,6 +268,10 @@
         <servlet-name>AddNewProductServlet</servlet-name>
         <servlet-class>controllers.AddNewProductServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewOrderDetailsPageServlet</servlet-name>
+        <servlet-class>controllers.ViewOrderDetailsPageServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ResetPassServlet</servlet-name>
         <url-pattern>/ResetPassServlet</url-pattern>
@@ -527,6 +531,10 @@
     <servlet-mapping>
         <servlet-name>AddNewProductServlet</servlet-name>
         <url-pattern>/AddNewProductServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewOrderDetailsPageServlet</servlet-name>
+        <url-pattern>/ViewOrderDetailsPageServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

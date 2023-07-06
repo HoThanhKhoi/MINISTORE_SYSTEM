@@ -285,5 +285,7 @@ public class ProductDAO {
         }
          return result;
     }
+    
+    
 //    product = new Product(pid, productName, price, description, quantity, imgPath, cateID);
 }

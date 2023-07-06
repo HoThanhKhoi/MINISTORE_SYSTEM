@@ -376,5 +376,30 @@ public class OrderDAO {
         }
         return list;
     }
-
+    
+    public static ArrayList<Order> getOrders() throws Exception {
+        ArrayList<Order> list = new ArrayList<>();
+        Connection cn = DBUtils.makeConnection();
+        if (cn != null) {
+            String sql = "select OrderID,CustomerID,CustomerName,Phone,OrderDate,TotalMoney,SalesID,status from ORDERS";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            ResultSet table = pst.executeQuery();
+            if (table != null) {
+                while (table.next()) {
+                    String orderID = table.getString("OrderID");
+                    String customerID = table.getString("CustomerID");
+                    String customerName = table.getString("CustomerName");
+                    String phone = table.getString("Phone");
+                    Timestamp orderDate = table.getTimestamp("OrderDate");
+                    float totalMoney = table.getFloat("TotalMoney");
+                    String salesID = table.getString("SalesID");
+                    int status = table.getInt("status");
+                    Order order = new Order(orderID, customerID, customerName, phone, orderDate, totalMoney, salesID, status);
+                    list.add(order);
+                }
+            }
+            cn.close();
+        }
+        return list;
+    }
 }

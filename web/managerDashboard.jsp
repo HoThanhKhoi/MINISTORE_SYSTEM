@@ -78,7 +78,7 @@
                                     <h5>Order Management</h5>
                                 </div>
                                 <div class="item-wrapper"> 
-                                    <div class="item"><a href="MainController?action=viewAttendance">Order</a></div>
+                                    <div class="item"><a href="MainController?action=viewAllOrders">Order</a></div>
                                 </div>
                                 <div class="description my-2">Processing Orders: 50</div>  
                                 <div class="description">Delivering Orders: 75</div>
@@ -151,10 +151,7 @@
         </div>
 
 
-        <!-- FOOTER -->
-        <footer>
-            <c:import url="footer.jsp" />
-        </footer>
+        
     </body>
 
 </html>

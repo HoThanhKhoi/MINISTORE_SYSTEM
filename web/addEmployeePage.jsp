@@ -10,7 +10,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Ministore</title>
-        <link rel="stylesheet" href="./css/addEmployeePage.css" />
+        <link rel="stylesheet" href="./css/managerScreen.css" />
 
         <!-- Icon CDN -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -52,13 +52,13 @@
             <div class=" side-bar">
                 <div class="menu">
                     <div class="item">
-                        <a class="sub-btn">
+                        <a class="sub-btn active">
                             <i class="fa-solid fa-user mx-3"></i>
                             User
                             <i class="fa-solid fa-angle-right dropdown"></i>
                         </a>
                         <div class="sub-menu">
-                            <a href="MainController?action=viewCustomers" class="sub-item active">Customers</a>
+                            <a href="MainController?action=viewCustomers" class="sub-item">Customers</a>
                             <a href="MainController?action=viewSales" class="sub-item">Sales</a>
                             <a href="MainController?action=viewGuards" class="sub-item">Guards</a>
                         </div>

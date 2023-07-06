@@ -89,7 +89,7 @@
                                 </a>
                             </div>
                             <div class="item">
-                                <a class="sub-btn">
+                                <a class="sub-btn" href="MainController?action=viewAllOrders">
                                     <span><i class="fa-solid fa-cart-shopping mx-3"></i></span>
                                     <span>Order</span>
                                 </a>
@@ -128,7 +128,7 @@
                                     <th scope="col">Phone</th>
                                     <th scope="col">Address</th>
                                     <th scope="col">Status</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">Details</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -232,9 +232,6 @@
                     </script>
                     <c:set scope="request" var="noti" value="${null}"/>
                 </c:if>
-                <footer>
-                    <c:import url="footer.jsp" />
-                </footer>
 
             </c:otherwise>
         </c:choose>

@@ -92,7 +92,7 @@
                             </div>
 
                             <div class="item">
-                                <a class="sub-btn">
+                                <a class="sub-btn" href="MainController?action=viewAllOrders">
                                     <span><i class="fa-solid fa-cart-shopping mx-3"></i></span>
                                     <span>Order</span>
                                 </a>
@@ -120,7 +120,7 @@
                                     <th scope="col">ID</th>
                                     <th scope="col">Image</th>
                                     <th scope="col">Category Name</th>
-                                    <th scope="col">Edit</th>
+                                    <th scope="col">Details</th>
                                 </tr>
                             </thead>
 
@@ -301,10 +301,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- FOOTER -->
-                    <footer>
-                        <c:import url="footer.jsp" />
-                    </footer>
 
                     <script type="text/javascript">
                         $(document).ready(function () {

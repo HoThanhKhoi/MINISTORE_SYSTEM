@@ -57,9 +57,7 @@
                     <input type="submit" name="action" value="updateCategory"/>
                 </form>
                 <h3 style="color: red">${requestScope.error}</h3>
-                <footer>
-                    <c:import url="footer.jsp"/>
-                </footer>
+
             </c:otherwise>
         </c:choose>
 

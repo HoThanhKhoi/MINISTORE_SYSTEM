@@ -91,11 +91,11 @@
                                 </div>
 
                                 <div class="item">
-                                    <a class="sub-btn">
-                                        <span><i class="fa-solid fa-cart-shopping mx-3"></i></span>
-                                        <span>Order</span>
-                                    </a>
-                                </div>
+                                <a class="sub-btn" href="MainController?action=viewAllOrders">
+                                    <span><i class="fa-solid fa-cart-shopping mx-3"></i></span>
+                                    <span>Order</span>
+                                </a>
+                            </div>
 
                             </div>
                         </div>
@@ -208,10 +208,6 @@
             </c:otherwise>
         </c:choose>
 
-        <!-- FOOTER -->
-        <footer>
-            <c:import url="footer.jsp" />
-        </footer>
 
         <script>
             var activeBtn = document.querySelector("#active");

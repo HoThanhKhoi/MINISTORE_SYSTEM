@@ -115,7 +115,7 @@
                                                 <th>Price</th>
                                                 <th>Quantity</th>
                                                 <th>Total</th>
-                                                <th>Action</th>
+                                                <th>Details</th>
                                             </tr>
                                         </thead>
 
