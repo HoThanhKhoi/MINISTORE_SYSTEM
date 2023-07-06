@@ -41,7 +41,7 @@
                     <c:import url="header_managerDashboard.jsp" />
                 </header>
 
-                <div class="container-fluid">
+                <div class="container-fluid wrapper">
 
                     <!-- menu -->
                     <div class="menu-btn">
@@ -100,7 +100,7 @@
                     <div class="dashboard mt-4">
 
                         <div class="group-form d-flex justify-content-between">
-                            <div class="w-100">
+                            <div>
                                 <form class="search text-center d-flex align-items-center" action="MainController" method="get">
                                     <input type="text" placeholder="Search..." name="keyword">
                                     <button id="search-button" type="submit" class="btn" name="action" value="searchUsers">
@@ -119,6 +119,7 @@
                                 </form>                    
                             </div>                    
                         </div>
+                        
                         <table class="table mt-4 text-center">
                             <thead>
                                 <tr>

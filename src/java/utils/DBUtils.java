@@ -19,7 +19,7 @@ public class DBUtils {
         String port="1433";
         String uid="sa";
         String pwd="12345";
-        String db="MINISTORE_1";
+        String db="MINISTORE";
         String driver="com.microsoft.sqlserver.jdbc.SQLServerDriver";
         String url="jdbc:sqlserver://" +IP+"\\"+":"+port
                   +";databasename="+db+";user="+uid+";password="+pwd;
