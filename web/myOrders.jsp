@@ -49,7 +49,7 @@
                                 <h4 class="mb-3 text-center">My Order</h4>
                             </div>
 
-                            <ul id="myDiv">
+                            <ul id="myDiv" class="order">
                                 <c:choose>
                                     <c:when test="${param.status == 1}">
                                         <li class="btn">

@@ -38,11 +38,12 @@
                 <jsp:forward page="login.jsp"/>
             </c:when>
             <c:otherwise>
+                
+                
                 <!--HEADER-->
                 <header>
                     <c:import url="header_managerDashboard.jsp" />
                 </header>
-
 
 
                 <div class="container-fluid">
@@ -51,8 +52,6 @@
                     <div class="menu-btn">
                         <input type="checkbox" id="nav-toggle">
                     </div>
-
-
                     <div class="side-bar">
                         <div class="menu">
                             <div class="item">
@@ -109,8 +108,8 @@
 
                     <!-- table -->
                     <div class="dashboard mt-4">
-                        <div class="row group-form">
-                            <div class="col">
+                        <div class="group-form d-flex justify-content-between">
+                            <div>
                                 <form class="search text-center d-flex align-items-center" action="MainController" metohd="post">
                                     <input name="keyword" type="text" placeholder="Search..." value="${param.keyword == null ? '' : param.keyword}">
                                     <button id="search-button" type="submit" name="action" value="getSearchedProduct" class="btn">
@@ -118,14 +117,14 @@
                                     </button>
                                 </form>
                             </div>
-                            <div class="add col-2">
+                            <div class="add">                    
                                 <form action="MainController" method="post">
                                     <button name="action" value="viewAddPage">Add</button>
                                 </form>
                             </div>
                         </div>   
 
-                        <div class="mt-2 myOrder-menu d-flex">
+                        <div class="mt-3 myOrder-menu ">
                             <ul id="myDiv">
                                 <form action="MainController" method="post">
                                     <li class="btn">

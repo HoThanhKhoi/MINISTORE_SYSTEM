@@ -110,24 +110,36 @@
 
 
                     <!-- table -->
-                    <div class="dashboard">
-                        <div class="group-form d-flex justify-content-between mx-3"> 
-                            <form action="MainController" method="get" class="search text-center d-flex align-items-center">
-                                <input type="text"  placeholder="Search..." name="keyword" value="${param.keyword == null ? "" : param.keyword}">
-                                <button id="search-button" type="submit" class="btn" name="action" value="searchVoucher">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </form>
-                            <form>
-                                <a href="MainController?action=viewVouchers">All</a>
-                                <a href="MainController?action=viewUnexpiredVouchers">Unexpired</a>
-                                <a href="MainController?action=viewExpiredVouchers">Expired</a>
-                            </form>
-
-                            <a role="button" class="btn btn_add btn-success" data-bs-toggle="modal" data-bs-target="#addModal">Add</a>
+                    <div class="dashboard mt-4">
+                        <div class="group-form d-flex justify-content-between">
+                            <div>
+                                <form action="MainController" method="get" class="search text-center d-flex align-items-center">
+                                    <input type="text"  placeholder="Search..." name="keyword" value="${param.keyword == null ? "" : param.keyword}">
+                                    <button id="search-button" type="submit" class="btn" name="action" value="searchVoucher">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="add">                    
+                                <a role="button" class="btn btn_add btn-success" data-bs-toggle="modal" data-bs-target="#addModal">Add</a>
+                            </div>
                         </div>
 
-
+                        <div class="mt-3 myOrder-menu ">
+                            <form>
+                                <ul id="myDiv">
+                                    <li class="btn">
+                                        <a href="MainController?action=viewVouchers">All</a>
+                                    </li>
+                                    <li class="btn">
+                                        <a href="MainController?action=viewUnexpiredVouchers">Unexpired</a>
+                                    </li>
+                                    <li class="btn">
+                                        <a href="MainController?action=viewExpiredVouchers">Expired</a>
+                                    </li>
+                                </ul>
+                            </form>
+                        </div>
 
                         <c:choose>
                             <c:when test="${requestScope.error != null}">
@@ -136,7 +148,7 @@
                                 </div>
                             </c:when>
                             <c:otherwise>
-                                <table class="table mt-5 text-center">
+                                <table class="table text-center">
                                     <thead>
                                         <tr>
                                             <th scope="col">ID</th>
@@ -327,15 +339,15 @@
                                             </li>
                                         </c:if> 
                                     </c:when>
-                                        <c:when test="${intLastPage <= 1}">
-                                            <c:if test="${requestScope.page == 1 || requestScope.page ==null}">
-                                                 <li class="page-item">
+                                    <c:when test="${intLastPage <= 1}">
+                                        <c:if test="${requestScope.page == 1 || requestScope.page ==null}">
+                                            <li class="page-item">
                                                 <a class="page-link" style="padding:5px 10px !important;color: #1B9C85" href="#" aria-label="Next">
                                                     <span aria-hidden="true">&raquo;</span>
                                                 </a>
                                             </li>
-                                            </c:if>
-                                        </c:when>
+                                        </c:if>
+                                    </c:when>
                                 </c:choose>                            
 
 
@@ -425,13 +437,13 @@
 
         <script type="text/javascript">
             $(document).ready(function () {
-//jquery for toggle sub menus
+                //jquery for toggle sub menus
                 $('.sub-btn').click(function () {
                     $(this).next('.sub-menu').slideToggle();
                     $(this).find('.dropdown').toggleClass('rotate');
                 });
 
-//jquery for expand and collapse the sidebar
+                //jquery for expand and collapse the sidebar
                 $('.menu-btn').click(function () {
                     $('.side-bar').addClass('active');
                     $('.menu-btn').css("visibility", "hidden");

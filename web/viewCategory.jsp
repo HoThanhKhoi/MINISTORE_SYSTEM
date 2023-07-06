@@ -103,7 +103,7 @@
 
 
                     <!-- table -->
-                    <div class="dashboard mt-5">
+                    <div class="dashboard mt-4">
                         <div class="group-form d-flex justify-content-between">
                             <div>
                                 <form class="search text-center d-flex align-items-center">
@@ -115,7 +115,7 @@
                             </div>                    
 
                             <div class="add">                    
-                                <a role="button" class="btn btn_add btn-success" data-bs-toggle="modal" data-bs-target="#addModal">Add</a>
+                                <a role="button" class=" btn_add " data-bs-toggle="modal" data-bs-target="#addModal">Add</a>
                             </div>                    
                         </div>
 
@@ -294,7 +294,7 @@
                                             <label for="cname" class="form-label">Category Name</label>
                                             <input type="text" class="form-control" id="cname" name="cateName" required="">
                                         </div>
-                                        
+
                                     </div>
 
                                     <!-- Modal footer -->

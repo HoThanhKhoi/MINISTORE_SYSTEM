@@ -104,99 +104,12 @@
 
             <c:choose>
                 <c:when test="${requestScope.roleID == 2}">
-                    <div class="dashboard mt-5" style="overflow: hidden">
-                        <form action="MainController" method="post">
-                            <div class="row align-items-center mx-5">
-                                <div class="col-5 cus-info">
-                                    <div class="form-item my-5 d-flex align-items-center justify-content-center">
 
-                                        <div class="form-item my-5 d-flex align-items-center justify-content-center">
-                                            <div class="col-3">
-                                                <label for="">Name</label>
-                                            </div>
-                                            <div class="col-9">
-                                                <input name="name" type="text" id="name" value="" required="">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-item my-5 d-flex align-items-center justify-content-center">
-                                            <div class="col-3">
-                                                <label for="">Phone</label>
-                                            </div>
-                                            <div class="col-9">
-                                                <input name="phone" type="tel" id="phone" value="" required="">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-item my-5 d-flex align-items-center justify-content-center">
-                                            <div class="col-3">
-                                                <label for="" >Address</label>
-                                            </div>
-                                            <div class="col-9">
-                                                <input name="address" type="text" id="phone" value="" >
-                                            </div>
-                                        </div>
-
-
-                                        <div class="form-item my-5 d-flex align-items-center justify-content-center">
-                                            <div class="col-3">
-                                                <label for="">Email</label>
-                                            </div>
-                                            <div class="col-9">
-                                                <input name="email" type="text" id="email" value="${requestScope.cus.email}" required="" >
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- update status -->
-                                <div class="col-5 cus-update">
-                                    <div class="form">
-                                        <div class="my-5 d-flex align-items-center justify-content-center">
-                                            <div class="col-3">
-                                                <label for="">Role</label>
-                                            </div>
-                                            <div class="col-9">
-                                                <input type="text" disabled placeholder="Guard">
-                                            </div>
-                                        </div>
-                                        <div class="my-5 d-flex align-items-center">
-                                            <div class="col-3">
-                                                <label for="">Schedule</label>
-                                            </div>
-                                            <div class="col-9">
-                                                <select class="form-select" aria-label="Default select example" name="wid">
-                                                    <c:forEach var="worksheet" items="${WorksheetDAO.getAllWorksheets()}">
-                                                        <option value="${worksheet.worksheetID}">${worksheet.worksheetName}</option>
-                                                    </c:forEach>
-
-                                                </select>
-                                            </div>
-                                        </div>  
-
-                                        <div class="status status-add my-5 d-flex align-items-center">
-                                            <div class="col-3">
-                                                <label for="">Status</label>
-                                            </div>
-                                            <div class="col-9 status-btn">
-                                                <a role="button" id="active" style="background-color: #1B9C85;color:black;text-decoration: none;border-top-right-radius: 30px;
-                                                   border-bottom-right-radius: 30px;">Active</a>
-                                            </div>
-                                        </div>
-                                    </div>    
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    <input type="hidden"  value="1" name="roleid"/>
-                                    <button class="add" id="addBtn" name="action" value="addEmployee">Add</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </c:when>
-                <c:otherwise>
                     <div class="dashboard cus-dashboard" style="overflow: hidden">
                         <form action="MainController" method="post">
                             <div class="row align-items-center mx-5">
                                 <div class="col-5 cus-info">
+
                                     <div class="form-item my-5 d-flex align-items-center justify-content-center">
                                         <div class="col-3">
                                             <label for="">Name</label>
@@ -237,15 +150,15 @@
                                 <!-- update status -->
                                 <div class="col-5 cus-update">
                                     <div class="form">
-                                        <div class="my-5 d-flex align-items-center justify-content-center">
+                                        <div class="mb-5 d-flex align-items-center justify-content-center">
                                             <div class="col-3">
                                                 <label for="">Role</label>
                                             </div>
                                             <div class="col-9">
-                                                <input type="text" disabled placeholder="Sale">
+                                                <input type="text" disabled placeholder="Guard">
                                             </div>
                                         </div>
-                                        <div class="my-5 d-flex align-items-center">
+                                        <div class="mt-4 mb-5 d-flex align-items-center">
                                             <div class="col-3">
                                                 <label for="">Schedule</label>
                                             </div>
@@ -259,21 +172,114 @@
                                             </div>
                                         </div>  
 
-                                        <div class="status status-add my-5 d-flex align-items-center">
+                                        <div class="mt-4 mb-5 status status-add d-flex align-items-center">
                                             <div class="col-3">
                                                 <label for="">Status</label>
                                             </div>
                                             <div class="col status-btn">
-                                                <a role="button" id="active" style="background-color: #1B9C85;color:black;text-decoration: none;border-top-right-radius: 30px;
+                                                <a role="button" id="active" style="color: #1B9C85 !important; text-decoration: none;border-top-right-radius: 30px;
                                                    border-bottom-right-radius: 30px;">Active</a>
                                             </div>
                                         </div>
+
+                                        <div class="mt-5 d-flex justify-content-center align-items-center">
+                                            <input type="hidden"  value="1" name="roleid"/>
+                                            <button class="add" id="addBtn" name="action" value="addEmployee">Add</button>
+                                        </div>
                                     </div>    
                                 </div>
-                                <div class="d-flex justify-content-center">
-                                    <input type="hidden"  value="1" name="roleid"/>
-                                    <button class="add" id="addBtn" name="action" value="addEmployee">Add</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </c:when>
+
+
+                <c:otherwise>
+                    <div class="dashboard cus-dashboard" style="overflow: hidden">
+                        <form action="MainController" method="post">
+                            <div class="row align-items-center mx-5">
+                                <div class="col-5 cus-info">
+
+                                    <div class="form-item my-5 d-flex align-items-center justify-content-center">
+                                        <div class="col-3">
+                                            <label for="">Name</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input name="name" type="text" id="name" value="" required="">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-item my-5 d-flex align-items-center justify-content-center">
+                                        <div class="col-3">
+                                            <label for="">Phone</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input name="phone" type="tel" id="phone" value="" required="">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-item my-5 d-flex align-items-center justify-content-center">
+                                        <div class="col-3">
+                                            <label for="" >Address</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input name="address" type="text" id="phone" value="" >
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-item my-5 d-flex align-items-center justify-content-center">
+                                        <div class="col-3">
+                                            <label for="">Email</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input name="email" type="text" id="email" value="${requestScope.cus.email}" required="" >
+                                        </div>
+                                    </div>
                                 </div>
+                                <!-- update status -->
+                                <div class="col-5 cus-update">
+                                    <div class="form">
+                                        <div class="mb-5 d-flex align-items-center justify-content-center">
+                                            <div class="col-3">
+                                                <label for="">Role</label>
+                                            </div>
+                                            <div class="col-9">
+                                                <input type="text" disabled placeholder="Sale">
+                                            </div>
+                                        </div>
+                                        <div class="mt-4 mb-5 d-flex align-items-center">
+                                            <div class="col-3">
+                                                <label for="">Schedule</label>
+                                            </div>
+                                            <div class="col-9">
+                                                <select class="form-select" aria-label="Default select example" name="wid">
+                                                    <c:forEach var="worksheet" items="${WorksheetDAO.getAllWorksheets()}">
+                                                        <option value="${worksheet.worksheetID}">${worksheet.worksheetName}</option>
+                                                    </c:forEach>
+
+                                                </select>
+                                            </div>
+                                        </div>  
+
+                                        <div class="mt-4 mb-5 status status-add d-flex align-items-center">
+                                            <div class="col-3">
+                                                <label for="">Status</label>
+                                            </div>
+                                            <div class="col status-btn">
+                                                <a role="button" id="active" style="color: #1B9C85 !important; text-decoration: none;border-top-right-radius: 30px;
+                                                   border-bottom-right-radius: 30px;">Active</a>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex mt-5 justify-content-center align-items-center">
+                                            <input type="hidden"  value="1" name="roleid"/>
+                                            <button class="add" id="addBtn" name="action" value="addEmployee">Add</button>
+                                        </div>
+                                    </div>    
+                                </div>
+
                             </div>
                         </form>
                     </div>
@@ -288,13 +294,13 @@
 
         <script type="text/javascript">
             $(document).ready(function () {
-//jquery for toggle sub menus
+                //jquery for toggle sub menus
                 $('.sub-btn').click(function () {
                     $(this).next('.sub-menu').slideToggle();
                     $(this).find('.dropdown').toggleClass('rotate');
                 });
 
-//jquery for expand and collapse the sidebar
+                //jquery for expand and collapse the sidebar
                 $('.menu-btn').click(function () {
                     $('.side-bar').addClass('active');
                     $('.menu-btn').css("visibility", "hidden");
