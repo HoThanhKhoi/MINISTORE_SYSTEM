@@ -42,9 +42,10 @@ public class UpdateProductServlet extends HttpServlet {
             String  pPrice = request.getParameter("pPrice");
             int pStock = Integer.parseInt(request.getParameter("pStock"));
             String cateID = request.getParameter("cateid");
+            String imgPath = request.getParameter("imgPath");
             String cateName = CategoryDAO.getCategory(cateID).getCateName();
             int result;
-            result = ProductDAO.updateProduct(pid,pName,Float.parseFloat(pPrice), pDes ,pStock,cateID);
+            result = ProductDAO.updateProduct(pid,pName,Float.parseFloat(pPrice), pDes ,pStock,imgPath,cateID);
             if(result == 1){
                 request.setAttribute("noti", "Update successfully");
                 request.setAttribute("catename", cateName);

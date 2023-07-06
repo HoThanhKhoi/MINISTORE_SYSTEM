@@ -175,8 +175,9 @@
                                                 <td>
                                                     <button type="submit" name="action" value="viewProductDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
                                                 </td>
+                                                </tr>
                                             </form>
-                                            </tr>
+                                            
                                         </c:forEach>
                                     </c:if>
                                     <c:if test="${requestScope.ppList != null}">
