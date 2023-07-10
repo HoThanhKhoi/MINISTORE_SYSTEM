@@ -5,12 +5,9 @@
  */
 package controllers;
 
-
 import dao.OrderDAO;
-import dao.VoucherDAO;
 import dto.Order;
-import dto.OrderDetail;
-import dto.Voucher;
+import dto.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -18,12 +15,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Asus TUF
  */
-public class ViewOrderDetailsPageServlet extends HttpServlet {
+public class ViewCustomerOrders extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,24 +36,19 @@ public class ViewOrderDetailsPageServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String orderID = request.getParameter("orderID");
-            Order order = OrderDAO.getOrderById(orderID);
-            Voucher voucher = VoucherDAO.getVoucher(order.getVoucherID());
-            ArrayList<OrderDetail> orderDetailsList = OrderDAO.getOrderDetail(orderID);
-            if (orderDetailsList != null && !orderDetailsList.isEmpty()) {
-                float total = 0;
-                for (OrderDetail orderDetail : orderDetailsList) {
-                    total += orderDetail.getMoney();
-                }
-                request.setAttribute("order", order);
-                request.setAttribute("voucher", voucher);
-                request.setAttribute("total", total);
-                request.setAttribute("orderDetailsList", orderDetailsList);
-                request.getRequestDispatcher("updateOrder.jsp").forward(request, response);
+            HttpSession session = request.getSession();
+            
+            String customerid = request.getParameter("userID");
+            out.print(customerid);
+            ArrayList<Order> ordersList = OrderDAO.getMyOrders(customerid);
+            out.print(ordersList);
+            if (ordersList == null || ordersList.isEmpty()) {
+                request.setAttribute("noti", "This customer don't have any orders.");
+                request.getRequestDispatcher("customerOrders.jsp").forward(request, response);
             } else {
-                request.setAttribute("noti", "Fail to load order details.");
-                request.getRequestDispatcher("updateOrder.jsp").forward(request, response);
-            }
+                request.setAttribute("ordersList", ordersList);
+                request.getRequestDispatcher("customerOrders.jsp").forward(request, response);
+                }
         } catch (Exception e) {
             e.printStackTrace();
         }

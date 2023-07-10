@@ -6,3 +6,4 @@
 src/java/DTO/Order.java
 src/java/DTO/Voucher.java
 /nbproject/private/
+web/META-INF/context.xml

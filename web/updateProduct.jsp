@@ -98,7 +98,7 @@
                             </div>
 
                             <div class="item">
-                                <a class="sub-btn">
+                                <a class="sub-btn" href="MainController?action=viewAllOrders">
                                     <span><i class="fa-solid fa-cart-shopping mx-3"></i></span>
                                     <span>Order</span>
                                 </a>
@@ -185,7 +185,8 @@
                                             <label for="">Image</label>
                                         </div>
                                         <div class="mb-2">
-                                            <input class="no-border" type="file" name="file" size="60" />
+                                            <input type="file" name="uploadfile" id="img" style="display:none;"/>
+                                            <label for="img">Choose Image</label>
                                         </div>
                                     </div>    
 
@@ -244,8 +245,8 @@
                     </script>
                     <c:set scope="request" var="noti" value="${null}"/>
                 </c:if>
-                    
-                    
+
+
                 <script type="text/javascript">
                     $(document).ready(function () {
                         //jquery for toggle sub menus

@@ -43,7 +43,7 @@ body {
     transition-property: left;
     overflow-y: auto;
     z-index: 1;
-    min-height: calc(90vh - 4px) !important;
+    min-height: 90vh !important;
 }
 
 .side-bar::-webkit-scrollbar {

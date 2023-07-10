@@ -126,13 +126,13 @@
                                         <div class="col-lg-6">
                                             <ul class="product-stats-info">
                                                 <div class="product-stats-info-item">
-                                                    <li>organic</li>
+                                                    <li>fresh butchered leg</li>
                                                     <div class="div"></div>
                                                 </div>
 
 
                                                 <div class="product-stats-info-item">
-                                                    <li>organic</li>
+                                                    <li>organic brain juice</li>
                                                     <div class="div"></div>
                                                 </div>
 

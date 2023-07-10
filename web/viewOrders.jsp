@@ -41,15 +41,11 @@
                     <c:import url="header_managerDashboard.jsp" />
                 </header>
 
-
-
                 <div class="container-fluid">
-
                     <!-- menu -->
                     <div class="menu-btn">
                         <input type="checkbox" id="nav-toggle">
                     </div>
-
 
                     <div class="side-bar">
                         <div class="menu">
@@ -60,7 +56,7 @@
                                     <i class="fa-solid fa-angle-right dropdown"></i>
                                 </a>
                                 <div class="sub-menu">
-                                    <a href="MainController?action=viewCustomers" class="sub-item">Customers</a>
+                                    <a href="MainController?action=viewCustomers" class="sub-item ">Customers</a>
                                     <a href="MainController?action=viewSales" class="sub-item">Sales</a>
                                     <a href="MainController?action=viewGuards" class="sub-item">Guards</a>
                                 </div>
@@ -105,6 +101,7 @@
                     </div>
 
 
+
                     <!-- table -->
                     <div class="dashboard mt-4">
                         <div class="row group-form">
@@ -116,28 +113,118 @@
                                     </button>
                                 </form>
                             </div>
-                            <div class="add col-2">
-                                <form action="MainController" method="post">
-                                    <button name="action" value="viewAddPage">Add</button>
-                                </form>
-                            </div>
+
                         </div>   
 
                         <div class="mt-2 myOrder-menu d-flex">
-                            <ul id="myDiv">
-                                <form action="MainController" method="post">
-                                    <li class="btn">
-                                        <button type="submit" name="action" value="viewAllProducts">All</button>
-                                    </li>
+                            <ul id="myDiv" class="order">
+                                <c:choose>
+                                    <c:when test="${param.status == 1}">
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrders">All</a>
+                                        </li>
 
-                                    <li class="btn">
-                                        <button type="submit" name="action" value="viewAlertProducts">Stock Alert</button>
-                                    </li>
+                                        <li class="btn active">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=1">Processing</a>
+                                        </li>
 
-                                    <li class="btn">
-                                        <button type="submit" name="action" value="viewOutOfStockProducts">Out of stock</button>
-                                    </li>
-                                </form>
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=2">Delivering</a>
+                                        </li>
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=3">Completed</a>
+                                        </li>
+
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=4">Canceled</a>
+                                        </li>
+                                    </c:when>
+                                    <c:when test="${param.status == 2}">
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrders">All</a>
+                                        </li>
+
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=1">Processing</a>
+                                        </li>
+
+                                        <li class="btn active">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=2">Delivering</a>
+                                        </li>
+
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=3">Completed</a>
+                                        </li>
+
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=4">Canceled</a>
+                                        </li>
+                                    </c:when>
+                                    <c:when test="${param.status == 3}">
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrders">All</a>
+                                        </li>
+
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=1">Processing</a>
+                                        </li>
+
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=2">Delivering</a>
+                                        </li>
+
+                                        <li class="btn active">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=3">Completed</a>
+                                        </li>
+
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=4">Canceled</a>
+                                        </li>
+                                    </c:when>
+                                    <c:when test="${param.status == 4}">
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrders">All</a>
+                                        </li>
+
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=1">Processing</a>
+                                        </li>
+
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=2">Delivering</a>
+                                        </li>
+
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=3">Completed</a>
+                                        </li>
+
+                                        <li class="btn active">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=4">Canceled</a>
+                                        </li>
+                                    </c:when> 
+                                    <c:otherwise>
+                                        <li class="btn active">
+                                            <a href="MainController?action=viewMyOrders">All</a>
+                                        </li>
+
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=1">Processing</a>
+                                        </li>
+
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=2">Delivering</a>
+                                        </li>
+
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=3">Completed</a>
+                                        </li>
+
+                                        <li class="btn">
+                                            <a href="MainController?action=viewMyOrdersByStatus&status=4">Canceled</a>
+                                        </li>
+                                    </c:otherwise>
+                                </c:choose>
+
                             </ul>
                         </div>
                         <c:choose>
@@ -161,6 +248,7 @@
                                     </thead>
                                     <tbody>
                                         <c:forEach var="order" items="${requestScope.orderList}">
+                                        <form action="MainController" action="post">
                                             <tr>
                                                 <td>${order.orderID}</td>
                                                 <td>${order.customerID}</td>
@@ -177,40 +265,45 @@
                                                         <c:when test="${order.status eq 4}">Cancelled</c:when>
                                                     </c:choose>
                                                 </td>   
-                                        <input type="hidden" name="orderid" value="${order.orderID}"/>
-                                        <td>
-                                            <button type="submit" name="action" value="viewOrderDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
-                                        </td>
-                                        </tr>
+                                            <input type="hidden" name="orderID" value="${order.orderID}"/>
+                                            <td>
+                                                <button type="submit" name="action" value="viewOrderDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
+                                            </td>
+                                            </tr>
+                                        </form>
                                     </c:forEach>
                                     </tbody>
                                 </table>
+
                             </c:otherwise>
                         </c:choose>
-                    </c:otherwise>
-                </c:choose>
+                    </div>
+                </div>
+            </c:otherwise>
+        </c:choose>
 
 
-                <script type="text/javascript">
-                    $(document).ready(function () {
-                        //jquery for toggle sub menus
-                        $('.sub-btn').click(function () {
-                            $(this).next('.sub-menu').slideToggle();
-                            $(this).find('.dropdown').toggleClass('rotate');
-                        });
 
-                        //jquery for expand and collapse the sidebar
-                        $('.menu-btn').click(function () {
-                            $('.side-bar').addClass('active');
-                            $('.menu-btn').css("visibility", "hidden");
-                        });
+        <script type="text/javascript">
+            $(document).ready(function () {
+                //jquery for toggle sub menus
+                $('.sub-btn').click(function () {
+                    $(this).next('.sub-menu').slideToggle();
+                    $(this).find('.dropdown').toggleClass('rotate');
+                });
 
-                        $('.close-btn').click(function () {
-                            $('.side-bar').removeClass('active');
-                            $('.menu-btn').css("visibility", "visible");
-                        });
-                    });
-                </script>
+                //jquery for expand and collapse the sidebar
+                $('.menu-btn').click(function () {
+                    $('.side-bar').addClass('active');
+                    $('.menu-btn').css("visibility", "hidden");
+                });
 
-                </body>
-                </html>
+                $('.close-btn').click(function () {
+                    $('.side-bar').removeClass('active');
+                    $('.menu-btn').css("visibility", "visible");
+                });
+            });
+        </script>
+
+    </body>
+</html>

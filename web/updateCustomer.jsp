@@ -173,7 +173,7 @@
                                                 <label for="">Order</label>
                                             </div>
                                             <div class="col-9">
-                                                <a role="button">Customer's Orders</a>
+                                                <a role="button" href="MainController?action=viewCustomerOrders&userID=${requestScope.cus.userID}">Customer's Orders</a>
                                             </div>
                                         </div>  
 

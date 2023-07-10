@@ -174,7 +174,11 @@ public class MainController extends HttpServlet {
                 url = "ViewAllOrdersServlet";
             } else if (action.equalsIgnoreCase("viewOrderDetailsPage")) {
                 url = "ViewOrderDetailsPageServlet";
-            } 
+            } else if (action.equalsIgnoreCase("changeOrderStatus")) {
+                url = "ChangeOrderStatusServlet";
+            } else if (action.equalsIgnoreCase("viewCustomerOrders")) {
+                url = "ViewCustomerOrders";
+            }
             
 
              RequestDispatcher rd = request.getRequestDispatcher(url);
