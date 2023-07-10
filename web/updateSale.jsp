@@ -121,7 +121,7 @@
                                                 <label for="">Name</label>
                                             </div>
                                             <div class="col-9">
-                                                <input type="text" id="name" value="${requestScope.sale.name}" disabled="">
+                                                <input type="text" id="name" value="${requestScope.sale.name}">
                                             </div>
                                         </div>
 
@@ -130,7 +130,7 @@
                                                 <label for="">Phone</label>
                                             </div>
                                             <div class="col-9">
-                                                <input type="tel" id="phone" value="${requestScope.sale.phone}" disabled="">
+                                                <input type="tel" id="phone" value="${requestScope.sale.phone}" >
                                             </div>
                                         </div>
 
@@ -139,7 +139,7 @@
                                                 <label for="">Address</label>
                                             </div>
                                             <div class="col-9">
-                                                <input type="text" id="phone" value="${requestScope.sale.address}" disabled="">
+                                                <input type="text" id="address" value="${requestScope.sale.address}" name="address">
                                             </div>
                                         </div>
 
@@ -213,22 +213,24 @@
             activeBtn.addEventListener("click", function () {
                 var userName = document.getElementById("name");
                 var phone = document.getElementById("phone");
+                var address = document.getElementById("address");
                 var status = document.getElementById("s");
                 activeBtn.style.backgroundColor = "#1B9C85";
                 inactiveBtn.style.backgroundColor = "#F6F5DB";
                 status.value = "1";
                 console.log(status.value);
-                activeBtn.href = "MainController?action=updateUser&userid=" + userID + "&username=" + userName.value + "&phone=" + phone.value + "&status=" + status.value + "&roleid=" + roleID;
+                activeBtn.href = "MainController?action=updateUser&userid=" + userID + "&username=" + userName.value + "&phone=" + phone.value + "&address=" +address.value + "&status=" + status.value + "&roleid=" + roleID;
             });
             inactiveBtn.addEventListener("click", function () {
                 var userName = document.getElementById("name");
                 var phone = document.getElementById("phone");
+                var address = document.getElementById("address");
                 var status = document.getElementById("s");
                 activeBtn.style.backgroundColor = "#F6F5DB";
                 inactiveBtn.style.backgroundColor = "#FF5B5B";
                 status.value = 0;
                 console.log(status.value);
-                inactiveBtn.href = "MainController?action=updateUser&userid=" + userID + "&username=" + userName.value + "&phone=" + phone.value + "&status=" + status.value + "&roleid=" + roleID;
+                inactiveBtn.href = "MainController?action=updateUser&userid=" + userID + "&username=" + userName.value + "&phone=" + phone.value + "&address=" +address.value + "&status=" + status.value + "&roleid=" + roleID;
             });
         </script>
         <script>

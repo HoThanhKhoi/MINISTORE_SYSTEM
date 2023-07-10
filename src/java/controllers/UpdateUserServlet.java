@@ -39,9 +39,10 @@ public class UpdateUserServlet extends HttpServlet {
             int roleID = Integer.parseInt(request.getParameter("roleid"));
             String userName = request.getParameter("username");
             String phone = request.getParameter("phone");
+            String address = request.getParameter("address");
             int status = Integer.parseInt(request.getParameter("status"));
             int check = 0;
-            check = UserDAO.updateUser(userID, userName, phone, status);
+            check = UserDAO.updateUser(userID, userName, phone,address,status);
             if (check == 1) {
                 if (roleID == 2) {
                     request.getRequestDispatcher("MainController?action=viewGuardDetailsPage&userid=" + userID).forward(request, response);

@@ -88,9 +88,9 @@
                             </div>
 
                             <div class="item">
-                                <a class="sub-btn">
+                                <a class="sub-btn" href="MainController?action=viewSchedule">
                                     <span><i class="fa-solid fa-clipboard-user mx-3"></i></span>
-                                    <span>Attendance</span>
+                                    <span>Schedule</span>
                                 </a>
                             </div>
 
@@ -122,24 +122,6 @@
                                 </form>
                             </div>
                         </div>   
-
-                        <div class="mt-2 myOrder-menu d-flex">
-                            <ul id="myDiv">
-                                <form action="MainController" method="post">
-                                    <li class="btn">
-                                        <button type="submit" name="action" value="viewAllProducts">All</button>
-                                    </li>
-
-                                    <li class="btn">
-                                        <button type="submit" name="action" value="viewAlertProducts">Stock Alert</button>
-                                    </li>
-
-                                    <li class="btn">
-                                        <button type="submit" name="action" value="viewOutOfStockProducts">Out of stock</button>
-                                    </li>
-                                </form>
-                            </ul>
-                        </div>
                         <c:choose>
                             <c:when test="${requestScope.orderList.isEmpty()}">
                                 <h3>No result</h3>
@@ -185,6 +167,7 @@
                                     </c:forEach>
                                     </tbody>
                                 </table>
+                                
                             </c:otherwise>
                         </c:choose>
                     </c:otherwise>

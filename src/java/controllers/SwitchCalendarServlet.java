@@ -5,26 +5,24 @@
  */
 package controllers;
 
-import dao.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Calendar;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 
 /**
  *
  * @author Admin
  */
-@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
-        maxFileSize = 1024 * 1024 * 50, // 50MB
-        maxRequestSize = 1024 * 1024 * 100)
-public class AddNewProductServlet extends HttpServlet {
+public class SwitchCalendarServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,26 +34,23 @@ public class AddNewProductServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, Exception {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            String pName = request.getParameter("pName");
-            String des = request.getParameter("pDes");
-            String price = request.getParameter("pPrice");
-            int stock = Integer.parseInt(request.getParameter("pStock"));
-            String cateID = request.getParameter("cateid");
-            Part filePart = request.getPart("file");
-            String fileName = filePart.getSubmittedFileName();
-            for (Part part : request.getParts()) {
-                part.write("C:\\Users\\Admin\\Documents\\NetBeansProjects\\MINISTORE_Linh\\web\\image\\products\\" + fileName);
-            }
-            String imgPath = "image/products/" + fileName;
-            int result = ProductDAO.addProduct(pName, Float.parseFloat(price), des, stock, imgPath, cateID);
-            if (result == 1) {
-                request.getRequestDispatcher("ViewAllProductsServlet").forward(request, response);
-            } else {
-                request.getRequestDispatcher("managerDashboard.jsp").forward(request, response);
+           String page = request.getParameter("goto");
+            out.write(page);
+            int weekYear = Integer.parseInt(request.getParameter("weekYear"));
+            int noOfWeek = Integer.parseInt(request.getParameter("noOfWeek"));
+            LocalDate startday = LocalDate.parse(String.format("%04d-W%02d-1", weekYear, noOfWeek), DateTimeFormatter.ISO_WEEK_DATE);
+            request.setAttribute("noOfWeek", noOfWeek);
+            request.setAttribute("startday", startday);
+            switch(page) {
+                case "employeeSchedule":
+                    request.getRequestDispatcher("viewEmployeeSchedule.jsp").forward(request, response);
+                    break;
+                case  "mySchedule":
+                    request.getRequestDispatcher("viewMySchedule.jsp").forward(request, response);
+                    break;
             }
         }
     }
@@ -72,11 +67,7 @@ public class AddNewProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (Exception ex) {
-            Logger.getLogger(AddNewProductServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -90,11 +81,7 @@ public class AddNewProductServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (Exception ex) {
-            Logger.getLogger(AddNewProductServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

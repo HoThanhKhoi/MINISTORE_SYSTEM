@@ -306,16 +306,17 @@ public class UserDAO {
         return list;
     }
 
-    public static int updateUser(String userID, String newName, String newPhone, int status) throws Exception {
+    public static int updateUser(String userID, String newName, String newPhone,String address, int status) throws Exception {
         Connection cn = DBUtils.makeConnection();
         int check = 0;
         if (cn != null) {
-            String sql = "UPDATE USERS SET UserName = ?,Phone= ?,Status= ? where UserID = ?";
+            String sql = "UPDATE USERS SET UserName = ?,Phone= ?,UserAddress= ?,Status= ? where UserID = ?";
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setString(1, newName);
             pst.setString(2, newPhone);
-            pst.setInt(3, status);
-            pst.setString(4, userID);
+            pst.setString(3, address);
+            pst.setInt(4, status);
+            pst.setString(5, userID);
             check = pst.executeUpdate();
         }
         cn.close();

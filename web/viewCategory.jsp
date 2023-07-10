@@ -86,8 +86,8 @@
 
                             <div class="item">
                                 <a class="sub-btn">
-                                    <span><i class="fa-solid fa-clipboard-user mx-3"></i></span>
-                                    <span>Attendance</span>
+                                    <span><i class="fa-solid fa-clipboard-user mx-3" href="MainController?action=viewSchedule"></i></span>
+                                    <span>Schedule</span>
                                 </a>
                             </div>
 
@@ -150,7 +150,7 @@
                                         <div class="modal-dialog">
                                             <div class="modal-content">
 
-                                                <form action="MainController" method="post">
+                                                <form action="UpdateCategoryServlet" method="post" enctype="multipart/form-data">
                                                     <!-- Modal Header -->
                                                     <div class="modal-header">
                                                         <h4 class="modal-title">Update Category</h4>
@@ -161,8 +161,8 @@
                                                     <div class="modal-body">
                                                         <div class="mb-3 mt-3">
                                                             <label for="cid" class="form-label">ID: </label>
-                                                            <input type="hidden" class="form-control" id="cid" name="cateID" value="${cate.cateID}" readonly="">
-                                                            ${cate.cateID}
+                                                            <input type="text" class="form-control" id="cid" name="cateID" value="${cate.cateID}" readonly="">
+
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="cname" class="form-label">Category Name</label>
@@ -170,11 +170,9 @@
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="" class="form-label">Image</label>
-                                                            <select name="imgpath">
-                                                                <c:forEach var="image" items="${imgList}">
-                                                                    <option value="${image}">${image}</option>
-                                                                </c:forEach>
-                                                            </select>
+                                                            <div class="mb-2">
+                                                                <input class="no-border" type="file" name="file" size="60" required=""/>
+                                                            </div>
                                                         </div>
                                                     </div>
 
@@ -208,8 +206,7 @@
                                     <div class="modal" id="myModal${status.index}">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
-
-                                                <form action="MainController" method="post">
+                                                <form action="UpdateCategoryServlet" method="post" enctype="multipart/form-data">
                                                     <!-- Modal Header -->
                                                     <div class="modal-header">
                                                         <h4 class="modal-title">Update Category</h4>
@@ -220,8 +217,8 @@
                                                     <div class="modal-body">
                                                         <div class="mb-3 mt-3">
                                                             <label for="cid" class="form-label">ID: </label>
-                                                            <input type="hidden" class="form-control" id="cid" name="cateID" value="${cate.cateID}" readonly="">
-                                                            ${cate.cateID}
+                                                            <input type="text" class="form-control" id="cid" name="cateID" value="${cate.cateID}" readonly="">
+
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="cname" class="form-label">Category Name</label>
@@ -229,12 +226,9 @@
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="" class="form-label">Image</label>
-                                                            <select name="imgpath">
-                                                                <option selected>${cate.imgPath}</option>
-                                                                <c:forEach var="image" items="${imgList}">
-                                                                    <option value="${image}">${image}</option>
-                                                                </c:forEach>
-                                                            </select>
+                                                            <div class="mb-2">
+                                                                <input class="no-border" type="file" name="file" size="60" required=""/>
+                                                            </div>
                                                         </div>
                                                     </div>
 
@@ -280,29 +274,27 @@
                     <div class="modal" id="addModal">
                         <div class="modal-dialog">
                             <div class="modal-content">
-
-                                <form action="MainController" method="post">
+                                <form action="AddNewCategoryServlet" method="post" enctype="multipart/form-data">
                                     <!-- Modal Header -->
                                     <div class="modal-header">
                                         <h4 class="modal-title">Add New Category</h4>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                     </div>
-
                                     <!-- Modal body -->
                                     <div class="modal-body">
                                         <div class="mb-3">
                                             <label for="cname" class="form-label">Category Name</label>
                                             <input type="text" class="form-control" id="cname" name="cateName" required="">
+                                            <div class="mb-2">
+                                                <input class="no-border" type="file" name="file" size="60" required=""/>
+                                            </div>
                                         </div>
-
                                     </div>
-
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-success" name="action" value="addNewCategory">Add</button>
                                     </div>
                                 </form>
-
                             </div>
                         </div>
                     </div>
@@ -327,6 +319,11 @@
                             });
                         });
                     </script>
+                    <script>
+            if (window.history.replaceState) {
+                window.history.replaceState(null, null, "MainController?action=viewAllCategories");
+            }
+        </script>
                 </c:otherwise>
             </c:choose>
     </body>

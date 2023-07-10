@@ -5,6 +5,7 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="dao.CategoryDAO"%>
+<%@page import="dao.ProductDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -107,60 +108,56 @@
                         </div>
                     </div>
 
+                    <div class="dashboard cus-dashboard mt-5">
+                        <form action="UpdateProductServlet" method="post" enctype="multipart/form-data">
 
-                    <c:if test="${requestScope.product != null}">
-                        <div class="dashboard cus-dashboard mt-5">
                             <div class="row align-items-center mx-5">
 
                                 <!--right-->
                                 <div class="col mx-5 ">
-                                    <form action="MainController">
 
-                                        <div class="title text-center mb-5">
-                                            <h5>Product Manager - Update Product</h5>
+                                    <div class="title text-center mb-5">
+                                        <h5>Product Manager - Update Product</h5>
+                                    </div>
+                                    <div class="form-item my-5 d-flex align-items-center justify-content-center">
+                                        <div class="col-3">
+                                            <label for="">ID</label>
                                         </div>
-
-                                        <div class="form-item my-5 d-flex align-items-center justify-content-center">
-                                            <div class="col-3">
-                                                <label for="">ID</label>
-                                            </div>
-                                            <div class="col-9">
-                                                <input name="pid" type="text" id="id" value="${requestScope.product.productID}" disabled="">
-                                            </div>
+                                        <div class="col-9">
+                                            <input name="pid" type="text" id="name" value="${product.productID}">
                                         </div>
-
-                                        <div class="form-item my-5 d-flex align-items-center justify-content-center">
-                                            <div class="col-3">
-                                                <label for="">Name</label>
-                                            </div>
-                                            <div class="col-9">
-                                                <input name="pName" type="text" id="name" value="${requestScope.product.productName}">
-                                            </div>
+                                    </div>
+                                    <div class="form-item my-5 d-flex align-items-center justify-content-center">
+                                        <div class="col-3">
+                                            <label for="">Name</label>
                                         </div>
-
-                                        <div class="form-item my-5 d-flex align-items-center justify-content-center">
-                                            <div class="col-3">
-                                                <label for="">Price</label>
-                                            </div>
-                                            <div class="col-9">
-                                                <input name="pPrice" type="text" id="phone" value="${requestScope.product.price}">
-                                            </div>
+                                        <div class="col-9">
+                                            <input name="pName" type="text" id="name" value="${product.productName}">
                                         </div>
+                                    </div>
 
-                                        <div class="form-item my-5 d-flex align-items-center justify-content-center">
-                                            <div class="col-3">
-                                                <label for="">Stock</label>
-                                            </div>
-                                            <div class="col-9">
-                                                <input name="pStock" type="text" id="email" value="${requestScope.product.stockQuantity}">
-                                            </div>
+                                    <div class="form-item my-5 d-flex align-items-center justify-content-center">
+                                        <div class="col-3">
+                                            <label for="">Price</label>
                                         </div>
+                                        <div class="col-9">
+                                            <input name="pPrice" type="text" id="phone" value="${product.price}">
+                                        </div>
+                                    </div>
 
-                                        <div class="form-item my-5">
-                                            <label class="mb-2" for="exampleFormControlTextarea1" >Description</label>
-                                            <textarea name="pDes" type="text" id="phone" value="" class="form-control" id="exampleFormControlTextarea1" rows="4">${requestScope.product.description}</textarea>
-                                        </div>             
-                                    </form>
+                                    <div class="form-item my-5 d-flex align-items-center justify-content-center">
+                                        <div class="col-3">
+                                            <label for="">Stock</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input name="pStock" type="text" id="email" value="${product.stockQuantity}">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-item my-5">
+                                        <label class="mb-2" for="exampleFormControlTextarea1" >Description</label>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name="pDes">${product.description}</textarea>
+                                    </div>
                                 </div>
 
 
@@ -172,8 +169,6 @@
                                             <label for="" >Category</label>
                                         </div>
                                         <select class="form-select" aria-label="Default select example" name="cateid">
-                                            <c:set var="cateid" value="${requestScope.product.cateID}"/>
-                                            <option value="${cateid}" selected>${CategoryDAO.getCategory(cateid).cateName}</option>
                                             <c:forEach var="cate" items="${CategoryDAO.getCategories()}">
                                                 <option value="${cate.cateID}">${cate.cateName}</option>
                                             </c:forEach>
@@ -185,88 +180,89 @@
                                             <label for="">Image</label>
                                         </div>
                                         <div class="mb-2">
-                                            <input class="no-border" type="file" name="file" size="60" />
+                                             <input class="no-border" type="file" name="file" size="60" />
                                         </div>
-                                    </div>    
-
-                                    <input name="pid" type="hidden" value="${requestScope.product.productID}">
+                                    </div>                                       
                                     <div class="form-item my-5 d-flex justify-content-center">
-                                        <button type="submit" name="action" value="updateProduct" class="button">Update</button>
+                                        <button type="submit" class="button" value="Update">Update </button>
                                     </div>
 
                                 </div>
                             </div>
-                        </div>
-                    </c:if>
-
-
-                    <!--
-                                        <div class="row">
-                                            <div class="col-lg-5 product-detail-img">
-                                                <img src="$/*{requestScope.product.imgPath}*/" alt="">
-                                            </div>
-                                        </div>-->
-
+                        </form>
+                    </div>
                 </div>
 
 
-                <!-- FOOTER -->
-                <footer>
-                    <c:import url="footer.jsp" />
-                </footer>
 
 
-                <c:if test="${requestScope.noti != null}">
-                    <script>
-                        $(function () {
-                            toastr.options = {
-                                "closeButton": true,
-                                "debug": false,
-                                "newestOnTop": false,
-                                "progressBar": false,
-                                "positionClass": "toast-top-center",
-                                "preventDuplicates": false,
-                                "onclick": null,
-                                "showDuration": "300",
-                                "hideDuration": "1000",
-                                "timeOut": "5000",
-                                "extendedTimeOut": "1000",
-                                "showEasing": "swing",
-                                "hideEasing": "linear",
-                                "showMethod": "fadeIn",
-                                "hideMethod": "fadeOut"
-                            };
-                            toastr.success("${requestScope.noti}");
-                        });
+                <!--
+                                    <div class="row">
+                                        <div class="col-lg-5 product-detail-img">
+                                            <img src="$/*{requestScope.product.imgPath}*/" alt="">
+                                        </div>
+                                    </div>-->
+
+            </div>
 
 
+            <!-- FOOTER -->
+            <footer>
+                <c:import url="footer.jsp" />
+            </footer>
 
-                    </script>
-                    <c:set scope="request" var="noti" value="${null}"/>
-                </c:if>
-                    
-                    
-                <script type="text/javascript">
-                    $(document).ready(function () {
-                        //jquery for toggle sub menus
-                        $('.sub-btn').click(function () {
-                            $(this).next('.sub-menu').slideToggle();
-                            $(this).find('.dropdown').toggleClass('rotate');
-                        });
 
-                        //jquery for expand and collapse the sidebar
-                        $('.menu-btn').click(function () {
-                            $('.side-bar').addClass('active');
-                            $('.menu-btn').css("visibility", "hidden");
-                        });
-
-                        $('.close-btn').click(function () {
-                            $('.side-bar').removeClass('active');
-                            $('.menu-btn').css("visibility", "visible");
-                        });
+            <c:if test="${requestScope.noti != null}">
+                <script>
+                    $(function () {
+                        toastr.options = {
+                            "closeButton": true,
+                            "debug": false,
+                            "newestOnTop": false,
+                            "progressBar": false,
+                            "positionClass": "toast-top-center",
+                            "preventDuplicates": false,
+                            "onclick": null,
+                            "showDuration": "300",
+                            "hideDuration": "1000",
+                            "timeOut": "5000",
+                            "extendedTimeOut": "1000",
+                            "showEasing": "swing",
+                            "hideEasing": "linear",
+                            "showMethod": "fadeIn",
+                            "hideMethod": "fadeOut"
+                        };
+                        toastr.success("${requestScope.noti}");
                     });
+
+
+
                 </script>
-            </c:otherwise>
-        </c:choose>
-    </body>
+                <c:set scope="request" var="noti" value="${null}"/>
+            </c:if>
+
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    //jquery for toggle sub menus
+                    $('.sub-btn').click(function () {
+                        $(this).next('.sub-menu').slideToggle();
+                        $(this).find('.dropdown').toggleClass('rotate');
+                    });
+
+                    //jquery for expand and collapse the sidebar
+                    $('.menu-btn').click(function () {
+                        $('.side-bar').addClass('active');
+                        $('.menu-btn').css("visibility", "hidden");
+                    });
+
+                    $('.close-btn').click(function () {
+                        $('.side-bar').removeClass('active');
+                        $('.menu-btn').css("visibility", "visible");
+                    });
+                });
+            </script>
+        </c:otherwise>
+    </c:choose>
+</body>
 </html>

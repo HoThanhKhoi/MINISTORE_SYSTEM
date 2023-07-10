@@ -69,7 +69,7 @@
                                     <h5>Schedule Management</h5>
                                 </div>
                                 <div class="item-wrapper"> 
-                                    <div class="item"><a href="MainController?action=viewAttendance">Attendance</a></div>
+                                    <div class="item"><a href="MainController?action=viewSchedule">Schedule</a></div>
                                 </div>
                             </div>
 

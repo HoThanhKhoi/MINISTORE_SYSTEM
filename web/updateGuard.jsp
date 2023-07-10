@@ -138,7 +138,7 @@
                                             <label for="">Address</label>
                                         </div>
                                         <div class="col-9">
-                                            <input type="text" id="phone" value="${requestScope.guard.address}" disabled="">
+                                            <input type="text" id="address" value="${requestScope.guard.address}" name="address">
                                         </div>
                                     </div>
 
@@ -163,7 +163,7 @@
                                             <label for="">Role</label>
                                         </div>
                                         <div class="col-9">
-                                            <input type="text" disabled placeholder="Customer">
+                                            <input type="text" disabled placeholder="Guard">
                                         </div>
                                     </div>   
 
@@ -181,9 +181,17 @@
                                             <label for="">Status</label>
                                         </div>
                                         <div class="col-9 status-btn">
-                                            <a role="button" id="active" style="background-color: #1B9C85;color:black;text-decoration: none;border-top-right-radius: 100px;
-                                                   border-bottom-right-radius: 100px;" href="" >Update</a>  
-                                            <input type="hidden" id="s" name="status" value="1"/>                               
+                                            <c:choose>
+                                                <c:when test="${requestScope.guard.status == 1}">
+                                                    <a role="button" id="active" style="background-color: #1B9C85;color:black;text-decoration: none" href="" >Active</a>
+                                                    <a role="button" id="inactive" style="background-color: #F6F5DB;color:black;text-decoration: none" href="">Inactive</a>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <a role="button" id="active" style="background-color: #F6F5DB;color:black;text-decoration: none" href="" >Active</a>
+                                                    <a role="button" id="inactive" style="background-color: #FF5B5B;color:black;text-decoration: none" href="">Inactive</a>
+                                                </c:otherwise>    
+                                            </c:choose>              
+                                            <input type="hidden" id="s" name="status" value="1"/> 
                                         </div>
                                     </div>
 
@@ -222,19 +230,33 @@
 
         <script>
             var activeBtn = document.querySelector("#active");
+            var inactiveBtn = document.querySelector("#inactive");
             var userID = document.getElementById("id").value;
             var roleID = 2;
             activeBtn.addEventListener("click", function () {
                 var userName = document.getElementById("name");
                 var phone = document.getElementById("phone");
+                var address = document.getElementById("address");
                 var status = document.getElementById("s");
                 activeBtn.style.backgroundColor = "#1B9C85";
+                inactiveBtn.style.backgroundColor = "#F6F5DB";
                 status.value = "1";
                 console.log(status.value);
-                activeBtn.href = "MainController?action=updateUser&userid=" + userID + "&username=" + userName.value + "&phone=" + phone.value + "&status=" + status.value + "&roleid=" + roleID;
+                activeBtn.href = "MainController?action=updateUser&userid=" + userID + "&username=" + userName.value + "&phone=" + phone.value + "&address=" +address.value + "&status=" + status.value + "&roleid=" + roleID;
             });
-
+            inactiveBtn.addEventListener("click", function () {
+                var userName = document.getElementById("name");
+                var phone = document.getElementById("phone");
+                var address = document.getElementById("address");
+                var status = document.getElementById("s");
+                activeBtn.style.backgroundColor = "#F6F5DB";
+                inactiveBtn.style.backgroundColor = "#FF5B5B";
+                status.value = 0;
+                console.log(status.value);
+                inactiveBtn.href = "MainController?action=updateUser&userid=" + userID + "&username=" + userName.value + "&phone=" + phone.value + "&address=" +address.value + "&status=" + status.value + "&roleid=" + roleID;
+            });
         </script>
+
 
         <script>
             if (window.history.replaceState) {
