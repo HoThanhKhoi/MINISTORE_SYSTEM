@@ -91,11 +91,11 @@
                                 </div>
 
                                 <div class="item">
-                                <a class="sub-btn" href="MainController?action=viewAllOrders">
-                                    <span><i class="fa-solid fa-cart-shopping mx-3"></i></span>
-                                    <span>Order</span>
-                                </a>
-                            </div>
+                                    <a class="sub-btn" href="MainController?action=viewAllOrders">
+                                        <span><i class="fa-solid fa-cart-shopping mx-3"></i></span>
+                                        <span>Order</span>
+                                    </a>
+                                </div>
 
                             </div>
                         </div>
@@ -136,20 +136,20 @@
 
                                         <div class="form-item my-5 d-flex align-items-center justify-content-center">
                                             <div class="col-3">
-                                                <label for="">Address</label>
-                                            </div>
-                                            <div class="col-9">
-                                                <input type="text" id="phone" value="${requestScope.sale.address}" disabled="">
-                                            </div>
-                                        </div>
-
-
-                                        <div class="form-item my-5 d-flex align-items-center justify-content-center">
-                                            <div class="col-3">
                                                 <label for="">Email</label>
                                             </div>
                                             <div class="col-9">
                                                 <input type="text" id="email" value="${requestScope.sale.email}" disabled="">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-item my-5 d-flex align-items-center justify-content-center">
+                                            <div class="col-3">
+                                                <label for="">Address</label>
+                                            </div>
+                                            <div class="col-9">
+                                                <!--<input type="text" id="phone" value="" disabled="">-->
+                                                <textarea class="form-control" id="" rows="2" name="" value="${requestScope.sale.address}" disabled="">${requestScope.sale.address}</textarea>
                                             </div>
                                         </div>
                                     </form>

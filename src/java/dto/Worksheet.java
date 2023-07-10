@@ -5,19 +5,19 @@
  */
 package dto;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Admin
  */
-public class Worksheet {
+public class Worksheet implements Serializable {
     private String worksheetID;
     private String worksheetName;
-    private float coeffiecent;
 
-    public Worksheet(String worksheetID, String worksheetName, float coeffiecent) {
+    public Worksheet(String worksheetID, String worksheetName) {
         this.worksheetID = worksheetID;
         this.worksheetName = worksheetName;
-        this.coeffiecent = coeffiecent;
     }
 
     public String getWorksheetID() {
@@ -34,14 +34,6 @@ public class Worksheet {
 
     public void setWorksheetName(String worksheetName) {
         this.worksheetName = worksheetName;
-    }
-
-    public float getCoeffiecent() {
-        return coeffiecent;
-    }
-
-    public void setCoeffiecent(float coeffiecent) {
-        this.coeffiecent = coeffiecent;
     }
     
     

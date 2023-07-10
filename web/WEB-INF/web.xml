@@ -272,6 +272,10 @@
         <servlet-name>ViewOrderDetailsPageServlet</servlet-name>
         <servlet-class>controllers.ViewOrderDetailsPageServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SwitchCalendarServlet</servlet-name>
+        <servlet-class>controllers.SwitchCalendarServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ResetPassServlet</servlet-name>
         <url-pattern>/ResetPassServlet</url-pattern>
@@ -535,6 +539,10 @@
     <servlet-mapping>
         <servlet-name>ViewOrderDetailsPageServlet</servlet-name>
         <url-pattern>/ViewOrderDetailsPageServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SwitchCalendarServlet</servlet-name>
+        <url-pattern>/SwitchCalendarServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

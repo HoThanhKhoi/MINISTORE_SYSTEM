@@ -23,14 +23,13 @@ public class WorksheetDAO {
         Connection cn = DBUtils.makeConnection();
         Worksheet worksheet;
         if (cn != null) {
-            String sql = "Select WorksheetID,WorksheetName,Coefficient from WORKSHEETS";
+            String sql = "Select WorksheetID,WorksheetName from WORKSHEETS";
             PreparedStatement pst = cn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
             while (rs.next() && rs != null) {
                 String worksheetID = rs.getString("WorksheetID");
                 String worksheetName = rs.getString("WorksheetName");
-                float coefficient = rs.getFloat("Coefficient");
-                worksheet = new Worksheet(worksheetID,worksheetName,coefficient);
+                worksheet = new Worksheet(worksheetID,worksheetName);
                 list.add(worksheet);
             }
 

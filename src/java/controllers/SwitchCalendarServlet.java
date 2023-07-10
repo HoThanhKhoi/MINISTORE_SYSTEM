@@ -5,12 +5,10 @@
  */
 package controllers;
 
-
-import dao.OrderDAO;
-import dto.Order;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,9 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Asus TUF
+ * @author Admin
  */
-public class ViewOrderDetailsPageServlet extends HttpServlet {
+public class SwitchCalendarServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,14 +33,22 @@ public class ViewOrderDetailsPageServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-//            String pid = request.getParameter("pid");
-//            Order order = OrderDAO.getOrderInfo(oid);
-//            if (order != null) {
-//                request.setAttribute("order", order);
-//                request.getRequestDispatcher("updateOrder.jsp").forward(request, response);
-//            }
-        } catch (Exception e) {
-            e.printStackTrace();
+            String page = request.getParameter("goto");
+            out.write(page);
+            int weekYear = Integer.parseInt(request.getParameter("weekYear"));
+            int noOfWeek = Integer.parseInt(request.getParameter("noOfWeek"));
+            LocalDate startday = LocalDate.parse(String.format("%04d-W%02d-1", weekYear, noOfWeek), DateTimeFormatter.ISO_WEEK_DATE);
+            request.setAttribute("noOfWeek", noOfWeek);
+            request.setAttribute("startday", startday);
+            switch(page) {
+                case "employeeSchedule":
+                    request.getRequestDispatcher("viewEmployeeSchedule.jsp").forward(request, response);
+                    break;
+                case  "mySchedule":
+                    request.getRequestDispatcher("viewMySchedule.jsp").forward(request, response);
+                    break;
+            }
+            
         }
     }
 
