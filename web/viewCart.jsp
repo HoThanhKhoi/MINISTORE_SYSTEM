@@ -9,6 +9,7 @@
 <%@ page import="java.text.DecimalFormat"%>
 <%@page import="dao.ProductDAO"%>
 <%@page import="dao.VoucherDAO"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -106,6 +107,7 @@
 
                             <div class="cart-table">
                                 <div class="mainBodyCart">
+                                    <div></div>
                                     <table class="table-fixed">
                                         <thead>
                                             <tr>

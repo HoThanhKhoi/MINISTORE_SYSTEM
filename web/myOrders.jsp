@@ -235,19 +235,5 @@
                 <footer><c:import url="footer.jsp"/></footer>
                 </c:otherwise>
             </c:choose>
-
-        <!--        <script>
-                    var btnContainer = document.getElementById("myDiv");
-        
-                    var btns = btnContainer.getElementsByClassName("btn");
-        
-                    for (var i = 0; i < btns.length; i++) {
-                        btns[i].addEventListener("click", function () {
-                            var current = document.getElementsByClassName("active");
-                            current[0].className = current[0].className.replace(" active", "");
-                            this.className += " active";
-                        });
-                    }
-                </script>-->
     </body>
 </html>

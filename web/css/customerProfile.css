@@ -15,6 +15,7 @@ body {
 }
 
 .menu {
+    width: 250px;
     background: rgba(246, 245, 219, 0.5);
  }
 

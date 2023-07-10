@@ -38,8 +38,8 @@
                 <jsp:forward page="login.jsp"/>
             </c:when>
             <c:otherwise>
-                
-                
+
+
                 <!--HEADER-->
                 <header>
                     <c:import url="header_managerDashboard.jsp" />
@@ -176,7 +176,7 @@
                                                 </td>
                                                 </tr>
                                             </form>
-                                            
+
                                         </c:forEach>
                                     </c:if>
                                     <c:if test="${requestScope.ppList != null}">

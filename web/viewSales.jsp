@@ -106,7 +106,7 @@
                                     <button id="search-button" type="submit" class="btn" name="action" value="searchUsers">
                                         <i class="fas fa-search"></i>
                                     </button>
-                                <input type="hidden" name="roleid" value="1"/>
+                                    <input type="hidden" name="roleid" value="1"/>
                                 </form>
                             </div>                    
 
@@ -119,7 +119,7 @@
                                 </form>                    
                             </div>                    
                         </div>
-                        
+
                         <table class="table mt-4 text-center">
                             <thead>
                                 <tr>

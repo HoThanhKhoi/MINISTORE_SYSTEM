@@ -697,12 +697,14 @@ a.btn_add:hover {
 
 
 /*SCHEDULE*/
-table.border {
-    overflow-x: scroll;
+.dashboard.schedule {
+    margin: 0 40px !important;
 }
 
+
 table.border thead {
-    background-color: #3C4048;
+    background-color: #F6F5DB;
+    color: #07484A;
 }
 
 table.border tr th {
@@ -710,7 +712,8 @@ table.border tr th {
 }
 
 table.border tbody tr th {
-    background-color: #EAEAEA;
+    background-color: #F6F5DB;
+    color: #07484A;
     vertical-align: middle;
     border: 1px solid #fff;
 }
@@ -724,6 +727,7 @@ table.border tr td {
 
 table.border thead tr th:first-child {
     width: 80px;
+    border: 1px solid #fff;
 }
 
 table.border thead tr th:not(:first-child){
@@ -731,9 +735,9 @@ table.border thead tr th:not(:first-child){
     width: 180px;
 }
 
+
 table.border tbody tr td {
-    border: 1px solid #000;
-    border-color: inherit;
+    border: 1px solid #F6F5DB;
 }
 
 
@@ -749,10 +753,12 @@ table.border tbody tr td {
     appearance: none;
     padding-right: 50px;
     width: 100%;
-    background-color: #E5F9DB;    
+    background-color: #fff; 
+    border: 1px solid #07484A;
     cursor: pointer;
     height: 40px;
     text-align: center;
+    border-radius: 5px;
 }
 
 
@@ -764,18 +770,15 @@ table.border tbody tr td {
     justify-content: center;
     align-items: center;
     right: 0;
-    background-color: #A0D8B3;
     pointer-events: none;
     transition: .25s all ease;
+    border-radius: 5px;
 }
 
 .select-container .icon-container i {
-    color: #fff;
-}
-
-.select-container .icon-container i:hover {
     color: #07484A;
 }
+
 
 
 
@@ -813,7 +816,6 @@ caption {
 .modal {
     width: 100%; /* Full width */
     height: 100%; /* Full height */
-    
 }
 
 .modal-dialog {
@@ -853,4 +855,25 @@ caption {
 
 .modal-line {
     padding: 10px;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    background-color: transparent !important;
+    margin-bottom: 0 !important;
+    margin-left: 65px;
+}
+
+.breadcrumb li a,
+li::before {
+    color: #1B9C85 !important;
+    text-decoration: none !important;
+}
+
+.breadcrumb .item-active {
+    font-weight: 700;
+}
+
+.dashboard-schedule {
+    margin-top: 0 !important;
 }
