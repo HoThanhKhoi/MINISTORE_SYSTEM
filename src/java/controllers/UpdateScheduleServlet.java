@@ -5,27 +5,21 @@
  */
 package controllers;
 
-import dao.CategoryDAO;
-import dao.ProductDAO;
+import dao.ScheduleDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 
 /**
  *
  * @author Admin
  */
-@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
-        maxFileSize = 1024 * 1024 * 50, // 50MB
-        maxRequestSize = 1024 * 1024 * 100)
-public class UpdateProductServlet extends HttpServlet {
+public class UpdateScheduleServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,34 +35,15 @@ public class UpdateProductServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String pid = request.getParameter("pid");
-            String pName = request.getParameter("pName");
-            String des = request.getParameter("pDes");
-            String price = request.getParameter("pPrice");
-            int stock = Integer.parseInt(request.getParameter("pStock"));
-            String cateID = request.getParameter("cateid");
-            Part filePart = request.getPart("file");
-            String fileName = filePart.getSubmittedFileName();
-            for (Part part : request.getParts()) {
-                try {
-                    part.write("C:\\Users\\Admin\\Documents\\NetBeansProjects\\MINISTORE_Linh\\web\\image\\products\\" + fileName);
-                } catch(Exception e){
-                    System.out.println(e);
-                }
-            }
-            String imgPath = "image/products/" + fileName;
-//            String imgPath = request.getParameter("imgPath");
-            String cateName = CategoryDAO.getCategory(cateID).getCateName();
-            int result;
-            result = ProductDAO.updateProduct(pid, pName, Float.parseFloat(price), des, stock, imgPath, cateID);
-            if (result == 1) {
-                request.setAttribute("noti", "Update successfully");
-                request.setAttribute("catename", cateName);
-                request.getRequestDispatcher("MainController?action=viewProductDetailsPage&" + pid).forward(request, response);
-            } else {
-//                response.sendRedirect("index.jsp");
-            }
+            String neID = request.getParameter("eid");
+            String ueID = request.getParameter("ueid");
+            String wid = request.getParameter("wid");
+            String sDate = request.getParameter("sdate");
 
+            int result = ScheduleDAO.updateSchedule(ueID, sDate, wid, neID);
+            if(result != 0 ){
+                request.getRequestDispatcher("ViewScheduleServlet").forward(request, response);
+            }
         }
     }
 
@@ -87,7 +62,7 @@ public class UpdateProductServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(UpdateProductServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateScheduleServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -105,7 +80,7 @@ public class UpdateProductServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(UpdateProductServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateScheduleServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

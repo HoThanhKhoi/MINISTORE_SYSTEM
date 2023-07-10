@@ -5,27 +5,24 @@
  */
 package controllers;
 
-import dao.CategoryDAO;
-import dao.ProductDAO;
+import dao.ScheduleDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 
 /**
  *
  * @author Admin
  */
-@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
-        maxFileSize = 1024 * 1024 * 50, // 50MB
-        maxRequestSize = 1024 * 1024 * 100)
-public class UpdateProductServlet extends HttpServlet {
+public class AddScheduleServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,34 +38,50 @@ public class UpdateProductServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String pid = request.getParameter("pid");
-            String pName = request.getParameter("pName");
-            String des = request.getParameter("pDes");
-            String price = request.getParameter("pPrice");
-            int stock = Integer.parseInt(request.getParameter("pStock"));
-            String cateID = request.getParameter("cateid");
-            Part filePart = request.getPart("file");
-            String fileName = filePart.getSubmittedFileName();
-            for (Part part : request.getParts()) {
-                try {
-                    part.write("C:\\Users\\Admin\\Documents\\NetBeansProjects\\MINISTORE_Linh\\web\\image\\products\\" + fileName);
-                } catch(Exception e){
-                    System.out.println(e);
+            String[] eIDs = request.getParameterValues("eID");
+
+            ArrayList<String> wID = new ArrayList<>();
+            ArrayList<String> eID = new ArrayList<>();
+            ArrayList<String> sDate = new ArrayList<>();
+            int result = 0;
+//            for (String wid : wIDs) {
+//                wID.add(wid);
+//            }
+//            for (String eid : eIDs) {
+//                eID.add(eid);
+//            }
+//            for (String sdate : sDates) {
+//                sdate += "/2023";
+//                sDate.add(sdate);
+//            }
+            String[] parts = null;
+            for (int i = 0; i < eIDs.length; i++) {
+                parts = eIDs[i].split("\\|");
+                for (int j = 0; j < parts.length; j += 3) {
+                    eID.add(parts[j]);
                 }
             }
-            String imgPath = "image/products/" + fileName;
-//            String imgPath = request.getParameter("imgPath");
-            String cateName = CategoryDAO.getCategory(cateID).getCateName();
-            int result;
-            result = ProductDAO.updateProduct(pid, pName, Float.parseFloat(price), des, stock, imgPath, cateID);
-            if (result == 1) {
-                request.setAttribute("noti", "Update successfully");
-                request.setAttribute("catename", cateName);
-                request.getRequestDispatcher("MainController?action=viewProductDetailsPage&" + pid).forward(request, response);
-            } else {
-//                response.sendRedirect("index.jsp");
+            for (int i = 0; i < eIDs.length; i++) {
+                parts = eIDs[i].split("\\|");
+                for (int j = 1; j < parts.length; j += 3) {
+                    wID.add(parts[j]);
+                }
             }
+            DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("d/M/yyyy");
 
+            for (int i = 0; i < eIDs.length; i++) {
+                parts = eIDs[i].split("\\|");
+                for (int j = 2; j < parts.length; j += 3) {
+                    sDate.add(parts[j]);
+                }
+            }
+            for (int i = 0; i < eID.size(); i++) {
+                result = ScheduleDAO.addSchedule(sDate.get(i), wID.get(i), eID.get(i));
+            }
+            request.setAttribute("wID", wID);
+            request.setAttribute("eID", eID);
+            request.setAttribute("sDate", sDate);
+            request.getRequestDispatcher("ViewScheduleServlet").forward(request, response);
         }
     }
 
@@ -87,7 +100,7 @@ public class UpdateProductServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(UpdateProductServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AddScheduleServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -105,7 +118,7 @@ public class UpdateProductServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(UpdateProductServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AddScheduleServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

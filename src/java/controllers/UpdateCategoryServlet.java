@@ -10,14 +10,19 @@ import dto.Category;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author Asus TUF
  */
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
+        maxFileSize = 1024 * 1024 * 50, // 50MB
+        maxRequestSize = 1024 * 1024 * 50)
 public class UpdateCategoryServlet extends HttpServlet {
 
     /**
@@ -36,17 +41,24 @@ public class UpdateCategoryServlet extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             String cateID = request.getParameter("cateID");
             String cateName = request.getParameter("catename");
-            String imgpath = request.getParameter("imgpath");
+            Part filePart = request.getPart("file");
+            String fileName = filePart.getSubmittedFileName();
+            for (Part part : request.getParts()) {
+                part.write("C:\\Users\\Admin\\Documents\\NetBeansProjects\\MINISTORE_Linh\\web\\image\\categories\\" + fileName);
+            }
+            String imgPath = "image/categories/" + fileName;
             if (cateName == null || cateName.trim().equals("")) {
                 Category cate = CategoryDAO.getCategory(cateID);
                 cateName = cate.getCateName();
             }
-            if (CategoryDAO.updateCategory(cateID, cateName, imgpath)) {
-                request.setAttribute("noti", "Change successfully");
+            if (CategoryDAO.updateCategory(cateID, cateName, imgPath)) {
+                request.setAttribute("noti", "Update successfully");
+                request.getRequestDispatcher("ViewAllCategoriesServlet").forward(request, response);
             } else {
                 request.setAttribute("warning", "Change failed");
+                request.getRequestDispatcher("ViewAllCategoriesServlet").forward(request, response);
             }
-            request.getRequestDispatcher("ViewAllCategoriesServlet").forward(request, response);
+            
         } catch (Exception e) {
         }
     }

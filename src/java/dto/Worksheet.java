@@ -10,14 +10,14 @@ package dto;
  * @author Admin
  */
 public class Worksheet {
+
     private String worksheetID;
     private String worksheetName;
-    private float coeffiecent;
 
-    public Worksheet(String worksheetID, String worksheetName, float coeffiecent) {
+    public Worksheet(String worksheetID, String worksheetName) {
         this.worksheetID = worksheetID;
         this.worksheetName = worksheetName;
-        this.coeffiecent = coeffiecent;
+
     }
 
     public String getWorksheetID() {
@@ -36,13 +36,4 @@ public class Worksheet {
         this.worksheetName = worksheetName;
     }
 
-    public float getCoeffiecent() {
-        return coeffiecent;
-    }
-
-    public void setCoeffiecent(float coeffiecent) {
-        this.coeffiecent = coeffiecent;
-    }
-    
-    
 }

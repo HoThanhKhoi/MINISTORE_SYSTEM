@@ -37,7 +37,7 @@ public class CategoryDAO {
         }
         return cate;
     }
-    
+
     public static ArrayList<Category> getCategories() throws Exception {
         Connection cn = DBUtils.makeConnection();
         ArrayList<Category> cateList = new ArrayList<>();
@@ -58,10 +58,7 @@ public class CategoryDAO {
         cn.close();
         return cateList;
     }
-    
-    
-    
-    
+
     public static ArrayList<Category> getPaginatedCategory(int pageNumber, int productPerPage) throws Exception {
         ArrayList<Category> list = new ArrayList<>();
         ArrayList<Category> cateList = CategoryDAO.getCategories();
@@ -76,22 +73,22 @@ public class CategoryDAO {
         }
         return list;
     }
-    
-    public static ArrayList<String> getImgPath() throws Exception{
+
+    public static ArrayList<String> getImgPath() throws Exception {
         ArrayList<String> imgList = new ArrayList<>();
         Connection cn = DBUtils.makeConnection();
-        if (cn != null){
+        if (cn != null) {
             String sql = "select distinct [ImgPath] from [dbo].[CATEGORIES]";
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
-            while (rs != null && rs.next()){
+            while (rs != null && rs.next()) {
                 imgList.add(rs.getString("imgPath"));
             }
             cn.close();
         }
         return imgList;
     }
-    
+
     public static boolean updateCategory(String cateID, String cateName, String imgpath) throws Exception {
         boolean flag = false;
         Connection cn = DBUtils.makeConnection();
@@ -108,31 +105,32 @@ public class CategoryDAO {
         }
         return flag;
     }
-    
-    public static boolean checkCategoryName(String cateName) throws Exception{
+
+    public static boolean checkCategoryName(String cateName) throws Exception {
         boolean flag = false;
         Connection cn = DBUtils.makeConnection();
-        if (cn != null){
+        if (cn != null) {
             String sql = "select * from CATEGORIES where CateName=?";
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setString(1, cateName);
             ResultSet rs = pst.executeQuery();
-            if (rs != null && rs.next()){
+            if (rs != null && rs.next()) {
                 flag = true;
             }
             cn.close();
         }
         return flag;
     }
-    
-    public static boolean addNewCategory(String cateName) throws Exception {
+
+    public static boolean addNewCategory(String cateName, String imgPath) throws Exception {
         boolean flag = false;
         Connection cn = DBUtils.makeConnection();
         if (cn != null) {
-            String sql = "insert CATEGORIES(CateName)\n"
-                    + "values (?)";
+            String sql = "insert CATEGORIES(CateName,ImgPath)\n"
+                    + "values (?,?)";
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setString(1, cateName);
+            pst.setString(2, imgPath);
             flag = pst.executeUpdate() == 1;
             cn.close();
         }

@@ -9,14 +9,19 @@ import dao.CategoryDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author Asus TUF
  */
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
+        maxFileSize = 1024 * 1024 * 50, // 50MB
+        maxRequestSize = 1024 * 1024 * 100)
 public class AddNewCategoryServlet extends HttpServlet {
 
     /**
@@ -33,17 +38,24 @@ public class AddNewCategoryServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             String cateName = request.getParameter("cateName");
-            if (CategoryDAO.checkCategoryName(cateName)) {
-                request.setAttribute("warning", "This category name already exist");
-            } else {
-                if (cateName.trim().equals("")) {
-                    request.setAttribute("warning", "Please input name for new category");
-                } else if (CategoryDAO.addNewCategory(cateName)) {
-                    request.setAttribute("noti", "New category is added");
-                } else {
-                    request.setAttribute("warning", "Add new category failed");
-                }
+            Part filePart = request.getPart("file");
+            String fileName = filePart.getSubmittedFileName();
+            for (Part part : request.getParts()) {
+                part.write("C:\\Users\\Admin\\Documents\\NetBeansProjects\\MINISTORE_Linh\\web\\image\\categories\\" + fileName);
             }
+            String imgPath = "image/categories/" + fileName;
+            CategoryDAO.addNewCategory(cateName,imgPath);
+//            if (CategoryDAO.checkCategoryName(cateName)) {
+//                request.setAttribute("warning", "This category name already exist");
+//            } else {
+//                if (cateName.trim().equals("")) {
+//                    request.setAttribute("warning", "Please input name for new category");
+//                } else if (CategoryDAO.addNewCategory(cateName,imgPath)) {
+//                    request.setAttribute("noti", "New category is added");
+//                } else {
+//                    request.setAttribute("warning", "Add new category failed");
+//                }
+//            }
             request.getRequestDispatcher("ViewAllCategoriesServlet").forward(request, response);
         } catch (Exception e) {
         }

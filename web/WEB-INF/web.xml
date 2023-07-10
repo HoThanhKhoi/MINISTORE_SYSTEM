@@ -273,6 +273,22 @@
         <servlet-class>controllers.ViewOrderDetailsPageServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>AddScheduleServlet</servlet-name>
+        <servlet-class>controllers.AddScheduleServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SwitchCalendarServlet</servlet-name>
+        <servlet-class>controllers.SwitchCalendarServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateScheduleServlet</servlet-name>
+        <servlet-class>controllers.UpdateScheduleServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewScheduleServlet</servlet-name>
+        <servlet-class>controllers.ViewScheduleServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ChangeOrderStatusServlet</servlet-name>
         <servlet-class>controllers.ChangeOrderStatusServlet</servlet-class>
     </servlet>
@@ -543,6 +559,22 @@
     <servlet-mapping>
         <servlet-name>ViewOrderDetailsPageServlet</servlet-name>
         <url-pattern>/ViewOrderDetailsPageServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddScheduleServlet</servlet-name>
+        <url-pattern>/AddScheduleServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SwitchCalendarServlet</servlet-name>
+        <url-pattern>/SwitchCalendarServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateScheduleServlet</servlet-name>
+        <url-pattern>/UpdateScheduleServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewScheduleServlet</servlet-name>
+        <url-pattern>/ViewScheduleServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ChangeOrderStatusServlet</servlet-name>
