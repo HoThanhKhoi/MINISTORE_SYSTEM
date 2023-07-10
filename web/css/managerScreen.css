@@ -199,7 +199,7 @@ table {
 }
 
 table thead {
-    background-color: #1B9C85;
+background-color: #1B9C85;
     color: #fff;
 }
 
@@ -389,7 +389,7 @@ label {
 
 .cus-info form input::placeholder {
     font-weight: 300;
-    font-style: oblique;
+font-style: oblique;
 }
 
 
@@ -552,8 +552,6 @@ label {
     background-color: #fff;
     border-radius: 5px;
 }
-
-
 .myOrder-menu ul li.active a {
     font-weight: 700;
     color: #1B9C85 !important;

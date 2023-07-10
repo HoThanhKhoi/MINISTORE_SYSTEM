@@ -296,6 +296,10 @@
         <servlet-name>ViewCustomerOrders</servlet-name>
         <servlet-class>controllers.ViewCustomerOrders</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SwitchCalendarServlet</servlet-name>
+        <servlet-class>controllers.SwitchCalendarServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ResetPassServlet</servlet-name>
         <url-pattern>/ResetPassServlet</url-pattern>
@@ -583,6 +587,10 @@
     <servlet-mapping>
         <servlet-name>ViewCustomerOrders</servlet-name>
         <url-pattern>/ViewCustomerOrders</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SwitchCalendarServlet</servlet-name>
+        <url-pattern>/SwitchCalendarServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

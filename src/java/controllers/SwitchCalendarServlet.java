@@ -7,12 +7,8 @@ package controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.time.Month;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Calendar;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -37,7 +33,7 @@ public class SwitchCalendarServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-           String page = request.getParameter("goto");
+            String page = request.getParameter("goto");
             out.write(page);
             int weekYear = Integer.parseInt(request.getParameter("weekYear"));
             int noOfWeek = Integer.parseInt(request.getParameter("noOfWeek"));
@@ -52,6 +48,7 @@ public class SwitchCalendarServlet extends HttpServlet {
                     request.getRequestDispatcher("viewMySchedule.jsp").forward(request, response);
                     break;
             }
+            
         }
     }
 
