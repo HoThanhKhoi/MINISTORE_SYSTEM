@@ -86,9 +86,9 @@
                             </div>
 
                             <div class="item">
-                                <a class="sub-btn">
+                                <a class="sub-btn ">
                                     <span><i class="fa-solid fa-clipboard-user mx-3"></i></span>
-                                    <span>Attendance</span>
+                                    <span>Schedule</span>
                                 </a>
                             </div>
 
@@ -225,7 +225,7 @@
                             <c:when test="${requestScope.keyword == null}">
                                 <nav aria-label="Page navigation example">
                                     <ul class="pagination justify-content-center">
-                                        
+
                                         <c:if test="${requestScope.page > 1}">
                                             <li class="page-item">
                                                 <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=3"><</a>
@@ -241,28 +241,28 @@
                                         <fmt:formatNumber value="${numOfPage}" pattern="0" var="intLastPage" />
                                         <c:forEach var="i" begin="1" end="${numOfPage}" step="1">
                                             <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${i}&roleid=3">${i}</a></li>
-                                        </c:forEach>
+                                            </c:forEach>
                                             <c:choose>
                                                 <c:when test="${intLastPage > 1}">
                                                     <c:if test="${requestScope.page < numOfPage || pageNum == null}">
                                                     <li class="page-item">
                                                         <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page+1}&roleid=3">></a>
                                                     </li>
-                                                    </c:if>
+                                                </c:if>
                                                 <c:if test="${requestScope.page >= numOfPage}">
                                                     <li class="page-item">
                                                         <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${intLastPage}&roleid=3">></a>
                                                     </li>
                                                 </c:if>
-                                                </c:when>
-                                                <c:when test="${intLastPage <= 1}">
-                                                    <c:if test="${pageNum == 1 || pageNumm == null}">
+                                            </c:when>
+                                            <c:when test="${intLastPage <= 1}">
+                                                <c:if test="${pageNum == 1 || pageNumm == null}">
                                                     <li class="page-item">
                                                         <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="#">></a>
                                                     </li>
-                                                    </c:if>
-                                                   
-                                                </c:when>
+                                                </c:if>
+
+                                            </c:when>
                                         </c:choose>
                                     </ul>
                                 </nav>
@@ -272,21 +272,21 @@
                                     <ul class="pagination justify-content-center">
                                         <c:if test="${requestScope.pageNum > 1}"> 
                                             <li class="page-item">
-                                            <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=3&keyword=${requestScope.keyword}"><</a>
-                                        </li>
+                                                <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=3&keyword=${requestScope.keyword}"><</a>
+                                            </li>
                                         </c:if>
                                         <c:if test="${requestScope.pageNum == 1 || requestScope.pageNum==null}"> 
                                             <li class="page-item">
-                                            <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${1}&roleid=3&keyword=${requestScope.keyword}"><</a>
-                                        </li>
+                                                <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${1}&roleid=3&keyword=${requestScope.keyword}"><</a>
+                                            </li>
                                         </c:if>
                                         <c:set var="totalSearchProducts" value="${UserDAO.searchUsers(3, requestScope.keyword).size()}"/>
                                         <c:set var="numOfSSearchPages" value="${Math.ceil(totalSearchProducts / 7)}"/>
                                         <fmt:formatNumber value="${numOfPage}" pattern="0" var="intLastPage" />
                                         <c:forEach var="i" begin="1" end="${numOfSSearchPages}">
                                             <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showPaginatedUserPage&page=${i}&roleid=3&keyword=${requestScope.keyword}">${i}</a></li>
-                                        </c:forEach>
-                                            
+                                            </c:forEach>
+
                                         <li class="page-item">
                                             <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showPaginatedUserPage&page=${requestScope.page+1}&roleid=3&keyword=${requestScope.keyword}">></a>
                                         </li>
@@ -305,13 +305,13 @@
 
         <script type="text/javascript">
             $(document).ready(function () {
-//jquery for toggle sub menus
+                //jquery for toggle sub menus
                 $('.sub-btn').click(function () {
                     $(this).next('.sub-menu').slideToggle();
                     $(this).find('.dropdown').toggleClass('rotate');
                 });
 
-//jquery for expand and collapse the sidebar
+                //jquery for expand and collapse the sidebar
                 $('.menu-btn').click(function () {
                     $('.side-bar').addClass('active');
                     $('.menu-btn').css("visibility", "hidden");

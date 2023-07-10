@@ -85,9 +85,9 @@
                             </div>
 
                             <div class="item">
-                                <a class="sub-btn">
+                                <a class="sub-btn ">
                                     <span><i class="fa-solid fa-clipboard-user mx-3"></i></span>
-                                    <span>Attendance</span>
+                                    <span>Schedule</span>
                                 </a>
                             </div>
 
