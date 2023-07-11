@@ -84,8 +84,8 @@
                                 </a>
                             </div>
 
-                            <div class="item">
-                                <a class="sub-btn">
+                            <div class="item" >
+                                <a class="sub-btn" href="MainController?action=viewSchedule">
                                     <span><i class="fa-solid fa-clipboard-user mx-3" href="MainController?action=viewSchedule"></i></span>
                                     <span>Schedule</span>
                                 </a>

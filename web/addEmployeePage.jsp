@@ -158,19 +158,7 @@
                                                 <input type="text" disabled placeholder="Guard">
                                             </div>
                                         </div>
-                                        <div class="mt-4 mb-5 d-flex align-items-center">
-                                            <div class="col-3">
-                                                <label for="">Schedule</label>
-                                            </div>
-                                            <div class="col-9">
-                                                <select class="form-select" aria-label="Default select example" name="wid">
-                                                    <c:forEach var="worksheet" items="${WorksheetDAO.getAllWorksheets()}">
-                                                        <option value="${worksheet.worksheetID}">${worksheet.worksheetName}</option>
-                                                    </c:forEach>
-
-                                                </select>
-                                            </div>
-                                        </div>  
+                                          
 
                                         <div class="mt-4 mb-5 status status-add d-flex align-items-center">
                                             <div class="col-3">
@@ -183,7 +171,7 @@
                                         </div>
 
                                         <div class="mt-5 d-flex justify-content-center align-items-center">
-                                            <input type="hidden"  value="1" name="roleid"/>
+                                            <input type="hidden"  value="2" name="roleid"/>
                                             <button class="add" id="addBtn" name="action" value="addEmployee">Add</button>
                                         </div>
                                     </div>    
@@ -249,19 +237,7 @@
                                                 <input type="text" disabled placeholder="Sale">
                                             </div>
                                         </div>
-                                        <div class="mt-4 mb-5 d-flex align-items-center">
-                                            <div class="col-3">
-                                                <label for="">Schedule</label>
-                                            </div>
-                                            <div class="col-9">
-                                                <select class="form-select" aria-label="Default select example" name="wid">
-                                                    <c:forEach var="worksheet" items="${WorksheetDAO.getAllWorksheets()}">
-                                                        <option value="${worksheet.worksheetID}">${worksheet.worksheetName}</option>
-                                                    </c:forEach>
-
-                                                </select>
-                                            </div>
-                                        </div>  
+                                        
 
                                         <div class="mt-4 mb-5 status status-add d-flex align-items-center">
                                             <div class="col-3">

@@ -122,6 +122,9 @@
                                         Please provide a valid postal code.
                                     </div>
                                 </div>
+                                <div class="mb-3">
+                                    <div style="border-bottom: 1px solid black">Payment: COD</div>
+                                </div>
                                 <div class="button">
                                     <button type="submit" class="btn" name="action" value="confirmCart">Checkout</button>
                                 </div>

@@ -48,7 +48,7 @@ public class AddNewProductServlet extends HttpServlet {
             Part filePart = request.getPart("file");
             String fileName = filePart.getSubmittedFileName();
             for (Part part : request.getParts()) {
-                part.write("C:\\Users\\Admin\\Documents\\NetBeansProjects\\MINISTORE_Linh\\web\\image\\products\\" + fileName);
+                part.write("C:\\Users\\FPT Study Files\\TempSWP\\Sprint4\\Sprint4_Finale\\web\\image\\products\\" + fileName);
             }
             String imgPath = "image/products/" + fileName;
             int result = ProductDAO.addProduct(pName, Float.parseFloat(price), des, stock, imgPath, cateID);
