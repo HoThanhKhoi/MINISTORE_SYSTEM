@@ -44,7 +44,7 @@
 
             <!-- table -->
             <div class="dashboard mt-4">
-                
+
                 <div class="container mb-5">
                     <div class="row justify-content-between">
                         <c:if test="${requestScope.noti != null}">
@@ -191,58 +191,59 @@
                                             <button class="button apply mx-2" type="submit" name="action" value="saleChangeOrderStatus">Apply</button>
                                         </form>
                                     </div>
-
-
-                                    <!-- check out -->
-                                    <div class="col-lg-6 checkout">
-                                        <div class="row">
-                                            <table class="table-fixed text-center">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Product</th>
-                                                        <th></th>
-                                                        <th>Quantity</th>
-                                                        <th>Price</th>
-                                                    </tr>
-                                                </thead>
-
-                                                <tbody>
-                                                    <c:forEach var="details" items="${requestScope.orderDetailsList}">
-                                                        <tr>
-                                                            <td  class="cart-item-img">                                                 
-                                                                <img src="${details.imgPath}" style="width: 80px;"/>
-                                                            </td>
-                                                            <td class="cart-item-title">${details.productName}</td>
-                                                            <td>${details.quantity}</td>
-                                                            <td class="cart-price">$${details.money}</td>
-                                                        </tr>
-                                                    </c:forEach>
-                                                </tbody>
-                                            </table>
-                                        </div>
-
-                                        <div class="total mt-4">
-                                            <p>Total</p>
-                                            <p>$${requestScope.order.totalMoney}</p>
-                                        </div>
-
-                                        <c:if test="${requestScope.error != null}">
-                                            <div class="alert alert-danger alert-dismissible fade show notification mt-5" role="alert" style="padding: 15px 45px;text-align: center;width:430px;opacity: 100%;margin: 30px auto">
-                                                <strong class="error">${requestScope.error}</strong> 
-                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="width:20px"></button>
-                                            </div>
-                                        </c:if>
-
-
-
-
-                                    </div>
-
                                 </div>
                         </div>
+
+                        <!-- check out -->
+                        <div class="col-lg-6 checkout">
+                            <div class="row">
+                                <table class="table-fixed text-center">
+                                    <thead>
+                                        <tr>
+                                            <th>Product</th>
+                                            <th></th>
+                                            <th>Quantity</th>
+                                            <th>Price</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <c:forEach var="details" items="${requestScope.orderDetailsList}">
+                                            <tr>
+                                                <td  class="cart-item-img">                                                 
+                                                    <img src="${details.imgPath}" style="width: 80px;"/>
+                                                </td>
+                                                <td class="cart-item-title">${details.productName}</td>
+                                                <td>${details.quantity}</td>
+                                                <td class="cart-price">$${details.money}</td>
+                                            </tr>
+                                        </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="total mt-4">
+                                <p>Total</p>
+                                <p>$${requestScope.order.totalMoney}</p>
+                            </div>
+
+                            <c:if test="${requestScope.error != null}">
+                                <div class="alert alert-danger alert-dismissible fade show notification mt-5" role="alert" style="padding: 15px 45px;text-align: center;width:430px;opacity: 100%;margin: 30px auto">
+                                    <strong class="error">${requestScope.error}</strong> 
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="width:20px"></button>
+                                </div>
+                            </c:if>
+
+
+
+
+                        </div>
+
                     </div>
                 </div>
+            </div>
+        </div>
 
-                </body>
+    </body>
 
-                </html>
+</html>
