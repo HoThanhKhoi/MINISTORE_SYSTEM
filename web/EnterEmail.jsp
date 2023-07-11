@@ -12,6 +12,7 @@
         <title>Ministore</title>
 
         <link rel="stylesheet" href="./css/OTP_verification.css">
+        <link rel="icon" type="image/x-icon" href="./image/favicon-32x32.png">
 
         <!-- font Inter -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
