@@ -127,7 +127,7 @@
 
 
             <!-- table -->
-            <div class="dashboard schedule">
+            <div class="dashboard dashboard-schedule">
                 <form action="SwitchCalendarServlet" method="post">
                     <div class="select-container mt-4" style="width: 260px">
                         <select class="select-box" name="noOfWeek" onchange="this.form.submit()">
@@ -210,7 +210,7 @@
                                                         </select>
 
                                                         <input type="text" name="ueid" value="<%=schedule.getUserID()%> " hidden/>
-                                                        <input class="my-3" type="text" name="wid" value="WS-0001"/>
+                                                        <input class="my-3" type="text" name="wid" value="WS-0001" readonly=""/>
                                                         <input type="text" name="sdate" value="<%=dates.get(i)%>" hidden/>
 
                                                         <div>                                                   
@@ -281,7 +281,7 @@
                                                             </c:forEach>
                                                         </select>
                                                         <input type="text" name="ueid" value="<%=schedule.getUserID()%>" hidden/>
-                                                        <input class="my-3" type="text" name="wid" value="WS-0002"/>
+                                                        <input class="my-3" type="text" name="wid" value="WS-0002" readonly=""/>
                                                         <input type="text" name="sdate" value="<%=dates.get(i)%>" hidden/>
                                                         <div>                                                   
                                                             <button class="button mt-5" type="submit">Update</button>
@@ -350,7 +350,7 @@
                                                             </c:forEach>
                                                         </select>
                                                         <input type="text" name="ueid" value="<%=schedule.getUserID()%>" hidden/>
-                                                        <input class="my-3" type="text" name="wid" value="WS-0003"/>
+                                                        <input class="my-3" type="text" name="wid" value="WS-0003" readonly=""/>
                                                         <input type="text" name="sdate" value="<%=dates.get(i)%>" hidden=""/>
                                                         <div>                                                   
                                                             <button class="button mt-5" type="submit">Update</button>
@@ -437,7 +437,7 @@
                                                             </c:forEach>
                                                         </select>
                                                         <input type="text" name="ueid" value="<%=schedule.getUserID()%>" hidden/>
-                                                        <input class="my-3" type="text" name="wid" value="WS-0004"/>
+                                                        <input class="my-3" type="text" name="wid" value="WS-0004" readonly=""/>
                                                         <input type="text" name="sdate" value="<%=dates.get(i)%>" hidden/>
                                                         <div>                                                   
                                                             <button class="button mt-5" type="submit">Update</button>
@@ -507,7 +507,7 @@
                                                             </c:forEach>
                                                         </select>
                                                         <input type="text" name="ueid" value="<%=schedule.getUserID()%>" hidden/>
-                                                        <input class="my-3" type="text" name="wid" value="WS-0005"/>
+                                                        <input class="my-3" type="text" name="wid" value="WS-0005" readonly=""/>
                                                         <input type="text" name="sdate" value="<%=dates.get(i)%>" hidden/>
                                                         <div>                                                   
                                                             <button class="button mt-5" type="submit">Update</button>

@@ -89,7 +89,7 @@
                             </div>
 
                             <div class="item">
-                                <a class="sub-btn">
+                                <a class="sub-btn" href="MainController?action=viewSchedule">
                                     <span><i class="fa-solid fa-clipboard-user mx-3"></i></span>
                                     <span>Attendance</span>
                                 </a>
@@ -108,130 +108,6 @@
 
                     <!-- table -->
                     <div class="dashboard mt-4">
-                        <div class="row group-form">
-                            <div class="col">
-                                <form class="search text-center d-flex align-items-center" action="MainController" metohd="post">
-                                    <input name="keyword" type="text" placeholder="Search..." value="${param.keyword == null ? '' : param.keyword}">
-                                    <button id="search-button" type="submit" name="action" value="getSearchedProduct" class="btn">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                </form>
-                            </div>
-
-                        </div>   
-
-                        <div class="mt-2 myOrder-menu d-flex">
-                            <ul id="myDiv" class="order">
-                                <c:choose>
-                                    <c:when test="${param.status == 1}">
-                                        <li class="btn">
-                                            <a href="MainController?action=viewMyOrders">All</a>
-                                        </li>
-
-                                        <li class="btn active">
-                                            <a href="MainController?action=viewMyOrdersByStatus&status=1">Processing</a>
-                                        </li>
-
-                                        <li class="btn">
-                                            <a href="MainController?action=viewMyOrdersByStatus&status=2">Delivering</a>
-                                        </li>
-                                        <li class="btn">
-                                            <a href="MainController?action=viewMyOrdersByStatus&status=3">Completed</a>
-                                        </li>
-
-                                        <li class="btn">
-                                            <a href="MainController?action=viewMyOrdersByStatus&status=4">Canceled</a>
-                                        </li>
-                                    </c:when>
-                                    <c:when test="${param.status == 2}">
-                                        <li class="btn">
-                                            <a href="MainController?action=viewMyOrders">All</a>
-                                        </li>
-
-                                        <li class="btn">
-                                            <a href="MainController?action=viewMyOrdersByStatus&status=1">Processing</a>
-                                        </li>
-
-                                        <li class="btn active">
-                                            <a href="MainController?action=viewMyOrdersByStatus&status=2">Delivering</a>
-                                        </li>
-
-                                        <li class="btn">
-                                            <a href="MainController?action=viewMyOrdersByStatus&status=3">Completed</a>
-                                        </li>
-
-                                        <li class="btn">
-                                            <a href="MainController?action=viewMyOrdersByStatus&status=4">Canceled</a>
-                                        </li>
-                                    </c:when>
-                                    <c:when test="${param.status == 3}">
-                                        <li class="btn">
-                                            <a href="MainController?action=viewMyOrders">All</a>
-                                        </li>
-
-                                        <li class="btn">
-                                            <a href="MainController?action=viewMyOrdersByStatus&status=1">Processing</a>
-                                        </li>
-
-                                        <li class="btn">
-                                            <a href="MainController?action=viewMyOrdersByStatus&status=2">Delivering</a>
-                                        </li>
-
-                                        <li class="btn active">
-                                            <a href="MainController?action=viewMyOrdersByStatus&status=3">Completed</a>
-                                        </li>
-
-                                        <li class="btn">
-                                            <a href="MainController?action=viewMyOrdersByStatus&status=4">Canceled</a>
-                                        </li>
-                                    </c:when>
-                                    <c:when test="${param.status == 4}">
-                                        <li class="btn">
-                                            <a href="MainController?action=viewMyOrders">All</a>
-                                        </li>
-
-                                        <li class="btn">
-                                            <a href="MainController?action=viewMyOrdersByStatus&status=1">Processing</a>
-                                        </li>
-
-                                        <li class="btn">
-                                            <a href="MainController?action=viewMyOrdersByStatus&status=2">Delivering</a>
-                                        </li>
-
-                                        <li class="btn">
-                                            <a href="MainController?action=viewMyOrdersByStatus&status=3">Completed</a>
-                                        </li>
-
-                                        <li class="btn active">
-                                            <a href="MainController?action=viewMyOrdersByStatus&status=4">Canceled</a>
-                                        </li>
-                                    </c:when> 
-                                    <c:otherwise>
-                                        <li class="btn active">
-                                            <a href="MainController?action=viewMyOrders">All</a>
-                                        </li>
-
-                                        <li class="btn">
-                                            <a href="MainController?action=viewMyOrdersByStatus&status=1">Processing</a>
-                                        </li>
-
-                                        <li class="btn">
-                                            <a href="MainController?action=viewMyOrdersByStatus&status=2">Delivering</a>
-                                        </li>
-
-                                        <li class="btn">
-                                            <a href="MainController?action=viewMyOrdersByStatus&status=3">Completed</a>
-                                        </li>
-
-                                        <li class="btn">
-                                            <a href="MainController?action=viewMyOrdersByStatus&status=4">Canceled</a>
-                                        </li>
-                                    </c:otherwise>
-                                </c:choose>
-
-                            </ul>
-                        </div>
-
                         <div class="container mb-5">
                             <div class="row justify-content-between">
                                 <c:if test="${requestScope.noti != null}">
@@ -304,7 +180,7 @@
 
                                         <div class="  status-orderDetail d-flex justify-content-between mt-5">
                                             <div>Status</div>
-                                            
+
 
                                             <div class="voucher col-3">
                                                 <form action="MainController" method="post" class="d-flex">
@@ -371,66 +247,65 @@
                                                                 </option>
                                                             </c:otherwise>
                                                         </c:choose>
-                                                        
+
                                                     </select>
                                                     <input type="hidden" name="orderid" value="${order.orderID}" readonly="">
-                                                            
                                                     <button class="button apply mx-2" type="submit" name="action" value="changeOrderStatus">Apply</button>
                                                 </form>
                                             </div>
-
-
-                                            <!-- check out -->
-                                            <div class="col-lg-6 checkout">
-                                                <div class="row">
-                                                    <table class="table-fixed text-center">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Product</th>
-                                                                <th></th>
-                                                                <th>Quantity</th>
-                                                                <th>Price</th>
-                                                            </tr>
-                                                        </thead>
-
-                                                        <tbody>
-                                                            <c:forEach var="details" items="${requestScope.orderDetailsList}">
-                                                                <tr>
-                                                                    <td  class="cart-item-img">                                                 
-                                                                        <img src="${details.imgPath}" style="width: 80px;"/>
-                                                                    </td>
-                                                                    <td class="cart-item-title">${details.productName}</td>
-                                                                    <td>${details.quantity}</td>
-                                                                    <td class="cart-price">$${details.money}</td>
-                                                                </tr>
-                                                            </c:forEach>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-
-                                                <div class="total mt-4">
-                                                    <p>Total</p>
-                                                    <p>$${requestScope.order.totalMoney}</p>
-                                                </div>
-
-                                                <c:if test="${requestScope.error != null}">
-                                                    <div class="alert alert-danger alert-dismissible fade show notification mt-5" role="alert" style="padding: 15px 45px;text-align: center;width:430px;opacity: 100%;margin: 30px auto">
-                                                        <strong class="error">${requestScope.error}</strong> 
-                                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="width:20px"></button>
-                                                    </div>
-                                                </c:if>
-
-
-
-
-                                            </div>
-
                                         </div>
                                 </div>
+                                <!-- check out -->
+                                <div class="col-lg-6 checkout">
+                                    <div class="row">
+                                        <table class="table-fixed text-center">
+                                            <thead>
+                                                <tr>
+                                                    <th>Product</th>
+                                                    <th></th>
+                                                    <th>Quantity</th>
+                                                    <th>Price</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                <c:forEach var="details" items="${requestScope.orderDetailsList}">
+                                                    <tr>
+                                                        <td  class="cart-item-img">                                                 
+                                                            <img src="${details.imgPath}" style="width: 80px;"/>
+                                                        </td>
+                                                        <td class="cart-item-title">${details.productName}</td>
+                                                        <td>${details.quantity}</td>
+                                                        <td class="cart-price">$${details.money}</td>
+                                                    </tr>
+                                                </c:forEach>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="total mt-4">
+                                        <p>Total</p>
+                                        <p>$${requestScope.order.totalMoney}</p>
+                                    </div>
+
+                                    <c:if test="${requestScope.error != null}">
+                                        <div class="alert alert-danger alert-dismissible fade show notification mt-5" role="alert" style="padding: 15px 45px;text-align: center;width:430px;opacity: 100%;margin: 30px auto">
+                                            <strong class="error">${requestScope.error}</strong> 
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="width:20px"></button>
+                                        </div>
+                                    </c:if>
+
+
+
+
+                                </div>
+
                             </div>
                         </div>
-                    </c:otherwise>
-                </c:choose>
-                </body>
+                    </div>
+                </div>
+            </c:otherwise>
+        </c:choose>
+    </body>
 
-                </html>
+</html>

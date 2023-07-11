@@ -149,13 +149,11 @@
                                             </div>
                                             <div class="col-9">
                                                 <!--<input type="text" id="phone" value="" disabled="">-->
-                                                <textarea class="form-control" id="" rows="2" name="" value="${requestScope.sale.address}" disabled="">${requestScope.sale.address}</textarea>
+                                                <textarea class="form-control" id="address" rows="2" name="address" value="${requestScope.sale.address}">${requestScope.sale.address}</textarea>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
-
-
 
                                 <!-- update status -->
                                 <div class="col cus-update">

@@ -186,10 +186,7 @@
             </c:otherwise>
         </c:choose>
 
-        <!-- FOOTER -->
-        <footer>
-            <c:import url="footer.jsp" />
-        </footer>
+        
 
         <script type="text/javascript">
             $(document).ready(function () {

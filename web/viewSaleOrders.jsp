@@ -42,7 +42,7 @@
 
 
                     <!-- table -->
-                    <div class="dashboard mt-4">
+                    <div class="dashboard mt">
                         <div class="row group-form">
                             <div class="col">
                                 <form class="search text-center d-flex align-items-center" action="MainController" metohd="post">
@@ -201,12 +201,12 @@
                                                         <c:when test="${order.status eq 1}">Processing</c:when>
                                                         <c:when test="${order.status eq 2}">Delivering</c:when>
                                                         <c:when test="${order.status eq 3}">Completed</c:when>
-                                                        <c:when test="${order.status eq 4}">Cancelled</c:when>
+                                                        <c:when test="${order.status eq 4}">Canceled</c:when>
                                                     </c:choose>
                                                 </td>   
                                             <input type="hidden" name="orderID" value="${order.orderID}"/>
                                             <td>
-                                                <button type="submit" name="action" value="viewOrderDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
+                                                <button type="submit" name="action" value="saleViewOrderDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
                                             </td>
                                             </tr>
                                         </form>

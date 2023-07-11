@@ -127,12 +127,12 @@
                                             <div class="col-3">
                                                 <label for="">Orders</label>
                                             </div>
-                                            <div class="col-9">
+                                            
                                                 <form action="MainController" method="get">
                                                     <button type="submit" name="action" value="manageSaleOrders">Orders</button>
                                                     <input type="hidden" name="saleid" value="${sessionScope.sale.userID}"/>
                                                 </form>
-                                            </div>
+                                            
                                         </div>  
                                     
                                 </div> 

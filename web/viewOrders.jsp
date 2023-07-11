@@ -262,7 +262,7 @@
                                                         <c:when test="${order.status eq 1}">Processing</c:when>
                                                         <c:when test="${order.status eq 2}">Delivering</c:when>
                                                         <c:when test="${order.status eq 3}">Completed</c:when>
-                                                        <c:when test="${order.status eq 4}">Cancelled</c:when>
+                                                        <c:when test="${order.status eq 4}">Canceled</c:when>
                                                     </c:choose>
                                                 </td>   
                                             <input type="hidden" name="orderID" value="${order.orderID}"/>
