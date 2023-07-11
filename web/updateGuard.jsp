@@ -169,10 +169,10 @@
 
                                     <div class="order my-5 d-flex align-items-center justify-content-center">
                                         <div class="col-3">
-                                            <label for="">Order</label>
+                                            <label for="">Schedule</label>
                                         </div>
                                         <div class="col-9">
-                                            <a role="button">Guard's schedule</a>
+                                            <a role="button" href="MainController?action=getEmployeeSchedule&userid=${requestScope.guard.userID}">Guard's schedule</a>
                                         </div>
                                     </div>  
 

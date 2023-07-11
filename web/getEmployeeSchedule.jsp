@@ -45,28 +45,11 @@
 
         <!--HEADER-->
         <header>
-            <c:choose>
-                <c:when test="${sessionScope.sale != null}">
-                    <c:import url="header_saleDashboard.jsp" />
-                </c:when>
-                <c:when test="${sessionScope.guard != null}">
-                    <c:import url="header_guardDashboard.jsp" />
-                </c:when>
-            </c:choose>
+            <c:import url="header_managerDashboard.jsp" />
         </header>
-
+        
         <%
-            String userID = "";
-            if (session.getAttribute("sale") != null) {
-                User sale = (User) session.getAttribute("sale");
-                userID = sale.getUserID();
-            }
-
-            if (session.getAttribute("guard") != null) {
-                User guard = (User) session.getAttribute("guard");
-                userID = guard.getUserID();
-            }
-
+            String userID = (String) (session.getAttribute("userID"));
             String[] weekDays = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 
             ArrayList<LocalDate> dates = new ArrayList<>();
@@ -99,17 +82,19 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <c:choose>
-                                    <c:when test="${sessionScope.sale != null}">
-                                        <a href="saleDashboard.jsp">Home</a>
-                                    </c:when>
-                                    <c:when test="${sessionScope.guard != null}">
-                                        <a href="guardDashboard.jsp">Home</a>
-                                    </c:when>
-                                </c:choose>
+                                <%
+                                    if (UserDAO.getUser(userID).getRole() == 1) { %>
+                                            <a href="MainController?action=viewSaleDetailsPage&userid=<%= userID %>">Employee Details</a>
+                                <%        }
+                                %>
+                                <%
+                                    if (UserDAO.getUser(userID).getRole() == 2) { %>
+                                            <a href="MainController?action=viewGuardDetailsPage&userid=<%= userID %>">Employee Details</a>
+                                <%        }
+                                %>
                             </li>
                             <li class="breadcrumb-item item-active">
-                                <a href="viewMySchedule.jsp">My Schedule</a>
+                                <a>Schedule</a>
                             </li>
                         </ol>
                     </nav>
@@ -149,7 +134,7 @@
                         </div>
                     </div>
 
-                    <input type="hidden" name="goto" value="mySchedule">
+                    <input type="hidden" name="goto" value="getEmployeeSchedule">
                     <input type="hidden" name="weekYear" value="<%= weekYear%>">
                 </form>
 
@@ -160,7 +145,7 @@
                                 <% for (int i = 0; i < 7; i++) {%>   
                             <th><%= weekDays[i]%> <br> <%= startday.plusDays(i).getDayOfMonth() + "/" + startday.plusDays(i).getMonthValue()%></th>
                                 <% dates.add(startday.plusDays(i));
-                                    } %>
+                                        } %>
                         </tr>
                     </thead>
 

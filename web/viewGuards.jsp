@@ -134,7 +134,7 @@
                                         <th scope="col">Name</th>
                                         <th scope="col">Email</th>
                                         <th scope="col">Phone</th>
-                                        <th scope="col">Address</th>
+                                        <!--<th scope="col">Address</th>-->
                                         <th scope="col">Status</th>
                                         <th scope="col">Details</th>
                                     </tr>
@@ -148,7 +148,7 @@
                                                 <td>${guard.name}</td>
                                                 <td>${guard.email}</td>
                                                 <td>${guard.phone}</td>
-                                                <td>${guard.address}</td>
+                                                
                                                 <c:choose>
                                                     <c:when test="${guard.status == 0}"><td><span class="status_btn status_cancel">Inactive</span></td></c:when>
                                                     <c:otherwise><td><span class="status_btn status_completed">Active</span></td></c:otherwise>
@@ -169,7 +169,7 @@
                                                 <td>${guard.name}</td>
                                                 <td>${guard.email}</td>
                                                 <td>${guard.phone}</td>
-                                                <td>${guard.address}</td>
+                                                
                                                 <c:choose>
                                                     <c:when test="${guard.status == 0}"><td><span class="status_btn status_cancel">Inactive</span></td></c:when>
                                                     <c:otherwise><td><span class="status_btn status_completed">Active</span></td></c:otherwise>

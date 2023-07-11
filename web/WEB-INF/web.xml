@@ -304,6 +304,10 @@
         <servlet-name>SaleChangeOrderStatusServlet</servlet-name>
         <servlet-class>controllers.SaleChangeOrderStatusServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GetEmployeeScheduleServlet</servlet-name>
+        <servlet-class>controllers.GetEmployeeScheduleServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ResetPassServlet</servlet-name>
         <url-pattern>/ResetPassServlet</url-pattern>
@@ -599,6 +603,10 @@
     <servlet-mapping>
         <servlet-name>SaleChangeOrderStatusServlet</servlet-name>
         <url-pattern>/SaleChangeOrderStatusServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetEmployeeScheduleServlet</servlet-name>
+        <url-pattern>/GetEmployeeScheduleServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

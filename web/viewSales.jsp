@@ -127,7 +127,7 @@
                                     <th scope="col">Name</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Phone</th>
-                                    <th scope="col">Address</th>
+                                    <!--<th scope="col">Address</th>-->
                                     <th scope="col">Status</th>
                                     <th scope="col">Details</th>
                                 </tr>
@@ -141,7 +141,7 @@
                                             <td>${sale.name}</td>
                                             <td>${sale.email}</td>
                                             <td>${sale.phone}</td>
-                                            <td>${sale.address}</td>
+                                            <!--<td></td>-->
                                             <c:choose>
                                                 <c:when test="${sale.status == 0}"><td><span class="status_btn status_cancel">Inactive</span></td></c:when>
                                                 <c:otherwise><td><span class="status_btn status_completed">Active</span> </td></c:otherwise>
@@ -163,7 +163,7 @@
                                             <td>${sale.name}</td>
                                             <td>${sale.email}</td>
                                             <td>${sale.phone}</td>
-                                            <td>${sale.address}</td>
+                                            
                                             <c:choose>
                                                 <c:when test="${sale.status == 0}"><td><span class="status_btn status_cancel">Inactive</span></td></c:when>
                                                 <c:otherwise><td><span class="status_btn status_completed">Active</span></td></c:otherwise>

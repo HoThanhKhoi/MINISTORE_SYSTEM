@@ -184,6 +184,8 @@ public class MainController extends HttpServlet {
                 url = "SaleViewOrderDetailsPageServlet";
             } else if (action.equalsIgnoreCase("saleChangeOrderStatus")) {
                 url = "SaleChangeOrderStatusServlet";
+            } else if (action.equalsIgnoreCase("getEmployeeSchedule")) {
+                url = "GetEmployeeScheduleServlet";
             }
             
 
