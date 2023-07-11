@@ -429,26 +429,23 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
         <!-- Init Own Carousel -->
+        <!-- Init Own Carousel -->
         <script>
-            $('.owl-carousel').owlCarousel({
-                loop: true, //loop the carousel from the last item -> first item 
+            var owl = $('.owl-carousel');
+            owl.owlCarousel({
+                items: 5,
+                loop: true,
                 margin: 10,
-                nav: true, //make reference to the nav controls button (prev and next button)
-
-                responsive: {
-                    0: {
-                        items: 1
-                    },
-                    600: {
-                        items: 3
-                    },
-                    1000: {
-                        items: 5
-                    }
-                }
+                autoplay: true,
+                autoplayTimeout: 1000,
+                autoplayHoverPause: true
             });
-
-
+            $('.play').on('click', function () {
+                owl.trigger('play.owl.autoplay', [1000]);
+            });
+            $('.stop').on('click', function () {
+                owl.trigger('stop.owl.autoplay');
+            });
         </script>
 
         <script src="./js/backToTop.js"></script>

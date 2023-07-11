@@ -233,7 +233,7 @@
                                                 <div class="modal-content">
                                                     <c:forEach var="employee" items="${UserDAO.getUsersByRole(1)}" varStatus="status">
                                                         <c:if test="${employee.status == 1}">
-                                                            <div class="modal-line">
+                                                            <div class="modal-line" style="justify-content: center!important">
                                                                 <label for="${employee.userID}">   
                                                                     <input type="checkbox" id="${employee.userID}"  value="${employee.userID}|WS-0001|<%=dates.get(i)%>" name="eID"/>
                                                                     <span>${employee.name}</span>

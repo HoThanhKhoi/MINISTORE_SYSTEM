@@ -124,16 +124,16 @@
                                     </div>  
 
                                     <div class="order my-5 d-flex align-items-center justify-content-center">
-                                        <div class="col-3">
+                                        <div class="col-3 order">
                                             <label for="">Orders</label>
                                         </div>
-                                        <div class="col-9">
+                                        <div class="col-9 col-9-order">
                                             <form action="MainController" method="get">
-                                                <button type="submit" name="action" value="manageSaleOrders">Orders</button>
+                                                <button onMouseOver="this.style.color = '#1B9C85'" class="link" type="submit" name="action" value="manageSaleOrders">Orders</button>
                                                 <input type="hidden" name="saleid" value="${sessionScope.sale.userID}"/>
                                             </form>
                                         </div>
-                                    </div>  
+                                    </div>
 
                                 </div> 
                             </div>

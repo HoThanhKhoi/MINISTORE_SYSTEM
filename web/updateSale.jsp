@@ -172,7 +172,7 @@
                                                 <label for="">Schedule</label>
                                             </div>
                                             <div class="col-9">
-                                                <a role="button" href="MainController?action=getEmployeeSchedule&userid=${requestScope.sale.userID}">Sale's Schedule</a>
+                                                <a  class="text-decoration-none fw-bold" onMouseOver="this.style.color='#1B9C85'" style="color: #000;" role="button"  href="MainController?action=getEmployeeSchedule&userid=${requestScope.sale.userID}">Sale's Schedule</a>
                                             </div>
                                         </div>  
 

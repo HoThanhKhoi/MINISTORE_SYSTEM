@@ -1015,3 +1015,10 @@ li::before {
     min-width: 47.5%;
 }
 
+.cus-update .order .col-9.col-9-order .link {
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    color: #000;
+    font-weight: 500;
+}
