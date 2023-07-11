@@ -2,6 +2,7 @@
 
 <%@page import="dao.ProductDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -81,8 +82,9 @@
                         </div>
 
                         <div class="d-flex group-price mb-5">
-                            <div class="bricked-price">$${product.price}</div>
-                            <div class="price">$${Math.round(product.price) - 0.45}</div>
+                            <fmt:formatNumber value="${product.price + 0.5}" pattern="#,##0.00" var="formattedNumber" />
+                            <div class="bricked-price">$${formattedNumber}</div>
+                            <div class="price">$${product.price}</div>
                         </div>
 
                         <form action="MainController" method="get">
@@ -131,8 +133,9 @@
                                     </a>
                                     <div class="card-body">
                                         <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProduct&pid=${proCate.productID}&cateID=${proCate.cateID}">${proCate.productName}</a></h5>
-                                        <span class="bricked-price mx-2">$${proCate.price}</span>
-                                        <span class="price fw-bold mx-2">$${Math.round(proCate.price) -0.45}</span></br>
+                                            <fmt:formatNumber value="${proCate.price + 0.5}" pattern="#,##0.00" var="formattedNumber" />
+                                        <span class="bricked-price mx-2">$${formattedNumber}</span>
+                                        <span class="price fw-bold mx-2">$${proCate.price}</span></br>
                                         <input type="hidden" name="pid" value="${product.productID}"/>
                                         <input type="hidden" name="cid" value="${requestScope.cateID}"/>
                                         <a href="MainController?action=addToCart&quantity=1&pid=${proCate.productID}&cid=${proCate.cateID}" class="btn btn-primary mt-2 px-3 py-2 fw-bold" name="action" value="addToCart">Add To Cart</a>
@@ -182,7 +185,7 @@
 
 
         <script src="js/backToTop.js"></script>
-		<script>
+        <script>
                 if (window.history.replaceState) {
                     window.history.replaceState(null, null, "MainController?action=viewProduct&pid=${product.productID}&cateID=${product.cateID}");
                 }

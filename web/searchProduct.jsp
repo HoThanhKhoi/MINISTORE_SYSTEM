@@ -4,6 +4,7 @@
     Author     : Admin
 --%>
 <%@page import="dao.ProductDAO"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -57,9 +58,10 @@
                                                 <a href="MainController?action=viewProduct&pid=${searchItem.productID}&cateID=${searchItem.cateID}">
                                                     ${searchItem.productName}
                                                 </a>
-                                            </h5>                                            
-                                            <span class="bricked-price mx-2">$${searchItem.price}</span>
-                                            <span class="price fw-bold mx-2">$${Math.round(searchItem.price) -0.45}</span></br>
+                                            </h5>  
+                                            <fmt:formatNumber value="${searchItem.price + 0.5}" pattern="#,##0.00" var="formattedNumber" />
+                                            <span class="bricked-price mx-2">$${formattedNumber}</span>
+                                            <span class="price fw-bold mx-2">$${searchItem.price}</span></br>
                                             <a href="MainController?action=addToCart&pid=${searchItem.productID}&cid=${searchItem.cateID}&quantity=1" class="btn btn-primary mt-2 px-3 py-2 fw-bold">Add To Cart</a>
                                         </div>
                                     </div>
@@ -82,8 +84,9 @@
                                                     ${searchItem.productName}
                                                 </a>
                                             </h5>
-                                            <span class="bricked-price mx-2">$${searchItem.price}</span>
-                                            <span class="price fw-bold mx-2">$${Math.round(searchItem.price) -0.45}</span></br>
+                                            <fmt:formatNumber value="${searchItem.price + 0.5}" pattern="#,##0.00" var="formattedNumber" />
+                                            <span class="bricked-price mx-2">$${formattedNumber}</span>
+                                            <span class="price fw-bold mx-2">$${searchItem.price}</span></br>
                                             <a href="MainController?action=addToCart&pid=${searchItem.productID}&cid=${searchItem.cateID}&quantity=1" class="btn btn-primary mt-2 px-3 py-2 fw-bold">Add To Cart</a>
                                         </div>
                                     </div>

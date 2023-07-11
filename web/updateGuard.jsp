@@ -185,13 +185,15 @@
                                                 <c:when test="${requestScope.guard.status == 1}">
                                                     <a role="button" id="active" style="background-color: #1B9C85;color:black;text-decoration: none" href="" >Active</a>
                                                     <a role="button" id="inactive" style="background-color: #F6F5DB;color:black;text-decoration: none" href="">Inactive</a>
+                                                    <input type="hidden" id="s" name="status" value="1"/> 
                                                 </c:when>
                                                 <c:otherwise>
                                                     <a role="button" id="active" style="background-color: #F6F5DB;color:black;text-decoration: none" href="" >Active</a>
                                                     <a role="button" id="inactive" style="background-color: #FF5B5B;color:black;text-decoration: none" href="">Inactive</a>
+                                                    <input type="hidden" id="s" name="status" value="0"/> 
                                                 </c:otherwise>    
                                             </c:choose>              
-                                            <input type="hidden" id="s" name="status" value="1"/> 
+                                            
                                         </div>
                                     </div>
 
@@ -256,6 +258,48 @@
                 inactiveBtn.href = "MainController?action=updateUser&userid=" + userID + "&username=" + userName.value + "&phone=" + phone.value + "&address=" +address.value + "&status=" + status.value + "&roleid=" + roleID;
             });
         </script>
+        <script>
+            const a = document.getElementById("address");
+            const b = document.getElementById("name");
+            const c = document.getElementById("phone");
+
+            var userID = document.getElementById("id").value;
+            var roleID = 2;
+            a.addEventListener('keydown', function (event) {
+                if (event.keyCode === 13) {
+                    event.preventDefault(); // Prevent form submission or other default behavior
+                    var userName = document.getElementById("name");
+                    var phone = document.getElementById("phone");
+                    var address = document.getElementById("address");
+                    var status = document.getElementById("s");
+                    const url = "MainController?action=updateUser&userid=" + userID + "&username=" + userName.value + "&phone=" + phone.value + "&address=" + address.value + "&status=" + status.value + "&roleid=" + roleID;
+                    window.location.href = url; // Navigate to the specified URL
+                }
+            });
+            b.addEventListener('keydown', function (event) {
+                if (event.keyCode === 13) {
+                    event.preventDefault(); // Prevent form submission or other default behavior
+                    var userName = document.getElementById("name");
+                    var phone = document.getElementById("phone");
+                    var address = document.getElementById("address");
+                    var status = document.getElementById("s");
+                    const url = "MainController?action=updateUser&userid=" + userID + "&username=" + userName.value + "&phone=" + phone.value + "&address=" + address.value + "&status=" + status.value + "&roleid=" + roleID;
+                    window.location.href = url; // Navigate to the specified URL
+                }
+            });
+            c.addEventListener('keydown', function (event) {
+                if (event.keyCode === 13) {
+                    event.preventDefault(); // Prevent form submission or other default behavior
+                    var userName = document.getElementById("name");
+                    var phone = document.getElementById("phone");
+                    var address = document.getElementById("address");
+                    var status = document.getElementById("s");
+                    const url = "MainController?action=updateUser&userid=" + userID + "&username=" + userName.value + "&phone=" + phone.value + "&address=" + address.value + "&status=" + status.value + "&roleid=" + roleID;
+                    window.location.href = url; // Navigate to the specified URL
+                }
+            });
+        </script>
+
 
 
         <script>
