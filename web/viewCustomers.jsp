@@ -105,8 +105,8 @@
 
 
                     <!-- table -->
-                    <div class="dashboard mt-4">
-                        <form class="search text-center d-flex align-items-center" action="MainController" method="get">
+                    <div class="dashboard">
+                        <form class=" mt-4 search text-center d-flex align-items-center" action="MainController" method="get">
                             <input type="text" placeholder="Search..." name="keyword">
                             <button id="search-button" type="submit" class="btn" name="action" value="searchUsers">
                                 <i class="fas fa-search"></i>
@@ -122,7 +122,6 @@
                                     <th scope="col">Name</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Phone</th>
-                                    <th scope="col">Address</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Details</th>
                                 </tr>
@@ -138,7 +137,6 @@
                                                     <td>${customer.name}</td>
                                                     <td>${customer.email}</td>
                                                     <td>${customer.phone}</td>
-                                                    <td>${customer.address}</td>
                                                     <c:choose>
                                                         <c:when test="${customer.status == 0}"><td><span class="status_btn status_cancel">Inactive</span></td></c:when>
                                                         <c:otherwise><td><span class="status_btn status_completed">Active</span></td></c:otherwise>
@@ -159,7 +157,6 @@
                                                     <td>${customer.name}</td>
                                                     <td>${customer.email}</td>
                                                     <td>${customer.phone}</td>
-                                                    <td>${customer.address}</td>
                                                     <c:choose>
                                                         <c:when test="${customer.status == 0}"><td><span class="status_btn status_cancel">Inactive</span></td></c:when>
                                                         <c:otherwise><td><span class="status_btn status_completed">Active</span></td></c:otherwise>
@@ -228,37 +225,45 @@
 
                                         <c:if test="${requestScope.page > 1}">
                                             <li class="page-item">
-                                                <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=3"><</a>
+                                                <a class="page-link" style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=3">
+                                                    <span aria-hidden="true">&laquo;</span>
+                                                </a>
                                             </li>
                                         </c:if>
                                         <c:if test="${requestScope.page == 1 || requestScope.page == null}">
                                             <li class="page-item">
-                                                <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${1}&roleid=3"><</a>
+                                                <a class="page-link" style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${1}&roleid=3">
+                                                    <span aria-hidden="true">&laquo;</span>
+                                                </a>
                                             </li>
                                         </c:if>
                                         <c:set var="totalCus" value="${UserDAO.getUsersByRole(3).size()}"/>
                                         <c:set var="numOfPage" value="${Math.ceil(totalCus / 7)}"/>
                                         <fmt:formatNumber value="${numOfPage}" pattern="0" var="intLastPage" />
                                         <c:forEach var="i" begin="1" end="${numOfPage}" step="1">
-                                            <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${i}&roleid=3">${i}</a></li>
+                                            <li class="page-item "><a class="page-link " style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${i}&roleid=3">${i}</a></li>
                                             </c:forEach>
                                             <c:choose>
                                                 <c:when test="${intLastPage > 1}">
                                                     <c:if test="${requestScope.page < numOfPage || pageNum == null}">
                                                     <li class="page-item">
-                                                        <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page+1}&roleid=3">></a>
+                                                        <a class="page-link" style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page+1}&roleid=3">
+                                                            <span aria-hidden="true">&raquo;</span>
+                                                        </a>
                                                     </li>
                                                 </c:if>
                                                 <c:if test="${requestScope.page >= numOfPage}">
                                                     <li class="page-item">
-                                                        <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${intLastPage}&roleid=3">></a>
+                                                        <a class="page-link" style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${intLastPage}&roleid=3">                                                    
+                                                            <span aria-hidden="true">&raquo;</span>
+                                                        </a>
                                                     </li>
                                                 </c:if>
                                             </c:when>
                                             <c:when test="${intLastPage <= 1}">
                                                 <c:if test="${pageNum == 1 || pageNumm == null}">
                                                     <li class="page-item">
-                                                        <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="#">></a>
+                                                        <a class="page-link" style="padding:5px 10px !important;color: #1B9C85" href="#">></a>
                                                     </li>
                                                 </c:if>
 
@@ -272,23 +277,29 @@
                                     <ul class="pagination justify-content-center">
                                         <c:if test="${requestScope.pageNum > 1}"> 
                                             <li class="page-item">
-                                                <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=3&keyword=${requestScope.keyword}"><</a>
+                                                <a class="page-link" style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=3&keyword=${requestScope.keyword}">
+                                                    <span aria-hidden="true">&laquo;</span>
+                                                </a>
                                             </li>
                                         </c:if>
                                         <c:if test="${requestScope.pageNum == 1 || requestScope.pageNum==null}"> 
                                             <li class="page-item">
-                                                <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${1}&roleid=3&keyword=${requestScope.keyword}"><</a>
+                                                <a class="page-link" style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${1}&roleid=3&keyword=${requestScope.keyword}">
+                                                    <span aria-hidden="true">&laquo;</span>
+                                                </a>
                                             </li>
                                         </c:if>
                                         <c:set var="totalSearchProducts" value="${UserDAO.searchUsers(3, requestScope.keyword).size()}"/>
                                         <c:set var="numOfSSearchPages" value="${Math.ceil(totalSearchProducts / 7)}"/>
                                         <fmt:formatNumber value="${numOfPage}" pattern="0" var="intLastPage" />
                                         <c:forEach var="i" begin="1" end="${numOfSSearchPages}">
-                                            <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showPaginatedUserPage&page=${i}&roleid=3&keyword=${requestScope.keyword}">${i}</a></li>
+                                            <li class="page-item "><a class="page-link " style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showPaginatedUserPage&page=${i}&roleid=3&keyword=${requestScope.keyword}">${i}</a></li>
                                             </c:forEach>
 
                                         <li class="page-item">
-                                            <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showPaginatedUserPage&page=${requestScope.page+1}&roleid=3&keyword=${requestScope.keyword}">></a>
+                                            <a class="page-link" style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showPaginatedUserPage&page=${requestScope.page+1}&roleid=3&keyword=${requestScope.keyword}" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                            </a>
                                         </li>
 
                                         <li class="page-item "><a class="page-link " style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showSearchedItemsPage&page=${numOfSearchPages}&items=product&keyword=${requestScope.keyword}">${numOfSearchPages}</a></li>

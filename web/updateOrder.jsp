@@ -9,9 +9,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Ministore</title>
-        <link rel="stylesheet" href="./css/cartConfirmation.css">
+        <!--<link rel="stylesheet" href="./css/cartConfirmation.css">-->
         <link rel="stylesheet" href="./css/managerScreen.css" />
-        <link rel="stylesheet" href="./css/viewCart.css">
+        <!--<link rel="stylesheet" href="./css/viewCart.css">-->
 
         <!-- Icon CDN -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -91,7 +91,7 @@
                             <div class="item">
                                 <a class="sub-btn" href="MainController?action=viewSchedule">
                                     <span><i class="fa-solid fa-clipboard-user mx-3"></i></span>
-                                    <span>Attendance</span>
+                                    <span>Schedule</span>
                                 </a>
                             </div>
 
@@ -107,9 +107,9 @@
 
 
                     <!-- table -->
-                    <div class="dashboard mt-4">
-                        <div class="container mb-5">
-                            <div class="row justify-content-between">
+                    <div class="dashboard ">
+                        <div class="mt-4 container mb-5">
+                            <div class="mt-5 row justify-content-between ">
                                 <c:if test="${requestScope.noti != null}">
                                     ${requestScope.noti}
                                 </c:if>
@@ -178,11 +178,11 @@
                                             </div>
                                         </div>
 
-                                        <div class="  status-orderDetail d-flex justify-content-between mt-5">
-                                            <div>Status</div>
-
-
-                                            <div class="voucher col-3">
+                                        <div class="status-orderDetail d-flex justify-content-between mt-5 ">
+                                            <div class="col-3">
+                                                <label for="">Status</label>
+                                            </div>
+                                            <div class=" col-9">
                                                 <form action="MainController" method="post" class="d-flex">
                                                     <select class="form-select" aria-label="Default select example" name="status">
                                                         <option selected>
@@ -250,11 +250,15 @@
 
                                                     </select>
                                                     <input type="hidden" name="orderid" value="${order.orderID}" readonly="">
-                                                    <button class="button apply mx-2" type="submit" name="action" value="changeOrderStatus">Apply</button>
+                                                    <div class="mt-4 d-flex justify-content-start">
+                                                        <button class="button apply mx-2" type="submit" name="action" value="changeOrderStatus">Update</button>
+                                                    </div>
                                                 </form>
                                             </div>
                                         </div>
                                 </div>
+                                                    
+                                                    
                                 <!-- check out -->
                                 <div class="col-lg-6 checkout">
                                     <div class="row">

@@ -76,24 +76,23 @@
 
         <div class="container-fluid">
 
-
-<!--             left side: Menu 
-            <div class="side-bar">
-                <div class="menu text-center">
-                    <div class="title text-center" style="font-size: 30px;">My Dashboard</div>
-                    <div class="item" style="font-size: 20px;">
-                        <a class="fw-bold active" class="sub-btn" href=""><span style="font-size: 18px;">View Schedule</span></a>
-                    </div>
-                    <div class="item my-5">
-                        <a class="" href=""><span style="font-size: 18px;">Manage Orders</span></a>
-                    </div>
+            <!-- HEADER PATH -->
+            <nav class="navbar navbar-expand-lg header-path mt-5">
+                <div class="container-fluid justify-content-start ">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="saleDashboard.jsp">Home</a>
+                            </li>
+                            <li class="breadcrumb-item item-active">
+                                <a href="viewMySchedule.jsp">My Schedule</a>
+                            </li>
+                        </ol>
+                    </nav>
                 </div>
-            </div> -->
+            </nav>
 
-
-
-            <!-- right side-->
-            <div class="dashboard-sale mt-5 d-flex flex-column ">
+            <div class="dashboard schedule d-flex flex-column ">
 
                 <form class="mt-5 mb-1" action="SwitchCalendarServlet" method="post">
                     <div class="select-container mt-2" data-bs-theme="dark" style="width: 260px">
@@ -134,7 +133,7 @@
                                 <% for (int i = 0; i < 7; i++) {%>   
                             <th><%= weekDays[i]%> <br> <%= startday.plusDays(i).getDayOfMonth() + "/" + startday.plusDays(i).getMonthValue()%></th>
                                 <% dates.add(startday.plusDays(i));
-                                        } %>
+                                    } %>
                         </tr>
                     </thead>
 
