@@ -103,8 +103,8 @@
 
 
                     <!-- table -->
-                    <div class="dashboard mt-4">
-                        <div class="row group-form">
+                    <div class="dashboard ">
+                        <div class="mt-4 row group-form">
                             <div class="col">
                                 <form class="search text-center d-flex align-items-center" action="MainController" metohd="post">
                                     <input name="keyword" type="text" placeholder="Search..." value="${param.keyword == null ? '' : param.keyword}">
@@ -116,7 +116,7 @@
 
                         </div>   
 
-                        <div class="mt-2 myOrder-menu d-flex">
+                        <div class="mt-4 my-2 myOrder-menu viewOrder d-flex">
                             <ul id="myDiv" class="order">
                                 <c:choose>
                                     <c:when test="${param.status == 1}">
@@ -232,7 +232,7 @@
                                 <h3>No result</h3>
                             </c:when>
                             <c:otherwise>
-                                <table class="table text-center">
+                                <table class="table table-border text-center">
                                     <thead>
                                         <tr>
                                             <th scope="col">OrderID</th>
@@ -255,14 +255,14 @@
                                                 <td>${order.customerName}</td>
                                                 <td>${order.phone}</td>
                                                 <td>${order.orderDate}</td>
-                                                <td>${order.totalMoney}</td>
+                                                <td>$${order.totalMoney}</td>
                                                 <td>${order.salesID}</td>
                                                 <td>
                                                     <c:choose>
-                                                        <c:when test="${order.status eq 1}">Processing</c:when>
-                                                        <c:when test="${order.status eq 2}">Delivering</c:when>
-                                                        <c:when test="${order.status eq 3}">Completed</c:when>
-                                                        <c:when test="${order.status eq 4}">Canceled</c:when>
+                                                        <c:when test="${order.status eq 1}"><span class="status_btn status_processing">Processing</span></c:when>
+                                                        <c:when test="${order.status eq 2}"><span  class="status_btn status_delivering">Delivering</span></c:when>
+                                                        <c:when test="${order.status eq 3}"><span  class="status_btn status_completed">Completed</span></c:when>
+                                                        <c:when test="${order.status eq 4}"><span class="status_btn status_cancel">Canceled</span></c:when>
                                                     </c:choose>
                                                 </td>   
                                             <input type="hidden" name="orderID" value="${order.orderID}"/>

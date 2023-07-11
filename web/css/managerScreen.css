@@ -150,7 +150,7 @@ body {
     margin-left: 300px;
     padding: 0 40px !important;
     min-height: 90vh;
-    margin-top: 30px !important;   
+    /*margin-top: 30px !important;*/   
     position: relative;
     display: block;
     overflow-y: scroll;
@@ -158,8 +158,9 @@ body {
 }
 
 
+
 .dashboard.schedule {
-    margin-top: 0 !important;   
+    margin: 0 40px !important;
 }
 
 .dashboard::-webkit-scrollbar {
@@ -203,8 +204,14 @@ table thead {
     color: #fff;
 }
 
+table thead tr th {
+    border: 1px solid #fff;
+}
+
+
 table tr td {
-    padding: 15px 0 !important;
+    padding: 15px !important;
+    border: 1px solid rgba(0,0,0,0.1);
 }
 
 table i {
@@ -360,7 +367,7 @@ table button {
 /* UPDATE CUSTOMER */
 .cus-dashboard .row {
     width: 90%;
-    height: 80vh;
+    height: 90vh;
     align-items: center !important;
 }
 
@@ -493,6 +500,10 @@ label {
     text-decoration: none;
 }
 
+.cus-dashboard .title {
+    margin-top: 30px !important;
+}
+
 .cus-dashboard .title h5 {
     font-weight: 600 !important;
     font-size: 20px  !important;
@@ -538,7 +549,7 @@ label {
 }
 
 .myOrder-menu ul.order {
-    max-width: 40%;
+    max-width: 41.5%;
 }
 
 .myOrder-menu ul.order li {
@@ -813,6 +824,8 @@ caption {
     font-weight: 700;
 }
 
+
+/*modal*/
 .modal {
     width: 100%; /* Full width */
     height: 100%; /* Full height */
@@ -828,7 +841,7 @@ caption {
     padding: 40px;
     border: 1px solid #888;
     width: 100%;
-    align-items: flex-start;
+    /*align-items: flex-start;*/
 }
 
 .modal-content .title {
@@ -847,7 +860,7 @@ caption {
 
 .modal-content.modal-update {
     align-items: center;
-    
+
 }
 
 .modal-content span {
@@ -879,3 +892,126 @@ li::before {
 .dashboard-schedule {
     margin-top: 0 !important;
 }
+
+/* ORDER DETAIL */
+/* order info */
+.order-info {
+    border: 1px solid rgba(7, 72, 74, 0.75);
+    border-radius: 15px;
+    padding: 20px 30px !important;
+    background-color:  rgba(246, 245, 219, 0.5);
+    border: none;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    margin: 50px 0;
+}
+
+.order-info form {
+    padding: 0 10px !important;
+}
+
+.order-info label {
+    font-weight: 500;
+}
+
+.order-info form input {
+    background-color: transparent !important;
+}
+
+
+/* check out */
+.checkout {
+    padding: 0 !important;
+}
+
+.checkout thead tr {
+    font-weight: 600;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.checkout .table-fixed thead {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.checkout .table-fixed tbody {
+    position: relative;
+    display: block;
+    max-height: 50vh;
+    overflow-y: scroll;
+}
+
+.checkout .table-fixed thead tr {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+}
+
+.checkout .table-fixed tr {
+    display: flex;
+    align-items: center;
+}
+
+
+.checkout .table-fixed td,
+.checkout .table-fixed th {
+    flex-basis: 100%;
+    flex-grow: 1;
+    display: block;
+    padding: 20px 0 !important;
+}
+
+.checkout .table-fixed td:first-child,
+.checkout .table-fixed th:first-child {
+    flex-basis: 20%;
+}
+
+.checkout .table-fixed td:nth-child(2),
+.checkout .table-fixed th:nth-child(2) {
+    flex-basis: 40%;
+}
+
+.checkout .table-fixed td:nth-child(3),
+.checkout .table-fixed th:nth-child(3) {
+    flex-basis: 20%;
+}
+
+
+.checkout .table-fixed td:last-child,
+.checkout .table-fixed th:last-child {
+    flex-basis: 30%;
+}
+
+
+.checkout .table-fixed th {
+    padding-top: 0;
+}
+
+.checkout .table-fixed .cart-item-title {
+    text-align: left;
+    margin-left: 40px;
+}
+
+.checkout .total {
+    width: 100%;
+    background-color: #F6F5DB;
+    padding: 10px 105px 10px 80px !important;
+    border-radius: 10px;
+    font-weight: 500;
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.checkout p {
+    margin: 0 !important;
+}
+
+.myOrder-menu.viewOrder {
+    margin-left: auto;
+}
+
+
+.myOrder-menu.viewOrder ul {
+    min-width: 47.5%;
+}
+

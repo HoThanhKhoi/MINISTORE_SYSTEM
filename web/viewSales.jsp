@@ -97,9 +97,9 @@
                         </div>
                     </div>
                     <!-- table -->
-                    <div class="dashboard mt-4">
+                    <div class="dashboard">
 
-                        <div class="group-form d-flex justify-content-between">
+                        <div class=" mt-4 group-form d-flex justify-content-between">
                             <div>
                                 <form class="search text-center d-flex align-items-center" action="MainController" method="get">
                                     <input type="text" placeholder="Search..." name="keyword">
@@ -127,7 +127,7 @@
                                     <th scope="col">Name</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Phone</th>
-                                    <th scope="col">Address</th>
+                                    <!--<th scope="col">Address</th>-->
                                     <th scope="col">Status</th>
                                     <th scope="col">Details</th>
                                 </tr>
@@ -141,7 +141,6 @@
                                             <td>${sale.name}</td>
                                             <td>${sale.email}</td>
                                             <td>${sale.phone}</td>
-                                            <td>${sale.address}</td>
                                             <c:choose>
                                                 <c:when test="${sale.status == 0}"><td><span class="status_btn status_cancel">Inactive</span></td></c:when>
                                                 <c:otherwise><td><span class="status_btn status_completed">Active</span> </td></c:otherwise>
@@ -163,7 +162,6 @@
                                             <td>${sale.name}</td>
                                             <td>${sale.email}</td>
                                             <td>${sale.phone}</td>
-                                            <td>${sale.address}</td>
                                             <c:choose>
                                                 <c:when test="${sale.status == 0}"><td><span class="status_btn status_cancel">Inactive</span></td></c:when>
                                                 <c:otherwise><td><span class="status_btn status_completed">Active</span></td></c:otherwise>
@@ -185,7 +183,7 @@
                         <nav aria-label="Page navigation example" style="margin-top:35px;">
                             <ul class="pagination justify-content-center">
                                 <li class="page-item">
-                                    <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=1" aria-label="Previous">
+                                    <a class="page-link" style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page-1}&roleid=1" aria-label="Previous">
                                         <span aria-hidden="true">&laquo;</span>
                                     </a>
                                 </li>
@@ -194,10 +192,10 @@
                                     float numOfPages = (float) totalProduct / element;
                                 %>
                                 <%for (int i = 1; i <= (int) Math.ceil(numOfPages); i++) {%>
-                                <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=<%=i%>&roleid=1"><%=i%></a></li>
+                                <li class="page-item "><a class="page-link " style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showUserPage&page=<%=i%>&roleid=1"><%=i%></a></li>
                                     <% }%>
                                 <li class="page-item">
-                                    <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page+1}&roleid=1" aria-label="Next">
+                                    <a class="page-link" style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showUserPage&page=${requestScope.page+1}&roleid=1" aria-label="Next">
                                         <span aria-hidden="true">&raquo;</span>
                                     </a>
                                 </li>
@@ -236,5 +234,26 @@
 
             </c:otherwise>
         </c:choose>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                //jquery for toggle sub menus
+                $('.sub-btn').click(function () {
+                    $(this).next('.sub-menu').slideToggle();
+                    $(this).find('.dropdown').toggleClass('rotate');
+                });
+
+                //jquery for expand and collapse the sidebar
+                $('.menu-btn').click(function () {
+                    $('.side-bar').addClass('active');
+                    $('.menu-btn').css("visibility", "hidden");
+                });
+
+                $('.close-btn').click(function () {
+                    $('.side-bar').removeClass('active');
+                    $('.menu-btn').css("visibility", "visible");
+                });
+            });
+        </script>
     </body>
 </html>

@@ -110,8 +110,8 @@
 
 
                     <!-- table -->
-                    <div class="dashboard mt-4">
-                        <div class="group-form d-flex justify-content-between">
+                    <div class="dashboard">
+                        <div class=" mt-4 group-form d-flex justify-content-between">
                             <div>
                                 <form action="MainController" method="get" class="search text-center d-flex align-items-center">
                                     <input type="text"  placeholder="Search..." name="keyword" value="${param.keyword == null ? "" : param.keyword}">

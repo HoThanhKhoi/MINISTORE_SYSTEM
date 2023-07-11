@@ -8,6 +8,7 @@ body {
     font-family: 'Inter', sans-serif !important;
     font-size: 20px !important;    
     height: 90vh !important; 
+    overflow-y: hidden;
 }
 
 .container-fluid {

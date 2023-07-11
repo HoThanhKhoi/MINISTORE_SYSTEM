@@ -108,10 +108,10 @@
                         </div>
                     </div>
 
-                    <div class="dashboard cus-dashboard mt-5">
+                    <div class="dashboard cus-dashboard">
                         <form action="UpdateProductServlet" method="post" enctype="multipart/form-data">
 
-                            <div class="row align-items-center mx-5">
+                            <div class=" row align-items-center mx-5">
 
                                 <!--right-->
                                 <div class="col mx-5 ">

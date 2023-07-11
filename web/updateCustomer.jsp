@@ -172,8 +172,8 @@
                                             <div class="col-3">
                                                 <label for="">Order</label>
                                             </div>
-                                            <div class="col-9">
-                                                <a role="button" href="MainController?action=viewCustomerOrders&userID=${requestScope.cus.userID}">Customer's Orders</a>
+                                            <div class="col-9" >
+                                                <a class="text-decoration-none fw-bold" onMouseOver="this.style.color='#1B9C85'" style="color: #000;" role="button" href="MainController?action=viewCustomerOrders&userID=${requestScope.cus.userID}">Customer's Orders</a>
                                             </div>
                                         </div>  
 
