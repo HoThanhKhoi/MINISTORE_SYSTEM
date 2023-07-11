@@ -7,18 +7,17 @@ package controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Admin
+ * @author ACER
  */
-public class SwitchCalendarServlet extends HttpServlet {
+public class GetEmployeeScheduleServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,25 +32,10 @@ public class SwitchCalendarServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String page = request.getParameter("goto");
-            out.write(page);
-            int weekYear = Integer.parseInt(request.getParameter("weekYear"));
-            int noOfWeek = Integer.parseInt(request.getParameter("noOfWeek"));
-            LocalDate startday = LocalDate.parse(String.format("%04d-W%02d-1", weekYear, noOfWeek), DateTimeFormatter.ISO_WEEK_DATE);
-            request.setAttribute("noOfWeek", noOfWeek);
-            request.setAttribute("startday", startday);
-            switch(page) {
-                case "employeeSchedule":
-                    request.getRequestDispatcher("viewEmployeeSchedule.jsp").forward(request, response);
-                    break;
-                case  "mySchedule":
-                    request.getRequestDispatcher("viewMySchedule.jsp").forward(request, response);
-                    break;
-                case  "getEmployeeSchedule":
-                    request.getRequestDispatcher("getEmployeeSchedule.jsp").forward(request, response);
-                    break;
-            }
-            
+            String userID = request.getParameter("userid");
+            HttpSession session = request.getSession();
+            session.setAttribute("userID", userID);
+            request.getRequestDispatcher("getEmployeeSchedule.jsp").forward(request, response);
         }
     }
 

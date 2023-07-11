@@ -162,6 +162,7 @@
                                             <td>${sale.name}</td>
                                             <td>${sale.email}</td>
                                             <td>${sale.phone}</td>
+                                            
                                             <c:choose>
                                                 <c:when test="${sale.status == 0}"><td><span class="status_btn status_cancel">Inactive</span></td></c:when>
                                                 <c:otherwise><td><span class="status_btn status_completed">Active</span></td></c:otherwise>
