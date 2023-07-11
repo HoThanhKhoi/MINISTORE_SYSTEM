@@ -44,6 +44,7 @@ public class AddScheduleServlet extends HttpServlet {
             ArrayList<String> eID = new ArrayList<>();
             ArrayList<String> sDate = new ArrayList<>();
             int result = 0;
+            int check = 0;
 //            for (String wid : wIDs) {
 //                wID.add(wid);
 //            }
@@ -54,6 +55,7 @@ public class AddScheduleServlet extends HttpServlet {
 //                sdate += "/2023";
 //                sDate.add(sdate);
 //            }
+            
             String[] parts = null;
             for (int i = 0; i < eIDs.length; i++) {
                 parts = eIDs[i].split("\\|");
@@ -75,12 +77,14 @@ public class AddScheduleServlet extends HttpServlet {
                     sDate.add(parts[j]);
                 }
             }
+            
             for (int i = 0; i < eID.size(); i++) {
                 result = ScheduleDAO.addSchedule(sDate.get(i), wID.get(i), eID.get(i));
             }
             request.setAttribute("wID", wID);
             request.setAttribute("eID", eID);
             request.setAttribute("sDate", sDate);
+
             request.getRequestDispatcher("ViewScheduleServlet").forward(request, response);
         }
     }

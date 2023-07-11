@@ -326,9 +326,9 @@
                                                 </a>
                                                 <div class="card-body">
                                                     <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProduct&pid=${product.productID}&cateID=${product.cateID}">${product.productName}</a></h5>
-                                                    <span class="bricked-price mx-2">$${product.price}</span>
-                                                    <fmt:formatNumber value="${product.price-0.5}" pattern="#,##0.00" var="formattedNumber" />
-                                                    <span class="price fw-bold mx-2">$${formattedNumber}</span></br>                                                  
+                                                    <fmt:formatNumber value="${product.price + 0.5}" pattern="#,##0.00" var="formattedNumber" />
+                                                    <span class="bricked-price mx-2">$${formattedNumber}</span>
+                                                    <span class="price fw-bold mx-2">$${product.price}</span></br>                                                  
                                                     <a href="MainController?action=addToCart&pid=${product.productID}&cid=${product.cateID}&quantity=1" class="btn btn-primary mt-3 px-3 py-2 fw-bold">Add To Cart</a>
                                                 </div>
                                             </div>
@@ -347,9 +347,10 @@
                                                     <img src="${product.imgPath}" class="card-img-top" alt="">
                                                 </a>                                                <div class="card-body">
                                                     <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProduct&pid=${product.productID}&cateID=${product.cateID}">${product.productName}</a></h5>
-                                                    <span class="bricked-price mx-2">$${product.price}</span>
-                                                    <fmt:formatNumber value="${formattedNumber}" pattern="#,##0.00" var="formattedNumber" />
-                                                    <span class="price fw-bold mx-2">$${Math.round(product.price)-0.45}</span></br>
+                                                    
+                                                    <fmt:formatNumber value="${product.price + 0.5}" pattern="#,##0.00" var="formattedNumber" />
+                                                    <span class="bricked-price mx-2">$${formattedNumber}</span>
+                                                    <span class="price fw-bold mx-2">$${product.price}</span></br>
                                                     <a href="MainController?action=addToCart&pid=${product.productID}&cid=${product.cateID}&quantity=1" class="btn btn-primary mt-3 px-3 py-2 fw-bold">Add To Cart</a>
                                                 </div>
                                             </div>
@@ -387,29 +388,29 @@
                         <fmt:formatNumber value="${numOfPages}" pattern="0" var="intNumPage" />
                         <c:forEach var="i" begin="1" end="${numOfPages}" step="1">
                             <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showPage&page=${i}">${i}</a></li>
-                       </c:forEach>
-                        <c:if test="${requestScope.page >= numOfPages  }">
+                            </c:forEach>
+                            <c:if test="${requestScope.page >= numOfPages  }">
                             <li class="page-item">
-                            <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showPage&page=${intNumPage}" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
+                                <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showPage&page=${intNumPage}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
                         </c:if>
                         <c:if test="${requestScope.page <  numOfPages || requestScope.page == null}">
                             <li class="page-item">
-                            <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showPage&page=${requestScope.page + 1}" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
+                                <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showPage&page=${requestScope.page + 1}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
                         </c:if>
-                        
+
                     </ul>
                 </nav>
             </div>
 
         </div>
 
-                        
+
 
         <button type="button" class="btn btn-floating btn-lg" id="btn-back-to-top">
             <i class="fas fa-arrow-up"></i>
