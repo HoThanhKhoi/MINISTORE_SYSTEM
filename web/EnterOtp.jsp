@@ -25,9 +25,10 @@
 </head>
 
 <body>
+    
     <div class="container-fluid height-100 d-flex justify-content-center align-items-center">
         <!-- <div class="position-relative"> -->
-        <<form action="ValidateOtp" method="post">
+        <form action="ValidateOtp" method="post">
              <div class="card p-2 text-center">
                 <h6 class="mb-5">Please enter the one time password to verify your account</h6>
                 <div> <span>OTP is sent to email</span> <small>*******@gmail.com</small> </div>

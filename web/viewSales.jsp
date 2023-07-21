@@ -171,7 +171,7 @@
                                         <input type="hidden" name="roleid" value="1"/>
                                         <td>
                                             <button type="submit" name="action" value="viewSaleDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2"></i></button>
-                                            <button type="submit" name="action" value="deleteEmployee"><i class="delete fa-regular fa-trash-can"></i></button>
+                                            
                                         </td>
 
                                         </tr>
