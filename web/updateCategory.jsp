@@ -42,7 +42,7 @@
                         </tr>
                         <tr>
                             <th>Category Name</th>
-                            <td><input type="text" name="catename" placeholder="New category name"/></td>
+                            <td><input type="text" name="catename" placeholder="New category name" required/></td>
                         </tr>
                         <tr>
                             <th>Image</th>

@@ -157,7 +157,13 @@
             <i class="fas fa-arrow-up"></i>
         </button>
 
+        <!-- FOOTER -->
+        <footer>
+            <c:import url="footer.jsp" />
+        </footer>
 
+        
+        
         <c:if test="${requestScope.noti != null}">
             <script>
                 $(function () {

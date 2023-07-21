@@ -51,8 +51,6 @@
                     <div class="menu-btn">
                         <input type="checkbox" id="nav-toggle">
                     </div>
-
-
                     <div class="side-bar">
                         <div class="menu">
                             <div class="item">
@@ -102,7 +100,6 @@
                                     <span>Order</span>
                                 </a>
                             </div>
-
                         </div>
                     </div>
 
@@ -117,148 +114,152 @@
 
                                 <!-- info -->
                                 <div class="col-lg-5 order-info">
-                                    <form action="">
-                                        <div class="form-item my-4 d-flex align-items-center justify-content-center">
-                                            <div class="col-3">
-                                                <label for="">Name</label>
-                                            </div>
-                                            <div class="col-9">
-                                                <input type="text" id="name" disabled="" value="${requestScope.order.customerName}">
-                                            </div>
+                                    <div class="form-item mt-3 mb-4 d-flex align-items-center justify-content-center">
+                                        <div class="col-3">
+                                            <label for="">Name</label>
                                         </div>
-
-                                        <div class="form-item my-4 d-flex align-items-center justify-content-center">
-                                            <div class="col-3">
-                                                <label for="">Order Date</label>
-                                            </div>
-                                            <div class="col-9">
-                                                <input type="datetime" id="orderDate" disabled="" value="${requestScope.order.orderDate}">
-                                            </div>
+                                        <div class="col-9">
+                                            <input type="text" id="name" disabled="" value="${requestScope.order.customerName}">
                                         </div>
+                                    </div>
 
-                                        <div class="form-item my-4 d-flex align-items-center justify-content-center">
-                                            <div class="col-3">
-                                                <label for="">Ship Date</label>
-                                            </div>
-                                            <div class="col-9">
-                                                <input type="datetime" id="shipDate" disabled="" value="${requestScope.order.shipDate}">
-                                            </div>
+                                    <div class="form-item my-4 d-flex align-items-center justify-content-center">
+                                        <div class="col-3">
+                                            <label for="">Order Date</label>
                                         </div>
-
-                                        <div class="form-item my-4 d-flex align-items-center justify-content-center">
-                                            <div class="col-3">
-                                                <label for="">Phone</label>
-                                            </div>
-                                            <div class="col-9">
-                                                <input type="tel" id="phone" disabled="" value="${requestScope.order.phone}">
-                                            </div>
+                                        <div class="col-9">
+                                            <input type="datetime" id="orderDate" disabled="" value="${requestScope.order.orderDate}">
                                         </div>
+                                    </div>
 
-                                        <div class="form-item my-4 d-flex align-items-center justify-content-center">
-                                            <div class="col-3">
-                                                <label for="">Address</label>
-                                            </div>
-                                            <div class="col-9">
-                                                <input type="text" id="address" disabled="" value="${requestScope.order.address}">
-                                            </div>
+                                    <div class="form-item my-4 d-flex align-items-center justify-content-center">
+                                        <div class="col-3">
+                                            <label for="">Ship Date</label>
                                         </div>
-
-                                        <div class="form-item my-4 d-flex align-items-center justify-content-center">
-                                            <div class="col-3">
-                                                <label for="">Voucher</label>
-                                            </div>
-                                            <div class="col-9">
-                                                <c:choose>
-                                                    <c:when test="${requestScope.voucher.discount != null}">
-                                                        <input type="text" id="voucher" disabled="" value="-$${requestScope.voucher.discount}">
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        <input type="text" id="voucher" disabled="" value="">
-                                                    </c:otherwise>
-                                                </c:choose>
-                                            </div>
+                                        <div class="col-9">
+                                            <input type="datetime" id="shipDate" disabled="" value="${requestScope.order.shipDate}">
                                         </div>
+                                    </div>
 
-                                        <div class="status-orderDetail d-flex justify-content-between mt-5 ">
+                                    <div class="form-item my-4 d-flex align-items-center justify-content-center">
+                                        <div class="col-3">
+                                            <label for="">Phone</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input type="tel" id="phone" disabled="" value="${requestScope.order.phone}">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-item my-4 d-flex align-items-center justify-content-center">
+                                        <div class="col-3">
+                                            <label for="">Address</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input type="text" id="address" disabled="" value="${requestScope.order.address}">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-item my-4 d-flex align-items-center justify-content-center">
+                                        <div class="col-3">
+                                            <label for="">Voucher</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <c:choose>
+                                                <c:when test="${requestScope.voucher.discount != null}">
+                                                    <input type="text" id="voucher" disabled="" value="-$${requestScope.voucher.discount}">
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <input type="text" id="voucher" disabled="" value="">
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </div>
+                                    </div>
+
+                                    <form action="MainController" method="post" class="change-status">
+                                        <div class="d-flex align-items-center justify-content-center my-4 ">
                                             <div class="col-3">
                                                 <label for="">Status</label>
                                             </div>
-                                            <div class=" col-9">
-                                                <form action="MainController" method="post" class="d-flex">
-                                                    <select class="form-select" aria-label="Default select example" name="status">
-                                                        <option selected>
-                                                            <c:choose>
-                                                                <c:when test="${requestScope.order.status eq 2}">
-                                                                    Delivering
-                                                                </c:when>
-                                                                <c:when test="${requestScope.order.status eq 3}">
-                                                                    Completed
-                                                                </c:when>
-                                                                <c:when test="${requestScope.order.status eq 4}">
-                                                                    Canceled
-                                                                </c:when>
-                                                                <c:otherwise>
-                                                                    Processing
-                                                                </c:otherwise>
-                                                            </c:choose>
-                                                        </option>
+                                            <div class="col-9">
+                                                <select class="form-select" aria-label="Default select example" name="status">
+                                                    <option selected>
                                                         <c:choose>
                                                             <c:when test="${requestScope.order.status eq 2}">
-                                                                <option value="${1}">
-                                                                    Processing
-                                                                </option>
-                                                                <option value="${3}">
-                                                                    Completed
-                                                                </option>
-                                                                <option value="${4}">
-                                                                    Canceled
-                                                                </option>
+                                                                Delivering
                                                             </c:when>
                                                             <c:when test="${requestScope.order.status eq 3}">
-                                                                <option value="${1}">
-                                                                    Processing
-                                                                </option>
-                                                                <option value="${2}">
-                                                                    Delivering
-                                                                </option>
-                                                                <option value="${4}">
-                                                                    Canceled
-                                                                </option>
+                                                                Completed
                                                             </c:when>
                                                             <c:when test="${requestScope.order.status eq 4}">
-                                                                <option value="${1}">
-                                                                    Processing
-                                                                </option>
-                                                                <option value="${2}">
-                                                                    Delivering
-                                                                </option>
-                                                                <option value="${3}">
-                                                                    Completed
-                                                                </option>
+                                                                Canceled
                                                             </c:when>
                                                             <c:otherwise>
-                                                                <option value="${2}">
-                                                                    Delivering
-                                                                </option>
-                                                                <option value="${3}">
-                                                                    Completed
-                                                                </option>
-                                                                <option value="${4}">
-                                                                    Canceled
-                                                                </option>
+                                                                Processing
                                                             </c:otherwise>
                                                         </c:choose>
+                                                    </option>
+                                                    <c:choose>
+                                                        <c:when test="${requestScope.order.status eq 2}">
+                                                            <option value="${1}">
+                                                                Processing
+                                                            </option>
+                                                            <option value="${3}">
+                                                                Completed
+                                                            </option>
+                                                            <option value="${4}">
+                                                                Canceled
+                                                            </option>
+                                                        </c:when>
+                                                        <c:when test="${requestScope.order.status eq 3}">
+                                                            <option value="${1}">
+                                                                Processing
+                                                            </option>
+                                                            <option value="${2}">
+                                                                Delivering
+                                                            </option>
+                                                            <option value="${4}">
+                                                                Canceled
+                                                            </option>
+                                                        </c:when>
+                                                        <c:when test="${requestScope.order.status eq 4}">
+                                                            <option value="${1}">
+                                                                Processing
+                                                            </option>
+                                                            <option value="${2}">
+                                                                Delivering
+                                                            </option>
+                                                            <option value="${3}">
+                                                                Completed
+                                                            </option>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <option value="${2}">
+                                                                Delivering
+                                                            </option>
+                                                            <option value="${3}">
+                                                                Completed
+                                                            </option>
+                                                            <option value="${4}">
+                                                                Canceled
+                                                            </option>
+                                                        </c:otherwise>
+                                                    </c:choose>
 
-                                                    </select>
-                                                    <input type="hidden" name="orderid" value="${order.orderID}" readonly="">
-                                                    <div class="mt-4 d-flex justify-content-start">
-                                                        <button class="button apply mx-2" type="submit" name="action" value="changeOrderStatus">Update</button>
-                                                    </div>
-                                                </form>
+                                                </select>
+                                                <input type="hidden" name="orderid" value="${order.orderID}" readonly="">
                                             </div>
                                         </div>
+                                                
+                                        <div class="d-flex justify-content-between mt-5 mb-3 ">
+                                            <div class="col-12 d-flex justify-content-center">
+                                                <button class="button apply mx-2" type="submit" name="action" value="changeOrderStatus">Update</button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
-                                                    
+
+
+                                <!-- check out -->
                                 <div class="col-lg-6 checkout">
                                     <div class="row">
                                         <table class="table-fixed text-center">
