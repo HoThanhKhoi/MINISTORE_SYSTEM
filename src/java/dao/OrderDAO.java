@@ -376,7 +376,7 @@ public class OrderDAO {
         }
         return list;
     }
-    
+
     public static ArrayList<Order> getOrders() throws Exception {
         ArrayList<Order> list = new ArrayList<>();
         Connection cn = DBUtils.makeConnection();
@@ -402,4 +402,19 @@ public class OrderDAO {
         }
         return list;
     }
+
+    public static ArrayList<Order> getPaginatedOrders(int pageNumber, int ordersPerPage, ArrayList<Order> orderList) throws Exception {
+        ArrayList<Order> pList = new ArrayList<>();
+        Connection cn = DBUtils.makeConnection();
+        int start = (pageNumber - 1) * ordersPerPage;
+        int end = start + ordersPerPage - 1;
+        if(end > orderList.size() || end == orderList.size()){
+            end = orderList.size() -1;
+        }
+        for(int i = start; i <= end; i++){
+            pList.add(orderList.get(i));
+        }
+        return pList;
+    }
+
 }

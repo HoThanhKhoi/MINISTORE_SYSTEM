@@ -26,6 +26,7 @@
 </head>
 
 <body>
+    
     <div class="container-fluid height-100 d-flex justify-content-center align-items-center">
         <!-- <div class="position-relative"> -->
         <form action="ValidateOtp" method="post">
