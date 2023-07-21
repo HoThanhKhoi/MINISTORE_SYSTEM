@@ -9,6 +9,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="./image/favicon-32x32.png">
         <title>Ministore</title>
         <link rel="stylesheet" href="./css/managerScreen.css" />
 
@@ -171,7 +172,6 @@
                                         <input type="hidden" name="roleid" value="1"/>
                                         <td>
                                             <button type="submit" name="action" value="viewSaleDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2"></i></button>
-                                            <button type="submit" name="action" value="deleteEmployee"><i class="delete fa-regular fa-trash-can"></i></button>
                                         </td>
 
                                         </tr>

@@ -405,6 +405,20 @@ h1 {
     justify-content: center;
     align-items: center;
 }
+#btn-back-to-top-experimental {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    border-radius: 30px;
+    background-color: #1B9C85;
+    color: #fff;
+    border: none;
+    width: 40px;
+    height: 40px;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
 
 .pagination li:active {
     font-weight: 800;

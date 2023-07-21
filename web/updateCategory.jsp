@@ -12,7 +12,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Update Category</title>
+        <link rel="icon" type="image/x-icon" href="./image/favicon-32x32.png">
+        <title>Ministore</title>
     </head>
     <body>
         <c:choose>

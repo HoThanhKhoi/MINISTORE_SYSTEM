@@ -15,6 +15,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="./image/favicon-32x32.png">
         <title>Ministore</title>
         <link rel="stylesheet" href="./css/homePage.css">
         <link rel="stylesheet" href="./js/backToTop.js">
@@ -326,7 +327,7 @@
                                                 </a>
                                                 <div class="card-body">
                                                     <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProduct&pid=${product.productID}&cateID=${product.cateID}">${product.productName}</a></h5>
-                                                    <fmt:formatNumber value="${product.price + 0.5}" pattern="#,##0.00" var="formattedNumber" />
+                                                        <fmt:formatNumber value="${product.price + 0.5}" pattern="#,##0.00" var="formattedNumber" />
                                                     <span class="bricked-price mx-2">$${formattedNumber}</span>
                                                     <span class="price fw-bold mx-2">$${product.price}</span></br>                                                  
                                                     <a href="MainController?action=addToCart&pid=${product.productID}&cid=${product.cateID}&quantity=1" class="btn btn-primary mt-3 px-3 py-2 fw-bold">Add To Cart</a>
@@ -347,7 +348,7 @@
                                                     <img src="${product.imgPath}" class="card-img-top" alt="">
                                                 </a>                                                <div class="card-body">
                                                     <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProduct&pid=${product.productID}&cateID=${product.cateID}">${product.productName}</a></h5>
-                                                    
+
                                                     <fmt:formatNumber value="${product.price + 0.5}" pattern="#,##0.00" var="formattedNumber" />
                                                     <span class="bricked-price mx-2">$${formattedNumber}</span>
                                                     <span class="price fw-bold mx-2">$${product.price}</span></br>
@@ -411,7 +412,9 @@
         </div>
 
 
-
+        <button type="button" class="btn btn-floating btn-lg" id="btn-back-to-top-experimental">
+            <i class="fas fa-arrow-up"></i>
+        </button>
         <button type="button" class="btn btn-floating btn-lg" id="btn-back-to-top">
             <i class="fas fa-arrow-up"></i>
         </button>

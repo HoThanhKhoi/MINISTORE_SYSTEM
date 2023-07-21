@@ -14,6 +14,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/x-icon" href="./image/favicon-32x32.png">
         <title>Ministore</title>
         <link rel="stylesheet" href="./css/login.css" />
         <script src="js/toastify.min.js"></script>
@@ -40,7 +41,7 @@
                 <div class="col right-side">
                     <div class="login-container">
                         <div class="login-header">
-                            <h3>Register</h3>
+                            <h3 class="mt-3">Register</h3>
                             <p>Let's get things started!</p>
                         </div>
                         <c:if test="${requestScope.error != null}">
