@@ -46,7 +46,7 @@
     <body>
 
         <!-- Banner -->
-        <div class="container-fluid ">
+        <div class="container-fluid homepage wrapper">
             <!-- Header -->
             <div class="header">
                 <nav>
@@ -118,9 +118,9 @@
 
         <!-- Hot Deal -->
         <c:if test="${requestScope.page == 1 || requestScope.list == null}">
-            <div class="container-fluid hot-deal" id="hot-deal">
+            <div class="container-fluid homepage hot-deal" id="hot-deal">
                 <div class="hot-deal-title ">
-                    <h1 class="pt-5 pb-5 text-center">Hot <u class="fw-bold"><em>deal</em></u> right now!</h1>
+                    <h1 class="pt-5 pb-5 text-center">Hot <u class="fw-bold"><em class="animate-text">deal</em></u> right now!</h1>
                 </div>
 
                 <div class="item-list mx-5">
@@ -165,23 +165,19 @@
                             </ul>
                         </div>
 
-
-
-
-
                     </div>
                 </div>
 
 
                 <div class="hot-deal-banner">
-                    <img src="./image/image 21.png" alt="">
+                    <img src="./image/banner_sub.jpg" alt="">
                 </div>           
             </c:if>
         </div>
 
 
         <!-- Categories -->
-        <div class="container-fluid category" id="category">
+        <div class="container-fluid homepage category" id="category">
             <div class="row pt-5 mx-5">
                 <div class="col ad-banner mx-3">
                     <img src="./image/Ad banner 1.png" alt="">
@@ -197,7 +193,7 @@
                                     </a>
                                     <div class="overlay"></div>
                                     <div class="card-content">
-                                        <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
+                                        <h5 class="card-title cate mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
                                     </div>
                                 </div>
                             </div>
@@ -214,7 +210,7 @@
                                         <img src="${cate.imgPath}" class="card-img-top" alt="">
                                     </a>                                    <div class="overlay"></div>
                                     <div class="card-content">
-                                        <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
+                                        <h5 class="card-title cate mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
                                     </div>
                                 </div>
                             </div>
@@ -230,9 +226,10 @@
                                 <div class="card border-0 shadow align-items-center ">
                                     <a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">                                   
                                         <img src="${cate.imgPath}" class="card-img-top" alt="">
-                                    </a>                                    <div class="overlay"></div>
+                                    </a>                                    
+                                    <div class="overlay"></div>
                                     <div class="card-content">
-                                        <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
+                                        <h5 class="card-title cate mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
                                     </div>
                                 </div>
                             </div>
@@ -254,7 +251,7 @@
                                     </a>                                   
                                     <div class="overlay"></div>
                                     <div class="card-content">
-                                        <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
+                                        <h5 class="card-title cate mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
                                     </div>
                                 </div>
                             </div>
@@ -271,7 +268,7 @@
                                     </a>
                                     <div class="overlay"></div>
                                     <div class="card-content">
-                                        <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
+                                        <h5 class="card-title cate mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
                                     </div>
                                 </div>
                             </div>
@@ -288,7 +285,7 @@
                                     </a>
                                     <div class="overlay"></div>
                                     <div class="card-content">
-                                        <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
+                                        <h5 class="card-title cate mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
                                     </div>
                                 </div>
                             </div>
@@ -326,7 +323,7 @@
                                                 </a>
                                                 <div class="card-body">
                                                     <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProduct&pid=${product.productID}&cateID=${product.cateID}">${product.productName}</a></h5>
-                                                    <fmt:formatNumber value="${product.price + 0.5}" pattern="#,##0.00" var="formattedNumber" />
+                                                        <fmt:formatNumber value="${product.price + 0.5}" pattern="#,##0.00" var="formattedNumber" />
                                                     <span class="bricked-price mx-2">$${formattedNumber}</span>
                                                     <span class="price fw-bold mx-2">$${product.price}</span></br>                                                  
                                                     <a href="MainController?action=addToCart&pid=${product.productID}&cid=${product.cateID}&quantity=1" class="btn btn-primary mt-3 px-3 py-2 fw-bold">Add To Cart</a>
@@ -347,7 +344,7 @@
                                                     <img src="${product.imgPath}" class="card-img-top" alt="">
                                                 </a>                                                <div class="card-body">
                                                     <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProduct&pid=${product.productID}&cateID=${product.cateID}">${product.productName}</a></h5>
-                                                    
+
                                                     <fmt:formatNumber value="${product.price + 0.5}" pattern="#,##0.00" var="formattedNumber" />
                                                     <span class="bricked-price mx-2">$${formattedNumber}</span>
                                                     <span class="price fw-bold mx-2">$${product.price}</span></br>
@@ -366,7 +363,7 @@
                 </div>
 
 
-                <nav aria-label="Page navigation example">
+                <nav aria-label="Page navigation example" class="mt-2 mb-3">
                     <ul class="pagination justify-content-center ">
                         <c:if test="${requestScope.page == 1 || requestScope.page == null}">
                             <li class="page-item">
@@ -416,6 +413,11 @@
             <i class="fas fa-arrow-up"></i>
         </button>
 
+
+        <!-- FOOTER -->
+        <footer>
+            <c:import url="footer.jsp" />
+        </footer>
 
 
         <!-- CDN jquery -->

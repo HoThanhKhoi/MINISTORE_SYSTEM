@@ -20,13 +20,14 @@ body {
 
 .footer-content {
     background-color: #F6F5DB;
-    padding: 0 50px !important;
+    padding: 10px 50px !important;
     margin: 10px;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     line-height: 2.5;
+    margin: 0 auto;
 }
 
 .footer-content ul {

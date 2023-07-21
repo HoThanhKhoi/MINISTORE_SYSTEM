@@ -158,21 +158,24 @@
                                                 <input type="text" disabled placeholder="Guard">
                                             </div>
                                         </div>
-                                          
+
 
                                         <div class="mt-4 mb-5 status status-add d-flex align-items-center">
                                             <div class="col-3">
                                                 <label for="">Status</label>
                                             </div>
-                                            <div class="col status-btn">
+                                            <div class="col-9 status-btn">
                                                 <a role="button" id="active" style="color: #1B9C85 !important; text-decoration: none;border-top-right-radius: 30px;
                                                    border-bottom-right-radius: 30px;">Active</a>
                                             </div>
                                         </div>
 
                                         <div class="mt-5 d-flex justify-content-center align-items-center">
-                                            <input type="hidden"  value="2" name="roleid"/>
-                                            <button class="add" id="addBtn" name="action" value="addEmployee">Add</button>
+                                            <div class="col-3"></div>
+                                            <div class="col-9 d-flex justify-content-center">
+                                                <input type="hidden"  value="2" name="roleid"/>
+                                                <button class="add" id="addBtn" name="action" value="addEmployee">Add</button>
+                                            </div>
                                         </div>
                                     </div>    
                                 </div>
@@ -237,21 +240,24 @@
                                                 <input type="text" disabled placeholder="Sale">
                                             </div>
                                         </div>
-                                        
+
 
                                         <div class="mt-4 mb-5 status status-add d-flex align-items-center">
                                             <div class="col-3">
                                                 <label for="">Status</label>
                                             </div>
-                                            <div class="col status-btn">
+                                            <div class="col-9 status-btn">
                                                 <a role="button" id="active" style="color: #1B9C85 !important; text-decoration: none;border-top-right-radius: 30px;
                                                    border-bottom-right-radius: 30px;">Active</a>
                                             </div>
                                         </div>
 
                                         <div class="d-flex mt-5 justify-content-center align-items-center">
-                                            <input type="hidden"  value="1" name="roleid"/>
-                                            <button class="add" id="addBtn" name="action" value="addEmployee">Add</button>
+                                            <div class="col-3"></div>
+                                            <div class="col-9 d-flex justify-content-center">
+                                                <input type="hidden"  value="1" name="roleid"/>
+                                                <button class="add" id="addBtn" name="action" value="addEmployee">Add</button>
+                                            </div>
                                         </div>
                                     </div>    
                                 </div>
