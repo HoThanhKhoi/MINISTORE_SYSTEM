@@ -572,8 +572,7 @@
 //                   }
 //               });
 //               
-//           }
-   
+//           }   
             var checkSchedule = function(){
                 for(let i = 0;i < eIDs.length;i++){
                     if(eIDs[i].value === ""){
