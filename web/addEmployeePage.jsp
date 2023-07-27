@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Ministore</title>
         <link rel="stylesheet" href="./css/managerScreen.css" />
-        <link rel="icon" type="image/x-icon" href="./image/favicon-32x32.png">
+
         <!-- Icon CDN -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
               integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -158,24 +158,21 @@
                                                 <input type="text" disabled placeholder="Guard">
                                             </div>
                                         </div>
-
+                                          
 
                                         <div class="mt-4 mb-5 status status-add d-flex align-items-center">
                                             <div class="col-3">
                                                 <label for="">Status</label>
                                             </div>
-                                            <div class="col-9 status-btn">
+                                            <div class="col status-btn">
                                                 <a role="button" id="active" style="color: #1B9C85 !important; text-decoration: none;border-top-right-radius: 30px;
                                                    border-bottom-right-radius: 30px;">Active</a>
                                             </div>
                                         </div>
 
                                         <div class="mt-5 d-flex justify-content-center align-items-center">
-                                            <div class="col-3"></div>
-                                            <div class="col-9 d-flex justify-content-center">
-                                                <input type="hidden"  value="2" name="roleid"/>
-                                                <button class="add" id="addBtn" name="action" value="addEmployee">Add</button>
-                                            </div>
+                                            <input type="hidden"  value="2" name="roleid"/>
+                                            <button class="add" id="addBtn" name="action" value="addEmployee">Add</button>
                                         </div>
                                     </div>    
                                 </div>
@@ -184,6 +181,7 @@
                         </form>
                     </div>
                 </c:when>
+
 
                 <c:otherwise>
                     <div class="dashboard cus-dashboard" style="overflow: hidden">
@@ -239,24 +237,21 @@
                                                 <input type="text" disabled placeholder="Sale">
                                             </div>
                                         </div>
-
+                                        
 
                                         <div class="mt-4 mb-5 status status-add d-flex align-items-center">
                                             <div class="col-3">
                                                 <label for="">Status</label>
                                             </div>
-                                            <div class="col-9 status-btn">
+                                            <div class="col status-btn">
                                                 <a role="button" id="active" style="color: #1B9C85 !important; text-decoration: none;border-top-right-radius: 30px;
                                                    border-bottom-right-radius: 30px;">Active</a>
                                             </div>
                                         </div>
 
                                         <div class="d-flex mt-5 justify-content-center align-items-center">
-                                            <div class="col-3"></div>
-                                            <div class="col-9 d-flex justify-content-center">
-                                                <input type="hidden"  value="1" name="roleid"/>
-                                                <button class="add" id="addBtn" name="action" value="addEmployee">Add</button>
-                                            </div>
+                                            <input type="hidden"  value="1" name="roleid"/>
+                                            <button class="add" id="addBtn" name="action" value="addEmployee">Add</button>
                                         </div>
                                     </div>    
                                 </div>

@@ -21,9 +21,9 @@
         <servlet-class>controllers.MainController</servlet-class>
     </servlet>
     <!--    <servlet>
-    <servlet-name>productInfoServlet</servlet-name>
-    <servlet-class>controllers.productInfoServlet</servlet-class>
-    </servlet>-->
+        <servlet-name>productInfoServlet</servlet-name>
+        <servlet-class>controllers.productInfoServlet</servlet-class>
+        </servlet>-->
     <servlet>
         <servlet-name>ViewProductServlet</servlet-name>
         <servlet-class>controllers.ViewProductServlet</servlet-class>
@@ -616,5 +616,4 @@
     <welcome-file-list>
         <welcome-file>homePage.jsp</welcome-file>
     </welcome-file-list>
-    
 </web-app>

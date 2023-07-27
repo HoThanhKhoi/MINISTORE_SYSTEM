@@ -12,7 +12,6 @@
         <title>Ministore</title>
 
         <link rel="stylesheet" href="./css/OTP_verification.css">
-        
         <link rel="icon" type="image/x-icon" href="./image/favicon-32x32.png">
 
         <!-- font Inter -->
@@ -37,14 +36,14 @@
                         <input type="text" id="email" placeholder="Enter email" name="email">
                     </div>
                     <div class="mt-4 button"> 
-                        <button class="btn px-8 validate" type="submit" name="action">Request OTP</button> 
+                        <button class="btn px-4 validate" type="submit" name="action">Request OTP</button> 
                     </div>
-                    <div>
                     <c:if test="${requestScope.error !=null}">
-                        <div class="mt-4" style="color: red">${requestScope.error}</div>
-                        <div class="mt-4 button"><a style="color: #1B9C85; font-weight: bold;"href="register.jsp">Register</a></div>
+                        <div>${requestScope.error}</div>
+                        <div><a href="register.jsp">Register</a> for an account</div>
+
                     </c:if>
-                    </div>
+
                 </div>
             </form> 
             <!-- </div> -->
