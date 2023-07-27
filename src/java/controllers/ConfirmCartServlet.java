@@ -63,12 +63,14 @@ public class ConfirmCartServlet extends HttpServlet {
                         session.setAttribute("voucher", null);
                         session.setAttribute("totalMoney", null);
                         request.setAttribute("noti", "Save sucessfully.");
+                        request.getRequestDispatcher("orderSuccessful.jsp").forward(request, response);
                     } else {
                         request.setAttribute("error", "Save fail.");
+                        request.getRequestDispatcher("cartConfirmation.jsp").forward(request, response);
                     }
                 }
             }
-            request.getRequestDispatcher("orderSuccessful.jsp").forward(request, response);
+            
         }
     }
 
