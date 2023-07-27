@@ -17,10 +17,9 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="./image/favicon-32x32.png">
         <title>Ministore</title>
-        <link rel="stylesheet" href="./css/managerScreen.css" />   
-        
-
+        <link rel="stylesheet" href="./css/managerScreen.css" />
 
         <!-- Icon CDN -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -504,7 +503,7 @@
                                                             <option selected value="<%=schedule.getUserID()%>"><%= UserDAO.getUser(schedule.getUserID()).getName()%></option>
                                                             <c:forEach var="employee" items="${UserDAO.getUsersByRole(2)}" varStatus="status">
                                                                 <c:if test="${employee.status == 1}">                                                    
-                                                                    <option id="${employee.userID}" value="${employee.userID}">${employee.name}</option>                                                    
+                                                                    <option id="${employee.userID}"  value="${employee.userID}">${employee.name}</option>                                                    
                                                                 </c:if>
                                                             </c:forEach>
                                                         </select>
@@ -552,83 +551,10 @@
                             </tr>
                         </tbody>
                     </table>
-                </c:if>
-                <c:if test="<%=scheduleList.isEmpty()%>">
-                    <form action="AddScheduleServlet" method="get">
-                        <div id="error" style="display:none">
-                            Please fully add the schedule
-                        </div>
-                        <table class="mt-4 mb-5 table table-order text-center border">
-                            <caption>Sale employees</caption>
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                        <% for (int i = 0; i < 7; i++) {%>   
-                                    <th><%= weekDays[i]%> <br> <%= startday.plusDays(i).getDayOfMonth() + "/" + startday.plusDays(i).getMonthValue()%></th>
-                                        <% dates.add(startday.plusDays(i));
-                                            }%>
-                                </tr>
-                            </thead>
-                            <tbody>
 
-                                <c:forEach var="sale" items="${UserDAO.getUsersByRole(1)}">
-                                    <tr>
-                                        <c:if test="${sale.status == 1}">
-                                            <th>${sale.name}</th>
-                                                <% for (int i = 0; i < 7; i++) {%>
-                                            <td>
-                                                <select class="eID" name="eID" style="width:60px" >
-                                                    <option selected=""></option>
-                                                    <c:forEach var="salews" items="${WorksheetDAO.getAllWorksheets()}" begin="0" end="2">
-                                                        <option value="${sale.userID}|${salews.worksheetID}|<%=dates.get(i)%>">${salews.worksheetName}</option>
-                                                    </c:forEach>
-                                                </select>
-                                            </td>
-                                            <%}%>
-                                        </c:if>
-
-                                    </tr>
-
-                                </c:forEach>
-
-                            </tbody>
-                        </table>
-                        <!--GUARD-->   
-                        <table class="my-5 table table-order text-center border">
-                            <caption>Guard employees</caption>
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                        <% for (int i = 0; i < 7; i++) {%>   
-                                    <th><%= weekDays[i]%> <br> <%= startday.plusDays(i).getDayOfMonth() + "/" + startday.plusDays(i).getMonthValue()%></th>
-                                        <% dates.add(startday.plusDays(i));
-                                            }%>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                                <c:forEach var="guard" items="${UserDAO.getUsersByRole(2)}">
-                                    <tr>
-                                        <c:if test="${guard.status == 1}">
-                                            <th>${guard.name}</th>
-                                                <% for (int i = 0; i < 7; i++) {%>
-                                            <td>
-                                                <select class="eID" name="eID" style="width:50px">
-                                                    <option selected="" value="${param.eID}">${param.eID}</option>
-                                                    <c:forEach var="guardws" items="${WorksheetDAO.getAllWorksheets()}" begin="3" end="4">
-                                                        <option value="${guard.userID}|${guardws.worksheetID}|<%=dates.get(i)%>">${guardws.worksheetName}</option>
-                                                    </c:forEach>
-                                                </select>
-                                            </td>
-                                            <%}%>
-                                        </c:if>
-                                    </tr>
-                                </c:forEach>
-
-                            </tbody>
-                        </table>
+                    <c:if test="<%=scheduleList.isEmpty()%>">
                         <div class="d-flex justify-content-center mb-5">
-                            <button id="btn" onclick="checkSchedule()" class="button" type="button">Save</button>
+                            <button class="button" type="submit">Save</button>
                         </div>
                     </c:if>
                     <c:if test="<%=scheduleList.isEmpty()%>">
@@ -664,39 +590,6 @@
                 });
             });
         </script>
-        <script>
-           var eIDs = document.getElementsByClassName("eID");
-           var check = true;
-           var btn = document.getElementById("btn");
-           var error = document.getElementById("error");
-//           for(let i = 0;i < eIDs.length;i++){
-//               eIDs[i].addEventListener('click' ,function(){
-//                   if(eIDs[i].value !== ""){
-//                       check = true;
-//                   }else{
-//                       check = false;
-//                   }
-//               });
-//               
-//           }
-   
-            var checkSchedule = function(){
-                for(let i = 0;i < eIDs.length;i++){
-                    if(eIDs[i].value === ""){
-                        check = false;
-                    }else{
-                       check = true;     
-                    }
-                }
-                
-                console.log(check);
-                if(check){
-                    btn.type = "submit";
-                    
-                }else{
-                    error.style.display = "block";
-                }
-            };
-        </script>
+
     </body>
 </html>

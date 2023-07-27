@@ -54,7 +54,7 @@ public class ResetPassServlet extends HttpServlet {
 
             if (email != null || !email.equals("")) {
                 if(!UserDAO.isEmailDuplicate(email)){
-                    request.setAttribute("error", "Account is not existed");
+                    request.setAttribute("error", "Account doesn't exist");
                     request.getRequestDispatcher("EnterEmail.jsp").forward(request, response);
                 } else {
                 Random rand = new Random();
@@ -92,7 +92,7 @@ public class ResetPassServlet extends HttpServlet {
                 }
                 dispatcher = request.getRequestDispatcher("EnterOtp.jsp");
                 mySession.setAttribute("otp", otpvalue);
-                request.setAttribute("message", "OTP is sent to your email id");
+                request.setAttribute("message", "Please check your email for the OTP");
                 //request.setAttribute("connection", con);
                 mySession.setAttribute("email", email);
                 dispatcher.forward(request, response);
@@ -100,7 +100,7 @@ public class ResetPassServlet extends HttpServlet {
                 request.getRequestDispatcher("EnterOtp.jsp").forward(request, response);
             } 
             }else{
-                request.setAttribute("error", "Account is not existed");
+                request.setAttribute("error", "Account doesn't exist");
                 request.getRequestDispatcher("EnterEmail.jsp").forward(request, response);
             }
         }

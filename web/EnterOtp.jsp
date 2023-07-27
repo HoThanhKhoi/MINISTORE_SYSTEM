@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./image/favicon-32x32.png">
     <title>Ministore</title>
 
     <link rel="stylesheet" href="./css/OTP_verification.css">
@@ -29,8 +30,8 @@
         <!-- <div class="position-relative"> -->
         <form action="ValidateOtp" method="post">
              <div class="card p-2 text-center">
-                <h6 class="mb-5">Please enter the one time password to verify your account</h6>
-                <div> <span>OTP is sent to email</span> <small>*******@gmail.com</small> </div>
+                <h6 class="mb-5">Please enter the OTP to verify</h6>
+                <div> <span>OTP has been sent to email</span> <small>*******@gmail.com</small> </div>
                 <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2" > <input 
                         class="m-2 text-center form-control rounded" type="text" id="first" maxlength="1" name="o1"/> <input
                         class="m-2 text-center form-control rounded" type="text" id="second" maxlength="1" name="o2"/> <input

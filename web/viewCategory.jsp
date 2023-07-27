@@ -1,6 +1,5 @@
 <%@page import="dao.CategoryDAO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,6 +8,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="./image/favicon-32x32.png">
         <title>Ministore</title>
         <link rel="stylesheet" href="./css/managerScreen.css" />
 
@@ -251,57 +251,23 @@
 
                         <nav aria-label="Page navigation example" style="margin-top: 30px ">
                             <ul class="pagination justify-content-center">
-                                <c:if test="${requestScope.page == 1  || requestScope.page== null}">
-                                    <li class="page-item">
-                                        <a class="page-link" style="padding: 5px 10px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=1&items=category" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                </c:if>
-                                <c:if test="${requestScope.page > 1}">
-                                    <li class="page-item">
-                                        <a class="page-link" style="padding: 5px 10px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=${requestScope.page-1}&items=category" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                </c:if>
-                                <c:set var="totalCategories" value="${CategoryDAO.getCategories().size()}"/>
-                                <c:set var="numOfPages" value="${Math.ceil(totalCategories / 6)}"/>
-                                <fmt:formatNumber value="${numOfPages}" pattern="0" var="intLastPage" />
-
-                                <c:forEach var="i" begin="1" end="${numOfPages}">
-                                    <li class="page-item "><a class="page-link " style="padding:5px 10px  !important;color: #1B9C85" href="MainController?action=showItemsPage&page=${i}&items=category">${i}</a></li>
-
-                                </c:forEach>
-
-
-                                <c:choose>
-                                    <c:when test="${intLastPage > 1}">
-                                        <c:if test="${requestScope.page <  numOfPages || requestScope.page == null}">
-                                            <li class="page-item">
-                                                <a class="page-link" style="padding:5px 10px  !important;color: #1B9C85" href="MainController?action=showItemsPage&page=${requestScope.page+1}&items=category" aria-label="Next">
-                                                    <span aria-hidden="true">&raquo;</span>
-                                                </a>
-                                            </li>
-                                        </c:if>                          
-                                        <c:if test="${requestScope.page >=  numOfPages}">
-                                            <li class="page-item">
-                                                <a class="page-link" style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=${intLastPage}&items=category" aria-label="Next">
-                                                    <span aria-hidden="true">&raquo;</span>
-                                                </a>
-                                            </li>
-                                        </c:if> 
-                                    </c:when>
-                                    <c:when test="${intLastPage <= 1}">
-                                        <c:if test="${requestScope.page == 1 || requestScope.page ==null}">
-                                            <li class="page-item">
-                                                <a class="page-link" style="padding:5px 10px !important;color: #1B9C85" href="#" aria-label="Next">
-                                                    <span aria-hidden="true">&raquo;</span>
-                                                </a>
-                                            </li>
-                                        </c:if>
-                                    </c:when>
-                                </c:choose>  
+                                <li class="page-item">
+                                    <a class="page-link" style="padding: 5px 10px !important;color: #1B9C85" href="MainController?action=showItemsPage&page=${requestScope.page-1}&items=category" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <% int totalCategories = CategoryDAO.getCategories().size();
+                                    int element = 6;
+                                    float numOfPages = (float) totalCategories / element;
+                                %>
+                                <%for (int i = 1; i <= (int) Math.ceil(numOfPages); i++) {%>
+                                <li class="page-item "><a class="page-link " style="padding:5px 10px  !important;color: #1B9C85" href="MainController?action=showItemsPage&page=<%=i%>&items=category"><%=i%></a></li>
+                                    <% }%>
+                                <li class="page-item">
+                                    <a class="page-link" style="padding:5px 10px  !important;color: #1B9C85" href="MainController?action=showItemsPage&page=${requestScope.page+1}&items=category" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
                             </ul>
                         </nav>
                     </div>
@@ -355,10 +321,10 @@
                         });
                     </script>
                     <script>
-                        if (window.history.replaceState) {
-                            window.history.replaceState(null, null, "MainController?action=viewAllCategories");
-                        }
-                    </script>
+            if (window.history.replaceState) {
+                window.history.replaceState(null, null, "MainController?action=viewAllCategories");
+            }
+        </script>
                 </c:otherwise>
             </c:choose>
     </body>

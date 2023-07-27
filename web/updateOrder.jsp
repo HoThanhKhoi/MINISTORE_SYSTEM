@@ -12,6 +12,7 @@
         <!--<link rel="stylesheet" href="./css/cartConfirmation.css">-->
         <link rel="stylesheet" href="./css/managerScreen.css" />
         <!--<link rel="stylesheet" href="./css/viewCart.css">-->
+        <link rel="icon" type="image/x-icon" href="./image/favicon-32x32.png">
 
         <!-- Icon CDN -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -258,8 +259,6 @@
                                         </div>
                                 </div>
                                                     
-                                                    
-                                <!-- check out -->
                                 <div class="col-lg-6 checkout">
                                     <div class="row">
                                         <table class="table-fixed text-center">

@@ -16,6 +16,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="./image/favicon-32x32.png">
         <title>Ministore</title>
         <link rel="stylesheet" href="./css/viewCart.css">
 
@@ -236,7 +237,14 @@
         </c:choose>
         <!-- FOOTER -->
         <footer>
-            <c:import url="footer.jsp" />
+            <c:choose>
+                <c:when test="${sessionScope.customer == null}">
+                    <c:import url="footer.jsp" />
+                </c:when>
+                <c:otherwise>
+                    <c:import url="footer_loginedCustomer.jsp" />
+                </c:otherwise>
+            </c:choose>
         </footer>
     </body>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/updateCart.js"></script>
