@@ -35,7 +35,7 @@ public class OrderDAO {
                 String salesID = "", orderID = "";
                 cn.setAutoCommit(false); //turn off auto-commit
                 //get random salesID
-                String sql = "SELECT TOP 1 UserID FROM USERS WHERE RoleID=1 ORDER BY NEWID()";
+                String sql = "SELECT TOP 1 UserID FROM USERS WHERE RoleID=1 and status=1 ORDER BY NEWID()";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 ResultSet rs = pst.executeQuery();
                 if (rs != null && rs.next()) {
