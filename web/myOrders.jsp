@@ -7,7 +7,6 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/x-icon" href="./image/favicon-32x32.png">
         <title>Ministore</title>
         <link rel="stylesheet" href="./css/managerScreen.css" />
 
@@ -45,9 +44,9 @@
 
 
                         <!-- menu -->
-                        <div class="myOrder-menu mt-2">
-                            <div class="title my-4">
-                                <h4 class=" text-center">My Order</h4>
+                        <div class="myOrder-menu">
+                            <div class="title mt-5">
+                                <h4 class="mb-3 text-center">My Order</h4>
                             </div>
 
                             <ul id="myDiv" class="order">
@@ -233,7 +232,7 @@
                     </div>
                 </div>
 
-                <footer><c:import url="footer_loginedCustomer.jsp"/></footer>
+                <footer><c:import url="footer.jsp"/></footer>
                 </c:otherwise>
             </c:choose>
     </body>

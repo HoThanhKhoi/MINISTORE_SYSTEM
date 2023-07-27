@@ -4,7 +4,6 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="icon" type="image/x-icon" href="./image/favicon-32x32.png">
         <title>Login Page</title>
         <!-- boostrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -52,7 +51,7 @@
                                     <input class="form-check-input" type="checkbox" ${(cookie.crem != null?'checked':'')} name="remember" value="1"> Remember me
                                 </label>
 
-                                <a class="item" href="EnterEmail.jsp">Forgot password</a>
+                                <a class="item" href="EnterEmail.jsp">Forgot Password</a>
 
                             </div>
                             <div class="button">
@@ -61,7 +60,7 @@
 
                         </form>
                         <div class="login-footer">
-                            Don't have an account yet? <a href="MainController?action=register">Register</a> now!
+                            Don't have an account? <a href="MainController?action=register">Register</a>
                         </div>
                     </div>
                 </div>

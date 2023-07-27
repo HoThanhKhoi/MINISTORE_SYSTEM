@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ministore</title>
-    <link rel="icon" type="image/x-icon" href="./image/favicon-32x32.png">
+
     <link rel="stylesheet" href="./css/OTP_verification.css">
 
     <!-- font Inter -->
@@ -33,7 +33,7 @@
                     <input type="text" id="email" placeholder="Enter email">
                 </div>
                 <div class="mt-4 button"> 
-                    <button class="btn px-8 validate">Request OTP</button> 
+                    <button class="btn px-4 validate">Request OTP</button> 
                 </div>
                 
             </div>

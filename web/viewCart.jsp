@@ -16,7 +16,6 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/x-icon" href="./image/favicon-32x32.png">
         <title>Ministore</title>
         <link rel="stylesheet" href="./css/viewCart.css">
 
@@ -98,6 +97,12 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 d-flex justify-content-center flex-column align-items-center">
+                            <c:if test="${requestScope.error != null}">
+                                <div class="alert alert-danger alert-dismissible fade show notification" role="alert" style="padding: 15px 40px;text-align: center;width:430px;opacity: 100%;margin: 0 auto 15px;">
+                                    <strong class="error">${requestScope.error}</strong>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="width:20px"></button>
+                                </div>
+                            </c:if>    
                             <div class="cart-table">
                                 <div class="mainBodyCart">
                                     <div></div>
@@ -229,14 +234,7 @@
         </c:choose>
         <!-- FOOTER -->
         <footer>
-            <c:choose>
-                <c:when test="${sessionScope.customer == null}">
-                    <c:import url="footer.jsp" />
-                </c:when>
-                <c:otherwise>
-                    <c:import url="footer_loginedCustomer.jsp" />
-                </c:otherwise>
-            </c:choose>
+            <c:import url="footer.jsp" />
         </footer>
     </body>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/updateCart.js"></script>

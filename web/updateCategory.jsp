@@ -12,8 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="icon" type="image/x-icon" href="./image/favicon-32x32.png">
-        <title>Ministore</title>
+        <title>Update Category</title>
     </head>
     <body>
         <c:choose>
@@ -42,7 +41,7 @@
                         </tr>
                         <tr>
                             <th>Category Name</th>
-                            <td><input type="text" name="catename" placeholder="New category name" required/></td>
+                            <td><input type="text" name="catename" placeholder="New category name"/></td>
                         </tr>
                         <tr>
                             <th>Image</th>

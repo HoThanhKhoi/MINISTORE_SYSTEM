@@ -526,7 +526,7 @@ label {
 .myOrder-menu ul li {
     display: inline-block;
     cursor: pointer;
-    /*padding: 5px 5px;*/   
+    padding: 5px 10px;   
     border: none;    
 
 }
@@ -549,13 +549,14 @@ label {
 }
 
 .myOrder-menu ul.order {
-    max-width: 535px;
+    max-width: 41.5%;
 }
 
 .myOrder-menu ul.order li {
     padding: 5px 20px ;   
     border-radius: 5px;
 }
+
 
 
 .myOrder-menu ul .active {
@@ -908,12 +909,6 @@ li::before {
     padding: 0 10px !important;
 }
 
-
-.order-info form.change-status {
-    padding: 0  !important;
-}
-
-
 .order-info label {
     font-weight: 500;
 }
@@ -999,7 +994,7 @@ li::before {
 .checkout .total {
     width: 100%;
     background-color: #F6F5DB;
-    padding: 10px 55px !important;
+    padding: 10px 105px 10px 80px !important;
     border-radius: 10px;
     font-weight: 500;
     display: flex !important;
@@ -1027,4 +1022,3 @@ li::before {
     color: #000;
     font-weight: 500;
 }
-

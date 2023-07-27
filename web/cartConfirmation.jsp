@@ -1,4 +1,8 @@
-
+<%-- 
+    Document   : cartConfirmation
+    Created on : Jun 6, 2023, 11:32:58 PM
+    Author     : ACER
+--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -10,7 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Ministore</title>
         <link rel="stylesheet" href="./css/cartConfirmation.css">
-        <link rel="icon" type="image/x-icon" href="./image/favicon-32x32.png">
+
         <!-- Icon CDN -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
               integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -113,7 +117,7 @@
                                     </div>
                                 </div>
                                 <div class="mb-5 mt-2">
-                                    <input type="text" id="inputField" placeholder="Postal Code" required name="postalCode" pattern="[a-zA-Z0-9]+" required> 
+                                    <input type="text" id="" placeholder="Postal Code" required name="postalCode">
                                     <div class="invalid-feedback">
                                         Please provide a valid postal code.
                                     </div>

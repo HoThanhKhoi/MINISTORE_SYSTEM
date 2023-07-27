@@ -12,7 +12,6 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/x-icon" href="./image/favicon-32x32.png">
         <title>Document</title>
         <link rel="stylesheet" href="./css/productDetail.css">
 
@@ -157,13 +156,7 @@
             <i class="fas fa-arrow-up"></i>
         </button>
 
-        <!-- FOOTER -->
-        <footer>
-            <c:import url="footer.jsp" />
-        </footer>
 
-        
-        
         <c:if test="${requestScope.noti != null}">
             <script>
                 $(function () {
