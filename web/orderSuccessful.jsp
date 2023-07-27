@@ -18,7 +18,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/x-icon" href="./image/favicon-32x32.png">
-        <title>Order Successful</title>
+        <title>Ministore</title>
         <link rel="stylesheet" href="css/orderSuccessful.css">
 
 
@@ -94,22 +94,7 @@
                     </div>
                 </div>
 
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item">
-                            <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showPage&page=${requestScope.page-1}"><</a>
-                        </li>
-                        <% int totalProduct = ProductDAO.getTotalProduct();
-                            int element = 20;
-                        %>
-                        <%for (int i = 1; i <= (int) Math.ceil(totalProduct / element); i++) {%>
-                        <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showPage&page=<%=i%>"><%=i%></a></li>
-                            <% }%>
-                        <li class="page-item">
-                            <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showPage&page=${requestScope.page+1}">></a>
-                        </li>
-                    </ul>
-                </nav>
+                
             </div>
 
         </div>

@@ -98,6 +98,14 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 d-flex justify-content-center flex-column align-items-center">
+
+                            <c:if test="${requestScope.error != null}">
+                                <div class="alert alert-danger alert-dismissible fade show notification" role="alert" style="padding: 15px 40px;text-align: center;width:430px;opacity: 100%;margin: 0 auto 15px;">
+                                    <strong class="error">${requestScope.error}</strong>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="width:20px"></button>
+                                </div>
+                            </c:if>    
+
                             <div class="cart-table">
                                 <div class="mainBodyCart">
                                     <div></div>

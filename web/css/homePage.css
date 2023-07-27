@@ -5,12 +5,9 @@
     box-sizing: border-box !important;
 }
 
-.container-fluid.homepage.wrapper {
-    height: 80vh;
-}
-
-.container-fluid.homepage {
+.container-fluid {
     position: relative;
+    height: 80vh;
     width: 100%;
 }
 
@@ -108,17 +105,13 @@ nav a:hover {
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.banner-search {
-    display: flex;
-    justify-content: center;
-}
-
 
 .banner-search input {
     position: absolute;
     top: 70%;
     bottom: 22%;
-    width: 700px;
+    left: 30%;
+    right: 30%;
     border-radius: 30px;
     border: none;
     padding: 0 30px !important;
@@ -128,7 +121,8 @@ nav a:hover {
     position: absolute;
     top: 70%;
     bottom: 22%;
-    right: 29%;
+    left: 60%;
+    right: 25%;    
 }
 
 .banner-search button i {
@@ -177,6 +171,7 @@ em:hover::before, em:focus::before {
 /* Section: HOT DEAL */
 .hot-deal {
     background: #F6F5DB;
+    height: 100%;
 }
 
 .hot-deal-title {
@@ -210,14 +205,13 @@ em:hover::before, em:focus::before {
 }
 
 .card img {
-    width: 180px !important;
+    width: 200px !important;
     height: 180px;
 }
 
 .card img:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
     transition: 0.5s;
-    overflow: hidden;
 }
 
 .card-body {
@@ -306,6 +300,7 @@ em:hover::before, em:focus::before {
 /* CATEGORY */
 .category {
     background-color: #fff6a9;
+    height: 100%;
     padding: 0 100px !important;
 }
 
@@ -410,7 +405,8 @@ h1 {
     justify-content: center;
     align-items: center;
 }
-#btn-back-to-top-experimental {
+
+#btn-floating-cart {
     position: fixed;
     bottom: 80px;
     right: 20px;
@@ -429,51 +425,3 @@ h1 {
     font-weight: 800;
 }
 
-.card-title {
-    width: 150px; 
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.card-title:hover {
-    text-overflow: clip;
-    overflow: visible;
-}
-
-
-.card-title.cate {
-    /*width: 150px;*/ 
-    /*white-space: nowrap;*/
-    /*overflow: hidden;*/
-        text-overflow: none;
-    white-space: normal;
-    text-align: center;
-}
-
-
-
-.animate-text{
-    text-transform: uppercase;
-    background-image: linear-gradient(
-        90deg,
-        #1e9600 20%,
-        #ff0000 60%,
-        #fff200 100%
-        );
-    background-size: auto auto;
-    background-clip: border-box;
-    background-size: 200% auto;
-    text-fill-color: transparent;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: textclip 3s linear infinite;
-    display: inline-block;
-    font-size: 70px;
-}
-
-@keyframes textclip {
-    to {
-        background-position: -200% center;
-    }
-}

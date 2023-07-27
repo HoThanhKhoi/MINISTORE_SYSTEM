@@ -308,10 +308,6 @@
         <servlet-name>GetEmployeeScheduleServlet</servlet-name>
         <servlet-class>controllers.GetEmployeeScheduleServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>ShowPaginatedOrdersServlet</servlet-name>
-        <servlet-class>controllers.ShowPaginatedOrdersServlet</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>ResetPassServlet</servlet-name>
         <url-pattern>/ResetPassServlet</url-pattern>
@@ -611,10 +607,6 @@
     <servlet-mapping>
         <servlet-name>GetEmployeeScheduleServlet</servlet-name>
         <url-pattern>/GetEmployeeScheduleServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ShowPaginatedOrdersServlet</servlet-name>
-        <url-pattern>/ShowPaginatedOrdersServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

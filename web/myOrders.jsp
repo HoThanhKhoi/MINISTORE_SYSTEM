@@ -45,9 +45,9 @@
 
 
                         <!-- menu -->
-                        <div class="myOrder-menu mt-2">
-                            <div class="title my-4">
-                                <h4 class=" text-center">My Order</h4>
+                        <div class="myOrder-menu">
+                            <div class="title mt-5">
+                                <h4 class="mb-3 text-center">My Order</h4>
                             </div>
 
                             <ul id="myDiv" class="order">

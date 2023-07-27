@@ -39,18 +39,13 @@ public class AddScheduleServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             String[] eIDs = request.getParameterValues("eID");
-            
+
             ArrayList<String> wID = new ArrayList<>();
             ArrayList<String> eID = new ArrayList<>();
             ArrayList<String> sDate = new ArrayList<>();
             int result = 0;
             int check = 0;
-//            for (int i = 0; i < eIDs.length; i++) {
-//                if(eIDs[i].equals("")){
-//                    request.getRequestDispatcher("ViewScheduleServlet").forward(request, response);
-//                }
-//            }
-            //            for (String wid : wIDs) {
+//            for (String wid : wIDs) {
 //                wID.add(wid);
 //            }
 //            for (String eid : eIDs) {

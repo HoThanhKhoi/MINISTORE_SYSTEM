@@ -2,7 +2,6 @@
 <%@page import="java.sql.Date"%>
 <%@page import="dao.UserDAO"%>
 <%@page import="dao.ScheduleDAO"%>
-<%@page import="dao.WorksheetDAO"%>
 <%@page import="dto.Schedule"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="java.util.List"%>
@@ -162,7 +161,10 @@
                 </form> 
 
 
-                <c:if test="<%=!scheduleList.isEmpty()%>">
+                <c:if test="<%=scheduleList.isEmpty()%>">
+                    <form action="AddScheduleServlet" method="get">
+                    </c:if>
+
 
                     <!--SALES-->
                     <table class="mt-4 mb-5 table table-order text-center border">
@@ -219,12 +221,33 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <%      }
+                                        <%      } 
 
                                             }
                                         %>
                                     </c:if>
+                                    <c:if test="<%=scheduleList.isEmpty()%>">
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#myModals1<%= i%>"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
+                                        <!--/*------------------POP UP SCREEN------------------*/-->
+                                        <div class="modal" id="myModals1<%= i%>">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <c:forEach var="employee" items="${UserDAO.getUsersByRole(1)}" varStatus="status">
+                                                        <c:if test="${employee.status == 1}">
+                                                            <div class="modal-line" style="justify-content: center!important">
+                                                                <label for="${employee.userID}">   
+                                                                    <input type="checkbox" id="${employee.userID}"  value="${employee.userID}|WS-0001|<%=dates.get(i)%>" name="eID"/>
+                                                                    <span>${employee.name}</span>
+                                                                    <input type="text" value="<%= dates.get(i)%>" hidden/>
+                                                                </label>
+                                                            </div>
+                                                        </c:if>
 
+                                                    </c:forEach>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </c:if>
                                 </td>
                                 <%
                                     }
@@ -242,7 +265,6 @@
 
                                                 if (schedule.getScheduleDate().toLocalDate().equals(dates.get(i)) && schedule.getWorksheetID().equals("WS-0002")) {%>
                                         <%= UserDAO.getUser(schedule.getUserID()).getName() + "</br>"%>
-
                                         <button type="button" style="width:20px;height: 20px" data-bs-toggle="modal" data-bs-target="#<%=schedule.getScheduleID()%>"><i  style="width:20px;height: 20px" class="update fa-solid fa-pen-to-square mx-2 "></i></button></br></br>
 
                                         <!--/*------------------POP UP SCREEN------------------*/-->
@@ -274,7 +296,27 @@
                                             }
                                         %>
                                     </c:if>
+                                    <c:if test="<%=scheduleList.isEmpty()%>">
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#myModals2<%= i%>"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
+                                        <!--/*------------------POP UP SCREEN------------------*/-->
+                                        <div class="modal" id="myModals2<%= i%>">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content ">
+                                                    <c:forEach var="employee" items="${UserDAO.getUsersByRole(1)}" varStatus="status">
+                                                        <c:if test="${employee.status == 1}">
+                                                            <div class="modal-line">
+                                                                <label for="${employee.userID}">   
+                                                                    <input type="checkbox" id="${employee.userID}"  value="${employee.userID}|WS-0002|<%=dates.get(i)%>" name="eID"/>
+                                                                    <span>${employee.name}</span>
+                                                                </label>
+                                                            </div>
+                                                        </c:if>
 
+                                                    </c:forEach>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </c:if>
                                 </td>
                                 <%
                                     }
@@ -322,6 +364,27 @@
 
                                             }
                                         %>
+                                    </c:if>
+                                    <c:if test="<%=scheduleList.isEmpty()%>">
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#myModals3<%= i%>"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
+                                        <!--/*------------------POP UP SCREEN------------------*/-->
+                                        <div class="modal" id="myModals3<%= i%>">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <c:forEach var="employee" items="${UserDAO.getUsersByRole(1)}" varStatus="status">
+                                                        <c:if test="${employee.status == 1}">
+                                                            <div class="modal-line">
+                                                                <label for="${employee.userID}">   
+                                                                    <input type="checkbox" id="${employee.userID}"  value="${employee.userID}|WS-0003|<%=dates.get(i)%>" name="eID"/>
+                                                                    <span>${employee.name}</span>
+                                                                </label>
+                                                            </div>
+                                                        </c:if>
+
+                                                    </c:forEach>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </c:if>
                                 </td>
                                 <%
@@ -389,7 +452,27 @@
                                             }
                                         %>
                                     </c:if>
-
+                                    <c:if test="<%=scheduleList.isEmpty()%>">
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#myModals4<%= i%>"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
+                                        <!--/*------------------POP UP SCREEN------------------*/-->
+                                        <div class="modal" id="myModals4<%= i%>">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <c:forEach var="employee" items="${UserDAO.getUsersByRole(2)}" varStatus="status">
+                                                        <c:if test="${employee.status == 1}">
+                                                            <div class="modal-line">
+                                                                <label for="${employee.userID}">   
+                                                                    <input type="checkbox" id="${employee.userID}"  value="${employee.userID}|WS-0004|<%=dates.get(i)%>" name="eID"/>
+                                                                    <span>${employee.name}</span>
+                                                                    <input type="text" value="<%= dates.get(i)%>" hidden/>
+                                                                </label>
+                                                            </div>
+                                                        </c:if>
+                                                    </c:forEach>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </c:if>
                                 </td>
                                 <%
                                     }
@@ -439,7 +522,28 @@
                                             }
                                         %>
                                     </c:if>
+                                    <c:if test="<%=scheduleList.isEmpty()%>">
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#myModals5<%= i%>"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
 
+                                        <!--/*------------------POP UP SCREEN------------------*/-->
+                                        <div class="modal" id="myModals5<%= i%>">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <c:forEach var="employee" items="${UserDAO.getUsersByRole(2)}" varStatus="status">
+                                                        <c:if test="${employee.status == 1}">
+                                                            <div class="modal-line">
+                                                                <label for="${employee.userID}">   
+                                                                    <input type="checkbox" id="${employee.userID}"  value="${employee.userID}|WS-0005|<%=dates.get(i)%>" name="eID"/>
+                                                                    <span>${employee.name}</span>
+                                                                    <input type="text" value="<%= dates.get(i)%>" hidden/>
+                                                                </label>                                                    
+                                                            </div>
+                                                        </c:if>
+                                                    </c:forEach>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </c:if>
                                 </td>
                                 <%
                                     }
@@ -447,82 +551,13 @@
                             </tr>
                         </tbody>
                     </table>
-                </c:if>
-                <c:if test="<%=scheduleList.isEmpty()%>">
-                    <form action="AddScheduleServlet" method="get">
-                        <table class="mt-4 mb-5 table table-order text-center border">
-                            <caption>Sale employees</caption>
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                        <% for (int i = 0; i < 7; i++) {%>   
-                                    <th><%= weekDays[i]%> <br> <%= startday.plusDays(i).getDayOfMonth() + "/" + startday.plusDays(i).getMonthValue()%></th>
-                                        <% dates.add(startday.plusDays(i));
-                                            }%>
-                                </tr>
-                            </thead>
-                            <tbody>
 
-                                <c:forEach var="sale" items="${UserDAO.getUsersByRole(1)}">
-                                    <tr>
-                                        <c:if test="${sale.status == 1}">
-                                            <th>${sale.name}</th>
-                                                <% for (int i = 0; i < 7; i++) {%>
-                                            <td>
-                                                <select name="eID" style="width:50px">
-                                                    <option selected=""></option>
-                                                    <c:forEach var="salews" items="${WorksheetDAO.getAllWorksheets()}" begin="0" end="2">
-                                                        <option value="${sale.userID}|${salews.worksheetID}|<%=dates.get(i)%>" >${salews.worksheetName}</option>
-                                                    </c:forEach>
-
-                                                </select>
-                                            </td>
-                                            <%}%>
-                                        </c:if>
-
-                                    </tr>
-
-                                </c:forEach>
-
-                            </tbody>
-                        </table>
-                        <!--GUARD-->   
-                        <table class="my-5 table table-order text-center border">
-                            <caption>Guard employees</caption>
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                        <% for (int i = 0; i < 7; i++) {%>   
-                                    <th><%= weekDays[i]%> <br> <%= startday.plusDays(i).getDayOfMonth() + "/" + startday.plusDays(i).getMonthValue()%></th>
-                                        <% dates.add(startday.plusDays(i));
-                                            }%>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                                <c:forEach var="guard" items="${UserDAO.getUsersByRole(2)}">
-                                    <tr>
-                                        <c:if test="${guard.status == 1}">
-                                            <th>${guard.name}</th>
-                                                <% for (int i = 0; i < 7; i++) {%>
-                                            <td>
-                                                <select name="eID" style="width:50px">
-                                                    <option selected="" value="${param.eID}">${param.eID}</option>
-                                                    <c:forEach var="guardws" items="${WorksheetDAO.getAllWorksheets()}" begin="3" end="4">
-                                                        <option value="${guard.userID}|${guardws.worksheetID}|<%=dates.get(i)%>" >${guardws.worksheetName}</option>
-                                                    </c:forEach>
-                                                </select>
-                                            </td>
-                                            <%}%>
-                                        </c:if>
-                                    </tr>
-                                </c:forEach>
-
-                            </tbody>
-                        </table>
+                    <c:if test="<%=scheduleList.isEmpty()%>">
                         <div class="d-flex justify-content-center mb-5">
                             <button class="button" type="submit">Save</button>
                         </div>
+                    </c:if>
+                    <c:if test="<%=scheduleList.isEmpty()%>">
                     </form>
                 </c:if>
             </div>
@@ -555,8 +590,6 @@
                 });
             });
         </script>
-        <script>
-            
-        </script>
+
     </body>
 </html>

@@ -47,25 +47,19 @@
     <body>
 
         <!-- Banner -->
-        <div class="container-fluid homepage wrapper">
+        <div class="container-fluid ">
             <!-- Header -->
             <div class="header">
                 <nav>
                     <ul>
+                        
                         <li>
+                            
                             <a href="homePage.jsp">Home</a>
                         </li>
 
                         <li>
-                            <a href="#hot-deal">Hot Deals</a>
-                        </li>
-
-                        <li>
                             <a href="#category">Category</a>
-                        </li>
-
-                        <li>
-                            <a href="MainController?action=viewCart">Cart</a>
                         </li>
 
                         <li>
@@ -101,14 +95,17 @@
                     <source src="./image/mixkit-surface-covered-with-many-fruits-and-vegetables-seen-in-detail-10433-medium.mp4" type="video/mp4" />
                 </video>
                 <div class="overlay"></div>
+                
                 <div class="banner-title text-center d-flex align-items-center">
+                    
                     <h1>Ministore </br>
                         Shop <em>Everything!</em>
                     </h1>
                 </div>
 
                 <form class="banner-search text-center d-flex align-items-center" action="MainController" method="post">
-                    <input type="text" placeholder="Search here..." name="keyword">
+                    
+                    <input type="text" placeholder="Search..." name="keyword">
                     <button id="search-button" type="submit" class="btn" name="action" value="searchProduct"> 
                         <i class="fas fa-search"></i>
                     </button>
@@ -119,9 +116,9 @@
 
         <!-- Hot Deal -->
         <c:if test="${requestScope.page == 1 || requestScope.list == null}">
-            <div class="container-fluid homepage hot-deal" id="hot-deal">
+            <div class="container-fluid hot-deal" id="hot-deal">
                 <div class="hot-deal-title ">
-                    <h1 class="pt-5 pb-5 text-center">Hot <u class="fw-bold"><em class="animate-text">deal</em></u> right now!</h1>
+                    <h1 class="pt-5 pb-5 text-center">Hot <u class="fw-bold"><em>deal</em></u> right now!</h1>
                 </div>
 
                 <div class="item-list mx-5">
@@ -166,19 +163,23 @@
                             </ul>
                         </div>
 
+
+
+
+
                     </div>
                 </div>
 
 
                 <div class="hot-deal-banner">
-                    <img src="./image/banner_sub.jpg" alt="">
+                    <img src="./image/image 21.png" alt="">
                 </div>           
             </c:if>
         </div>
 
 
         <!-- Categories -->
-        <div class="container-fluid homepage category" id="category">
+        <div class="container-fluid category" id="category">
             <div class="row pt-5 mx-5">
                 <div class="col ad-banner mx-3">
                     <img src="./image/Ad banner 1.png" alt="">
@@ -194,7 +195,7 @@
                                     </a>
                                     <div class="overlay"></div>
                                     <div class="card-content">
-                                        <h5 class="card-title cate mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
+                                        <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
                                     </div>
                                 </div>
                             </div>
@@ -211,7 +212,7 @@
                                         <img src="${cate.imgPath}" class="card-img-top" alt="">
                                     </a>                                    <div class="overlay"></div>
                                     <div class="card-content">
-                                        <h5 class="card-title cate mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
+                                        <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
                                     </div>
                                 </div>
                             </div>
@@ -227,10 +228,9 @@
                                 <div class="card border-0 shadow align-items-center ">
                                     <a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">                                   
                                         <img src="${cate.imgPath}" class="card-img-top" alt="">
-                                    </a>                                    
-                                    <div class="overlay"></div>
+                                    </a>                                    <div class="overlay"></div>
                                     <div class="card-content">
-                                        <h5 class="card-title cate mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
+                                        <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
                                     </div>
                                 </div>
                             </div>
@@ -252,7 +252,7 @@
                                     </a>                                   
                                     <div class="overlay"></div>
                                     <div class="card-content">
-                                        <h5 class="card-title cate mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
+                                        <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
                                     </div>
                                 </div>
                             </div>
@@ -269,7 +269,7 @@
                                     </a>
                                     <div class="overlay"></div>
                                     <div class="card-content">
-                                        <h5 class="card-title cate mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
+                                        <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
                                     </div>
                                 </div>
                             </div>
@@ -286,7 +286,7 @@
                                     </a>
                                     <div class="overlay"></div>
                                     <div class="card-content">
-                                        <h5 class="card-title cate mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
+                                        <h5 class="card-title mb-3 fw-bold"><a href="MainController?action=viewProductByCategory&cateID=${cate.cateID}">${cate.cateName}</a></h5>
                                     </div>
                                 </div>
                             </div>
@@ -364,7 +364,7 @@
                 </div>
 
 
-                <nav aria-label="Page navigation example" class="mt-2 mb-3">
+                <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center ">
                         <c:if test="${requestScope.page == 1 || requestScope.page == null}">
                             <li class="page-item">
@@ -408,19 +408,15 @@
 
         </div>
 
-
-        <button type="button" class="btn btn-floating btn-lg" id="btn-back-to-top-experimental">
-            <i class="fas fa-arrow-up"></i>
-        </button>
+        <form action="MainController" action="post">                
+            <button type="submit" name="action" value="viewCart" class="btn btn-floating btn-lg" id="btn-floating-cart">
+                <i class="fa-solid fa-cart-shopping"></i>
+            </button>
+        </form>
         <button type="button" class="btn btn-floating btn-lg" id="btn-back-to-top">
             <i class="fas fa-arrow-up"></i>
         </button>
 
-
-        <!-- FOOTER -->
-        <footer>
-            <c:import url="footer.jsp" />
-        </footer>
 
 
         <!-- CDN jquery -->

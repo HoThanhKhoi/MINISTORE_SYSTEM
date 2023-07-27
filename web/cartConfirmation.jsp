@@ -1,4 +1,8 @@
-
+<%-- 
+    Document   : cartConfirmation
+    Created on : Jun 6, 2023, 11:32:58 PM
+    Author     : ACER
+--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -113,7 +117,7 @@
                                     </div>
                                 </div>
                                 <div class="mb-5 mt-2">
-                                    <input type="text" id="inputField" placeholder="Postal Code" required name="postalCode" pattern="[a-zA-Z0-9]+" required> 
+                                    <input type="text" id="" placeholder="Postal Code" required name="postalCode">
                                     <div class="invalid-feedback">
                                         Please provide a valid postal code.
                                     </div>
