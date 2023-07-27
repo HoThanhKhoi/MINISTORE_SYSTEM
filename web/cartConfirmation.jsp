@@ -150,7 +150,14 @@
         </c:choose>
         <!-- FOOTER -->
         <footer>
-            <c:import url="footer.jsp" />
+            <c:choose>
+                <c:when test="${sessionScope.customer == null}">
+                    <c:import url="footer.jsp" />
+                </c:when>
+                <c:otherwise>
+                    <c:import url="footer_loginedCustomer.jsp" />
+                </c:otherwise>
+            </c:choose>
         </footer>
         <script src="./js/validation_input.js"></script>
     </body>

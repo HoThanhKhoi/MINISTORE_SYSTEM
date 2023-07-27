@@ -54,7 +54,6 @@
                     <ul>
                         
                         <li>
-                            
                             <a href="homePage.jsp">Home</a>
                         </li>
 
@@ -106,7 +105,7 @@
                 <form class="banner-search text-center d-flex align-items-center" action="MainController" method="post">
                     
                     <input type="text" placeholder="Search..." name="keyword">
-                    <button id="search-button" type="submit" class="btn" name="action" value="searchProduct"> 
+                    <button id="search-button" type="submit" class="btn" name="action" value="searchProduct" style="width:60px; left:1000px"> 
                         <i class="fas fa-search"></i>
                     </button>
                 </form>
@@ -118,7 +117,7 @@
         <c:if test="${requestScope.page == 1 || requestScope.list == null}">
             <div class="container-fluid hot-deal" id="hot-deal">
                 <div class="hot-deal-title ">
-                    <h1 class="pt-5 pb-5 text-center">Hot <u class="fw-bold"><em>deal</em></u> right now!</h1>
+                    <h1 class="pt-5 pb-5 text-center">Hot <u class="fw-bold"><em class="animate-text">deal</em></u> right now!</h1>
                 </div>
 
                 <div class="item-list mx-5">

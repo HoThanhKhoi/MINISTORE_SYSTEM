@@ -209,6 +209,7 @@
                                             </c:forEach>
                                         </tbody>
                                     </table>
+                                    
                                 </c:when>
                                 <c:otherwise>
                                     <c:if test="${requestScope.noti != null}">

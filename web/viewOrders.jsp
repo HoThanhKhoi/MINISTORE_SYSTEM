@@ -118,7 +118,7 @@
                         </div>   
 
                         <div class="mt-4 my-2 myOrder-menu viewOrder d-flex">
-                            
+
                         </div>
                         <c:choose>
                             <c:when test="${requestScope.orderList.isEmpty()}">
@@ -167,10 +167,65 @@
                                     </c:forEach>
                                     </tbody>
                                 </table>
+                                <nav aria-label="Page navigation example" style="margin: 10px 0;">
+                                    <ul class="pagination justify-content-center">
+                                        <c:if test="${requestScope.page == 1  || requestScope.page== null}">
+                                            <li class="page-item">
+                                                <a class="page-link" style="padding: 5px 10px !important;color: #1B9C85" href="MainController?action=showOrdersPage&page=1" aria-label="Previous">
+                                                    <span aria-hidden="true">&laquo;</span>
+                                                </a>
+                                            </li>
+                                        </c:if>
+                                        <c:if test="${requestScope.page > 1}">
+                                            <li class="page-item">
+                                                <a class="page-link" style="padding: 5px 10px !important;color: #1B9C85" href="MainController?action=showOrdersPage&page=${requestScope.page-1}" aria-label="Previous">
+                                                    <span aria-hidden="true">&laquo;</span>
+                                                </a>
+                                            </li>
+                                        </c:if>
 
+                                        <c:set var="orderList" value="${requestScope.orderList}"/>
+                                        <c:set var="totalOrder" value="${orderList.size()}"/>
+                                        <c:set var="numOfSearchPages" value="${Math.ceil(totalOrder / 6)}"/>
+                                        <fmt:formatNumber value="${numOfSearchPages}" pattern="0" var="intLastPage" />
+
+                                        <c:forEach var="i" begin="1" end="${numOfSearchPages}">
+                                            <li class="page-item "><a class="page-link " style="padding:5px 10px !important;color: #1B9C85" 
+                                                                      href="MainController?action=showOrdersPage&page=${i}">${i}</a></li>
+                                            </c:forEach>
+                                            <c:choose>
+                                                <c:when test="${intLastPage > 1}">
+                                                    <c:if test="${requestScope.page <  numOfSearchPages || requestScope.page == null}">
+                                                    <li class="page-item">
+                                                        <a class="page-link" style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showOrdersPage&page=${requestScope.page + 1}" aria-label="Next">
+                                                            <span aria-hidden="true">&raquo;</span>
+                                                        </a>
+                                                    </li>
+                                                </c:if>                          
+                                                <c:if test="${requestScope.page >=  numOfSearchPages}">
+                                                    <li class="page-item">
+                                                        <a class="page-link" style="padding:5px 10px !important;color: #1B9C85" href="MainController?action=showOrdersPage&page=${intLastPage}" aria-label="Next">
+                                                            <span aria-hidden="true">&raquo;</span>
+                                                        </a>
+                                                    </li>
+                                                </c:if> 
+                                            </c:when>
+                                            <c:when test="${intLastPage <= 1}">
+                                                <c:if test="${requestScope.page == 1 || requestScope.page ==null}">
+                                                    <li class="page-item">
+                                                        <a class="page-link" style="padding:5px 10px !important;color: #1B9C85" href="#" aria-label="Next">
+                                                            <span aria-hidden="true">&raquo;</span>
+                                                        </a>
+                                                    </li>
+                                                </c:if>
+                                            </c:when>
+                                        </c:choose>                            
+                                    </ul>
+                                </nav>
                             </c:otherwise>
                         </c:choose>
                     </div>
+
                 </div>
             </c:otherwise>
         </c:choose>
