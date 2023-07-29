@@ -160,7 +160,7 @@
                                                             </a>
 
                                                             <input onchange="changeQuantity()"  class="quantity fw-bold text-black" min="1" name="quantity" max="${ProductDAO.getProductInfo(cartKey).stockQuantity}"  value="${cartitem.value}" 
-                                                                   type="number">
+                                                                   type="number" readonly="">
 
                                                             <a role="button" class="quantity-button"
                                                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
