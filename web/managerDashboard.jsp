@@ -1,5 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="dao.OrderDAO"%>
+<%@page import="dao.UserDAO"%>
+<%@page import="dao.ProductDAO"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -81,8 +84,8 @@
                                 <div class="item-wrapper"> 
                                     <div class="item"><a href="MainController?action=viewAllOrders">Order</a></div>
                                 </div>
-                                <div class="description my-2">Processing Orders: 50</div>  
-                                <div class="description">Delivering Orders: 75</div>
+                                <div class="description my-2">Processing Orders: <c:out value="${OrderDAO.countOrdersByStatus(1)}"/></div>  
+                                <div class="description">Delivering Orders: <c:out value="${OrderDAO.countOrdersByStatus(2)}"/></div>
                             </div>
                         </div>
                     </div>
@@ -108,9 +111,9 @@
                                 </div>
                                 <!-- <div class="col-lg"></div> -->
                                 <div class="col-lg-4">
-                                    <div class="mb ">7749</div>
-                                    <div class="mb">7749</div>
-                                    <div class="mb-5">$7749.69</div>
+                                    <div class="mb "><c:out value="${UserDAO.countUsersByRole(3)}"/></div>
+                                    <div class="mb"><c:out value="${OrderDAO.countOrders()}"/></div>
+                                    <div class="mb-5">$<c:out value="${OrderDAO.calculateRevenue()}"/></div>
                                 </div>
                             </div>
 
@@ -133,7 +136,7 @@
 
 
                                                 <div class="product-stats-info-item">
-                                                    <li>organic brain juice</li>
+                                                    <li><c:out value="${ProductDAO.getBestSellersProduct()}"/></li>
                                                     <div class="div"></div>
                                                 </div>
 

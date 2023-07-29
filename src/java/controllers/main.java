@@ -112,5 +112,6 @@ public class main {
 //        System.out.println(Math.ceil(4/7));
 //    }
    
+        System.out.println(ProductDAO.getBestSellersProduct());
 }
 }

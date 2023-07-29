@@ -168,7 +168,7 @@ public class UserDAO {
                     String address = rs.getString("UserAddress");
                     int status = rs.getInt("status");
                     int roleID = rs.getInt("RoleID");
-                  
+
                     us = new User(userID, userName, phone, address, email, password, status, roleID);
                 }
             }
@@ -306,7 +306,7 @@ public class UserDAO {
         return list;
     }
 
-    public static int updateUser(String userID, String newName, String newPhone,String address, int status) throws Exception {
+    public static int updateUser(String userID, String newName, String newPhone, String address, int status) throws Exception {
         Connection cn = DBUtils.makeConnection();
         int check = 0;
         if (cn != null) {
@@ -330,7 +330,7 @@ public class UserDAO {
         if (cn != null) {
             String sql = "Select UserID,UserName,Phone,UserAddress,Email,Password,Status,RoleID from USERS where RoleID = ? and (UserID like ? or UserName like ? or UserAddress like ?)";
             PreparedStatement pst = cn.prepareStatement(sql);
-            pst.setInt(1,roleID);
+            pst.setInt(1, roleID);
             pst.setString(2, '%' + keyword + '%');
             pst.setString(3, '%' + keyword + '%');
             pst.setString(4, '%' + keyword + '%');
@@ -350,9 +350,9 @@ public class UserDAO {
         cn.close();
         return list;
 
-        }
-    
-    public static ArrayList<User> getPaginatedSearchedUsers(int pageNumber, int productPerPage, int roleID,String keyword) throws Exception {
+    }
+
+    public static ArrayList<User> getPaginatedSearchedUsers(int pageNumber, int productPerPage, int roleID, String keyword) throws Exception {
         ArrayList<User> list = new ArrayList<>();
         ArrayList<User> employeeList = UserDAO.searchUsers(roleID, keyword);
         Connection cn = DBUtils.makeConnection();
@@ -367,6 +367,34 @@ public class UserDAO {
         cn.close();
         return list;
     }
+    
+    public static int countUsersByRole(int role) throws Exception {
+        int count = 0;
+        Connection cn = null;
+        try {
+            cn = DBUtils.makeConnection();
+            if (cn != null) {
+                String s = "select COUNT(UserID) as Total from USERS where RoleID=?";
+                PreparedStatement pst = cn.prepareStatement(s);
+                pst.setInt(1, role);
+                ResultSet rs = pst.executeQuery();
+                if (rs != null) {
+                    while (rs.next()) {
+                        count = rs.getInt("Total");
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cn != null) {
+                try {
+                    cn.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return count;
     }
-
-
+}

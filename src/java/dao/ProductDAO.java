@@ -285,21 +285,21 @@ public class ProductDAO {
         }
         return result;
     }
-    
-    public static ArrayList<String> getAllProductsImg() throws Exception{
+
+    public static ArrayList<String> getAllProductsImg() throws Exception {
         ArrayList<String> list = new ArrayList<>();
         Connection cn = DBUtils.makeConnection();
         try {
-            if(cn != null){
+            if (cn != null) {
                 String sql = "Select distinct ImgPath FROM PRODUCTS";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 ResultSet table = pst.executeQuery();
-                while(table.next() && table != null){
+                while (table.next() && table != null) {
                     String imgPath = table.getString("ImgPath");
                     list.add(imgPath);
                 }
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             if (cn != null) {
@@ -313,7 +313,33 @@ public class ProductDAO {
         return list;
     }
 
-   
-
-//    product = new Product(pid, productName, price, description, quantity, imgPath, cateID);
+    public static String getBestSellersProduct() throws Exception {
+        String productName = "";
+        Connection cn = DBUtils.makeConnection();
+        try {
+            if (cn != null) {
+                String sql = "SELECT top 1 PRODUCTS.ProductName as ProductName, COUNT(ORDERDETAILS.ProductID) AS Total\n"
+                        + "FROM ORDERDETAILS JOIN PRODUCTS ON ORDERDETAILS.ProductID=PRODUCTS.ProductID\n"
+                        + "GROUP BY ORDERDETAILS.ProductID, PRODUCTS.ProductName\n"
+                        + "ORDER BY ORDERDETAILS.ProductID DESC";
+                PreparedStatement pst = cn.prepareStatement(sql);
+                ResultSet table = pst.executeQuery();
+                while (table.next() && table != null) {
+                    productName = table.getString("ProductName");
+                    int count = table.getInt("Total");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cn != null) {
+                try {
+                    cn.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return productName;
+    }
 }

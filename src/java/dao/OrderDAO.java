@@ -376,7 +376,7 @@ public class OrderDAO {
         }
         return list;
     }
-    
+
     public static ArrayList<Order> getOrders() throws Exception {
         ArrayList<Order> list = new ArrayList<>();
         Connection cn = DBUtils.makeConnection();
@@ -402,18 +402,106 @@ public class OrderDAO {
         }
         return list;
     }
-    
+
     public static ArrayList<Order> getPaginatedOrders(int pageNumber, int ordersPerPage, ArrayList<Order> orderList) throws Exception {
         ArrayList<Order> pList = new ArrayList<>();
         Connection cn = DBUtils.makeConnection();
         int start = (pageNumber - 1) * ordersPerPage;
         int end = start + ordersPerPage - 1;
-        if(end > orderList.size() || end == orderList.size()){
-            end = orderList.size() -1;
+        if (end > orderList.size() || end == orderList.size()) {
+            end = orderList.size() - 1;
         }
-        for(int i = start; i <= end; i++){
+        for (int i = start; i <= end; i++) {
             pList.add(orderList.get(i));
         }
         return pList;
+    }
+
+    public static int countOrdersByStatus(int status) throws Exception {
+        int count = 0;
+        Connection cn = null;
+        try {
+            cn = DBUtils.makeConnection();
+            if (cn != null) {
+                String s = "select count(OrderID) as Total from ORDERS where Status=?";
+                PreparedStatement pst = cn.prepareStatement(s);
+                pst.setInt(1, status);
+                ResultSet rs = pst.executeQuery();
+                if (rs != null) {
+                    while (rs.next()) {
+                        count = rs.getInt("Total");
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cn != null) {
+                try {
+                    cn.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return count;
+    }
+
+    public static int countOrders() throws Exception {
+        int count = 0;
+        Connection cn = null;
+        try {
+            cn = DBUtils.makeConnection();
+            if (cn != null) {
+                String s = "select count(OrderID) as Total from ORDERS";
+                PreparedStatement pst = cn.prepareStatement(s);
+                ResultSet table = pst.executeQuery();
+                if (table != null) {
+                    while (table.next()) {
+                        count = table.getInt("Total");
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cn != null) {
+                try {
+                    cn.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return count;
+    }
+    
+    public static float calculateRevenue() throws Exception {
+        float sum = 0;
+        Connection cn = null;
+        try {
+            cn = DBUtils.makeConnection();
+            if (cn != null) {
+                String s = "select SUM(TotalMoney) as Total from ORDERS";
+                PreparedStatement pst = cn.prepareStatement(s);
+                ResultSet table = pst.executeQuery();
+                if (table != null) {
+                    while (table.next()) {
+                        sum = table.getFloat("Total");
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cn != null) {
+                try {
+                    cn.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return sum;
     }
 }

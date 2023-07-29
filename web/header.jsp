@@ -22,7 +22,7 @@
         <!-- boostrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        
+
         <!-- toastr -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
@@ -54,7 +54,7 @@
                         <a href="MainController?action=viewCart" class="nav-link">
                             <span class="cart">
                                 <i class="fa-solid fa-cart-shopping">
-                                    <!--<span class="badge rounded-pill badge-notification bg-danger">1</span>-->
+                                    <span class="badge rounded-pill badge-notification bg-danger">${sessionScope.cart.size()}</span>
                                 </i>
                             </span>
                         </a>
@@ -62,16 +62,16 @@
 
                     <li class="nav-item">
                         <a href="MainController?action=logout">
-<span><i class="fa-solid fa-right-from-bracket"></i></span>
+                            <span><i class="fa-solid fa-right-from-bracket"></i></span>
                         </a>
                     </li>
                 </ul>
-                
-                
+
+
             </div>
         </nav>  
 
-        
+
 
 
 
