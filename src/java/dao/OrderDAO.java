@@ -416,4 +416,20 @@ public class OrderDAO {
         }
         return pList;
     }
+    
+    public static int countSaleOrders(String id) throws Exception{
+    int total = 0;
+        Connection cn = DBUtils.makeConnection();
+        if (cn != null) {
+            String sql = "Select COUNT(*) from ORDERS where SalesID = ?";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setString(1,id);
+            ResultSet table = pst.executeQuery();
+            if (table.next()) {
+                total = table.getInt(1);
+            }
+            cn.close();
+        }
+        return total;
+    }
 }

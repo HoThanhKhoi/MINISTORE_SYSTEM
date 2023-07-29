@@ -38,10 +38,7 @@
                 </header>
 
                 <div class="container-fluid">
-                    
-
-
-
+                   
                     <!-- table -->
                     <div class="dashboard" style='margin-left: 0px!important'>
                         <div class="mt-4 row group-form">
@@ -57,7 +54,7 @@
                         </div>   
 
                         <div class="mt-4 my-2 myOrder-menu viewOrder d-flex">
-                            
+                            <div>Total Orders: ${totalSaleOrders}</div>
                         </div>
                         <c:choose>
                             <c:when test="${requestScope.orderList.isEmpty()}">
