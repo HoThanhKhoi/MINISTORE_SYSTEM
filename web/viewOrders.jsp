@@ -216,7 +216,7 @@
 
                                         <c:set var="orderList" value="${requestScope.orderList}"/>
                                         <c:set var="totalOrder" value="${orderList.size()}"/>
-                                        <c:set var="numOfSearchPages" value="${Math.ceil(totalOrder / 6)}"/>
+                                        <c:set var="numOfSearchPages" value="${Math.ceil(totalOrder / 8)}"/>
                                         <fmt:formatNumber value="${numOfSearchPages}" pattern="0" var="intLastPage" />
 
                                         <c:forEach var="i" begin="1" end="${numOfSearchPages}">
