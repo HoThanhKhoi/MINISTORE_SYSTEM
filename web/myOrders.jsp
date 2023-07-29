@@ -164,10 +164,10 @@
 
 
                         <!-- table -->
-                        <div class="dashboard myOrder-dashboard">
+                        <div class="dashboard myOrder-dashboard ">
                             <c:choose>
                                 <c:when test="${requestScope.ordersList != null}">
-                                    <table class="table table-order  text-center">
+                                    <table class="table table-order  text-center table-hover">
                                         <thead>
                                             <tr>
                                                 <th class="text-center" scope="col">ID</th>

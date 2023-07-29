@@ -25,6 +25,7 @@
         <title>Ministore</title>
         <link rel="stylesheet" href="./css/managerScreen.css" />
         <link rel="icon" type="image/x-icon" href="./image/favicon-32x32.png">
+        
         <!-- Icon CDN -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
               integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -103,9 +104,7 @@
 
 
 
-            <!-- right side-->
-            <div class="dashboard-sale mt-5 d-flex flex-column ">
-
+            <div class="dashboard-sale d-flex flex-column ">
                 <form class="mt-5 mb-1" action="SwitchCalendarServlet" method="post">
                     <div class="select-container mt-2" data-bs-theme="dark" style="width: 260px">
                         <select class="select-box" name="noOfWeek" onchange="this.form.submit()">

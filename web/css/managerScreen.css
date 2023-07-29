@@ -1022,3 +1022,17 @@ li::before {
     color: #000;
     font-weight: 500;
 }
+
+.dashboard-sale {
+    margin: 0 75px;
+}
+
+.textarea-custom {
+    background-color: #F6F5DB !important;
+    border: 0.5px solid rgba(0, 0, 0, 0.3) !important;
+}
+
+.total-order {
+    color: #716d66 !important;
+    font-weight: 400;
+}

@@ -46,7 +46,6 @@
                 <div class="container-fluid">
                     <div class=" align-items-center">
 
-
                         <!-- dashboard -->
                         <div class="dashboard-sale cus-dashboard">
                             <div class="row align-items-center mx-5">
@@ -94,8 +93,7 @@
                                                 <label for="">Address</label>
                                             </div>
                                             <div class="col-9">
-                                                <!--<input type="text" id="phone" value="" disabled="">-->
-                                                <textarea class="form-control" id="" rows="2" name="" value="${sale.address}" disabled="">${sale.address}</textarea>
+                                                <textarea class="form-control textarea-custom" id="" rows="2" name="" value="${sale.address}" disabled="">${sale.address}</textarea>
                                             </div>
                                         </div>
                                     </form>

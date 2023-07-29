@@ -161,11 +161,6 @@
                                 <li><span id="seconds"></span>Seconds</li>
                             </ul>
                         </div>
-
-
-
-
-
                     </div>
                 </div>
 
@@ -366,7 +361,7 @@
                 <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center ">
                         <c:if test="${requestScope.page == 1 || requestScope.page == null}">
-                            <li class="page-item">
+                            <li class="page-item previous disabled">
                                 <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showPage&page=1" aria-label="Previous">
                                     <span aria-hidden="true">&laquo;</span>
                                 </a>
@@ -428,7 +423,6 @@
                 integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-        <!-- Init Own Carousel -->
         <!-- Init Own Carousel -->
         <script>
             var owl = $('.owl-carousel');
