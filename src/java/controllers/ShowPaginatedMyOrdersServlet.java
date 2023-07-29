@@ -11,6 +11,8 @@ import dto.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,9 +21,9 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author ACER
+ * @author Admin
  */
-public class ViewMyOrdersByStatusServlet extends HttpServlet {
+public class ShowPaginatedMyOrdersServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,21 +35,26 @@ public class ViewMyOrdersByStatusServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
             HttpSession session = request.getSession();
             User customer = (User) session.getAttribute("customer");
-            int status = Integer.parseInt(request.getParameter("status"));
-            ArrayList<Order> ordersList = OrderDAO.getMyOrdersByStatus(customer.getUserID(), status);
-            if (ordersList == null || ordersList.isEmpty()) {
-                request.setAttribute("noti", "You don't have any orders.");
-                request.getRequestDispatcher("myOrders.jsp").forward(request, response);
-            } else {
-                request.setAttribute("ordersList", ordersList);
-                request.setAttribute("status", status);
-                request.getRequestDispatcher("myOrders.jsp").forward(request, response);
+            int pageNumber = Integer.parseInt(request.getParameter("page"));
+            int ordersPerPage = 6;
+            String status = request.getParameter("status");
+            ArrayList<Order> oList = null;
+            if(status == ""){
+                oList = OrderDAO.getMyOrders(customer.getUserID());
+            }else{
+                oList = OrderDAO.getMyOrdersByStatus(customer.getUserID(), Integer.parseInt(status));
             }
+            ArrayList<Order> opList = OrderDAO.getPaginatedOrders(pageNumber, ordersPerPage, oList);
+//            request.setAttribute("orderList", oList);
+            request.setAttribute("page", pageNumber);
+            request.setAttribute("ordersList", opList);
+            request.getRequestDispatcher("myOrders.jsp").forward(request, response);
         }
     }
 
@@ -63,7 +70,11 @@ public class ViewMyOrdersByStatusServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(ShowPaginatedMyOrdersServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -77,7 +88,11 @@ public class ViewMyOrdersByStatusServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(ShowPaginatedMyOrdersServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

@@ -309,6 +309,14 @@
         <servlet-class>controllers.GetEmployeeScheduleServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ShowPaginatedOrdersServlet</servlet-name>
+        <servlet-class>controllers.ShowPaginatedOrdersServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowPaginatedMyOrdersServlet</servlet-name>
+        <servlet-class>controllers.ShowPaginatedMyOrdersServlet</servlet-class>
+    </servlet>    
+    <servlet>    
         <servlet-name>searchByCustomerIDServlet</servlet-name>
         <servlet-class>controllers.searchByCustomerIDServlet</servlet-class>
     </servlet>
@@ -611,6 +619,14 @@
     <servlet-mapping>
         <servlet-name>GetEmployeeScheduleServlet</servlet-name>
         <url-pattern>/GetEmployeeScheduleServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowPaginatedOrdersServlet</servlet-name>
+        <url-pattern>/ShowPaginatedOrdersServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowPaginatedMyOrdersServlet</servlet-name>
+        <url-pattern>/ShowPaginatedMyOrdersServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>searchByCustomerIDServlet</servlet-name>

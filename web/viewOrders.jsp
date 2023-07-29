@@ -141,31 +141,60 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <c:forEach var="order" items="${requestScope.orderList}">
-                                        <form action="MainController" action="post">
-                                            <tr>
-                                                <td>${order.orderID}</td>
-                                                <td>${order.customerID}</td>
-                                                <td>${order.customerName}</td>
-                                                <td>${order.phone}</td>
-                                                <td>${order.orderDate}</td>
-                                                <td>$${order.totalMoney}</td>
-                                                <td>${order.salesID}</td>
+                                        <c:if test="${requestScope.oList == null}">
+                                            <c:forEach var="order" items="${requestScope.orderList}" begin="0" end="5">
+                                            <form action="MainController" action="post">
+                                                <tr>
+                                                    <td>${order.orderID}</td>
+                                                    <td>${order.customerID}</td>
+                                                    <td>${order.customerName}</td>
+                                                    <td>${order.phone}</td>
+                                                    <td>${order.orderDate}</td>
+                                                    <td>$${order.totalMoney}</td>
+                                                    <td>${order.salesID}</td>
+                                                    <td>
+                                                        <c:choose>
+                                                            <c:when test="${order.status eq 1}"><span class="status_btn status_processing">Processing</span></c:when>
+                                                            <c:when test="${order.status eq 2}"><span  class="status_btn status_delivering">Delivering</span></c:when>
+                                                            <c:when test="${order.status eq 3}"><span  class="status_btn status_completed">Completed</span></c:when>
+                                                            <c:when test="${order.status eq 4}"><span class="status_btn status_cancel">Canceled</span></c:when>
+                                                        </c:choose>
+                                                    </td>   
+                                                <input type="hidden" name="orderID" value="${order.orderID}"/>
                                                 <td>
-                                                    <c:choose>
-                                                        <c:when test="${order.status eq 1}"><span class="status_btn status_processing">Processing</span></c:when>
-                                                        <c:when test="${order.status eq 2}"><span  class="status_btn status_delivering">Delivering</span></c:when>
-                                                        <c:when test="${order.status eq 3}"><span  class="status_btn status_completed">Completed</span></c:when>
-                                                        <c:when test="${order.status eq 4}"><span class="status_btn status_cancel">Canceled</span></c:when>
-                                                    </c:choose>
-                                                </td>   
-                                            <input type="hidden" name="orderID" value="${order.orderID}"/>
-                                            <td>
-                                                <button type="submit" name="action" value="viewOrderDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
-                                            </td>
-                                            </tr>
-                                        </form>
-                                    </c:forEach>
+                                                    <button type="submit" name="action" value="viewOrderDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
+                                                </td>
+                                                </tr>
+                                            </form>
+                                        </c:forEach>
+                                    </c:if>
+                                    <c:if test="${requestScope.oList != null}">
+                                        <c:forEach var="order" items="${requestScope.oList}">
+                                            <form action="MainController" action="post">
+                                                <tr>
+                                                    <td>${order.orderID}</td>
+                                                    <td>${order.customerID}</td>
+                                                    <td>${order.customerName}</td>
+                                                    <td>${order.phone}</td>
+                                                    <td>${order.orderDate}</td>
+                                                    <td>$${order.totalMoney}</td>
+                                                    <td>${order.salesID}</td>
+                                                    <td>
+                                                        <c:choose>
+                                                            <c:when test="${order.status eq 1}"><span class="status_btn status_processing">Processing</span></c:when>
+                                                            <c:when test="${order.status eq 2}"><span  class="status_btn status_delivering">Delivering</span></c:when>
+                                                            <c:when test="${order.status eq 3}"><span  class="status_btn status_completed">Completed</span></c:when>
+                                                            <c:when test="${order.status eq 4}"><span class="status_btn status_cancel">Canceled</span></c:when>
+                                                        </c:choose>
+                                                    </td>   
+                                                <input type="hidden" name="orderID" value="${order.orderID}"/>
+                                                <td>
+                                                    <button type="submit" name="action" value="viewOrderDetailsPage"><i class="update fa-solid fa-pen-to-square mx-2 "></i></button>
+                                                </td>
+                                                </tr>
+                                            </form>
+                                        </c:forEach>
+                                    </c:if>
                                     </tbody>
                                 </table>
                                 <nav aria-label="Page navigation example" style="margin: 10px 0;">

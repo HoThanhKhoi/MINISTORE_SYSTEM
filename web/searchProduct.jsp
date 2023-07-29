@@ -101,18 +101,18 @@
             <nav aria-label="Page navigation example" class="mt-4">
                 <ul class="pagination justify-content-center">
                     <li class="page-item">
-                        <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showSearchedPage&page=${requestScope.page-1}&keyword=${requestScope.keyword}"><</a>
+                        <a class="page-link" style="padding: 8px 14px !important;color: #1B9C85" href="MainController?action=showSearchedPage&page=${requestScope.page-1}&keyword=${sessionScope.keyword}"><</a>
                     </li>
-                    <% String keyword = request.getParameter("keyword");
+                    <% String keyword = (String) session.getAttribute("keyword");
                         int totalProduct = ProductDAO.getSearchedProducts(keyword).size();
                         int element = 20;
                         float numOfPages = (float) totalProduct / element;
                     %>
                     <%for (int i = 1; i <= (int) Math.ceil(numOfPages); i++) {%>
-                    <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showSearchedPage&page=<%=i%>&keyword=${requestScope.keyword}"><%=i%></a></li>
+                    <li class="page-item "><a class="page-link " style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showSearchedPage&page=<%=i%>&keyword=${sessionScope.keyword}"><%=i%></a></li>
                         <% }%>
                     <li class="page-item">
-                        <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showSearchedPage&page=${requestScope.page+1}&keyword=${requestScope.keyword}">></a>
+                        <a class="page-link" style="padding:8px 14px !important;color: #1B9C85" href="MainController?action=showSearchedPage&page=${requestScope.page+1}&keyword=${sessionScope.keyword}">></a>
                     </li>
                 </ul>
             </nav>

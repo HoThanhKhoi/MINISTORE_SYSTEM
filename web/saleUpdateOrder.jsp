@@ -119,8 +119,9 @@
                                     </div>
 
                                     <div class="col-9">
+                                        <form action="MainController" method="post" class="d-flex">
                                         <select class="form-select" aria-label="Default select example" name="status">
-                                            <option selected>
+                                            <option selected disabled="">
                                                 <c:choose>
                                                     <c:when test="${requestScope.order.status eq 2}">
                                                         Delivering

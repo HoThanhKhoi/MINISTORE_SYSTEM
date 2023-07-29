@@ -40,8 +40,10 @@ public class ManageSaleOrdersServlet extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             String saleID = request.getParameter("saleid");
             ArrayList<Order> list = OrderDAO.getOrderBySaleId(saleID);
+            int totalSaleOrders = OrderDAO.countSaleOrders(saleID);
             if(list != null){
                 request.setAttribute("orderList", list);
+                request.setAttribute("totalSaleOrders", totalSaleOrders);
                 request.getRequestDispatcher("viewSaleOrders.jsp").forward(request, response);
             }
         }
