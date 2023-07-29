@@ -71,21 +71,34 @@ body {
     color: #07484A;
 }
 
-.nav .cart i {
+
+.icon-cart {
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    color: #333333;
 }
 
-.nav .cart span {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    font-size: 12px;
+
+.icon-cart-badge {
     position: absolute;
-    bottom: 60%;
-    left: 60%;
-    background-color: #FF0000;
-    text-align: center;
+    top: -2px;
+    right: -2px;
+    width: 25px;
+    height: 25px;
+    background: red;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 14px;
 }
+
+
 
 .navbar-nav .nav-item {
     margin: 0 10px;

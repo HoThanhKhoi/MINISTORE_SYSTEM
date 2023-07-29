@@ -21,7 +21,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap"
               rel="stylesheet">
 
-         <!-- boostrap -->
+        <!-- boostrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     </head>
@@ -58,10 +58,9 @@
 
                     <li class="nav-item">
                         <a href="MainController?action=viewCart" class="nav-link">
-                            <span class="cart">
-                                <i class="fa-solid fa-cart-shopping ">
-                                    <!--<span class="badge rounded-pill badge-notification bg-danger">1</span>-->
-                                </i>
+                            <span class="cart icon-cart">
+                                <i class="fa-solid fa-cart-shopping "></i>
+                                <span class="icon-cart-badge ">${sessionScope.cart.size()}</span>
                             </span>
                         </a>
                     </li>
@@ -76,11 +75,5 @@
         </nav>  
 
 
-
-
-
     </body>
-    <footer>
-        
-    </footer>
 </html>

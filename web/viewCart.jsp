@@ -35,6 +35,9 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap"
               rel="stylesheet">
+
+       
+
     </head>
     <body>
 
@@ -128,7 +131,7 @@
                                                 <c:set scope="page" var="cartKey" value="${cartitem.key}"/>
                                                 <tr class="align-items-center">
                                                     <td>
-                                                        <input type="checkbox" class="pid text-center" name="cartitem" value="${cartitem.key}">
+                                                        <input type="checkbox" class="pid text-center" style="width: 16px; height: 16px; cursor: pointer" name="cartitem" value="${cartitem.key}">
                                                     </td>
 
                                                     <td class="cart-item-img">
@@ -143,7 +146,7 @@
                                                             <a class="cart-description" href="MainController?action=viewProduct&pid=${cartitem.key}&cateID=${ProductDAO.getProductInfo(cartKey).cateID}">
                                                                 ${sessionScope.desList.get(cartKey)}
                                                             </a> 
-                                                                                                                   
+
                                                         </h5>
                                                     </td>
 
@@ -175,7 +178,7 @@
                                             </c:forEach>
 
                                             <div class="deldiv">
-                                                <button class="del delbtn" type="submit" name="action" value="deleteCart">Delete</button>
+                                                <button  class="del delbtn" type="submit" name="action" value="deleteCart">Delete</button>
                                             </div>
                                         </form>
                                         </tbody>
@@ -235,6 +238,8 @@
                 </div>
             </c:otherwise>
         </c:choose>
+
+
         <!-- FOOTER -->
         <footer>
             <c:choose>
@@ -246,6 +251,9 @@
                 </c:otherwise>
             </c:choose>
         </footer>
+
+
+      
     </body>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/updateCart.js"></script>
 </html>
