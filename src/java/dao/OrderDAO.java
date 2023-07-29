@@ -376,7 +376,21 @@ public class OrderDAO {
         }
         return list;
     }
-    
+
+    public static ArrayList<Order> getPaginatedOrders(int pageNumber, int ordersPerPage, ArrayList<Order> orderList) throws Exception {
+        ArrayList<Order> pList = new ArrayList<>();
+        Connection cn = DBUtils.makeConnection();
+        int start = (pageNumber - 1) * ordersPerPage;
+        int end = start + ordersPerPage - 1;
+        if (end > orderList.size() || end == orderList.size()) {
+            end = orderList.size() - 1;
+        }
+        for (int i = start; i <= end; i++) {
+            pList.add(orderList.get(i));
+        }
+        return pList;
+    }
+
     public static ArrayList<Order> getOrders() throws Exception {
         ArrayList<Order> list = new ArrayList<>();
         Connection cn = DBUtils.makeConnection();
@@ -402,18 +416,32 @@ public class OrderDAO {
         }
         return list;
     }
-    
-    public static ArrayList<Order> getPaginatedOrders(int pageNumber, int ordersPerPage, ArrayList<Order> orderList) throws Exception {
-        ArrayList<Order> pList = new ArrayList<>();
+
+    public static ArrayList<Order> getSearchedOrdersByID(String cusid) throws Exception {
+        ArrayList<Order> list = new ArrayList<>();
         Connection cn = DBUtils.makeConnection();
-        int start = (pageNumber - 1) * ordersPerPage;
-        int end = start + ordersPerPage - 1;
-        if(end > orderList.size() || end == orderList.size()){
-            end = orderList.size() -1;
+        if (cn != null) {
+            String sql = "select OrderID,CustomerID,CustomerName,Phone,OrderDate,TotalMoney,SalesID,Status\n"
+                    + "from ORDERS where CustomerID like ?";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setString(1, "%" + cusid + "%");
+            ResultSet table = pst.executeQuery();
+            if (table != null) {
+                while (table.next()) {
+                    String orderID = table.getString("OrderID");
+                    String customerID = table.getString("CustomerID");
+                    String customerName = table.getString("CustomerName");
+                    String phone = table.getString("Phone");
+                    Timestamp orderDate = table.getTimestamp("OrderDate");
+                    float totalMoney = table.getFloat("TotalMoney");
+                    String salesID = table.getString("SalesID");
+                    int status = table.getInt("status");
+                    Order order = new Order(orderID, customerID, customerName, phone, orderDate, totalMoney, salesID, status);
+                    list.add(order);
+                }
+            }
+            cn.close();
         }
-        for(int i = start; i <= end; i++){
-            pList.add(orderList.get(i));
-        }
-        return pList;
+        return list;
     }
 }

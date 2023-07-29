@@ -108,11 +108,12 @@
                         <div class="mt-4 row group-form">
                             <div class="col">
                                 <form class="search text-center d-flex align-items-center" action="MainController" metohd="post">
-                                    <input name="keyword" type="text" placeholder="Search..." value="${param.keyword == null ? '' : param.keyword}">
-                                    <button id="search-button" type="submit" name="action" value="getSearchedProduct" class="btn">
+                                    <input name="txtsearch" type="text" placeholder="Search..." value="${param.txtsearch == null ? '' : param.txtsearch}">
+                                    <button id="search-button" type="submit" name="action" value="searchByCustomerID" class="btn">
                                         <i class="fas fa-search"></i>
                                     </button>
                                 </form>
+
                             </div>
 
                         </div>   

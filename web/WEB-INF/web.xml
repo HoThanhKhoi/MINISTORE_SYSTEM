@@ -308,6 +308,10 @@
         <servlet-name>GetEmployeeScheduleServlet</servlet-name>
         <servlet-class>controllers.GetEmployeeScheduleServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>searchByCustomerIDServlet</servlet-name>
+        <servlet-class>controllers.searchByCustomerIDServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ResetPassServlet</servlet-name>
         <url-pattern>/ResetPassServlet</url-pattern>
@@ -608,6 +612,10 @@
         <servlet-name>GetEmployeeScheduleServlet</servlet-name>
         <url-pattern>/GetEmployeeScheduleServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>searchByCustomerIDServlet</servlet-name>
+        <url-pattern>/searchByCustomerIDServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -616,5 +624,4 @@
     <welcome-file-list>
         <welcome-file>homePage.jsp</welcome-file>
     </welcome-file-list>
-    
 </web-app>
