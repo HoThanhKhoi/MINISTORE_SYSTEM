@@ -182,32 +182,63 @@
                                         </thead>
 
                                         <tbody>
-                                            <c:forEach var="order" items="${requestScope.ordersList}">
-                                                <tr>
-                                                    <td scope="row" class="fw-bold">${order.orderID}</td>
-                                                    <td>${order.customerName}</td>
-                                                    <td>${order.phone}</td>
-                                                    <td>${order.address}</td>
-                                                    <td>
-                                                        <c:choose>
-                                                            <c:when test="${order.status eq 2}">
-                                                                <span  class="status_btn status_delivering">Delivering</span> 
-                                                            </c:when>
-                                                            <c:when test="${order.status eq 3}">
-                                                                <span  class="status_btn status_completed">Completed</span>
-                                                            </c:when>
-                                                            <c:when test="${order.status eq 4}">
-                                                                <span class="status_btn status_cancel">Canceled</span>
-                                                            </c:when>
-                                                            <c:otherwise>
-                                                                <span class="status_btn status_processing">Processing</span>
-                                                            </c:otherwise>
-                                                        </c:choose>
-                                                    </td>
-                                                    <td>$${order.totalMoney}</td>
-                                                    <td><a href="MainController?action=viewOrderInformation&orderID=${order.orderID}" >Order Details</a></td>
-                                                </tr>
-                                            </c:forEach>
+                                            <c:if test="${requestScope.opList == null}">
+                                                <c:forEach var="order" items="${requestScope.ordersList}" begin="0" end="7">
+                                                    <tr>
+                                                        <td scope="row" class="fw-bold">${order.orderID}</td>
+                                                        <td>${order.customerName}</td>
+                                                        <td>${order.phone}</td>
+                                                        <td>${order.address}</td>
+                                                        <td>
+                                                            <c:choose>
+                                                                <c:when test="${order.status eq 2}">
+                                                                    <span  class="status_btn status_delivering">Delivering</span> 
+                                                                </c:when>
+                                                                <c:when test="${order.status eq 3}">
+                                                                    <span  class="status_btn status_completed">Completed</span>
+                                                                </c:when>
+                                                                <c:when test="${order.status eq 4}">
+                                                                    <span class="status_btn status_cancel">Canceled</span>
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    <span class="status_btn status_processing">Processing</span>
+                                                                </c:otherwise>
+                                                            </c:choose>
+                                                        </td>
+                                                        <td>$${order.totalMoney}</td>
+                                                        <td><a href="MainController?action=viewOrderInformation&orderID=${order.orderID}" >Order Details</a></td>
+                                                    </tr>
+                                                </c:forEach>
+                                            </c:if>
+                                            <c:if test="${requestScope.opList != null}">
+                                                <c:forEach var="order" items="${requestScope.opList}">
+                                                    <tr>
+                                                        <td scope="row" class="fw-bold">${order.orderID}</td>
+                                                        <td>${order.customerName}</td>
+                                                        <td>${order.phone}</td>
+                                                        <td>${order.address}</td>
+                                                        <td>
+                                                            <c:choose>
+                                                                <c:when test="${order.status eq 2}">
+                                                                    <span  class="status_btn status_delivering">Delivering</span> 
+                                                                </c:when>
+                                                                <c:when test="${order.status eq 3}">
+                                                                    <span  class="status_btn status_completed">Completed</span>
+                                                                </c:when>
+                                                                <c:when test="${order.status eq 4}">
+                                                                    <span class="status_btn status_cancel">Canceled</span>
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    <span class="status_btn status_processing">Processing</span>
+                                                                </c:otherwise>
+                                                            </c:choose>
+                                                        </td>
+                                                        <td>$${order.totalMoney}</td>
+                                                        <td><a href="MainController?action=viewOrderInformation&orderID=${order.orderID}" >Order Details</a></td>
+                                                    </tr>
+                                                </c:forEach>
+                                            </c:if>
+
                                         </tbody>
 
                                     </table>
@@ -241,7 +272,7 @@
 
                                         <c:set var="orderList" value="${requestScope.ordersList}"/>
                                         <c:set var="totalOrder" value="${orderList.size()}"/>
-                                        <c:set var="numOfPages" value="${Math.ceil(totalOrder / 6)}"/>
+                                        <c:set var="numOfPages" value="${Math.ceil(totalOrder / 8)}"/>
                                         <c:set var="status" value = "${requestScope.status}"/>
                                         <fmt:formatNumber value="${numOfPages}" pattern="0" var="intLastPage" />
 

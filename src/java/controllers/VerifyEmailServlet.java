@@ -86,7 +86,7 @@ public class VerifyEmailServlet extends HttpServlet {
                     MimeMessage message = new MimeMessage(session);
                     message.setFrom(new InternetAddress("MinistoreManager@gmail.com"));// change accordingly
                     message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-                    message.setSubject("Hello");
+                    message.setSubject("Ministore Mail Verification");
                     message.setContent(content, "text/html; charset=utf-8");
                     // send message
                     Transport.send(message);  

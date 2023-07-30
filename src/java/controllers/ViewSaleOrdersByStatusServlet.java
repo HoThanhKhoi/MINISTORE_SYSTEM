@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Admin
  */
-public class ShowPaginatedMyOrdersServlet extends HttpServlet {
+public class ViewSaleOrdersByStatusServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,22 +40,19 @@ public class ShowPaginatedMyOrdersServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             HttpSession session = request.getSession();
-            User customer = (User) session.getAttribute("customer");
-            int pageNumber = Integer.parseInt(request.getParameter("page"));
-            int ordersPerPage = 8;
-            String status = request.getParameter("status");
-            ArrayList<Order> oList = null;
-            if(status == ""){
-                oList = OrderDAO.getMyOrders(customer.getUserID());
-            }else{
-                oList = OrderDAO.getMyOrdersByStatus(customer.getUserID(), Integer.parseInt(status));
+            User sale = (User) session.getAttribute("sale");
+            int status = Integer.parseInt(request.getParameter("status"));
+            int totalSaleOrders = OrderDAO.countSaleOrders(sale.getUserID());
+            ArrayList<Order> ordersList = OrderDAO.getSaleOrdersByStatus(sale.getUserID(), status);
+            if (ordersList == null || ordersList.isEmpty()) {
+                request.setAttribute("noti", "You don't have any orders.");
+                request.getRequestDispatcher("viewSaleOrders.jsp").forward(request, response);
+            } else {
+                request.setAttribute("orderList", ordersList);
+                request.setAttribute("totalSaleOrders", totalSaleOrders);
+                request.setAttribute("status", status);
+                request.getRequestDispatcher("viewSaleOrders.jsp").forward(request, response);
             }
-            ArrayList<Order> opList = OrderDAO.getPaginatedOrders(pageNumber, ordersPerPage, oList);
-            request.setAttribute("ordersList", oList);
-            request.setAttribute("page", pageNumber);
-            request.setAttribute("opList", opList);
-            request.setAttribute("status", status);
-            request.getRequestDispatcher("myOrders.jsp").forward(request, response);
         }
     }
 
@@ -74,7 +71,7 @@ public class ShowPaginatedMyOrdersServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ShowPaginatedMyOrdersServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewSaleOrdersByStatusServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -92,7 +89,7 @@ public class ShowPaginatedMyOrdersServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ShowPaginatedMyOrdersServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewSaleOrdersByStatusServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

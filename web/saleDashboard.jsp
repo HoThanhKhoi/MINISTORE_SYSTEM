@@ -129,7 +129,7 @@
                                         <div class="col-9 col-9-order">
                                             <form action="MainController" method="get">
                                                 <button onMouseOver="this.style.color = '#1B9C85'" class="link" type="submit" name="action" value="manageSaleOrders">Orders</button>
-                                                <input type="hidden" name="saleid" value="${sessionScope.sale.userID}"/>
+                                                
                                             </form>
                                         </div>
                                     </div>
