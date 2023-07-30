@@ -8,6 +8,7 @@ package controllers;
 
 import dao.OrderDAO;
 import dto.Order;
+import dto.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -38,9 +40,10 @@ public class ManageSaleOrdersServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String saleID = request.getParameter("saleid");
-            ArrayList<Order> list = OrderDAO.getOrderBySaleId(saleID);
-            int totalSaleOrders = OrderDAO.countSaleOrders(saleID);
+            HttpSession session = request.getSession();
+            User sale = (User) session.getAttribute("sale");
+            ArrayList<Order> list = OrderDAO.getOrderBySaleId(sale.getUserID());
+            int totalSaleOrders = OrderDAO.countSaleOrders(sale.getUserID());
             if(list != null){
                 request.setAttribute("orderList", list);
                 request.setAttribute("totalSaleOrders", totalSaleOrders);

@@ -35,11 +35,21 @@ public class OrderDAO {
                 String salesID = "", orderID = "";
                 cn.setAutoCommit(false); //turn off auto-commit
                 //get random salesID
-                String sql = "SELECT TOP 1 UserID FROM USERS WHERE RoleID=1 and status=1 ORDER BY NEWID()";
+                String sql = "SELECT TOP 1 EmployeeID\n"
+                        + "FROM SCHEDULES inner join USERS on SCHEDULES.EmployeeID = USERS.UserID \n"
+                        + "where RoleID = 1 and Status = 1 and CONVERT(date, GETDATE()) = SCHEDULES.ScheduleDate\n"
+                        + "and  WorksheetID = \n"
+                        + "CASE \n"
+                        + "	WHEN 18 <= DATEPART(hour, CONVERT(time, GETDATE())) and DATEPART(hour, CONVERT(time, GETDATE())) <= 24 THEN 'WS-0003'\n"
+                        + "	WHEN 12 <= DATEPART(hour, CONVERT(time, GETDATE())) and DATEPART(hour, CONVERT(time, GETDATE())) < 18  THEN 'WS-0002'\n"
+                        + "	WHEN 6 <= DATEPART(hour, CONVERT(time, GETDATE())) and DATEPART(hour, CONVERT(time, GETDATE())) < 12  THEN 'WS-0001' \n"
+                        + "	 ELSE ''\n"
+                        + "        END\n"
+                        + "ORDER BY NEWID()";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 ResultSet rs = pst.executeQuery();
                 if (rs != null && rs.next()) {
-                    salesID = rs.getString("UserID");
+                    salesID = rs.getString("EmployeeID");
                 }
 
                 //insert new order into Orders
@@ -178,6 +188,58 @@ public class OrderDAO {
                 String sql = "select OrderID,CustomerName,Phone,Address,PostalCode,"
                         + "TotalMoney,Status,OrderDate,ShipDate,CustomerID,SalesID,VoucherID\n"
                         + "from ORDERS where CustomerID=? and Status=? order by OrderID desc";
+                PreparedStatement pst = cn.prepareStatement(sql);
+                pst.setString(1, userID);
+                pst.setInt(2, status);
+                ResultSet rs = pst.executeQuery();
+                if (rs != null) {
+                    while (rs.next()) {
+                        String orderID = rs.getString("OrderID");
+                        String customerName = rs.getString("CustomerName");
+                        String phone = rs.getString("Phone");
+                        String address = rs.getString("Address");
+                        String postalCode = rs.getString("PostalCode");
+                        float totalMoney = rs.getFloat("TotalMoney");
+                        int orderStatus = rs.getInt("Status");
+                        Timestamp orderDate = rs.getTimestamp("OrderDate");
+                        Timestamp shipdate = rs.getTimestamp("ShipDate");
+//                        if (rs.wasNull()) {
+//                            shipDate = "N/A";
+//                        } else {
+//                            shipDate = shipdate.toString();
+//                        }
+                        String customerID = rs.getString("CustomerID");
+                        String salesID = rs.getString("SalesID");
+                        String voucherID = rs.getString("VoucherID");
+                        Order order = new Order(orderID, customerName, phone, address, postalCode,
+                                totalMoney, status, orderDate, shipdate, customerID, salesID, voucherID);
+                        list.add(order);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cn != null) {
+                try {
+                    cn.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return list;
+    }
+
+    public static ArrayList<Order> getSaleOrdersByStatus(String userID, int status) {
+        Connection cn = null;
+        ArrayList<Order> list = new ArrayList<>();
+        try {
+            cn = DBUtils.makeConnection();
+            if (cn != null) {
+                String sql = "select OrderID,CustomerName,Phone,Address,PostalCode,"
+                        + "TotalMoney,Status,OrderDate,ShipDate,CustomerID,SalesID,VoucherID\n"
+                        + "from ORDERS where SalesID=? and Status=? order by OrderID desc";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setString(1, userID);
                 pst.setInt(2, status);
@@ -480,7 +542,7 @@ public class OrderDAO {
         if (cn != null) {
             String sql = "Select COUNT(*) from ORDERS where SalesID = ?";
             PreparedStatement pst = cn.prepareStatement(sql);
-            pst.setString(1,id);
+            pst.setString(1, id);
             ResultSet table = pst.executeQuery();
             if (table.next()) {
                 total = table.getInt(1);

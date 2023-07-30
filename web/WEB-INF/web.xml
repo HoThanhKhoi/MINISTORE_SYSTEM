@@ -324,6 +324,14 @@
         <servlet-name>saleSearchByCustomerIDServlet</servlet-name>
         <servlet-class>controllers.saleSearchByCustomerIDServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ShowPaginatedSaleOrderServlet</servlet-name>
+        <servlet-class>controllers.ShowPaginatedSaleOrderServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewSaleOrdersByStatusServlet</servlet-name>
+        <servlet-class>controllers.ViewSaleOrdersByStatusServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ResetPassServlet</servlet-name>
         <url-pattern>/ResetPassServlet</url-pattern>
@@ -639,6 +647,14 @@
     <servlet-mapping>
         <servlet-name>saleSearchByCustomerIDServlet</servlet-name>
         <url-pattern>/saleSearchByCustomerIDServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowPaginatedSaleOrderServlet</servlet-name>
+        <url-pattern>/ShowPaginatedSaleOrderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewSaleOrdersByStatusServlet</servlet-name>
+        <url-pattern>/ViewSaleOrdersByStatusServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
