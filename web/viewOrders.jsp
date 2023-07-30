@@ -108,18 +108,14 @@
                         <div class="mt-4 row group-form">
                             <div class="col">
                                 <form class="search text-center d-flex align-items-center" action="MainController" metohd="post">
-                                    <input name="txtsearch" type="text" placeholder="Search..." value="${param.txtsearch == null ? '' : param.txtsearch}">
+                                    <input name="txtsearch" type="text" placeholder="Search (by customer's ID)" value="${param.txtsearch == null ? '' : param.txtsearch}">
                                     <button id="search-button" type="submit" name="action" value="searchByCustomerID" class="btn">
                                         <i class="fas fa-search"></i>
                                     </button>
                                 </form>
-
                             </div>
-
-                        </div>   
-
+                        </div>                                    
                         <div class="mt-4 my-2 myOrder-menu viewOrder d-flex">
-
                         </div>
                         <c:choose>
                             <c:when test="${requestScope.orderList.isEmpty()}">
@@ -142,7 +138,7 @@
                                     </thead>
                                     <tbody>
                                         <c:if test="${requestScope.oList == null}">
-                                            <c:forEach var="order" items="${requestScope.orderList}" begin="0" end="5">
+                                            <c:forEach var="order" items="${requestScope.orderList}" begin="0" end="6">
                                             <form action="MainController" action="post">
                                                 <tr>
                                                     <td>${order.orderID}</td>

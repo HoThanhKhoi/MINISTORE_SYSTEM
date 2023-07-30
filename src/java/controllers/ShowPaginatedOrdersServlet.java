@@ -38,7 +38,7 @@ public class ShowPaginatedOrdersServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             int pageNumber = Integer.parseInt(request.getParameter("page"));
-            int ordersPerPage = 8;
+            int ordersPerPage = 7;
             ArrayList<Order> oList = OrderDAO.getOrders();
             ArrayList<Order> opList = OrderDAO.getPaginatedOrders(pageNumber, ordersPerPage, oList);
             request.setAttribute("orderList", oList);

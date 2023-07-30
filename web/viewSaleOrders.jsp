@@ -36,7 +36,6 @@
         <header>
             <c:import url="header_saleDashboard.jsp" />
         </header>
-
         <div class="container-fluid">
 
             <!-- table -->
@@ -44,19 +43,18 @@
                 <div class="mt-4 row group-form">
                     <div class="col">
                         <form class="search text-center d-flex align-items-center" action="MainController" metohd="post">
-                            <input name="keyword" type="text" placeholder="Search..." value="${param.keyword == null ? '' : param.keyword}">
-                            <button id="search-button" type="submit" name="action" value="getSearchedProduct" class="btn">
+                            <input name="txtsearch" type="text" placeholder="Search (by customer's ID)" value="${param.txtsearch == null ? '' : param.txtsearch}">
+                            <input type="hidden" name="saleid" value="${sessionScope.sale.userID}"/>
+                            <button id="search-button" type="submit" name="action" value="saleSearchByCustomerID" class="btn">
                                 <i class="fas fa-search"></i>
                             </button>
                         </form>
                     </div>
-
-                </div>   
+                </div>
 
                 <div class=" mt-4 my-2 d-flex">
-                    <div class="total-order">Total Orders: ${totalSaleOrders}</div>
-                </div>
-                
+                    <div class="total-order">Total orders: ${totalSaleOrders}</div>
+                </div>                
                 <c:choose>
                     <c:when test="${requestScope.orderList.isEmpty()}">
                         <h3>No result</h3>
@@ -71,7 +69,6 @@
                                     <th scope="col">Phone</th>
                                     <th scope="col">Order Date</th>
                                     <th scope="col">Total Money</th>
-                                    <th scope="col">Sales ID</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Details</th>
                                 </tr>
@@ -86,7 +83,6 @@
                                         <td>${order.phone}</td>
                                         <td>${order.orderDate}</td>
                                         <td>$${order.totalMoney}</td>
-                                        <td>${order.salesID}</td>
                                         <td>
                                             <c:choose>
                                                 <c:when test="${order.status eq 1}"><span class="status_btn status_processing">Processing</span></c:when>

@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Asus TUF
  */
-public class SearchByCustomerIDServlet extends HttpServlet {
+public class saleSearchByCustomerIDServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,16 +35,19 @@ public class SearchByCustomerIDServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             String cusid = request.getParameter("txtsearch");
+            String saleID = request.getParameter("saleid");
             if (!cusid.equals("") || !cusid.isEmpty()) {
-                ArrayList<Order> list = OrderDAO.getSearchedOrdersByID(cusid);
+                ArrayList<Order> list = OrderDAO.saleGetSearchedOrdersByID(cusid, saleID);
+                int totalSaleOrders = OrderDAO.countSaleOrders(saleID);
                 request.setAttribute("orderList", list);
-                request.getRequestDispatcher("viewOrders.jsp").forward(request, response);
+                request.setAttribute("totalSaleOrders", totalSaleOrders);
+                request.getRequestDispatcher("viewSaleOrders.jsp").forward(request, response);
             } else {
                 ArrayList<Order> list = null;
                 request.setAttribute("orderList", list);
-                request.getRequestDispatcher("viewOrders.jsp").forward(request, response);
+                request.getRequestDispatcher("viewSaleOrders.jsp").forward(request, response);
             }
-        }catch(Exception e){
+        } catch (Exception e) {
         }
     }
 

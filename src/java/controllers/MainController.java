@@ -187,11 +187,13 @@ public class MainController extends HttpServlet {
             } else if (action.equalsIgnoreCase("getEmployeeSchedule")) {
                 url = "GetEmployeeScheduleServlet";
             } else if (action.equalsIgnoreCase("searchByCustomerID")) {
-                url = "searchByCustomerIDServlet";
+                url = "SearchByCustomerIDServlet";
             } else if (action.equalsIgnoreCase("showOrdersPage")) {
                 url = "ShowPaginatedOrdersServlet";
             } else if (action.equalsIgnoreCase("showMyOrdersPage")) {
                 url = "ShowPaginatedMyOrdersServlet";
+            } else if (action.equalsIgnoreCase("saleSearchByCustomerID")) {
+                url = "saleSearchByCustomerIDServlet";
             }
             
 

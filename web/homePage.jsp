@@ -52,7 +52,7 @@
             <div class="header">
                 <nav>
                     <ul>
-                        
+
                         <li>
                             <a href="homePage.jsp">Home</a>
                         </li>
@@ -94,16 +94,15 @@
                     <source src="./image/mixkit-surface-covered-with-many-fruits-and-vegetables-seen-in-detail-10433-medium.mp4" type="video/mp4" />
                 </video>
                 <div class="overlay"></div>
-                
+
                 <div class="banner-title text-center d-flex align-items-center">
-                    
+
                     <h1>Ministore </br>
                         Shop <em>Everything!</em>
                     </h1>
                 </div>
 
                 <form class="banner-search text-center d-flex align-items-center" action="MainController" method="post">
-                    
                     <input type="text" placeholder="Search..." name="keyword">
                     <button id="search-button" type="submit" class="btn" name="action" value="searchProduct" style="width:60px; left:1000px"> 
                         <i class="fas fa-search"></i>

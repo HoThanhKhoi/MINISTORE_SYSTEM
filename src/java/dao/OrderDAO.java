@@ -445,6 +445,35 @@ public class OrderDAO {
         return list;
     }
     
+    public static ArrayList<Order> saleGetSearchedOrdersByID(String cusid, String saleID) throws Exception {
+        ArrayList<Order> list = new ArrayList<>();
+        Connection cn = DBUtils.makeConnection();
+        if (cn != null) {
+            String sql = "select OrderID,CustomerID,CustomerName,Phone,OrderDate,TotalMoney,SalesID,Status\n"
+                    + "from ORDERS where CustomerID LIKE ? AND SalesID = ?";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setString(1, "%" + cusid + "%");
+            pst.setString(2, saleID);
+            ResultSet table = pst.executeQuery();
+            if (table != null) {
+                while (table.next()) {
+                    String orderID = table.getString("OrderID");
+                    String customerID = table.getString("CustomerID");
+                    String customerName = table.getString("CustomerName");
+                    String phone = table.getString("Phone");
+                    Timestamp orderDate = table.getTimestamp("OrderDate");
+                    float totalMoney = table.getFloat("TotalMoney");
+                    String salesID = table.getString("SalesID");
+                    int status = table.getInt("status");
+                    Order order = new Order(orderID, customerID, customerName, phone, orderDate, totalMoney, salesID, status);
+                    list.add(order);
+                }
+            }
+            cn.close();
+        }
+        return list;
+    }
+    
     public static int countSaleOrders(String id) throws Exception{
     int total = 0;
         Connection cn = DBUtils.makeConnection();

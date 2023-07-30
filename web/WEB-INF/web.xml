@@ -315,10 +315,14 @@
     <servlet>
         <servlet-name>ShowPaginatedMyOrdersServlet</servlet-name>
         <servlet-class>controllers.ShowPaginatedMyOrdersServlet</servlet-class>
-    </servlet>    
-    <servlet>    
-        <servlet-name>searchByCustomerIDServlet</servlet-name>
-        <servlet-class>controllers.searchByCustomerIDServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchByCustomerIDServlet</servlet-name>
+        <servlet-class>controllers.SearchByCustomerIDServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>saleSearchByCustomerIDServlet</servlet-name>
+        <servlet-class>controllers.saleSearchByCustomerIDServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ResetPassServlet</servlet-name>
@@ -629,8 +633,12 @@
         <url-pattern>/ShowPaginatedMyOrdersServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>searchByCustomerIDServlet</servlet-name>
-        <url-pattern>/searchByCustomerIDServlet</url-pattern>
+        <servlet-name>SearchByCustomerIDServlet</servlet-name>
+        <url-pattern>/SearchByCustomerIDServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>saleSearchByCustomerIDServlet</servlet-name>
+        <url-pattern>/saleSearchByCustomerIDServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -57,18 +57,15 @@
                                         <li class="btn">
                                             <a href="MainController?action=viewMyOrders">All</a>
                                         </li>
-
                                         <li class="btn active">
                                             <a href="MainController?action=viewMyOrdersByStatus&status=1">Processing</a>
                                         </li>
-
                                         <li class="btn">
                                             <a href="MainController?action=viewMyOrdersByStatus&status=2">Delivering</a>
                                         </li>
                                         <li class="btn">
                                             <a href="MainController?action=viewMyOrdersByStatus&status=3">Completed</a>
                                         </li>
-
                                         <li class="btn">
                                             <a href="MainController?action=viewMyOrdersByStatus&status=4">Canceled</a>
                                         </li>
@@ -77,19 +74,15 @@
                                         <li class="btn">
                                             <a href="MainController?action=viewMyOrders">All</a>
                                         </li>
-
                                         <li class="btn">
                                             <a href="MainController?action=viewMyOrdersByStatus&status=1">Processing</a>
                                         </li>
-
                                         <li class="btn active">
                                             <a href="MainController?action=viewMyOrdersByStatus&status=2">Delivering</a>
                                         </li>
-
                                         <li class="btn">
                                             <a href="MainController?action=viewMyOrdersByStatus&status=3">Completed</a>
                                         </li>
-
                                         <li class="btn">
                                             <a href="MainController?action=viewMyOrdersByStatus&status=4">Canceled</a>
                                         </li>
@@ -98,19 +91,15 @@
                                         <li class="btn">
                                             <a href="MainController?action=viewMyOrders">All</a>
                                         </li>
-
                                         <li class="btn">
                                             <a href="MainController?action=viewMyOrdersByStatus&status=1">Processing</a>
                                         </li>
-
                                         <li class="btn">
                                             <a href="MainController?action=viewMyOrdersByStatus&status=2">Delivering</a>
                                         </li>
-
                                         <li class="btn active">
                                             <a href="MainController?action=viewMyOrdersByStatus&status=3">Completed</a>
                                         </li>
-
                                         <li class="btn">
                                             <a href="MainController?action=viewMyOrdersByStatus&status=4">Canceled</a>
                                         </li>
@@ -119,19 +108,15 @@
                                         <li class="btn">
                                             <a href="MainController?action=viewMyOrders">All</a>
                                         </li>
-
                                         <li class="btn">
                                             <a href="MainController?action=viewMyOrdersByStatus&status=1">Processing</a>
                                         </li>
-
                                         <li class="btn">
                                             <a href="MainController?action=viewMyOrdersByStatus&status=2">Delivering</a>
                                         </li>
-
                                         <li class="btn">
                                             <a href="MainController?action=viewMyOrdersByStatus&status=3">Completed</a>
                                         </li>
-
                                         <li class="btn active">
                                             <a href="MainController?action=viewMyOrdersByStatus&status=4">Canceled</a>
                                         </li>
@@ -140,25 +125,20 @@
                                         <li class="btn active">
                                             <a href="MainController?action=viewMyOrders">All</a>
                                         </li>
-
                                         <li class="btn">
                                             <a href="MainController?action=viewMyOrdersByStatus&status=1">Processing</a>
                                         </li>
-
                                         <li class="btn">
                                             <a href="MainController?action=viewMyOrdersByStatus&status=2">Delivering</a>
                                         </li>
-
                                         <li class="btn">
                                             <a href="MainController?action=viewMyOrdersByStatus&status=3">Completed</a>
                                         </li>
-
                                         <li class="btn">
                                             <a href="MainController?action=viewMyOrdersByStatus&status=4">Canceled</a>
                                         </li>
                                     </c:otherwise>
                                 </c:choose>
-
                             </ul>
                         </div>
 

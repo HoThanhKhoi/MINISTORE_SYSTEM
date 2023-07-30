@@ -33,6 +33,7 @@ public class SaleChangeOrderStatusServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             String orderID = request.getParameter("orderid");
+            String saleID = request.getParameter("saleid");
             out.print(orderID);
             int status = Integer.parseInt(request.getParameter("status"));
             out.print(status);
