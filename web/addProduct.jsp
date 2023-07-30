@@ -105,7 +105,7 @@
 
 
                     <div class="dashboard cus-dashboard">
-                        <form action="AddNewProductServlet" method="post" enctype="multipart/form-data">
+                        <form action="AddNewProductServlet" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
 
                             <div class="row align-items-center mx-5">
 
@@ -115,12 +115,16 @@
                                     <div class="title text-center mb-5">
                                         <h5>Product Manager - Create New Product</h5>
                                     </div>
+
                                     <div class="form-item my-5 d-flex align-items-center justify-content-center">
                                         <div class="col-3">
                                             <label for="">Name</label>
                                         </div>
                                         <div class="col-9">
-                                            <input name="pName" type="text" id="name" value="">
+                                            <input name="pName" type="text" id="name" value="" id="validationCustom03" required>
+                                            <div class="invalid-feedback">
+                                                Please provide a valid name.
+                                            </div>
                                         </div>
                                     </div>
 
@@ -129,7 +133,10 @@
                                             <label for="">Price</label>
                                         </div>
                                         <div class="col-9">
-                                            <input name="pPrice" type="text" id="phone" value="">
+                                            <input name="pPrice" type="text" id="phone" value="" id="validationCustom03" required>
+                                            <div class="invalid-feedback">
+                                                Please provide a valid price.
+                                            </div>
                                         </div>
                                     </div>
 
@@ -138,13 +145,19 @@
                                             <label for="">Stock</label>
                                         </div>
                                         <div class="col-9">
-                                            <input name="pStock" type="text" id="email" value="">
+                                            <input name="pStock" type="text" id="email" value="" id="validationCustom03" required>
+                                            <div class="invalid-feedback">
+                                                Please provide a valid stock.
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="form-item my-5">
                                         <label class="mb-2" for="exampleFormControlTextarea1" >Description</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name="pDes"></textarea>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name="pDes" id="validationCustom03" required></textarea>
+                                        <div class="invalid-feedback">
+                                            Please provide a valid description.
+                                        </div>
                                     </div>
                                 </div>
 
@@ -186,7 +199,7 @@
             </c:otherwise>
         </c:choose>
 
-        
+
 
         <script type="text/javascript">
             $(document).ready(function () {
@@ -213,6 +226,7 @@
                 window.history.replaceState(null, null, "MainController?action=viewAllProducts");
             }
         </script>
+        <script src="./js/validation_input.js"></script>
 
     </body>
 </html>
