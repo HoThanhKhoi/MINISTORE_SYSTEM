@@ -60,7 +60,9 @@
                         <a href="MainController?action=viewCart" class="nav-link">
                             <span class="cart icon-cart">
                                 <i class="fa-solid fa-cart-shopping "></i>
-                                <span class="icon-cart-badge ">${sessionScope.cart.size()}</span>
+                                <c:if test="${sessionScope.cart.size() > 0}">
+                                    <span class="icon-cart-badge ">${sessionScope.cart.size()}</span>
+                                </c:if>                           
                             </span>
                         </a>
                     </li>

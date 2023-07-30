@@ -11,6 +11,7 @@
         <link rel="icon" type="image/x-icon" href="./image/favicon-32x32.png">
         <title>Document</title>
         <link rel="stylesheet" href="./css/productDetail.css">
+        <link rel="stylesheet" href="./js/backToTop.js">
 
         <!-- boostrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -27,7 +28,7 @@
               integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
               crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="./js/index.js">
-        
+
     </head>
 
     <body>
@@ -42,8 +43,8 @@
                 </c:otherwise>
             </c:choose>
         </header>
-        
-        
+
+
         <!-- HEADER PATH -->
         <nav class="navbar navbar_path navbar-expand-lg header-path mt-4 mb-1">
             <div class="container-fluid">
@@ -91,6 +92,7 @@
     <button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top">
         <i class="fas fa-arrow-up"></i>
     </button>
+    <script src="./js/backToTop.js"></script>
 
 </body>
 

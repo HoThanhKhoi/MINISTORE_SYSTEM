@@ -1,8 +1,4 @@
-<%-- 
-    Document   : viewProductDetail
-    Created on : Jun 20, 2023, 1:25:27 PM
-    Author     : Admin
---%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="dao.CategoryDAO"%>
 <%@page import="dao.ProductDAO"%>
@@ -17,7 +13,6 @@
         <link rel="icon" type="image/x-icon" href="./image/favicon-32x32.png">
         <title>Ministore</title>
         <link rel="stylesheet" href="./css/managerScreen.css" />
-
 
 
         <!-- Icon CDN -->
@@ -110,7 +105,7 @@
                     </div>
 
                     <div class="dashboard cus-dashboard">
-                        <form action="UpdateProductServlet" method="post" enctype="multipart/form-data">
+                        <form action="UpdateProductServlet" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
 
                             <div class=" row align-items-center mx-5">
 
@@ -125,7 +120,10 @@
                                             <label for="">ID</label>
                                         </div>
                                         <div class="col-9">
-                                            <input name="pid" type="text" id="name" value="${product.productID}">
+                                            <input name="pid" type="text" id="name" value="${product.productID}" id="validationCustom03" required>
+                                            <div class="invalid-feedback">
+                                                Please provide a valid id.
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-item my-5 d-flex align-items-center justify-content-center">
@@ -133,7 +131,10 @@
                                             <label for="">Name</label>
                                         </div>
                                         <div class="col-9">
-                                            <input name="pName" type="text" id="name" value="${product.productName}">
+                                            <input name="pName" type="text" id="name" value="${product.productName}" id="validationCustom03" required>
+                                            <div class="invalid-feedback">
+                                                Please provide a valid name.
+                                            </div>
                                         </div>
                                     </div>
 
@@ -142,7 +143,10 @@
                                             <label for="">Price</label>
                                         </div>
                                         <div class="col-9">
-                                            <input name="pPrice" type="text" id="phone" value="${product.price}">
+                                            <input name="pPrice" type="text" id="phone" value="${product.price}" id="validationCustom03" required>
+                                            <div class="invalid-feedback">
+                                                Please provide a valid price.
+                                            </div>
                                         </div>
                                     </div>
 
@@ -152,12 +156,18 @@
                                         </div>
                                         <div class="col-9">
                                             <input name="pStock" type="text" id="email" value="${product.stockQuantity}">
+                                            <div class="invalid-feedback">
+                                                Please provide a valid stock.
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="form-item my-5">
                                         <label class="mb-2" for="exampleFormControlTextarea1" >Description</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name="pDes">${product.description}</textarea>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name="pDes" id="validationCustom03" required>${product.description}</textarea>
+                                        <div class="invalid-feedback">
+                                            Please provide a valid description.
+                                        </div>
                                     </div>
                                 </div>
 
@@ -181,7 +191,7 @@
                                             <label for="">Image</label>
                                         </div>
                                         <div class="mb-2">
-                                             <input class="no-border" type="file" name="file" size="60" />
+                                            <input class="no-border" type="file" name="file" size="60" />
                                         </div>
                                     </div>                                       
                                     <div class="form-item my-5 d-flex justify-content-center">
@@ -207,7 +217,7 @@
             </div>
 
 
-            
+
 
 
             <c:if test="${requestScope.noti != null}">
@@ -262,5 +272,7 @@
             </script>
         </c:otherwise>
     </c:choose>
+    <script src="./js/validation_input.js"></script>
+
 </body>
 </html>
