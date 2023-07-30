@@ -106,16 +106,38 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="width:20px"></button>
                                 </div>
                             </c:if> 
-                            <c:if test="${requestScope.noti != null}">
-                                <div class="alert alert-success alert-dismissible fade show notification" role="alert" style="padding: 15px 45px;text-align: center;width:430px;opacity: 100%;margin: 30px auto">
-                                    <strong class="error">${requestScope.noti}</strong> 
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="width:20px"></button>
-                                </div>
-                            </c:if>    
+
                         </div>
                     </div>
 
                 </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="notiModal" tabindex="-1" aria-labelledby="notiModal" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Notification</h5>
+                            </div>
+                            <div class="modal-body text-center">
+                                Please <a href="login.jsp">login</a> again to proceed.
+                            </div>
+                            <div class="modal-footer">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>               
+
+
+                <c:if test="${requestScope.noti != null}">
+                    <script type="text/javascript">
+                        window.onload = () => {
+                            const myModal = new bootstrap.Modal('#notiModal');
+                            myModal.show();
+                        }
+                    </script>
+                </c:if>   
 
                 <!-- FOOTER -->
                 <footer>
