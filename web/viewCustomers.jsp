@@ -180,7 +180,6 @@
                                                     <td>${customer.name}</td>
                                                     <td>${customer.email}</td>
                                                     <td>${customer.phone}</td>
-                                                    <td>${customer.address}</td>
                                                     <c:choose>
                                                         <c:when test="${customer.status == 0}"><td><span class="status_btn status_cancel">Inactive</span></td></c:when>
                                                         <c:otherwise><td><span class="status_btn status_completed">Active</span></td></c:otherwise>
@@ -202,7 +201,6 @@
                                                     <td>${customer.name}</td>
                                                     <td>${customer.email}</td>
                                                     <td>${customer.phone}</td>
-                                                    <td>${customer.address}</td>
                                                     <c:choose>
                                                         <c:when test="${customer.status == 0}"><td><span class="status_btn status_cancel">Inactive</span></td></c:when>
                                                         <c:otherwise><td><span class="status_btn status_completed">Active</span></td></c:otherwise>

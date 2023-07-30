@@ -65,7 +65,7 @@ public class VerifyEmailServlet extends HttpServlet {
                 String to = email;// change accordingly
                 String content = "<h1>Email Verification</h1>"
                         + "<p>Thank you for registering. Please click the button below to verify your email address:</p>"
-                        + "<a href=\"http://localhost:3030/Sprint4_Finale_2nd/MainController?action=confirmEmail&email="+email+"&usname="+userName+"&phone="+phone+"&password="+password  
+                        + "<a href=\"http://localhost:3030/Ministore_1/MainController?action=confirmEmail&email="+email+"&usname="+userName+"&phone="+phone+"&password="+password  
                         + "\">Verify Email</a>";
                 // Get the session objectlocalhost:3030/TTG_26_6_2023/
                 Properties props = new Properties();

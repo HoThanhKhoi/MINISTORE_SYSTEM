@@ -138,7 +138,7 @@
                                     </thead>
                                     <tbody>
                                         <c:if test="${requestScope.oList == null}">
-                                            <c:forEach var="order" items="${requestScope.orderList}" begin="0" end="6">
+                                            <c:forEach var="order" items="${requestScope.orderList}" begin="0" end="7">
                                             <form action="MainController" action="post">
                                                 <tr>
                                                     <td>${order.orderID}</td>

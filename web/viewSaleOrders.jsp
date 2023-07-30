@@ -36,6 +36,7 @@
         <header>
             <c:import url="header_saleDashboard.jsp" />
         </header>
+
         <div class="container-fluid">
 
             <!-- table -->
@@ -51,12 +52,7 @@
                         </form>
                     </div>
                 </div>
-
-                <div class=" mt-4 my-2 d-flex">
-                    <div class="total-order">Total orders: ${totalSaleOrders}</div>
-                </div>                
-
-                </div>
+                <div class="mt-4 row group-form"></div>     
                 <div class="myOrder-menu">
                     <ul id="myDiv" class="order">
                         <c:choose>
@@ -169,31 +165,30 @@
                     </ul>
                 </div>
 
-                <div class=" mt-4 my-2 d-flex">
-                    <div class="total-order">Total Orders: ${totalSaleOrders}</div>
-                </div>
 
                 <c:choose>
                     <c:when test="${requestScope.orderList.isEmpty()}">
                         <h3>No result</h3>
                     </c:when>
                     <c:otherwise>
-                        <table class="table table-border text-center">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Order ID</th>
-                                    <th scope="col">Customer ID</th>
-                                    <th scope="col">Customer Name</th>
-                                    <th scope="col">Phone</th>
-                                    <th scope="col">Order Date</th>
-                                    <th scope="col">Total Money</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Details</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <c:choose>
-                                    <c:when test="${requestScope.orderList != null}">
+                        <c:choose>
+                            <c:when test="${requestScope.orderList != null}">
+                                <table class="table table-border text-center">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Order ID</th>
+                                            <th scope="col">Customer ID</th>
+                                            <th scope="col">Customer Name</th>
+                                            <th scope="col">Phone</th>
+                                            <th scope="col">Order Date</th>
+                                            <th scope="col">Total Money</th>
+                                            <th scope="col">Sales ID</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Details</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
                                         <c:forEach var="order" items="${requestScope.orderList}">
                                         <form action="MainController" action="post">
                                             <tr>
@@ -203,6 +198,7 @@
                                                 <td>${order.phone}</td>
                                                 <td>${order.orderDate}</td>
                                                 <td>$${order.totalMoney}</td>
+                                                <td>${order.salesID}</td>
                                                 <td>
                                                     <c:choose>
                                                         <c:when test="${order.status eq 1}"><span class="status_btn status_processing">Processing</span></c:when>
@@ -218,17 +214,19 @@
                                             </tr>
                                         </form>
                                     </c:forEach>
-                                </c:when>
-                                <c:otherwise>
-                                    <c:if test="${requestScope.noti != null}">
-                                        <div class="alert alert-danger alert-dismissible fade show notification" role="alert" style="padding: 15px 45px;text-align: center;width:430px;opacity: 100%;margin: 20px auto 0;">
-                                            <strong class="error">${requestScope.noti}</strong>
-                                        </div>
-                                    </c:if>
-                                </c:otherwise>
-                            </c:choose>
-                            </tbody>
-                        </table>
+
+                                    </tbody>
+                                </table>
+                            </c:when>
+                            <c:otherwise>
+                                <c:if test="${requestScope.noti != null}">
+                                    <div class="alert alert-danger alert-dismissible fade show notification" role="alert" style="padding: 15px 45px;text-align: center;width:300px;opacity: 100%;margin: 20px auto 0;">
+                                        <strong class="error">${requestScope.noti}</strong>
+                                    </div>
+                                </c:if>
+                            </c:otherwise>
+                        </c:choose>
+
                         <c:if test="${requestScope.orderList != null}">
                             <nav aria-label="Page navigation example" style="margin: 10px 0;">
                                 <ul class="pagination justify-content-center">

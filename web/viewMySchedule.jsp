@@ -71,7 +71,7 @@
             String[] weekDays = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 
             ArrayList<LocalDate> dates = new ArrayList<>();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             Calendar calendar = Calendar.getInstance();
             int weekYear = calendar.get(Calendar.YEAR);
             int noOfWeek = calendar.get(Calendar.WEEK_OF_YEAR);

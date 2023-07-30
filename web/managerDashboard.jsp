@@ -99,7 +99,7 @@
                         <div class="circle"></div>
                         <div class="mx-3 mb-4">
                             <div class="title text-center">
-                                <h4>Month to date</h4>
+                                <h4>Lifetime Statistics</h4>
                                 <div class="border-bt"></div>
                             </div>
 
@@ -123,27 +123,19 @@
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <ul>
-                                                <li>Most viewed</li>
-                                                <li>Best sellers</li>
+                                                <li>Best seller</li>
                                             </ul>
                                         </div>
                                         <div class="col-lg-6">
                                             <ul class="product-stats-info">
                                                 <div class="product-stats-info-item">
-                                                    <li>fresh butchered leg</li>
-                                                    <div class="div"></div>
-                                                </div>
-
-
-                                                <div class="product-stats-info-item">
                                                     <li><c:out value="${ProductDAO.getBestSellersProduct()}"/></li>
                                                     <div class="div"></div>
                                                 </div>
-
                                             </ul>
                                         </div>
+                                        <div style="font-style: italic; font-weight: 100; font-size: 15px">Best seller is calculated by the total amount/number of products sold (quantity)</div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -155,7 +147,7 @@
         </div>
 
 
-        
+
     </body>
 
 </html>

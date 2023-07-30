@@ -116,14 +116,14 @@
                 <div class="modal fade" id="notiModal" tabindex="-1" aria-labelledby="notiModal" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Notification</h5>
+                            <div style="justify-content: center" class="modal-header">
+                                <h5 class="modal-titl" id="exampleModalLabel">Notification</h5>
                             </div>
                             <div class="modal-body text-center">
                                 Please <a href="login.jsp">login</a> again to proceed.
                             </div>
                             <div class="modal-footer">
-                                
+
                             </div>
                         </div>
                     </div>
@@ -145,5 +145,10 @@
                 </footer>
             </c:otherwise>
         </c:choose>
+        <script>
+            if (window.history.replaceState) {
+                window.history.replaceState(null, null, "changePassword.jsp");
+            }
+        </script>
     </body>
 </html>

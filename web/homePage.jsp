@@ -304,7 +304,7 @@
                 </div>
 
                 <div class="item-list mx-5">
-                    <div class="row ">
+                    <div class="row row-cols-md-5">
                         <c:if test="${ProductDAO.getProducts() != null}">
                             <c:if test="${requestScope.list == null}">
                                 <c:forEach var="product" items="${ProductDAO.getProducts()}" begin="0" end="19">
@@ -401,6 +401,11 @@
 
         </div>
 
+        <form action="MainController" action="post">                
+            <button type="submit" name="action" value="backToHome" class="btn btn-floating btn-lg" id="btn-home-page">
+                <img style="length:35px; height:35px"src="image/favicon-32x32.png" alt="Ministore">
+            </button>
+        </form>
         <form action="MainController" action="post">                
             <button type="submit" name="action" value="viewCart" class="btn btn-floating btn-lg" id="btn-floating-cart">
                 <i class="fa-solid fa-cart-shopping"></i>

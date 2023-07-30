@@ -48,7 +48,6 @@
 
 
                 <div class="container-fluid">
-                    <div>Total: ${ProductDAO.getTotalProduct()}</div>
                     <!-- menu -->
                     <div class="menu-btn">
                         <input type="checkbox" id="nav-toggle">

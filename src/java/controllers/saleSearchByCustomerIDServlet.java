@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Asus TUF
  */
-public class saleSearchByCustomerIDServlet extends HttpServlet {
+public class SaleSearchByCustomerIDServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

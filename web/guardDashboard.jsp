@@ -104,27 +104,27 @@
 
                                 <!-- update status -->
                                 <div class="col cus-update">
-                                    
-                                        <div class="my-5 d-flex align-items-center justify-content-center">
-                                            <div class="col-3">
-                                                <label for="">Role</label>
-                                            </div>
-                                            <div class="col-9">
-                                                <input type="text" disabled placeholder="Guard">
-                                            </div>
-                                        </div>   
 
-                                        <div class="order my-5 d-flex align-items-center justify-content-center">
-                                            <div class="col-3">
-                                                <label for="">Schedule</label>
-                                            </div>
-                                            <div class="col-9">
-                                                <a role="button" href="viewMySchedule.jsp">Work Schedule</a>
-                                            </div>
-                                        </div>  
+                                    <div class="my-5 d-flex align-items-center justify-content-center">
+                                        <div class="col-3">
+                                            <label for="">Role</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input type="text" disabled placeholder="Guard">
+                                        </div>
+                                    </div>   
 
-                                        
-                                    
+                                    <div class="order my-5 d-flex align-items-center justify-content-center">
+                                        <div class="col-3">
+                                            <label for="">Schedule</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <a class="text-decoration-none" style="color: #000" onMouseOver="this.style.color = '#1B9C85'" role="button" href="viewMySchedule.jsp">Work Schedule</a>
+                                        </div>
+                                    </div>   
+
+
+
                                 </div> 
                             </div>
                         </div>
