@@ -113,7 +113,7 @@
                                 <div class="col-lg-4">
                                     <div class="mb "><c:out value="${UserDAO.countUsersByRole(3)}"/></div>
                                     <div class="mb"><c:out value="${OrderDAO.countOrders()}"/></div>
-                                    <div class="mb-5">$<c:out value="${OrderDAO.calculateRevenue()}"/></div>
+                                    <div class="mb-5">$<c:out value="${OrderDAO.calculateRevenue(3)}"/></div>
                                 </div>
                             </div>
 

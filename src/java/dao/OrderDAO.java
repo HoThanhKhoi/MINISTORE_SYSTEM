@@ -476,14 +476,15 @@ public class OrderDAO {
         return count;
     }
     
-    public static float calculateRevenue() throws Exception {
+    public static float calculateRevenue(int status) throws Exception {
         float sum = 0;
         Connection cn = null;
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String s = "select SUM(TotalMoney) as Total from ORDERS";
+                String s = "select SUM(case when Status=? then TotalMoney else 0 end) as Total from ORDERS";
                 PreparedStatement pst = cn.prepareStatement(s);
+                pst.setInt(1, status);
                 ResultSet table = pst.executeQuery();
                 if (table != null) {
                     while (table.next()) {
