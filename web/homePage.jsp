@@ -403,7 +403,7 @@
 
         <form action="MainController" action="post">                
             <button type="submit" name="action" value="backToHome" class="btn btn-floating btn-lg" id="btn-home-page">
-                <img style="length:35px; height:35px"src="image/favicon-32x32.png" alt="Ministore">
+                <img style="length:33px; height:33px"src="image/favicon-32x32.png" alt="Ministore">
             </button>
         </form>
         <form action="MainController" action="post">                

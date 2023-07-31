@@ -120,7 +120,7 @@
                                             <label for="">ID</label>
                                         </div>
                                         <div class="col-9">
-                                            <input name="pid" type="text" id="name" value="${product.productID}" id="validationCustom03" required>
+                                            <input name="pid" type="text" id="name" value="${product.productID}" id="validationCustom03" readonly>
                                             <div class="invalid-feedback">
                                                 Please provide a valid id.
                                             </div>
@@ -191,7 +191,7 @@
                                             <label for="">Image</label>
                                         </div>
                                         <div class="mb-2">
-                                            <input class="no-border" type="file" name="file" size="60" />
+                                            <input style="position: relative; left: 20%" class="no-border" type="file" name="file" size="60" required/>
                                         </div>
                                     </div>                                       
                                     <div class="form-item my-5 d-flex justify-content-center">
